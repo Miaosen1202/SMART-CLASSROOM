@@ -33,7 +33,7 @@
         <!--选择题-->
         <div v-for="(option,index) in options" :key="index" v-if="questionType == 1">
           <el-radio v-model="selectItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
-            {{option.answerCode}}
+            <span class="opt-answer-code">{{option.answerCode}}</span>
             <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
                       style="width: 60%;display: inline-block"></el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
@@ -226,6 +226,8 @@
           {id: 5, name: "F"},
           {id: 6, name: "G"},
           {id: 7, name: "H"},
+          {id: 8, name: "I"},
+          {id: 9, name: "J"},
         ],
         options: [
           {
@@ -404,8 +406,8 @@
           this.$message.error("The title must be not empty");
           return;
         }
-        if (queryOptions.length < 2 || queryOptions.length > 8) {
-          this.$message.error("The options must be greater than 1 and less than 9");
+        if (queryOptions.length < 2 || queryOptions.length > 10) {
+          this.$message.error("The options must be greater than 1 and less than 11");
           return;
         }
 
@@ -531,6 +533,12 @@
 <style scoped="">
   .all {
     width: 99%;
+  }
+
+  span.opt-answer-code {
+    width: 12px;
+    display: inline-block;
+    text-align: center;
   }
 
   .exercises {
