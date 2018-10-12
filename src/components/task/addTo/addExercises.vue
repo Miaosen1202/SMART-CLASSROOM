@@ -91,7 +91,7 @@
         <!--选择题-->
         <div v-for="(option,index) in exerciseEntity.options" :key="index" v-if="exerciseEntity.questionType == 1">
           <el-radio v-model="selectEditItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
-            {{option.answerCode}}
+            <span class="opt-answer-code">{{option.answerCode}}</span>
             <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
                       style="width: 60%;display: inline-block"></el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
@@ -350,7 +350,7 @@
             answerCode: answerCode
           })
         }
-        if (this.options.length == this.codeObjList.length) {
+        if (this.options.length >= this.codeObjList.length) {
           this.optionsShow= true;//控制按钮可用状态
         }
       },
@@ -462,6 +462,7 @@
               })
 
               this.exerciseEntity = res.data.entity;
+              this.optionsShow = res.data.entity.options.length >= this.codeObjList.length;
             }
           }).catch((err) => {
           console.log(err);
@@ -505,6 +506,7 @@
           .then((res) => {
 
             if (res.data.code == 200) {
+              this.optionsShow = false;
               this.showAdd = true;
               this.questionType = 1;
               this.questionTitle = "";
