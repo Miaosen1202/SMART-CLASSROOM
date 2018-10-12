@@ -36,6 +36,7 @@
 </template>
 
 <script>
+  import util from "@/utils/util"
   export default {
     data() {
       return {
@@ -58,7 +59,7 @@
       this.langChange(that.selectValue)
     },
     methods: {
-      /*getLoginUser: util.getLoginUser,*/
+      getLoginUser: util.getLoginUser,
       goToFirst(){
         this.$router.push({path:"/homePage/prepare"});
       },

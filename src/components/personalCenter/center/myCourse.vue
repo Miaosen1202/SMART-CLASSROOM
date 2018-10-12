@@ -172,6 +172,7 @@
           console.log(this.searchTimeRange);
           this.search.startTime = this.searchTimeRange[0];
           this.search.endTime = this.searchTimeRange[1];
+          this.search.endTime += 24 * 60 * 60 * 1000;
         } else {
           this.search.startTime = null;
           this.search.endTime = null;

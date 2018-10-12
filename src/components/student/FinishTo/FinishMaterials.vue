@@ -60,7 +60,18 @@
     },
     methods: {
       download: function() {
-        this.$message.warning(this.$t('message.Thefunctionisbeingperfected'));/*"The function is being perfected"*/
+        console.log(this.checkedMaterials);
+        if (this.checkedMaterials.length == 0) {
+          this.$message.error("Please select a material first");
+          return;
+        }
+
+        let ids = "";
+        for (let i = 0; i < this.checkedMaterials.length; i++) {
+          ids += ((i == 0) ? "" : ",") + this.checkedMaterials[i].id;
+        }
+
+        window.open(`${process.env.NODE_ENV}/lessonMaterial/batchDownload?ids=` + ids);
         return;
       },
 
