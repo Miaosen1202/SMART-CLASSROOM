@@ -208,24 +208,24 @@
         this.doDelete([row.id])
       },
       handleSelectionChange(selection) {
-        // console.log("select change", val);
-        // console.log(val[0].id)
         this.multipleSelection = selection;
       },
       batchDelete: function () {
-        if (this.multipleSelection.length == 0) {
+        let ids = [];
+        for (let i = 0; i < this.multipleSelection.length; i++) {
+          if (this.multipleSelection[i].id) {
+            ids.push(this.multipleSelection[i].id);
+          }
+        }
+
+        this.doDelete(ids);
+      },
+      doDelete(ids) {
+        if (ids.length == 0) {
           this.$message.error(this.$t('message.Pleaseselectatleastonerowofdata'));/* Please select at least one row of data*/
           return;
         }
 
-        let ids = [];
-        for (let i = 0; i < this.multipleSelection.length; i++) {
-          console.log(this.multipleSelection[i]);
-          ids.push(this.multipleSelection[i].id);
-        }
-        this.doDelete(ids);
-      },
-      doDelete(ids) {
         let me = this;
         this._del("/teacherClassRecord", ids, (data) => {
           me.loadLessonRecords()
