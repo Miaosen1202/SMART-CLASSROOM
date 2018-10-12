@@ -236,7 +236,7 @@
             answerCode: "A"
           }
         ],
-        optionsShow:false,
+        optionsShow: false,
         showAdd: true,
         exerciseEntity: {},
         selectEditItem: "",
@@ -350,7 +350,7 @@
             answerCode: answerCode
           })
         }
-        if (this.options.length == this.codeObjList.length) {
+        if (this.options.length >= this.codeObjList.length) {
           this.optionsShow= true;//控制按钮可用状态
         }
       },
@@ -462,6 +462,8 @@
               })
 
               this.exerciseEntity = res.data.entity;
+
+              this.optionsShow = res.data.entity.options.length >= this.codeObjList.length;
             }
           }).catch((err) => {
           console.log(err);
