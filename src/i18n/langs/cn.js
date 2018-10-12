@@ -74,6 +74,8 @@ const cn = {
     'SelectCourse':'课程列表',
     'Pleaseselectacoursefirst':'请先选择课程',
     'Pleaseinputcoursenamefirst':'请先输入课程名称',
+    'Unpublished':'未发表的',
+
 
 
 

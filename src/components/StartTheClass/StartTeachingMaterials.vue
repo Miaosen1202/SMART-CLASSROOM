@@ -16,7 +16,7 @@
         </p>
         <div @click="mycourse" style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
         <span >
-          <img src="../../../static/images/admintx.png" width="34" height="34" alt="">
+         <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
           {{ getLoginUser().name }}
         </span>
         </div>
@@ -879,7 +879,7 @@
         } else if (tab.name == "assignmentTab") {
           this.getAssignmentList();
         }else if(tab.name=="goback"){
-          this.$router.push({path: "/homePage/goTeach"});
+          this.$router.push({path: "/homePage/prepare"});
         }
       },
       handleCheckAllChange: function (val) {

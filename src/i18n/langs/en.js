@@ -74,6 +74,7 @@ const en = {
     'SelectCourse':'Select Course',
     'Pleaseselectacoursefirst':'Please select a course first',
     'Pleaseinputcoursenamefirst':'Please input course name first',
+    'Unpublished':'Unpublished',
 
 
 

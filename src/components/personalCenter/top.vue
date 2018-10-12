@@ -10,8 +10,8 @@
       </p>
       <div style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
         <span >
-        <img src="../../../static/images/admintx.png" width="34" height="34" alt="">
-        <!--{{$t('message.Teacher')}}-->{{ getLoginUser().name }}</span>
+      <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
+        {{$t('message.Teacher')}}<!--{{ getLoginUser().name }}--></span>
       </div>
       <!--<el-select v-model="value" placeholder="admin" style="border: none">
         <el-option
@@ -58,7 +58,7 @@
       this.langChange(that.selectValue)
     },
     methods: {
-      getLoginUser: util.getLoginUser,
+      /*getLoginUser: util.getLoginUser,*/
       goToFirst(){
         this.$router.push({path:"/homePage/prepare"});
       },
