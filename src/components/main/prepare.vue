@@ -35,7 +35,7 @@
     <input style="color: #fff" type="submit" v-on:click="toggle()" class="list btn tj" :value="$t('message.Next')">
 
     <el-dialog
-      title="Tips"
+      :title="$t('message.Tips')"
       :visible.sync="dialogVisible"
       width="30%">
       <span>
@@ -49,7 +49,7 @@
       </span>
     </el-dialog>
     <el-dialog
-      title="Select Course"
+      :title="$t('message.SelectCourse')"
       :visible.sync="showCourseDialogVisible"
       width="30%"
       height="200px"
@@ -60,8 +60,8 @@
         </div>
       </el-scrollbar>
       <span slot="footer" class="dialog-footer">
-        <el-button style="background-color:#0e38b1 " size="medium" type="primary" @click="sure">OK</el-button>
-        <el-button size="medium" @click="showCourseDialogVisible = false">Cancel</el-button>
+        <el-button style="background-color:#0e38b1 " size="medium" type="primary" @click="sure">{{$t('message.OK')}}</el-button>
+        <el-button size="medium" @click="showCourseDialogVisible = false">{{$t('message.cancel')}}</el-button>
       </span>
     </el-dialog>
   </div>
@@ -160,16 +160,16 @@
 
         console.log(this.submitCourseFlag, postParam)
         if (this.submitCourseFlag === "1" && postParam.courseId === "") {
-          this.$message.error("Please select a course first");
+          this.$message.error(this.$t('message.Pleaseselectacoursefirst'));/* "Please select a course first"*/
           return;
         }
         if (this.submitCourseFlag === "2" && postParam.courseName === "") {
-          this.$message.error("Please input course name first");
+          this.$message.error(this.$t('message.Pleaseinputcoursenamefirst'));/*"Please input course name first"*/
           return;
         }
 
         if (postParam.lessonName === "") {
-          this.$message.error("Please input lesson name first");
+          this.$message.error(this.$t('message.Pleaseinputcoursenamefirst'));/*"Please input lesson name first"*/
           return;
         }
 

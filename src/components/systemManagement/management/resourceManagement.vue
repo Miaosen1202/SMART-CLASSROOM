@@ -94,7 +94,7 @@
 
     <el-dialog
       class="file-preview"
-      title="preview"
+      :title="$t('message.preview')"
       :visible.sync="filePreview.dialogVisible"
       width="100%"
       fullscreen>
@@ -184,7 +184,7 @@
             }
           }).catch((err) => {
             console.error("preview fail", err);
-            this.$message.error("预览文件失败，请下载至本地查看");
+            this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
 
@@ -209,7 +209,7 @@
       },
       batchDelete: function () {
         if (this.multipleSelection.length == 0) {
-          this.$message.error("Please select at least one row of data");
+          this.$message.error(this.$t('message.pleaseSelectLeastOneRowOfData'));
           return;
         }
 
@@ -297,7 +297,7 @@
 
       batchUpload: function () {
         if (this.addMaterials.length <= 0) {
-          this.$message.error("Please upload file first");
+          this.$message.error(this.$t('message.Pleaseuploadfilefirst'));/*"Please upload file first"*/
           return;
         }
 

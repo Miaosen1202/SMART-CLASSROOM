@@ -244,13 +244,13 @@
         };
 
         if (reply.content === null || reply.content === '' || reply.content.trim() === "") {
-          this.$message.error("Please input reply content");
+          this.$message.error(this.$t('message.Pleaseinputreplycontent'));/*Please input reply content*/
           return;
         }
 
         let me = this;
         this._add("/feedback", reply, data => {
-          me.$message.info("Reply success");
+          me.$message.info(this.$t('message.Replysuccess'));/*"Reply success"*/
           me.reply.content = '';
           me.loadFeedbackReply(reply.replyId);
         });
@@ -300,7 +300,7 @@
 
       batchDelete: function () {
         if (this.multipleSelection.length == 0) {
-          this.$message.error("Please select at least one row of data");
+          this.$message.error(this.$t('message.pleaseSelectLeastOneRowOfData'));
           return;
         }
 

@@ -54,6 +54,29 @@ const en = {
     'Teacher':'Teacher',
     'DateTime':'Date&Time',
     'Publish':'Publish',
+    'quantity':'quantity',
+    'Classisover':'Class is over!',
+    'Sharematerialsuccess':'Share material success!',
+    'Pleaseselectmaterialtoshare':'Please select material to share!',
+    'LogoutSuccess':'Logout Success',
+    'Captureprojectionfail':'Capture projection fail',
+    'ObjectProjection':'Object Projection',
+    'Yourbrowserdosenotsupportobjectprojection':'Your browser dose not support object projection',
+    'Studentpresence':'Student presence',
+    'Totalattendance':'Total attendance',
+    'canvas':'The browser does not support canvas content.',
+    'Attendance':'Attendance',
+    'Markpen':'Mark pen',
+    'Viewmylessons':'View my lessons',
+    'Endtheclass':'End the class',
+    'Noanswerrecords':'No answer records',
+    'Tips':'Tips',
+    'SelectCourse':'Select Course',
+    'Pleaseselectacoursefirst':'Please select a course first',
+    'Pleaseinputcoursenamefirst':'Please input course name first',
+
+
+
 
     /*teacher center*/
 
@@ -171,6 +194,22 @@ const en = {
     'CourseManagement':'Course Management',
     'StartAClass':'Start A Class',
     'History':'History',
+    'Modifyteachersuccess':'Modify teacher success',
+    'Modifyteacherfail':'Modify teacher fail',
+    'Pleaseuploadfile':'Please upload file',
+    'Resetuserspasswordsuccess':'Reset users password success',
+    'Resetuserspasswordfail':'Reset users password fail',
+    'Studentinformationeditor':'Student information editor',
+    'Modifystudentsuccess':'Modify student success',
+    'Modifystudentfail':'Modify student fail',
+    'Importstudentdatasuccess':'Import student data success!',
+    'medin':'Medin',
+    'Replysuccess':'Reply success',
+
+
+
+
+
 
 
     "logoutSuccess": "Logout Success",

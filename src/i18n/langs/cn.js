@@ -54,6 +54,28 @@ const cn = {
     'Teacher':'老师',
     'DateTime':'日期时间',
     'Publish':'发表',
+    'quantity':'数量',
+    'Classisover':'下课！',
+    'Sharematerialsuccess':'共享材料成功!',
+    'Pleaseselectmaterialtoshare':'请选择材料共享!',
+    'LogoutSuccess':'登录成功',
+    'Captureprojectionfail':'屏幕截图失败',
+    'ObjectProjection':'屏幕投影',
+    'Yourbrowserdosenotsupportobjectprojection':'浏览器不支持此投影！',
+    'Studentpresence':'在上课的学生',
+    'Totalattendance':'总出勤率',
+    'canvas':'该浏览器不支持canvas.',
+    'Attendance':'出勤',
+    'Markpen':'画笔',
+    'Viewmylessons':'看我的功课',
+    'Endtheclass':'下课',
+    'Noanswerrecords':'无应答记录',
+    'Tips':'提示',
+    'SelectCourse':'课程列表',
+    'Pleaseselectacoursefirst':'请先选择课程',
+    'Pleaseinputcoursenamefirst':'请先输入课程名称',
+
+
 
     /*teacher center*/
 
@@ -166,6 +188,19 @@ const cn = {
     'CourseManagement':'课程管理',
     'StartAClass':'上课',
     'History':'历史记录',
+    'Modifyteachersuccess':'修改成功',
+    'Modifyteacherfail':'修改失败',
+    'Pleaseuploadfile':'请上传文件',
+    'Resetuserspasswordsuccess':'重置用户密码成功',
+    'Resetuserspasswordfail':'重置用户密码失败',
+    'Studentinformationeditor':'学生信息编辑',
+    'Modifystudentsuccess':'修改成功',
+    'Modifystudentfail':'修改失败',
+    'Importstudentdatasuccess':'导入学生数据成功',
+    'medin':'Medin',
+    'Replysuccess':'回复成功',
+
+
 
 
 

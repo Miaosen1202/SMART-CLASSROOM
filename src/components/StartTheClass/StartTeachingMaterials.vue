@@ -23,7 +23,7 @@
 
         <!--语言包引入-->
         <div class="select" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%">
-          <el-select v-show="false" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
+          <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -79,7 +79,7 @@
     </div>-->
 
     <canvas id="c1" width="1400px" height="500px">
-      <span>该浏览器不支持canvas内容</span>
+      <span>{{$t('message.canvas')}}</span><!--该浏览器不支持canvas内容-->
     </canvas>
 
     <div class="tool">
@@ -88,7 +88,7 @@
       </el-button>
       <div class="tool" style="float: right;margin-top: 1%;display: inline-block" v-show="isShow">
         <div class="view" @click="goObjectProjection">
-          <el-tooltip class="item" effect="dark" content="Object Projection" placement="bottom">
+          <el-tooltip class="item" effect="dark" :content="$t('message.ObjectProjection')" placement="bottom">
             <el-button style="float: right;border: none;"  round >
               <img src="../../../static/images/Objectprojection-blue.png" alt="">
             </el-button>
@@ -102,7 +102,7 @@
           <!--</el-tooltip>-->
         <!--</div>-->
         <div class="view" @click="viewPresence" >
-          <el-tooltip class="item" effect="dark" content="Attentance" placement="bottom">
+          <el-tooltip class="item" effect="dark" :content="$t('message.Attendance')" placement="bottom">
             <el-button style="float: right;border: none;"  round >
               <img src="../../../static/images/attentance-blue.png" alt="">
             </el-button>
@@ -110,21 +110,21 @@
         </div>
 
         <div class="view" @click="draw">
-          <el-tooltip class="item" effect="dark" content="Mark pen" placement="bottom">
+          <el-tooltip class="item" effect="dark" :content="$t('message.Markpen')" placement="bottom">
           <el-button style="float: right;border: none;"  round >
             <img src="../../../static/images/pen-blue.png" alt="">
           </el-button>
           </el-tooltip>
         </div>
         <div class="view" @click="gobackLesson()" >
-          <el-tooltip class="item" effect="dark" content="View my lessons" placement="bottom">
+          <el-tooltip class="item" effect="dark" :content="$t('message.Viewmylessons')" placement="bottom">
             <el-button style="float: right;border: none" round @click="gobackLesson()">
               <img src="../../../static/images/viewmylesson-blue.png" alt="">
             </el-button>
           </el-tooltip>
         </div>
         <div class="view" v-show="!lessonIsEnd" @click="takeAbreak">
-          <el-tooltip class="item" effect="dark" content="End the class" placement="bottom">
+          <el-tooltip class="item" effect="dark" :content="$t('message.Endtheclass')" placement="bottom">
             <el-button style="float: right;;border: none"  round @click="takeAbreak">
               <img src="../../../static/images/over-red.png"  alt="">
             </el-button>
@@ -184,7 +184,7 @@
                 </div>
                 <div>
                   <div class="discussion-answer-items" :data-id="discussion.id" v-show="false"><!--messageDisplay-->
-                    <span v-show="discussAnswers.length == 0" style="margin-bottom: 10px; display: inline-block; color: gray;">No answer records</span>
+                    <span v-show="discussAnswers.length == 0" style="margin-bottom: 10px; display: inline-block; color: gray;">{{$t('message.Noanswerrecords')}}</span>
                     <div v-show="discussAnswers.length > 0" class="leftcolor" v-for="discussAnswer in discussAnswers">
                       <span style="color: #999;display: inline-block">{{discussAnswer.studentName}}</span>
                       <span style="float: right;color: #999;padding-right: 2%">{{ formatDateTime(discussAnswer.updateTime) }}</span>
@@ -352,7 +352,7 @@
 
         <el-dialog
           class="file-preview"
-          title="preview"
+          :title="$t('message.preview')"
           :visible.sync="filePreviewDialogVisible"
           width="100%"
           fullscreen>
@@ -362,7 +362,7 @@
 
         <el-dialog
           class="object-projection"
-          title="Object Projection"
+          :title="$t('message.ObjectProjection')"
           :visible.sync="objectProjection.dialogVisible"
           @close="objectProjectionClose"
           width="100%"
@@ -371,7 +371,7 @@
           <div>
             <div style="text-align: center;">
               <object classid="clsid:49CBC347-34CD-4687-9D5C-C45E3D3314F0" id="JetionCapturer" width="1000" height="860">
-                <span>Your browser dose not support object projection</span>
+                <span>{{$t('message.Yourbrowserdosenotsupportobjectprojection')}}</span>
               </object>
             </div>
           </div>
@@ -380,13 +380,13 @@
 
         <el-dialog
           class="student-presence"
-          title="Student presence"
+          :title="$t('message.Studentpresence')"
           :visible.sync="studentPresence.dialogVisible"
           @close="studentPresenceDialogClose"
           width="100%"
           fullscreen>
           <div>
-            <div>Total attendance {{studentPresence.list.length}}</div>
+            <div>{{$t('message.Totalattendance')}} {{studentPresence.list.length}}</div>
             <div style="width: 80%; margin: auto">
               <el-tag class="presence-student" type="success" v-for="student in studentPresence.list"
                       :key="index"    style="padding: 20px; margin-right: 40px; margin-bottom: 20px; height: auto; width: 150px; font-size: 18px; color: #666; background-color: #f8f8f8">
@@ -554,7 +554,7 @@
         let captureImg = JetionCapturer.CaptureToBase64();
 
         if (!captureImg) {
-          this.$message.error("Capture projection fail");
+          this.$message.error(this.$t('message.Captureprojectionfail'));/* "Capture projection fail"*/
           return;
         }
         captureImg = captureImg.replace(/\r|\n/g, "");
@@ -617,7 +617,7 @@
             }
           }).catch((err) => {
             console.error("preview fail", err);
-            this.$message.error("预览文件失败，请下载至本地查看");
+            this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
 
@@ -691,7 +691,7 @@
           },
           yAxis: {},
           series: [{
-            name: '数量',
+            name: this.$t('message.quantity'),
             type: 'bar',
             data: answerCount,
             itemStyle: {
@@ -895,7 +895,7 @@
       backlogin:function (){
         let that = this;
         this.post("/logout", null, function () {
-          that.$message.success("Logout Success");
+          that.$message.success(this.$t('message.LogoutSuccess'));
           that.$router.push({path: "/"});
         }, undefined, function () {
           that.$message.error("Logout error: " + err);
@@ -916,7 +916,7 @@
       },*/
       shareMaterial: function () {
         if (this.checkedMaterialList.length == 0) {
-          this.$message.error("Please select material to share");
+          this.$message.error(this.$t('message.Pleaseselectmaterialtoshare'));/*"Please select material to share"*/
           return;
         }
 
@@ -933,7 +933,7 @@
         this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/shareStatus/edit`, param)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info("Share material success");
+              this.$message.info(this.$t('message.Sharematerialsuccess'));/*"Share material success"*/
               // this.checkedMaterialList = [];
               this.getMaterialList();
             } else {
@@ -989,7 +989,7 @@
         this.currentPage = this.currentPage+1;
         if(this.currentPage > this.pages){
           this.$message({
-            message: 'sorry,this is the last page!',
+            message: this.$t('message.lastpage'),
             type: 'warning'
           });
           this.currentPage--;
@@ -1005,7 +1005,7 @@
         this.currentPage = this.currentPage-1;
         if(this.currentPage == 0){
           this.$message({
-            message: 'sorry,this is the first page!',
+            message: this.$t('message.firstpage'),
             type: 'warning'
           });
           this.currentPage++;
@@ -1024,7 +1024,7 @@
           .then((res)=>{
             if (res.data.code == 200){
               this.$message({
-                message: 'Class is over!',
+                message:this.$t('message.Classisover'),
                 type: 'success'
               });
               this.$router.push({path: "/homePage/goTeach"});

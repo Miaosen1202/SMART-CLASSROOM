@@ -254,11 +254,11 @@
         this.$http.post(`${process.env.NODE_ENV}/teacher/modify`, this.editStudent)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info("Modify teacher success");
+              this.$message.info(this.$t('message.Modifyteachersuccess'));/* "Modify teacher success"*/
               this.hideTeacherEditDialog();
               this.loadTeacherRecords(this.pageIndex);
             } else {
-              this.$message.error("Modify teacher fail: " + res.data.message);
+              this.$message.error(this.$t('message.Modifyteacherfail') + res.data.message);/*"Modify teacher fail: "*/
             }
           }).catch((err) => {
           this.$message.error(err);
@@ -308,7 +308,7 @@
       },
       confirmImport: function () {
         if (this.teacherDataFilePath == "") {
-          this.$message.error("Please upload file");
+          this.$message.error(this.$t('message.Pleaseuploadfile'));/* "Please upload file"*/
           return;
         }
 
@@ -369,7 +369,7 @@
       },
       resetPassword: function() {
         if (this.multipleSelection.length == 0) {
-          this.$message.error("Please select at least one row of data");
+          this.$message.error(this.$t('message.pleaseSelectLeastOneRowOfData'));/*pleaseSelectLeastOneRowOfData*/
           return;
         }
 
@@ -381,9 +381,9 @@
         this.$http.post(`${process.env.NODE_ENV}/user/resetPassword/edit`, {userIds: ids})
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.success("Reset user's password success")
+              this.$message.success(this.$t('message.Resetuserspasswordsuccess'))/*"Reset user's password success"*/
             } else {
-              this.$message.error("Reset user's password fail: " + res.data.message);
+              this.$message.error(this.$t('message.Resetuserspasswordfail')+ res.data.message);/* "Reset user's password fail: "*/
             }
           }).catch((err) => {
           this.$message.error(err);

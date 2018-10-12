@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="replace">
-     <h4 style="margin-top: -4%;"> medin</h4>
+     <h4 style="margin-top: -4%;">{{$t('message.medin')}} </h4>
       <div >
        <!-- <el-upload
           class="upload-demo"

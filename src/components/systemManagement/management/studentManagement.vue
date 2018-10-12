@@ -102,7 +102,7 @@
 
     <!--编辑弹框-->
     <el-dialog
-      title="Student information editor"
+      :title="$t('message.Studentinformationeditor')"
       :visible.sync="studentEditDialogVisible"
       width="20%"
       >
@@ -277,11 +277,11 @@
         this.$http.post(`${process.env.NODE_ENV}/student/modify`, this.editStudent)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info("Modify student success");
+              this.$message.info(this.$t('message.Modifystudentsuccess'));/* "Modify student success"*/
               this.hideStudentEditDialog();
               this.loadStudentRecords(this.pageIndex);
             } else {
-              this.$message.error("Modify student fail: " + res.data.message);
+              this.$message.error(this.$t('message.Modifystudentfail') + res.data.message);/* "Modify student fail: "*/
             }
           }).catch((err) => {
             this.$message.error(err);
@@ -313,7 +313,7 @@
 
       batchDelete: function () {
         if (this.multipleSelection.length == 0) {
-          this.$message.error("Please select at least one row of data");
+          this.$message.error(this.$t('message.pleaseSelectLeastOneRowOfData'));/* "pleaseSelectLeastOneRowOfData"*/
           return;
         }
 
@@ -327,7 +327,7 @@
 
       resetPassword: function() {
         if (this.multipleSelection.length == 0) {
-          this.$message.error("Please select at least one row of data");
+          this.$message.error(this.$t('message.pleaseSelectLeastOneRowOfData'));
           return;
         }
 
@@ -339,9 +339,9 @@
         this.$http.post(`${process.env.NODE_ENV}/user/resetPassword/edit`, {userIds: ids})
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info("Reset user's password success")
+              this.$message.info(this.$t('message.Resetuserspasswordsuccess'))
             } else {
-              this.$message.error("Reset user's password fail: " + res.data.message);
+              this.$message.error(this.$t('message.Resetuserspasswordfail') + res.data.message);
             }
           }).catch((err) => {
            this.$message.error(err);
@@ -406,7 +406,7 @@
       },
       confirmImport: function () {
         if (this.studentDataFilePath == "") {
-          this.$message.error("Please upload file");
+          this.$message.error(this.$t('message.Pleaseuploadfile'));
           return;
         }
 
@@ -421,7 +421,7 @@
               this.studentImportDialogVisible = false;
               this.studentDataFileList = [];
 
-              this.$message.info("Import student data success");
+              this.$message.info(this.$t('message.Importstudentdatasuccess'));/* Import student data success*/
 
               this.loadStudentRecords(1);
             } else {
