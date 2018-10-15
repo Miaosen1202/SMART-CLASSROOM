@@ -143,10 +143,15 @@
       addOrUpdateAssignment: function () {
         let assignment = {
           lessonId: this.lessonId,
-          assignmentName: this.assignmentName,
+          assignmentName: this.assignmentName.trim(),
           attachments: this.attachments
         };
 
+        if (assignment.assignmentName === "" && assignment.attachments.length === 0) {
+          this.$message.error(this.$t("message.assignmentSaveNeedContentOrAttachmentNotEmpty"));
+          return;
+        }
+        
         if (this.editAssignmentId === undefined) {
           let me = this;
           this._add("/lessonAssignment", assignment, data => {

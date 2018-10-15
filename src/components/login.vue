@@ -125,14 +125,14 @@
         if (navigator.userAgent.indexOf("MSIE") > 0) {
           //IE
           document.onkeydown = function () {
-            if (13 == event.keyCode) {
+            if (13 == event.keyCode && (me.$route.path === "/" || me.$route.path === "/login")) {
               me.login()
             }
           }
         } else {
           //非IE
           window.onkeydown = function () {
-            if (13 == event.keyCode) {
+            if (13 == event.keyCode && (me.$route.path === "/" || me.$route.path === "/login")) {
               me.login()
             }
 
@@ -158,6 +158,7 @@
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
+            this.password = "";
             if (res.data.code == 200) {
               if (this.identity.teacher != res.data.entity.identity) {
                 this.$message.error("Login user is not a teacher");
@@ -182,6 +183,7 @@
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
+            this.password = "";
             if (res.data.code == 200) {
               if (this.identity.manager != res.data.entity.identity) {
                 this.$message.error("Login user is not a manager");
@@ -207,6 +209,7 @@
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
+            this.password = "";
             if (res.data.code == 200) {
               if (this.identity.student != res.data.entity.identity) {
                 this.$message.error("Login user is not a student");

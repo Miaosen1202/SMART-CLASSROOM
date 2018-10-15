@@ -107,21 +107,32 @@
         <div class="root-reply" v-show="this.feedbackDetail.root.id != null">
           <span><i>{{ this.feedbackDetail.root.replyerName }}</i>{{$t('message.reportedon')}}</span>
           <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
-          <div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>
+          <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>-->
+          <el-input
+            readonly="true"
+            type="textarea"
+            autosize
+            v-model="this.feedbackDetail.root.content">
+          </el-input>
         </div>
 
         <div>
-          <!--<ul>
-            <li v-for="fd in feedbackDetail.replyList">
-              <span>{{ formatDateTime(fd.createTime) }}</span>
-              <span>{{ fd.replyerName }}</span>回复:
-              <span>{{ fd.content }}</span>
-            </li>
-          </ul>-->
           <ul>
+            <!--<li v-for="fd in feedbackDetail.replyList">-->
+              <!--<span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>-->
+              <!--<p style="word-break:break-all;">{{$t('message.Replied')}}: {{ fd.content }}</p>-->
+            <!--</li>-->
             <li v-for="fd in feedbackDetail.replyList">
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
-              <p style="word-break:break-all;">{{$t('message.Replied')}}: {{ fd.content }}</p>
+              <p style="word-break:break-all;">{{$t('message.Replied')}}:
+                <el-input
+                  readonly="true"
+                  type="textarea"
+                  autosize
+                  :placeholder="$t('message.pleaseEnter')"
+                  v-model="fd.content">
+                </el-input>
+              </p>
             </li>
           </ul>
         </div>
@@ -345,8 +356,13 @@
   }
 </script>
 
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+  }
+</style>
 <style scoped="">
-
   .management {
     margin: 2%;
     margin-top: 0px;

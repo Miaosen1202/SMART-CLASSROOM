@@ -111,14 +111,14 @@ const cn = {
     'Description':'意见描述',
     'TimeofDisposal':'处理时间',
     'reportedon':'报道',
-    'Replied':'回答',
+    'Replied':'回复',
     'Pleaseinputreplycontent':'请输入回复内容',
     'Pleaseuploadfilefirst':'请先上传文件',
     'Pleaseinputresourcename':'请输入资源名称',
     'ResourceName':'资源名称',
     'Pleaseselectcategory':'请选择类别',
     'Pleaseinputresourcedescription':'请输入资源描述',
-
+    'assignmentSaveNeedContentOrAttachmentNotEmpty': '没有内容或附件不能保存',
 
 
 
