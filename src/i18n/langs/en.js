@@ -117,8 +117,7 @@ const en = {
     'ResourceName':'Resource Name',
     'Pleaseselectcategory':'Please select category',
     'Pleaseinputresourcedescription':'Please input resource description',
-
-
+    'assignmentSaveNeedContentOrAttachmentNotEmpty': 'Assignment no content or attachment can not be saved ',
 
 
     // -------- end -----------

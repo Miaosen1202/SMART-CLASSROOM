@@ -1,7 +1,7 @@
 <template>
   <div class="discussion">
     <p><img src="../../assets/images/u674.png" alt=""></p>
-    <p>Empty</p>
+    <p>{{$t('message.Empty')}}</p>
     <el-button size="medium" type="primary" @click="goToAddDiscussion">
       <img src="../../assets/images/u60.png" alt="">
     </el-button>

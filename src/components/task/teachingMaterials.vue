@@ -2,7 +2,7 @@
   <div class="teach">
     <div class="no-material" v-show="materialEmpty">
       <p><img src="../../assets/images/u768.png" alt=""></p>
-      <p>Empty</p>
+      <p>{{$t('message.Empty')}}</p>
       <el-button size="medium" type="primary" @click="goToAddMaterials">
         <img src="../../assets/images/u60.png" alt="">
       </el-button>
