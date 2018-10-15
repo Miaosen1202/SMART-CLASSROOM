@@ -1,5 +1,5 @@
 <template>
-  <div id="all">
+  <div id="alls">
     <div id="login">
       <p><img src="../assets/images/u2081.png" alt=""></p>
       <div class="mainmain">
@@ -54,9 +54,9 @@
         </el-tabs>
       </div>
     </div>
-    <!--语言包引入-->
-    <div class="select" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%">
-      <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
+    <!--语言包引入--><!--    background-color: #0e38b1;color: #fff;-->
+    <div class="select" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%;">
+      <el-select  v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -238,7 +238,7 @@
 <style scoped>
   /*@import "../../static/bootstrap/css/bootstrap.css";
   @import "../../static/bootstrap/css/bootstrap-theme.css";*/
-  #all {
+  #alls {
     width: 100%;
     height: 100%;
     background-color: #0e38b1;
@@ -338,5 +338,8 @@
   padding: 10%;
   border-radius: 2px;
 }
+  .el-input el-input--suffix input {
+    background-color: red;
+  }
 </style>
 
