@@ -75,6 +75,8 @@ const en = {
     'Pleaseselectacoursefirst':'Please select a course first',
     'Pleaseinputcoursenamefirst':'Please input course name first',
     'Unpublished':'Unpublished',
+    'Submitthelesson':'Submit the lesson and you can find it in “Manage all lessons”',
+    'Deletethelesson':'Delete the lesson and all the data under this lesson.',
 
 
 

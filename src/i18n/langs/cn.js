@@ -75,6 +75,8 @@ const cn = {
     'Pleaseselectacoursefirst':'请先选择课程',
     'Pleaseinputcoursenamefirst':'请先输入课程名称',
     'Unpublished':'未发表的',
+    'Submitthelesson':'提交课程，你可以在“管理所有课程”中找到它。',
+    'Deletethelesson':'删除本课下的课程和所有数据。',
 
 
 

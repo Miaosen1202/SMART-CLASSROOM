@@ -83,12 +83,12 @@
     </canvas>
 
     <div class="tool">
-      <el-button v-on:click="tooll()" style="float: right;border: none;background-color: #0e38b1" circle>
+      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;" circle><!--background-color: #0e38b1-->
         <img src="../../../static/images/toolkit.png"  alt="">
       </el-button>
       <div class="tool" style="float: right;margin-top: 1%;display: inline-block" v-show="isShow">
         <div class="view" @click="goObjectProjection">
-          <el-tooltip class="item" effect="dark" :content="$t('message.ObjectProjection')" placement="bottom">
+          <el-tooltip class="item"  :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
             <el-button style="float: right;border: none;"  round >
               <img src="../../../static/images/Objectprojection-blue.png" alt="">
             </el-button>
@@ -898,7 +898,7 @@
           that.$message.success(this.$t('message.LogoutSuccess'));
           that.$router.push({path: "/"});
         }, undefined, function () {
-          that.$message.error("Logout error: " + err);
+          /*that.$message.error("Logout error: " + err);*/
           that.$router.push({path: "/"});
         });
       },
@@ -1037,9 +1037,9 @@
       goToFirst(){
         this.$router.push({path:"/homePage/prepare"});
       },
-      // backlogin() {
-      //   this.$router.push({path: "/"});
-      // },
+     /* backlogin() {
+         this.$router.push({path: "/"});
+      },*/
       mycourse() {
         this.$router.push({path: "/personalCenterManagement/myCourse"});
       },
@@ -1206,12 +1206,20 @@
   cursor: pointer;
 }
   .view:active {
-    background-color: #8c8c8c;
+    background-color: #12128c;
     cursor: pointer;
   }
   .tool {
     background-color: #fff;
-    box-shadow: 0 0 5px blue;
+    box-shadow: 0 0 5px #0647ff;
     border-radius: 30px;
+  }
+  .tooll{
+    background-color: #0e38b1
+  }
+  .tooll:focus {
+    background-color: #28caff;
+   /* box-shadow: 0 0 5px #60d6ff;
+    border-radius: 30px;*/
   }
 </style>
