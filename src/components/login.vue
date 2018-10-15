@@ -4,104 +4,68 @@
       <p><img src="../assets/images/u2081.png" alt=""></p>
       <div class="mainmain">
         <el-tabs v-model="activeName" @tab-click="handleClick">
-          <el-tab-pane label="Teacher" name="teacher">
+          <el-tab-pane :label="$t('message.Teacher')" name="teacher">
             <div class="account">
-              <input class="form-control" type="text" placeholder="Account Name" v-model="userName">
+              <input class="form-control" type="text" :placeholder="$t('message.AccountName')" v-model="userName">
             </div>
             <div class="password">
-              <input class="form-control" type="password" placeholder="Password" v-model="password">
+              <input class="form-control" type="password" :placeholder="$t('message.Password')" v-model="password">
             </div>
-            <div style="padding: 4%;overflow: auto;">
-              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" content="Please contact the system administrator"
+            <div style="padding: 4%;overflow: auto;"><!--Please contact the system administrator-->
+              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" :content="$t('message.Pleasecontact')"
                           placement="top" popper-class="test">
-                <a href="javascript:;">Forgot your password?</a>
+                <a href="javascript:;">{{$t('message.Forgotyourpassword')}}</a>
               </el-tooltip>
             </div>
-            <el-button  v-on:click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">Login</el-button> <!--@click="goToLogin"-->
+            <el-button  v-on:click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button> <!--@click="goToLogin"-->
           </el-tab-pane>
-          <!--<el-tab-pane label="Teacher" name="first">-->
-            <!--<el-form>-->
-              <!--<div class="account">-->
-                <!--<input class="form-control" type="text" placeholder="Account Name" v-model="userName">-->
-              <!--</div>-->
-              <!--<div class="password">-->
-                <!--<input class="form-control" type="password" placeholder="Password" v-model="password">-->
-              <!--</div>-->
-              <!--<div style="padding: 4%;overflow: auto;">-->
-                <!--<el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" content="Please contact the system administrator"-->
-                            <!--placement="top" popper-class="test">-->
-                  <!--<a href="javascript:;">Forgot your password?</a>-->
-                <!--</el-tooltip>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;<el-button  v-on:click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">Login</el-button>&ndash;&gt;-->
-              <!--<input type="submit" @click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff" value="Login"/>-->
-            <!--</el-form>-->
-          <!--</el-tab-pane>-->
 
-          <el-tab-pane label="Student" name="student">
+
+          <el-tab-pane :label="$t('message.Student')" name="student">
             <div class="account">
-              <input class="form-control" type="text" placeholder="Account Name" v-model="userName">
+              <input class="form-control" type="text" :placeholder="$t('message.AccountName')" v-model="userName">
             </div>
             <div class="password">
-              <input class="form-control" type="password" placeholder="Password" v-model="password">
+              <input class="form-control" type="password" :placeholder="$t('message.Password')" v-model="password">
             </div>
             <div class="password">
-              <input class="form-control" type="text" placeholder="lessonCode" v-model="lessonCode">
+              <input class="form-control" type="text" :placeholder="$t('message.lessonCode')" v-model="lessonCode">
             </div>
             <div style="padding: 4%;overflow: auto;">
-              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" content="Please contact the system administrator"
+              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" :content="$t('message.Pleasecontact')"
                           placement="top" popper-class="test">
-                <a href="javascript:;">Forgot your password?</a>
+                <a href="javascript:;">{{$t('message.Forgotyourpassword')}}</a>
               </el-tooltip>
             </div>
-            <el-button v-on:click="studentslogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">Login</el-button> <!--@click="goToLogin"-->
+            <el-button v-on:click="studentslogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button> <!--@click="goToLogin"-->
           </el-tab-pane>
-          <!--<el-tab-pane label="Student" name="second">-->
-            <!--<el-form>-->
-              <!--<div class="account">-->
-                <!--<input class="form-control" type="text" placeholder="Account Name" v-model="userName">-->
-              <!--</div>-->
-              <!--<div class="password">-->
-                <!--<input class="form-control" type="password" placeholder="Password" v-model="password">-->
-              <!--</div>-->
-              <!--<div class="password">-->
-                <!--<input class="form-control" type="text" placeholder="lessonCode" v-model="lessonCode">-->
-              <!--</div>-->
-              <!--<div style="padding: 4%;overflow: auto;">-->
-                <!--<el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" content="Please contact the system administrator"-->
-                            <!--placement="top" popper-class="test">-->
-                  <!--<a href="javascript:;">Forgot your password?</a>-->
-                <!--</el-tooltip>-->
-              <!--</div>-->
-              <!--&lt;!&ndash;<el-button v-on:click="studentslogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">Login</el-button>&ndash;&gt;-->
-              <!--<input type="submit" @click="studentslogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff" value="Login"/>-->
-            <!--</el-form>-->
-          <!--</el-tab-pane>-->
 
 
-          <el-tab-pane label="Admin" name="admin">
+          <el-tab-pane :label="$t('message.Admin')" name="admin">
             <div class="account">
-              <input class="form-control" type="text" placeholder="Account Name" v-model="userName">
+              <input class="form-control" type="text" :placeholder="$t('message.AccountName')" v-model="userName">
             </div>
             <div class="password">
-              <input class="form-control" type="password" placeholder="Password" v-model="password">
+              <input class="form-control" type="password" :placeholder="$t('message.Password')" v-model="password">
             </div>
-            <el-button v-on:click="goToadmin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">Login</el-button>
+            <el-button v-on:click="goToadmin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button>
           </el-tab-pane>
-          <!--<el-tab-pane label="Admin" name="third">-->
-            <!--<el-form>-->
-              <!--<div class="account">-->
-                <!--<input class="form-control" type="text" placeholder="Account Name" v-model="userName">-->
-              <!--</div>-->
-              <!--<div class="password">-->
-                <!--<input class="form-control" type="password" placeholder="Password" v-model="password">-->
-              <!--</div>-->
-              <!--<input type="submit" @click="goToadmin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff" value="Login"/>-->
-            <!--</el-form>-->
-          <!--</el-tab-pane>-->
+
         </el-tabs>
       </div>
     </div>
+    <!--语言包引入-->
+    <div class="select" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%">
+      <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
+        <el-option
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+    </div>
+
   </div>
 </template>
 
@@ -128,8 +92,24 @@
           userName: "",
           password: "",
           lessonCode: null
-        }
+        },
+        selectValue:'',
+        options:[
+          {
+            value: 'cn',
+            label: '中文'
+          }, {
+            value: 'en',
+            label: 'English'
+          }
+        ]
       }
+    },
+    created() {
+      let that = this;
+      console.log(localStorage.lang)
+      that.selectValue = localStorage.lang == undefined?'en':localStorage.lang
+      this.langChange(that.selectValue)
     },
     mounted() {
       this.registerEnterLogin()
@@ -244,7 +224,14 @@
           this.$message.error(err);
         });
 
+      },
+      //语言切换
+      langChange(e){
+        // console.log(e)
+        localStorage.setItem('lang',e);
+        this.$i18n.locale = e;
       }
+
     }
   }
 </script>
