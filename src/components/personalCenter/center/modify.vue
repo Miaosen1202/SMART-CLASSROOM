@@ -1,10 +1,19 @@
 <template>
   <div style="height: 100%;width: 100%;padding: 2%">
+    <div style="margin-top: -1%">
+      <ul>
+        <li >
+          <img src="../../../../static/images/back.png" alt="" @click="back()" style="cursor: pointer;">
+          <h4 style="display: inline-block;vertical-align: middle">{{$t('message.back')}}</h4>
+        </li>
+      </ul>
+
+    </div>
     <div style="float: left;width: 40%;height: 80%">
       <div>
         <ul>
           <li>
-            <h4 style="color: #333333">{{$t('message.ResourceName')}}:</h4>
+            <h4 style="color: #333333;margin-top: 0px">{{$t('message.ResourceName')}}:</h4>
             <el-input v-model="editMaterialBank.materialName"  size="small" :placeholder="$t('message.Pleaseinputresourcename')"></el-input>
           </li>
           <li style="margin-top: 4%">
@@ -33,19 +42,19 @@
     </div>
 
     <div class="replace">
-      <!--<h4 style="margin-top: -4%;">medin</h4>-->
+      <h4 style="margin-top: -4%;">{{$t('message.medin')}}</h4>
       <div >
-        <!--<el-upload-->
-          <!--class="upload-demo"-->
-          <!--:action="action"-->
-          <!--:on-change="handleChange"-->
-          <!--:on-success="handleSuccess"-->
-          <!--:with-credentials="true"-->
-          <!--:file-list="fileList3"-->
-          <!--style="display: inline-block;margin: 18% 38%;">-->
-          <!--<img src="../../../../static/images/u550.png" alt="">-->
-          <!--<el-button type="primary" size="mini" style="float: right;">Replace the file</el-button>-->
-        <!--</el-upload>-->
+        <el-upload
+          class="upload-demo"
+          :action="action"
+          :on-change="handleChange"
+          :on-success="handleSuccess"
+          :with-credentials="true"
+          :file-list="fileList3"
+          style="display: inline-block;margin: 18% 32%;">
+          <img src="../../../../static/images/u550.png" alt="">
+          <el-button type="primary" size="mini" >{{$t('message.Replacethefile')}}</el-button>
+        </el-upload>
       </div>
     </div>
 
@@ -66,6 +75,8 @@
         textarea2:'',
         value: '',
         input:'',
+        fileList3:[],
+        action: process.env.NODE_ENV + '/file/upload',
       }
 
     },
@@ -76,6 +87,16 @@
     },
 
     methods: {
+      handleSuccess(res, file) {
+        if (res.code == 200) {
+          this.fileEntity = res.entity;
+          this.attachments.push(
+            {
+              fileLocalPath: this.fileEntity.fileTmpName,
+              fileName: this.fileEntity.fileOriginName
+            });
+        }
+      },
       getMaterialBankDetail: function () {
         this.$http.get(`${process.env.NODE_ENV}/materialBank/get`, {params: {data: this.editMaterialBank.id}})
           .then((res) => {
@@ -130,6 +151,9 @@
       },
       handlePreview(file) {
         console.log(file);
+      },
+      back() {
+        this.$router.push({path: "/personalCenterManagement/myResources"});
       },
     }
   }

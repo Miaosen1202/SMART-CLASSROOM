@@ -93,7 +93,7 @@ const cn = {
 
 
     /*teacher center*/
-
+    'back':'返回',
     'Author':'作者',
     'Published':'发布',
     'Started':'开始',
@@ -119,6 +119,7 @@ const cn = {
     'Pleaseselectcategory':'请选择类别',
     'Pleaseinputresourcedescription':'请输入资源描述',
     'assignmentSaveNeedContentOrAttachmentNotEmpty': '没有内容或附件不能保存',
+    'Replacethefile':'替换文件',
 
 
 
