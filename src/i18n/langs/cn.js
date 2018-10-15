@@ -105,7 +105,7 @@ const cn = {
     'ResourceName':'资源名称',
     'Pleaseselectcategory':'请选择类别',
     'Pleaseinputresourcedescription':'请输入资源描述',
-
+    'assignmentSaveNeedContentOrAttachmentNotEmpty': '没有内容或附件不能保存',
 
 
 

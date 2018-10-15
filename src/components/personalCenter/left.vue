@@ -7,23 +7,25 @@
     </div>-->
     <ul>
       <li :class="{active : activeFlag == 'myCourse'}" @click="goToteacherManagement('myCourse')">
-        <el-button type="text" @click="dialogVisible = true">
-          <p>
-            <img src="../../../static/images/Teache.png" alt="">
-             {{$t('message.MyCourse')}}</p>
-        </el-button>
+        <!--<el-button type="text" @click="dialogVisible = true">-->
+          <!--<p>-->
+            <!--<img src="../../../static/images/Teache.png" alt="">-->
+             <!--{{$t('message.MyCourse')}}</p>-->
+        <!--</el-button>-->
+        <p>
+          <img src="../../../static/images/Teache.png" alt=""><span>{{$t('message.MyCourse')}}</span>
+        </p>
       </li>
       <li :class="{active : activeFlag == 'myResources'}" @click="goToresourceManagement('myResources')">
 
-        <P>
-          <img src="../../../static/images/Resource.png" alt="">
-          {{$t('message.MyResources')}}</P>
+        <p>
+          <img src="../../../static/images/Resource.png" alt=""><span>{{$t('message.MyResources')}}</span>
+        </p>
       </li>
       <li :class="{active : activeFlag == 'myOpinion'}" @click="goTostudentManagement('myOpinion')">
-
-        <P>
-          <img src="../../../static/images/Student.png" alt="">
-          {{$t('message.MyOpinion')}}</P>
+        <p>
+          <img src="../../../static/images/Student.png" alt=""><span>{{$t('message.MyOpinion')}}</span>
+        </p>
       </li>
 
     </ul>
