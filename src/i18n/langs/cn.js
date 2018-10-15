@@ -1,6 +1,17 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN' //引入element语言包
 const cn = {
   message: {
+    /*登陆页面*/
+    'AccountName':'用户名',
+    'lessonCode':'上课码',
+    'Pleasecontact':'请联系管理员',
+    'Student':'学生',
+    'Admin':'管理员',
+    'Login':'登录',
+    'Forgotyourpassword':'忘记密码',
+
+
+
     'Welcome':'欢迎',
     'text': '欢迎登陆！',
     'newlesson':'给新课建个名字',
@@ -75,6 +86,8 @@ const cn = {
     'Pleaseselectacoursefirst':'请先选择课程',
     'Pleaseinputcoursenamefirst':'请先输入课程名称',
     'Unpublished':'未发表的',
+    'Submitthelesson':'提交课程，你可以在“管理所有课程”中找到它。',
+    'Deletethelesson':'删除本课下的课程和所有数据。',
 
 
 

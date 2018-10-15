@@ -1,6 +1,16 @@
 import enLocale from 'element-ui/lib/locale/lang/en' //引入element语言包
 const en = {
   message: {
+    /*开始登陆页面*/
+    'AccountName':'Account Name',
+    'lessonCode':'lessonCode',
+    'Pleasecontact':'Please contact the system administrator',
+    'Student':'Student',
+    'Admin':'Admin',
+    'Login':'Login',
+    'Forgotyourpassword':'Forgot your password?',
+
+
     'Welcome':'Welcome',
     'text': 'Welcome to login !',
     'newlesson':'Inpuut the lesson name',
@@ -75,6 +85,8 @@ const en = {
     'Pleaseselectacoursefirst':'Please select a course first',
     'Pleaseinputcoursenamefirst':'Please input course name first',
     'Unpublished':'Unpublished',
+    'Submitthelesson':'Submit the lesson and you can find it in “Manage all lessons”',
+    'Deletethelesson':'Delete the lesson and all the data under this lesson.',
 
 
 

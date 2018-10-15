@@ -3,19 +3,19 @@
     <div class="coursetop">
       <!--Lesson : Our Solar System and Life’s Emergence  v-for="lessonId in existCourseList"{{lessonId.courseName}}-->
       <p><!--Emergence-->{{entity.lesson.lessonName}}
-        <img src="../../assets/images/u475.png" alt="">
+        <!--<img src="../../assets/images/u475.png" alt="">-->
       </p>
       <p>
         <img src="../../assets/images/u434.png" alt="">
         {{entity.course.courseName}}
         <!--Course : Journey of the Universe: A Story for Our Times-->
       </p>
-
-      <el-tooltip class="item" effect="dark" content="Submit the lesson and you can find it in “Manage all lessons”"
+       <!--Submit the lesson and you can find it in “Manage all lessons”-->
+      <el-tooltip class="item" effect="dark" :content="$t('message.Submitthelesson')"
                   placement="bottom-end">
         <el-button style="background-color: #0e38b1;border: 1px solid #0e38b1;color: #fff" size="small"  @click="lessonPublish">{{$t('message.Publish')}}</el-button>
-      </el-tooltip>
-      <el-tooltip class="item" effect="dark" content="Delete the lesson and all the data under this lesson."
+      </el-tooltip><!--Delete the lesson and all the data under this lesson.-->
+      <el-tooltip class="item" effect="dark" :content="$t('message.Deletethelesson')"
                   placement="bottom-start">
         <el-button size="small" @click="lessonDelete">{{$t('message.delete')}}</el-button>
       </el-tooltip>
