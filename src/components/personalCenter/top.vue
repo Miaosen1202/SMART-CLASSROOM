@@ -11,7 +11,7 @@
       <div style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
         <span >
       <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
-        {{$t('message.Teacher')}}<!--{{ getLoginUser().name }}--></span>
+        <!--{{$t('message.Teacher')}}-->{{ getLoginUser().name }}</span>
       </div>
       <!--<el-select v-model="value" placeholder="admin" style="border: none">
         <el-option
@@ -36,6 +36,7 @@
 </template>
 
 <script>
+  import util from "@/utils/util"
   export default {
     data() {
       return {
@@ -58,7 +59,7 @@
       this.langChange(that.selectValue)
     },
     methods: {
-      /*getLoginUser: util.getLoginUser,*/
+      getLoginUser: util.getLoginUser,
       goToFirst(){
         this.$router.push({path:"/homePage/prepare"});
       },
