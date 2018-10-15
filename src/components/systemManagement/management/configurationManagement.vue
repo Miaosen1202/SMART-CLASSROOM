@@ -33,7 +33,7 @@
     </div>
 
     <div class="replace">
-      <h4 style="margin-top: -4%;">{{$t('message.medin')}}</h4>
+      <!--<h4 style="margin-top: -4%;">{{$t('message.medin')}}</h4>
       <div >
         <el-upload
         class="upload-demo"
@@ -46,7 +46,7 @@
         <img src="../../../../static/images/u550.png" alt="">
         <el-button type="primary" size="mini" style="float: right;">Replace the file</el-button>
         </el-upload>
-      </div>
+      </div>-->
     </div>
 
     <el-button type="primary" @click="updateMaterialBank" size="mini" style="float: left;margin-left: 70%;">{{$t("message.update")}}</el-button>
@@ -113,7 +113,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.$message.info("Success");
-              this.$router.push({path: "/personalCenterManagement/myResources"});
+              this.$router.push({path: "/admin/resourceManagement"});
             } else if (res.data.code == 300) {
               this.$message.error(res.data.message);
               this.$router.push({path: "/login"});

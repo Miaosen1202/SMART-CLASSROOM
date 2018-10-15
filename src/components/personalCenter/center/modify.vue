@@ -3,8 +3,8 @@
     <div style="margin-top: -1%">
       <ul>
         <li >
-          <img src="../../../../static/images/back.png" alt="" @click="back()" style="cursor: pointer;">
-          <h4 style="display: inline-block;vertical-align: middle">{{$t('message.back')}}</h4>
+          <img src="../../../../static/images/back1.png" alt="" @click="back()" style="cursor: pointer;">
+          <h4 style="display: inline-block;vertical-align: middle;color: #144efc">{{$t('message.back')}}</h4>
         </li>
       </ul>
 
@@ -42,8 +42,8 @@
     </div>
 
     <div class="replace">
-      <h4 style="margin-top: -4%;">{{$t('message.medin')}}</h4>
-      <div >
+      <!--<h4 style="margin-top: -4%;">{{$t('message.medin')}}</h4>-->
+      <!--<div >
         <el-upload
           class="upload-demo"
           :action="action"
@@ -55,7 +55,7 @@
           <img src="../../../../static/images/u550.png" alt="">
           <el-button type="primary" size="mini" >{{$t('message.Replacethefile')}}</el-button>
         </el-upload>
-      </div>
+      </div>-->
     </div>
 
     <el-button type="primary" @click="updateMaterialBank" size="mini" style="float: left;margin-left: 70%;">{{$t("message.update")}}</el-button>
@@ -75,8 +75,8 @@
         textarea2:'',
         value: '',
         input:'',
-        fileList3:[],
-        action: process.env.NODE_ENV + '/file/upload',
+       /* fileList3:[],
+        action: process.env.NODE_ENV + '/file/upload',*/
       }
 
     },

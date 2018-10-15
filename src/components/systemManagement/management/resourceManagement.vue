@@ -45,7 +45,7 @@
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip">{{$t("message.edit")}}</el-button>
+              @click="modifyPageSkip(scope.row)">{{$t("message.edit")}}</el-button>
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
@@ -253,9 +253,13 @@
           this.$message.error(err);
         });
       },
-      modifyPageSkip:function ()  {
+      /*modifyPageSkip:function ()  {
         this.$router.push({path:"/admin/configurationManagement"});
+      },*/
+      modifyPageSkip:function (row)  {
+        this.$router.push({path:"/admin/configurationManagement", query: {id: row.id}});
       },
+
       doDelete: function (ids) {
         let me = this;
         this._del("/materialBank", ids, (data) => {
