@@ -79,7 +79,7 @@
       // this.$router.push({path: "/homePage/course/teachingMaterials", query: {"lessonId": this.lessonId}});
       this.$router.push({path: "/homePage/course/addMaterials", query: {"lessonId": this.lessonId}});
       this.materialNumberLoad();
-      // this.discussNumberLoad();
+      //this.discussNumberLoad();
       // this.exercisesNumberLoad();
       // this.assignmentNumberLoad();
     },
