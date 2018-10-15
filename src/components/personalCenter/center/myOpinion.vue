@@ -112,7 +112,6 @@
             readonly="true"
             type="textarea"
             autosize
-            :placeholder="$t('message.pleaseEnter')"
             v-model="this.feedbackDetail.root.content">
           </el-input>
         </div>

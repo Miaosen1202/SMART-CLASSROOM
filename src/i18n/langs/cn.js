@@ -111,7 +111,7 @@ const cn = {
     'Description':'意见描述',
     'TimeofDisposal':'处理时间',
     'reportedon':'报道',
-    'Replied':'回答',
+    'Replied':'回复',
     'Pleaseinputreplycontent':'请输入回复内容',
     'Pleaseuploadfilefirst':'请先上传文件',
     'Pleaseinputresourcename':'请输入资源名称',

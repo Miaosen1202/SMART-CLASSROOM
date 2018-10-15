@@ -120,12 +120,28 @@
           <div style="padding:2% 6%;">
         <span><i>{{ this.feedbackDetail.root.replyerName }}</i> {{$t('message.reportedOn')}} </span>
         <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
-        <div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>
+        <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">-->
+          <!--{{ this.feedbackDetail.root.content }}-->
+        <!--</div>-->
+          <el-input
+            readonly="true"
+            type="textarea"
+            autosize
+            v-model="this.feedbackDetail.root.content">
+          </el-input>
         <div>
           <ul>
             <li v-for="fd in feedbackDetail.replyList">
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
-              <p style="word-break:break-all;">{{$t('message.reply')}}: {{ fd.content }}</p>
+              <p style="word-break:break-all;">{{$t('message.Replied')}}:
+                <el-input
+                  readonly="true"
+                  type="textarea"
+                  autosize
+                  :placeholder="$t('message.pleaseEnter')"
+                  v-model="fd.content">
+                </el-input>
+              </p>
             </li>
           </ul>
         </div>
