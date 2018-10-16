@@ -151,15 +151,17 @@
           this.$message.error(this.$t("message.assignmentSaveNeedContentOrAttachmentNotEmpty"));
           return;
         }
-        
+
         if (this.editAssignmentId === undefined) {
           let me = this;
           this._add("/lessonAssignment", assignment, data => {
+
             this.assignmentName = "";
             me.attachments =[];
             me.attachmentFileList = [];
             me.createPanelShow = false;
             me.getAssignmentListByLessonId();
+            eventBus.$emit("getAssignmentNumber","");
           });
           // this.$http.post(`${process.env.NODE_ENV}/lessonAssignment/add`, assignment)
           //   .then((res) => {
@@ -196,6 +198,7 @@
         this.$http.get(`${process.env.NODE_ENV}/lessonAssignment/list?lessonId=${this.lessonId}`)
           .then((res) => {
             if (res.data.code == 200) {
+              eventBus.$emit("getAssignmentNumber","");
               this.assignmentList = res.data.entity;
               this.showAssignmentListPanel = this.assignmentList.length > 0;
               this.createPanelShow = this.assignmentList.length == 0;
