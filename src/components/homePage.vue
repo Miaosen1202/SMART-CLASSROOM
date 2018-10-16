@@ -64,7 +64,7 @@ export default {
 .right-main{
   width: 98%;
   height: 95%;
-  margin-top: 2%;
+  margin-top: 1.8%;
   margin-left: 2%;
   background-color: #fff;
 

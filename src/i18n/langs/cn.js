@@ -73,7 +73,7 @@ const cn = {
     'Captureprojectionfail':'屏幕截图失败',
     'ObjectProjection':'屏幕投影',
     'Yourbrowserdosenotsupportobjectprojection':'浏览器不支持此投影！',
-    'Studentpresence':'在上课的学生',
+    'Studentpresence':'已上课的学生',
     'Totalattendance':'总出勤率',
     'canvas':'该浏览器不支持canvas.',
     'Attendance':'出勤',
@@ -88,6 +88,8 @@ const cn = {
     'Unpublished':'未发表的',
     'Submitthelesson':'提交课程，你可以在“管理所有课程”中找到它。',
     'Deletethelesson':'删除本课下的课程和所有数据。',
+    'coursename':'课程名称',
+    'NameS':'名称',
 
 
 
@@ -135,6 +137,8 @@ const cn = {
     'submission':'答题成功!',
     'download':'下载',
     'pleaseEnter':'请输入内容',
+    'LearningMaterial':'学习材料',
+    'Exercise':'练习',
 
 
 

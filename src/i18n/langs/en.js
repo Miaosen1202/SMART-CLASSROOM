@@ -87,6 +87,8 @@ const en = {
     'Unpublished':'Unpublished',
     'Submitthelesson':'Submit the lesson and you can find it in “Manage all lessons”',
     'Deletethelesson':'Delete the lesson and all the data under this lesson.',
+    'coursename':'Course Name',
+    'NameS':'Name',
 
 
 
@@ -137,6 +139,10 @@ const en = {
     'SelectAll':'Select All',
     'download':'Download',
     'pleaseEnter':'Please Enter',
+    'LearningMaterial':'Learning Material',
+    'Exercise':'Exercise',
+
+
     // -------- end -----------
 
 
