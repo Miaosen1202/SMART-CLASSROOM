@@ -43,7 +43,7 @@
     background-color: #ccc;
   }
   .left{
-    width: 18%;
+    width: 16%;
     height: 88%;
     float: left;
     background-color: #0138b1;
@@ -61,10 +61,10 @@
     background-color: white;
   }
   .right-main{
-    width: 98%;
+    width: 99%;
     height: 96%;
     margin-top: 1%;
-    margin-left: 2%;
+    margin-left: 1%;
     background-color: #fff;
 
   }

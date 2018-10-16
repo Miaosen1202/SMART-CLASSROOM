@@ -96,6 +96,7 @@ const en = {
     'Thetitlemustbenotempty':'The title must be not empty',
     'Theoptionsmustbegreater':'The options must be greater than 1 and less than 11',
 
+// -------- end -----------
 
 
     /*teacher center*/
@@ -104,8 +105,8 @@ const en = {
     'Started':'Started',
     'Over':'Over',
     'Author':'Author',
-    'Tobeinclass':'To be in class',
-    'Haveinhand':'Have in hand',
+   /* 'Tobeinclass':'To be in class',
+    'Haveinhand':'Have in hand',*/
     'Finished':'Finished',
     'Pleaseinputfilenametosearch':'Please input file name to search',
     'Uploads':'Upload',
@@ -231,9 +232,6 @@ const en = {
     'Importstudentdatasuccess':'Import student data success!',
     'medin':'Medin',
     'Replysuccess':'Reply success',
-
-
-
 
 
 

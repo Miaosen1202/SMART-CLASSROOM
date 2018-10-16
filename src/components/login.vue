@@ -137,7 +137,9 @@
             }
 
           }
-        }
+        }/*if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+
+        }*/
       },
 
       login() {

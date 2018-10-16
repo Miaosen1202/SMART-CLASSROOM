@@ -796,7 +796,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.materialList = res.data.entity;
-              // this.materialNumber = res.data.entity.length;
+               //this.materialNumber = res.data.entity.length;
             } else {
               alert(res.data.message);
             }

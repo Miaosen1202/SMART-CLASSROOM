@@ -190,7 +190,7 @@
         console.log(fileList);
         /*this.attachments.forEach((e)=>{
           if(e.fileName == this.removedFileName){
-subdiscussion
+           subdiscussion
           }
 
         })*/
