@@ -17,6 +17,31 @@ Vue.prototype.$echarts = echarts;
 Vue.prototype.$md5 = md5;
 Vue.config.productionTip = false;
 
+Vue.prototype.serverPath = `${process.env.NODE_ENV}/`;
+
+Vue.component("file-template", {
+  props: ["id", "url", "name"],
+  template: '<span><span style="margin-right: 5px;">{{ name }}</span>'
+    + "<a class='file-download' v-on:click='download' target='_blank' :href=\"serverPath + url + '/download?id=' + id\" :download=\"name\">"
+    + '<img src="../static/images/UPLOAD.png" alt="" style="cursor: pointer;">'
+    + "</a></span>",
+  methods: {
+    download: function () {
+      this.$emit("download");
+    }
+  }
+});
+
+// Vue.component("preview-template", {
+//   props: ["id", "url", "dialogVisable"],
+//   template: "",
+//   methods: {
+//     showDialog: function () {
+//       this.dialogVisible = true;
+//     }
+//   }
+// });
+
 var $http = axios.create({
   baseURL: process.env.BASE_API,
   timeout: 5000,

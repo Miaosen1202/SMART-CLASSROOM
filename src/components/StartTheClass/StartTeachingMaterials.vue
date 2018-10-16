@@ -147,12 +147,13 @@
                 <div class="list" v-for="material in materialList">
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
                     <!--<a :href="material.materialUrl" :download="material.materialName">{{material.materialName}}</a>-->
+                    <file-template :id="material.id" :url="material.materialUrl" :name="material.materialName"></file-template>
 
-                    <span @click="preview(material.localPath)">{{material.materialName}}</span>
-                    <a :href="material.materialUrl" :download="material.materialName">
-                      <!--<i class="el-icon-download" style="cursor: pointer;"></i>-->
-                      <img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">
-                    </a>
+                    <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
+                    <!--<a :href="material.materialUrl" :download="material.materialName">-->
+                      <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                      <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                    <!--</a>-->
                   </el-checkbox>
                 </div>
               </el-checkbox-group>
@@ -170,11 +171,12 @@
                   <li v-for="atth in discussion.attachments" >
                     <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
 
-                    <span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>
-                    <a :href="atth.fileUrl" :download="atth.fileName">
-                      <!--<i class="el-icon-download" style="cursor: pointer;"></i>-->
-                      <img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">
-                    </a>
+                    <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
+                    <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
+                    <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
+                      <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                      <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                    <!--</a>-->
                   </li>
                 </ul>
                 <div class="news" v-on:click="getDiscussAnswer(discussion.id)">
@@ -192,12 +194,12 @@
                       <ul>
                         <li v-for="atth in discussAnswer.attachments" >
                           <!--<a :href="getFileDownloadPath(atth.fileUrl)" :download="atth.fileName">{{ atth.fileName }}</a>-->
-
-                          <span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>
-                          <a :href="atth.fileUrl" :download="atth.fileName">
-                            <!--<i class="el-icon-download" style="cursor: pointer;"></i>-->
-                            <img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">
-                          </a>
+                          <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
+                          <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
+                          <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
+                            <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                            <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                          <!--</a>-->
                         </li>
                       </ul>
                     </div>
@@ -265,12 +267,12 @@
                   <ul>
                     <li v-for="atth in assignment.attachments">
                       <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
-
-                      <span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>
-                      <a :href="atth.fileUrl" :download="atth.fileName">
-                        <!--<i class="el-icon-download" style="cursor: pointer;"></i>-->
-                        <img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">
-                      </a>
+                      <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
+                      <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
+                      <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
+                        <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                        <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                      <!--</a>-->
                     </li>
                   </ul>
                 </div>

@@ -27,13 +27,16 @@
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
           <template slot-scope="scope">
-            <span @click="preview(scope.row.localPath)">{{scope.row.materialName}}</span>
-            <a :href="scope.row.materialUrl" :download="scope.row.materialName">
-              <i  style="cursor: pointer;">
-                <img src="../../../../static/images/UPLOAD.png" alt="">
-              </i>
-            </a>
+            <file-template :id="scope.row.id" :url="scope.row.materialUrl" :name="scope.row.materialName"></file-template>
           </template>
+          <!--<template slot-scope="scope">-->
+            <!--<span @click="preview(scope.row.localPath)">{{scope.row.materialName}}</span>-->
+            <!--<a :href="scope.row.materialUrl" :download="scope.row.materialName">-->
+              <!--<i  style="cursor: pointer;">-->
+                <!--<img src="../../../../static/images/UPLOAD.png" alt="">-->
+              <!--</i>-->
+            <!--</a>-->
+          <!--</template>-->
         </el-table-column>
         <el-table-column prop="createUserName" :label="$t('message.createUser')" min-width="30%"></el-table-column>
         <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%"></el-table-column>

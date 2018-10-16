@@ -57,7 +57,8 @@
         <el-checkbox-group v-model="checkedMaterialList">
           <div class="list" v-for="material in materialList">
             <el-checkbox :label="material">
-              <a :href="material.materialUrl" :download="material.materialName">{{material.materialName}}</a>
+              <file-template :id="material.id" :name="material.materialName" :url="material.materialUrl"></file-template>
+              <!--<a :href="serverPath + material.materialUrl + '/download'" :download="material.materialName">{{material.materialName}}</a>-->
             </el-checkbox>
           </div>
         </el-checkbox-group>

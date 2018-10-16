@@ -55,7 +55,10 @@
           </el-button>
           <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{assignment.assignmentName}}</p>
           <ul style="padding-left: 2%">
-            <li v-for="(attachment,ind) in assignment.attachments" :key="ind">{{attachment.fileName}}</li>
+            <li v-for="(attachment,ind) in assignment.attachments" :key="ind">
+              <!--{{attachment.fileName}}-->
+              <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
+            </li>
           </ul>
         </div>
       </el-scrollbar>
