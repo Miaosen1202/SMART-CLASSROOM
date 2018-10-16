@@ -55,7 +55,7 @@
       </div>
     </div>
     <!--语言包引入--><!--    background-color: #0e38b1;color: #fff;-->
-    <div class="select" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%;">
+    <div class="select" style="float: right;margin-right: 2%;width: 6%;margin-top: 0.5%;">
       <el-select  v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
         <el-option
           v-for="item in options"
