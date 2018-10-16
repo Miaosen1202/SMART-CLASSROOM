@@ -5,20 +5,20 @@
       <li :class="{active : activeFlag == 'LearningMaterials'}" @click="goToFirst('LearningMaterials')">
         <el-button type="text" @click="dialogVisible = true">
           <img src="../../../static/images/TeachingMaterials-white.png"  alt="">
-          <p>Learning Material</p>
+          <p>{{$t('message.LearningMaterial')}}</p>
         </el-button>
       </li>
       <li :class="{active : activeFlag == 'LetDiscuss'}" @click="goToSecond('LetDiscuss')">
         <img src="../../../static/images/Discussion-white.png"  alt="">
-        <P>Discussion</P>
+        <P>{{$t('message.Discussion')}}</P>
       </li>
       <li :class="{active : activeFlag == 'TakeExercises'}" @click="goToThird('TakeExercises')">
         <img src="../../../static/images/Exericises-white.png"  alt="">
-        <P>Exercise</P>
+        <P>{{$t('message.Exercise')}}</P>
       </li>
       <li :class="{active : activeFlag == 'MyAssignment'}" @click="goToFive('MyAssignment')">
         <img src="../../../static/images/Assignment-white.png"  alt="">
-        <P>Assignment</P>
+        <P>{{$t('message.Assignment')}}</P>
       </li>
 
     </ul>

@@ -25,17 +25,18 @@
             style="width: 90%">
             <el-table-column width="600">
               <template slot-scope="scope">
-                <!--<i class="el-icon-time"></i>-->
-                <img src="../../../static/images/lesson.png" alt="">
+                <!--<i class="el-icon-time"></i>--><!---->
+                <img @click="handleEdit(scope.$index, scope.row)"  src="../../../static/images/lesson.png" alt="" style="cursor: pointer">
                 <span style="margin-left: 10px">{{ scope.row.lessonName }}</span>
               </template>
             </el-table-column>
             <el-table-column >
-              <template slot-scope="scope">
+              <template slot-scope="scope"><!-- @click="courseModify(scope.$index, scope.row)"-->
                 <el-button
                   style="border: none"
                   size="mini"
-                  @click="handleEdit(scope.$index, scope.row)"><img src="../../../static/images/Modify.png" alt=""></el-button>
+                  @click="teacherEditDialogVisable = true">
+                 <img src="../../../static/images/Modify.png" alt=""></el-button><!-- @click="handleEdit(scope.$index, scope.row)"-->
                 <el-button
                   size="mini"
                   style="border: none"
@@ -49,6 +50,24 @@
         </el-collapse-item>
       </el-collapse>
     </div>
+    <!--编辑弹框-->
+    <el-dialog
+      :title="$t('message.coursename')"
+      :visible.sync="teacherEditDialogVisable"
+      width="20%">
+      <div class="projectile" style="padding-left: 10%">
+        <ul>
+          <li>
+            <span>{{$t('message.NameS')}}：</span>
+            <el-input size="small" :placeholder="$t('message.coursename')" style="width: 60%">12112312</el-input>
+          </li>
+        </ul>
+      </div>
+      <span slot="footer" class="dialog-footer" style="text-align: right">
+    <el-button @click="hideTeacherEditDialog">{{$t('message.cancel')}}</el-button>
+    <el-button type="primary" @click="editTeacherModify">{{$t('message.confirm')}}</el-button>
+  </span>
+    </el-dialog>
   </div>
 
 </template>
@@ -59,7 +78,8 @@
             return {
               courseList:[],
               lessonList: [],
-              tableData: []
+              tableData: [],
+              teacherEditDialogVisable: false,
             }
         },
         mounted() {
@@ -90,6 +110,10 @@
               }).catch((err) => {
                 console.log(err);
               });
+          },
+
+          hideTeacherEditDialog: function() {
+            this.teacherEditDialogVisable = false;
           },
           handleEdit(index, row) {
             console.log("edit lesson, id=", row.id);

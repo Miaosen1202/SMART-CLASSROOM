@@ -849,7 +849,6 @@
             d.style.display = "none";
           });
         }
-
         let param = {
           params: {
             questionId: questionId,
@@ -919,7 +918,6 @@
           this.$message.error(this.$t('message.Pleaseselectmaterialtoshare'));/*"Please select material to share"*/
           return;
         }
-
         let shareMaterialIds = [];
         this.checkedMaterialList.forEach(function (m) {
           console.log(m);
