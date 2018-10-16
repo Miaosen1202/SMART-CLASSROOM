@@ -9,6 +9,9 @@ const cn = {
     'Admin':'管理员',
     'Login':'登录',
     'Forgotyourpassword':'忘记密码',
+    'Loginuserisnotateacher':'登录用户不是教师',
+    'Loginuserisnotamanager':'登录用户不是管理员',
+    'Loginuserisnotastudent':'登录用户不是学生',
 
 
 
@@ -91,6 +94,8 @@ const cn = {
     'Deletethelesson':'删除本课下的课程和所有数据。',
     'coursename':'课程名称',
     'NameS':'名称',
+    'Thetitlemustbenotempty':'标题不能为空',
+    'Theoptionsmustbegreater':'选项必须大于1，小于11。',
 
 
 
@@ -140,6 +145,7 @@ const cn = {
     'pleaseEnter':'请输入内容',
     'LearningMaterial':'学习材料',
     'Exercise':'练习',
+    'Pleaseselectamaterialfirst':'请先选择材料',
 
 
 

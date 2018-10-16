@@ -402,11 +402,11 @@
         };
 
         if (typeof this.questionTitle !== "string" || this.questionTitle.trim().length === 0) {
-          this.$message.error("The title must be not empty");
+          this.$message.error(this.$t('message.Thetitlemustbenotempty'));/* "The title must be not empty"*/
           return;
         }
         if (queryOptions.length < 2 || queryOptions.length > 10) {
-          this.$message.error("The options must be greater than 1 and less than 11");
+          this.$message.error(this.$t('message.Theoptionsmustbegreater'));/*  The options must be greater than 1 and less than 11*/
           return;
         }
 
