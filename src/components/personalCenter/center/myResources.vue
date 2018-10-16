@@ -24,7 +24,13 @@
         style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="30"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%"></el-table-column>
+        <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
+          <!--{{materialName}}-->
+          <template slot-scope="scope">
+            <file-template :id="scope.row.id" :url="scope.row.materialUrl" :name="scope.row.materialName"></file-template>
+          </template>
+          <!--<file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>-->
+        </el-table-column>
         <!--<el-table-column prop="createUserName" label="创建人" min-width="30%"></el-table-column>-->
         <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="30%"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.Size')" min-width="30%">
