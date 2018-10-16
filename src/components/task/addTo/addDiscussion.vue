@@ -156,6 +156,7 @@
             me.attachments = [];
             me.getDiscussionListByLessonId();
             me.createPanelShow = false;
+            eventBus.$emit("getDiscissionNum","");
           });
           // this.$http.post(`${process.env.NODE_ENV}/classDiscuss/add`, discussion)
           //   .then((res) => {
@@ -194,7 +195,7 @@
         this.$http.get(`${process.env.NODE_ENV}/classDiscuss/list?lessonId=${this.lessonId}`)
           .then((res) => {
             if (res.data.code == 200) {
-
+              eventBus.$emit("getDiscissionNum","");
               this.discussionList = res.data.entity;
               this.showDiscussListPanel = this.discussionList.length > 0;
               this.createPanelShow = this.discussionList.length == 0;
@@ -225,6 +226,7 @@
       deleteDiscussion:function (id) {
         let me = this;
         this._del("/classDiscuss",[id],()=>me.getDiscussionListByLessonId());
+
         // this.$http.post(`${process.env.NODE_ENV}/classDiscuss/deletes`,[id])
         //   .then((res) => {
         //     if (res.data.code == 200) {

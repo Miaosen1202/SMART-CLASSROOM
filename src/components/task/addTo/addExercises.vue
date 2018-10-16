@@ -412,6 +412,7 @@
 
         let me = this;
         this._add("/choiceQuestion", exercises, data => {
+          eventBus.$emit("getExercisesNumber","");
           me.questionType = 1;
           me.questionTitle = "";
           me.analysis = "";
@@ -434,6 +435,7 @@
             if (res.data.code == 200) {
               this.existExercisesList = res.data.entity;
               this.existExercisesListOrigin = res.data.entity.slice(0);
+              eventBus.$emit("getExercisesNumber","");
             }
           }).catch((err) => {
           console.log(err);

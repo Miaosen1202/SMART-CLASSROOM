@@ -17,7 +17,7 @@
           {{ getLoginUser().name }}
         </span>
 
-      <div class="select" v-show="true" style="float: right;margin-right: 2%;width: 10%;margin-top: 0.5%">
+      <div class="select" v-show="true" style="float: right;margin-right: 2%;width: 6%;margin-top: 0.5%">
         <el-select  v-model="selectValue" @change="langChange" placeholder="请选择" >
           <el-option
             v-for="item in options"

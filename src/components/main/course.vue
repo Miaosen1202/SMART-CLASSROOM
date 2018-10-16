@@ -28,23 +28,23 @@
       <ul>
         <li :class="{active1 : activeFlag == 'teaching'}" @click="showContent('teaching')" style="background-color: #fff4e3;color:#f17e26">
           <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width: 76%">{{$t('message.TeachingMaterials')}}</p>
-          <p style="display: inline-block;margin-top: 25%"><img src="../../../static/images/Materials.png" alt=""></p>
-          <!--<h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{materialNumber}}</h2>-->
+          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Materials.png" alt=""></p>
+          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{materialNumber}}</h2>
         </li>
         <li :class="{active2 : activeFlag == 'discussion'}" @click="showContent('discussion')" style="background-color: #d8fff5;color:#26be96">
           <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width: 76%">{{$t('message.Discussion')}}</p>
-          <p style="display: inline-block;margin-top: 25%"><img src="../../../static/images/Discussion.png" alt=""></p>
-         <!-- <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{discussNumber}}</h2>-->
+          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Discussion.png" alt=""></p>
+          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{discussNumber}}</h2>
         </li>
         <li :class="{active3 : activeFlag == 'exercises'}" @click="showContent('exercises')" style="background-color: #d6e1ff;color:#0138b1">
           <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width:76%">{{$t('message.Exercises')}}</p>
-          <p style="display: inline-block;margin-top: 25%"><img src="../../../static/images/Exericises.png" alt=""></p>
-          <!--<h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{exercisesNumber}}</h2>-->
+          <p style="display: inline-block;margin-top: 12%"><img src="../../../static/images/Exericises.png" alt=""></p>
+          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{exercisesNumber}}</h2>
         </li>
         <li :class="{active4 : activeFlag == 'assignment'}" @click="showContent('assignment')" style="background-color: #f2dafc;color:#b10eab">
           <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width:76%">{{$t('message.Assignment')}}</p>
-          <p style="display: inline-block;margin-top: 25%"><img src="../../../static/images/Assignment.png" alt=""></p>
-          <!--<h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{assignmentNumber}}</h2>-->
+          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Assignment.png" alt=""></p>
+          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{assignmentNumber}}</h2>
 
         </li>
       </ul>
@@ -56,6 +56,7 @@
 
 <script>
   import util from '@/utils/util'
+  import eventBus from '../../eventBus'
 
   export default {
     data() {
@@ -75,13 +76,25 @@
       }
     },
     mounted() {
+      eventBus.$on("getDiscissionNum",(s) => {
+        this.discussNumberLoad();
+      });
+      eventBus.$on("getMaterialNumber",(s) => {
+        this.materialNumberLoad();
+      });
+      eventBus.$on("getExercisesNumber",(s) => {
+        this.exercisesNumberLoad();
+      });
+      eventBus.$on("getAssignmentNumber",(s) => {
+        this.assignmentNumberLoad();
+      });
       this.getDetailByLessonId();
       // this.$router.push({path: "/homePage/course/teachingMaterials", query: {"lessonId": this.lessonId}});
       this.$router.push({path: "/homePage/course/addMaterials", query: {"lessonId": this.lessonId}});
       this.materialNumberLoad();
-      //this.discussNumberLoad();
-      // this.exercisesNumberLoad();
-      // this.assignmentNumberLoad();
+      this.discussNumberLoad();
+      this.exercisesNumberLoad();
+      this.assignmentNumberLoad();
     },
     methods: {
       lessonDelete: function () {

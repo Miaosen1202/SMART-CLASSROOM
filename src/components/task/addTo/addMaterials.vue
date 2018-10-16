@@ -96,6 +96,7 @@
 </template>
 
 <script>
+  import eventBus from '../../../eventBus'
   export default {
     data() {
       return {
@@ -141,6 +142,7 @@
               .then((res) => {
                 if (res.data.code == 200) {
                   me.materialList.push(res.data.entity);
+                  eventBus.$emit("getMaterialNumber","");
                 } else {
                   me.$message.error(res.data.message);
                 }
@@ -167,6 +169,7 @@
         this._del("/lessonMaterial", deleteMaterialIds, (data) => {
           var delIdCache = {};
           JSON.parse(data.entity).forEach(function (id) {
+            eventBus.$emit("getMaterialNumber","");
             delIdCache[id] = true;
           });
           for (var i = me.checkedMaterialList.length - 1; i >= 0; i--) {
