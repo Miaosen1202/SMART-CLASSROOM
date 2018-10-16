@@ -13,7 +13,7 @@ const en = {
 
     'Welcome':'Welcome',
     'text': 'Welcome to login !',
-    'newlesson':'Inpuut the lesson name',
+    'newlesson':'Input the lesson name',
     'mycourse':'myCourse',
     'TeacherManagement':'Teacher management',
     'totalQuantity':'Total quantity',
@@ -84,13 +84,12 @@ const en = {
     'SelectCourse':'Select Course',
     'Pleaseselectacoursefirst':'Please select a course first',
     'Pleaseinputcoursenamefirst':'Please input course name first',
+    'Pleaseinputlessonnamefirst':'Please input lesson name first',
     'Unpublished':'Unpublished',
     'Submitthelesson':'Submit the lesson and you can find it in “Manage all lessons”',
     'Deletethelesson':'Delete the lesson and all the data under this lesson.',
     'coursename':'Course Name',
     'NameS':'Name',
-
-
 
 
     /*teacher center*/
@@ -121,6 +120,7 @@ const en = {
     'Pleaseinputresourcedescription':'Please input resource description',
     'assignmentSaveNeedContentOrAttachmentNotEmpty': 'Assignment no content or attachment can not be saved ',
     'Replacethefile':'Replace the file',
+
 
 
     // -------- end -----------

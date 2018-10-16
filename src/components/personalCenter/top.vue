@@ -21,7 +21,7 @@
           :value="item.value">
         </el-option>
       </el-select>-->
-      <div class="select" v-show="true" style="float: right;margin-right: 2%;width: 6%;margin-top: 0.5%">
+      <div class="select" v-show="true" style="float: right;margin-right: 2%;width: 7%;margin-top: 0.5%">
         <el-select  v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
           <el-option
             v-for="item in options"

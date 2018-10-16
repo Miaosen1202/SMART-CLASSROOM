@@ -111,7 +111,6 @@
                 console.log(err);
               });
           },
-
           hideTeacherEditDialog: function() {
             this.teacherEditDialogVisable = false;
           },

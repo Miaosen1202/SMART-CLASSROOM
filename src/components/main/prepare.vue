@@ -169,7 +169,7 @@
         }
 
         if (postParam.lessonName === "") {
-          this.$message.error(this.$t('message.Pleaseinputcoursenamefirst'));/*"Please input lesson name first"*/
+          this.$message.error(this.$t('message.Pleaseinputlessonnamefirst'));/*"Please input lesson name first"*/
           return;
         }
 
