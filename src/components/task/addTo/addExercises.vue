@@ -323,11 +323,10 @@
         for (let i = 0; i < this.existExercisesList.length; i++) {
           params.ids.push(this.existExercisesList[i].id)
         }
-        console.log(params.ids);
         this.$http.post(`${process.env.NODE_ENV}/choiceQuestion/resetSort/edit`, params.ids)
           .then((res) => {
             if (res.data.code == 200) {
-              // this.existExercisesList = res.entity;
+              this.getAssignmentListByLessonId();
               this.showExercisesDialogVisible = false;
             }
           }).catch((err) => {
