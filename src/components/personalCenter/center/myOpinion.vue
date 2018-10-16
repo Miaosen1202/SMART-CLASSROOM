@@ -109,7 +109,7 @@
           <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
           <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>-->
           <el-input
-            readonly="true"
+            :readonly="true"
             type="textarea"
             autosize
             v-model="this.feedbackDetail.root.content">
@@ -126,7 +126,7 @@
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
               <p style="word-break:break-all;">{{$t('message.Replied')}}:
                 <el-input
-                  readonly="true"
+                  :readonly="true"
                   type="textarea"
                   autosize
                   :placeholder="$t('message.pleaseEnter')"

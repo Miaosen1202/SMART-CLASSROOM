@@ -92,7 +92,7 @@ const en = {
 
 
     /*teacher center*/
-
+    'back':'back',
     'Published':'Published',
     'Started':'Started',
     'Over':'Over',
@@ -118,6 +118,7 @@ const en = {
     'Pleaseselectcategory':'Please select category',
     'Pleaseinputresourcedescription':'Please input resource description',
     'assignmentSaveNeedContentOrAttachmentNotEmpty': 'Assignment no content or attachment can not be saved ',
+    'Replacethefile':'Replace the file',
 
 
     // -------- end -----------

@@ -39,13 +39,13 @@
         <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%"></el-table-column>
         <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%"></el-table-column>
-        <el-table-column prop="downloadCount" :label="$t('message.viewNumber')" width="130"></el-table-column>
+        <!--<el-table-column prop="downloadCount" :label="$t('message.viewNumber')" width="130"></el-table-column>-->
         <el-table-column :label="$t('message.Operation')">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip">{{$t("message.edit")}}</el-button>
+              @click="modifyPageSkip(scope.row)">{{$t("message.edit")}}</el-button>
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
@@ -253,9 +253,13 @@
           this.$message.error(err);
         });
       },
-      modifyPageSkip:function ()  {
+      /*modifyPageSkip:function ()  {
         this.$router.push({path:"/admin/configurationManagement"});
+      },*/
+      modifyPageSkip:function (row)  {
+        this.$router.push({path:"/admin/configurationManagement", query: {id: row.id}});
       },
+
       doDelete: function (ids) {
         let me = this;
         this._del("/materialBank", ids, (data) => {
