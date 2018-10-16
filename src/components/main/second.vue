@@ -35,7 +35,7 @@
                 <el-button
                   style="border: none"
                   size="mini"
-                  @click="teacherEditDialogVisable = true">
+                  @click="modifyNameHandler(scope.row)">
                  <img src="../../../static/images/Modify.png" alt=""></el-button><!-- @click="handleEdit(scope.$index, scope.row)"-->
                 <el-button
                   size="mini"
@@ -59,13 +59,13 @@
         <ul>
           <li>
             <span>{{$t('message.NameS')}}：</span>
-            <el-input size="small" :placeholder="$t('message.coursename')" style="width: 60%">12112312</el-input>
+            <el-input size="small" v-model="lessonName" :placeholder="$t('message.coursename')" style="width: 60%">12112312</el-input>
           </li>
         </ul>
       </div>
       <span slot="footer" class="dialog-footer" style="text-align: right">
     <el-button @click="hideTeacherEditDialog">{{$t('message.cancel')}}</el-button>
-    <el-button type="primary" @click="editTeacherModify">{{$t('message.confirm')}}</el-button>
+    <el-button type="primary" @click="modifyNameHandlerConfirm">{{$t('message.confirm')}}</el-button>
   </span>
     </el-dialog>
   </div>
@@ -80,12 +80,36 @@
               lessonList: [],
               tableData: [],
               teacherEditDialogVisable: false,
+              lessonName: null,
+              lessonId: null,
+              courseId: null
             }
         },
         mounted() {
           this.getCourseList();
         },
         methods: {
+          modifyNameHandler(row) {
+            this.teacherEditDialogVisable = true;
+            this.lessonName = row.lessonName;
+            this.lessonId = row.id;
+            this.courseId = row.courseId;
+          },
+          modifyNameHandlerConfirm() {
+            if (this.lessonId != null && this.lessonName != null) {
+              this.$http.post(`${process.env.NODE_ENV}/lesson/modify`, {"id": this.lessonId,"lessonName":this.lessonName})
+                .then((res) => {
+                  if (res.data.code == 200) {
+                    this.courseCollapseChange(this.courseId);
+                    this.teacherEditDialogVisable=false
+                  } else {
+                    this.$message.error(res.data.message);
+                  }
+                }).catch((err) => {
+                this.$message.error(err);
+              });
+            }
+          },
           courseCollapseChange: function(courseId) {
             if (typeof courseId !== "undefined") {
               this.$http.get(`${process.env.NODE_ENV}/lesson/list?courseId=` + courseId)
