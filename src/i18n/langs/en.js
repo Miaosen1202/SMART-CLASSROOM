@@ -9,6 +9,9 @@ const en = {
     'Admin':'Admin',
     'Login':'Login',
     'Forgotyourpassword':'Forgot your password?',
+    'Loginuserisnotateacher':'Login user is not a teacher',
+    'Loginuserisnotamanager':'Login user is not a manager',
+    'Loginuserisnotastudent':'Login user is not a student',
 
 
     'Welcome':'Welcome',
@@ -90,6 +93,9 @@ const en = {
     'Deletethelesson':'Delete the lesson and all the data under this lesson.',
     'coursename':'Course Name',
     'NameS':'Name',
+    'Thetitlemustbenotempty':'The title must be not empty',
+    'Theoptionsmustbegreater':'The options must be greater than 1 and less than 11',
+
 
 
     /*teacher center*/
@@ -141,6 +147,7 @@ const en = {
     'pleaseEnter':'Please Enter',
     'LearningMaterial':'Learning Material',
     'Exercise':'Exercise',
+    'Pleaseselectamaterialfirst':'Please select a material first',
 
 
     // -------- end -----------

@@ -6,7 +6,8 @@
         <h4 style="display: inline-block">{{currentPage}}/{{pages}}</h4>
         <el-button type="success" icon="el-icon-arrow-right" circle @click="toNextPage"></el-button>
       </div>
-      <el-button v-on:click="toggle(exercises)" style="margin: 1% 0px 0px 1%;background-color: #0e38b1;color: white;font-weight: 700">
+      <el-button v-on:click="toggle(exercises)"
+                 style="margin: 1% 0px 0px 1%;background-color: #0e38b1;color: white;font-weight: 700">
         {{$t('message.reply')}}
       </el-button>
       <div class="have" v-for="(discussion,index) in discussionList" :key="index">
@@ -17,13 +18,13 @@
           <li v-for="(attachment,ind) in discussion.attachments" :key="ind">
             <span @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
             <a :href="attachment.fileUrl" :download="attachment.fileName">
-             <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
-              <i  style="cursor: pointer;">
+              <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
+              <i style="cursor: pointer;">
                 <img src="../../../../static/images/UPLOAD.png" alt="">
               </i>
             </a>
             <!--<a :href="attachment.fileUrl" :download="attachment.fileName">-->
-              <!--<span>{{attachment.fileName}}</span><i class="el-icon-download" style="cursor: pointer;"></i>-->
+            <!--<span>{{attachment.fileName}}</span><i class="el-icon-download" style="cursor: pointer;"></i>-->
             <!--</a>-->
           </li>
         </ul>
@@ -31,17 +32,18 @@
       <div>
         <div style="margin: 2% 0px" v-show="isSubmit == 0">
           <div class="discussion" v-for="(submitHistory,index) in submitHistoryList" :key="index">
-            <P> <b>{{submitHistory.studentName}}</b> [{{submitHistory.studentId}}]  </P>
+            <P><b>{{submitHistory.studentName}}</b> [{{submitHistory.studentId}}] </P>
             <P style="margin-left: 75%">{{dateTimeformat(submitHistory.createTime)}}</P>
             <br>
             <P>{{submitHistory.answerContent}}</P>
 
             <ul v-for="(attachment,ind) in submitHistory.attachments" :key="ind">
-              <a href="javascript:void(0)"><span @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
+              <a href="javascript:void(0)"><span
+                @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
 
               <a :href="attachment.fileUrl" :download="attachment.fileName">
                 <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
-                <i  style="cursor: pointer;">
+                <i style="cursor: pointer;">
                   <img src="../../../../static/images/UPLOAD.png" alt="">
                 </i>
               </a>
@@ -82,7 +84,8 @@
 
             <!--按钮-->
             <span slot="footer" class="dialog-footer">
-        <el-button style="margin-top: 1%;margin-left: 40%;margin-bottom: 1%;background-color: #0e38b1;" size="medium" type="primary" @click="submitQuestionAnswer(discussionList[0])">{{$t('message.submit')}}</el-button>
+        <el-button style="margin-top: 1%;margin-left: 40%;margin-bottom: 1%;background-color: #0e38b1;" size="medium"
+                   type="primary" @click="submitQuestionAnswer(discussionList[0])">{{$t('message.submit')}}</el-button>
         <el-button size="medium">{{$t('message.cancel')}}</el-button>
       </span>
           </div>
@@ -108,7 +111,7 @@
     data() {
       return {
         isShow: false,
-       /* assignmentName: '',*/
+        /* assignmentName: '',*/
         fileList3: [],
         action: process.env.NODE_ENV + '/file/upload',
         removedFileName: "",
@@ -116,19 +119,19 @@
         boName: '',
         loading: true,
         lessonId: this.$route.query.lessonId,
-        lessonCode:this.$route.query.lessonCode,
+        lessonCode: this.$route.query.lessonCode,
         attachments: [],
         discussContent: '',
-        discussionList:[],
-        submitHistoryList:[],
-        questionAnswerRecordVos:[],
-        selectedAnswerCode:"",
-        pageSize:1,//页大小
-        currentPage:1,//当前页
+        discussionList: [],
+        submitHistoryList: [],
+        questionAnswerRecordVos: [],
+        selectedAnswerCode: "",
+        pageSize: 1,//页大小
+        currentPage: 1,//当前页
         pages: 0,//总页数
-        total:0,//总条数
-        isSubmit:1,
-        exercises:{},
+        total: 0,//总条数
+        isSubmit: 1,
+        exercises: {},
 
         filePreviewDialogVisible: false,
         previewHtml: "",
@@ -138,7 +141,7 @@
       this.loadFinishexercise();
     },
     methods: {
-      dateTimeformat: function(d) {
+      dateTimeformat: function (d) {
         var date = new Date(d);
         var month = '' + (date.getMonth() + 1);
         var day = '' + date.getDate();
@@ -168,10 +171,11 @@
               this.$router.push("/");
             } else {
               console.error("preview fail", res.data.message);
-              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));/*ThepreviewfilefailedPleasedownloadittoviewitlocally*/
+              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
+              /*ThepreviewfilefailedPleasedownloadittoviewitlocally*/
             }
           }).catch((err) => {
-            console.error("preview fail", err);
+          console.error("preview fail", err);
           this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
@@ -212,39 +216,39 @@ subdiscussion
         }
       },
 
-    /*  getDiscussionListByLessonId(){
-        this.$http.get(`${process.env.NODE_ENV}/classDiscuss/list?lessonId=${this.lessonId}`)
-          .then((res) => {
-            if (res.data.code == 200) {
-              /!*debugger;*!/
-              this.discussionList = res.data.entity;
-            }
-          }).catch((err) => {
-          console.log(err);
-        });
-      },*/
+      /*  getDiscussionListByLessonId(){
+          this.$http.get(`${process.env.NODE_ENV}/classDiscuss/list?lessonId=${this.lessonId}`)
+            .then((res) => {
+              if (res.data.code == 200) {
+                /!*debugger;*!/
+                this.discussionList = res.data.entity;
+              }
+            }).catch((err) => {
+            console.log(err);
+          });
+        },*/
       //下载discussion文件
-      downFile(filePath){
+      downFile(filePath) {
         /*window.open(`${process.env.NODE_ENV}/http://localhost:8088/${filePath}`);*/
         window.open(`${process.env.NODE_ENV}${filePath}`);
       },
 
 
-      loadFinishexercise:function () {
+      loadFinishexercise: function () {
         let param = {
-          lessonId:this.lessonId,
+          lessonId: this.lessonId,
           pageIndex: this.currentPage,
           pageSize: this.pageSize
         };
-        this.$http.get(`${process.env.NODE_ENV}/classDiscuss/pageList`, {params:param})
+        this.$http.get(`${process.env.NODE_ENV}/classDiscuss/pageList`, {params: param})
           .then((res) => {
             if (res.data.code == 200) {
               this.discussionList = res.data.entity.list;
               this.total = res.data.entity.total;
               this.currentPage = res.data.entity.pageIndex;
-              this.pages = (res.data.entity.total)%(res.data.entity.pageSize) == 0 ?
-                (res.data.entity.total)/(res.data.entity.pageSize) :
-                (res.data.entity.total)/(res.data.entity.pageSize)+1;
+              this.pages = (res.data.entity.total) % (res.data.entity.pageSize) == 0 ?
+                (res.data.entity.total) / (res.data.entity.pageSize) :
+                (res.data.entity.total) / (res.data.entity.pageSize) + 1;
               this.pageSize = res.data.entity.pageSize;
 
               this.fileList3 = [];
@@ -255,30 +259,30 @@ subdiscussion
         });
       },
       //向下翻页
-      toNextPage(){
-        this.currentPage = this.currentPage+1;
-        if(this.currentPage > this.pages){
+      toNextPage() {
+        this.currentPage = this.currentPage + 1;
+        if (this.currentPage > this.pages) {
           this.$message({
             message: this.$t('message.lastpage'),
             type: 'warning'
           });
           this.currentPage--;
-        }else if(this.currentPage <= this.pages){
+        } else if (this.currentPage <= this.pages) {
           this.selectedAnswerCode = "";
           this.isSubmit = 1;
           this.loadFinishexercise();
         }
       },
       //向上翻页
-      goBack(){
-        this.currentPage = this.currentPage-1;
-        if(this.currentPage == 0){
+      goBack() {
+        this.currentPage = this.currentPage - 1;
+        if (this.currentPage == 0) {
           this.$message({
             message: this.$t('message.firstpage'),
             type: 'warning'
           });
           this.currentPage++;
-        }else{
+        } else {
           this.selectedAnswerCode = "";
           this.isSubmit = 1;
           this.loadFinishexercise();
@@ -286,32 +290,32 @@ subdiscussion
 
       },
       //提交问题答案
-      submitQuestionAnswer(exercises){
+      submitQuestionAnswer(exercises) {
         var queryParam = {
-          questionId:exercises.id,
+          questionId: exercises.id,
           /*questionType:exercises.questionType,*/
-          questionType:5,
-          answerContent:this.selectedAnswerCode,
-          lessonCode:this.lessonCode,
+          questionType: 5,
+          answerContent: this.selectedAnswerCode,
+          lessonCode: this.lessonCode,
           isSubmit: 1,
           attachments: this.attachments,
         }
         console.log(this.discussionList[0].id);
-        this.$http.post(`${process.env.NODE_ENV}/questionAnswer/submit/edit`,queryParam )
+        this.$http.post(`${process.env.NODE_ENV}/questionAnswer/submit/edit`, queryParam)
           .then((res) => {
 
             if (res.data.code == 200) {
-               this.isSubmit = 1;
-               this.exercises = exercises;
-               this.toggle()
-               this.fileList3 = [];
-               this.attachments = [];
-               this.getsubmitHistoryLessonId();
-               this.$message({
-                 message:this.$t('message.submission'),/*'Congratulations on your successful submission!'*/
-                 type: 'success'
-               });
-             }else{
+              this.isSubmit = 1;
+              this.exercises = exercises;
+              this.toggle()
+              this.fileList3 = [];
+              this.attachments = [];
+              this.getsubmitHistoryLessonId();
+              this.$message({
+                message: this.$t('message.submission'), /*'Congratulations on your successful submission!'*/
+                type: 'success'
+              });
+            } else {
               this.$message({
                 message: res.data.message,
                 type: 'error'
@@ -322,14 +326,14 @@ subdiscussion
         });
       },
       /*答题记录查询*/
-      getsubmitHistoryLessonId(){
+      getsubmitHistoryLessonId() {
         console.log(this.discussionList[0].id);
         var submitHistoryr = {
           questionId: this.discussionList[0].id,
-          questionType:5,
-          lessonCode:this.lessonCode,
+          questionType: 5,
+          lessonCode: this.lessonCode,
         };
-        this.$http.get(`${process.env.NODE_ENV}/questionAnswer/submitHistory/query`,{params: submitHistoryr})
+        this.$http.get(`${process.env.NODE_ENV}/questionAnswer/submitHistory/query`, {params: submitHistoryr})
           .then((res) => {
             if (res.data.code == 200) {
               this.isSubmit = 0;
@@ -348,6 +352,7 @@ subdiscussion
   .file-preview .el-dialog.is-fullscreen {
     width: 80% !important;
   }
+
   .file-preview .el-dialog.is-fullscreen .el-dialog__body {
     height: 90%;
   }

@@ -161,7 +161,7 @@
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.teacher != res.data.entity.identity) {
-                this.$message.error("Login user is not a teacher");
+                this.$message.error(this.$t('message.Loginuserisnotateacher'));/* "Login user is not a teacher"*/
                 return;
               }
 
@@ -186,7 +186,7 @@
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.manager != res.data.entity.identity) {
-                this.$message.error("Login user is not a manager");
+                this.$message.error(this.$t('message.Loginuserisnotateacher'));/*"Login user is not a manager"*/
                 return;
               }
 
@@ -212,7 +212,7 @@
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.student != res.data.entity.identity) {
-                this.$message.error("Login user is not a student");
+                this.$message.error(this.$t('message.Loginuserisnotastudent'));/*"Login user is not a student"*/
                 return;
               }
 

@@ -62,7 +62,7 @@
       download: function() {
         console.log(this.checkedMaterials);
         if (this.checkedMaterials.length == 0) {
-          this.$message.error("Please select a material first");
+          this.$message.error(this.$t('message.Pleaseselectamaterialfirst'));/* "Please select a material first"*/
           return;
         }
 
