@@ -237,9 +237,9 @@ const en = {
 
 
     "logoutSuccess": "Logout Success",
-    "logoutFail": "Logout Fail",
+    "logoutFail": "Error: Failed.",
 
-    "pleaseSelectLeastOneRowOfData": "Please select at least one row of data",
+    "pleaseSelectLeastOneRowOfData": "Please select at least one record.",
 
     'onlySupportFileType': 'Only support file types: ',
 
@@ -260,7 +260,7 @@ const en = {
     'batchdelete':'Batch Delete',
     'OK':'OK',
     'CopyTo':'Copy To',
-    'checkall':'check all',
+    'checkall':'All',
     'close':'Close',
     'submit':'Submit',
     'disable': 'Disable',
@@ -273,9 +273,9 @@ const en = {
     'cancel': 'Cancel',
     'save': "Save",
     'tip': "Tip",
-    'confirmDelete': "Confirm Delete?",
-    'deleteSuccess': "Delete success",
-    "success": "Success",
+    'confirmDelete': "Are you sure to delete?",
+    'deleteSuccess': "Done",
+    "success": "Done",
     'enter':'Enter',
 
 
