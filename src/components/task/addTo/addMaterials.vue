@@ -86,7 +86,7 @@
             </el-collapse>
           </div>
           <span slot="footer" class="dialog-footer">
-       <el-button type="primary" @click="copyMaterialToLesson">{{$t('message.OK')}}</el-button>
+       <el-button style="background-color: #0e38b1;" type="primary" @click="copyMaterialToLesson">{{$t('message.OK')}}</el-button>
        <el-button @click="copyToDialogVisible = false">{{$t('message.cancel')}}</el-button>
       </span>
         </el-dialog>

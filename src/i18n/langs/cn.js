@@ -100,6 +100,7 @@ const cn = {
 
 
 
+
     /*teacher center*/
     'back':'返回',
     'Author':'作者',

@@ -16,7 +16,7 @@
         <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{discussion.discussContent}}</p>
         <ul style="padding-left: 2%">
           <li v-for="(attachment,ind) in discussion.attachments" :key="ind">
-            <span @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
+            <span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
             <a :href="attachment.fileUrl" :download="attachment.fileName">
               <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
               <i style="cursor: pointer;">
@@ -38,7 +38,7 @@
             <P>{{submitHistory.answerContent}}</P>
 
             <ul v-for="(attachment,ind) in submitHistory.attachments" :key="ind">
-              <a href="javascript:void(0)"><span
+              <a href="javascript:void(0)"><span style="cursor: pointer"
                 @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
 
               <a :href="attachment.fileUrl" :download="attachment.fileName">

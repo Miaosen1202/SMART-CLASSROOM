@@ -67,9 +67,9 @@
     <el-dialog :title="$t('message.ModifyPassword')"
                :visible.sync="dialogFormVisible"
                @close="modifyPasswordDialogClose"
-               style="width: 50%;height: 100%">
+               style="height: 100%">
       <!-- <div v-for="(password,index) in oldpasswordlist" :key="index">-->
-      <p>{{$t('message.Password')}}</p>
+      <p style="color: #009900">{{$t('message.Password')}}</p>
       <el-input type="password" v-model="oldPassword" :placeholder="$t('message.pleaseenter')"></el-input>
 
       <p style="color: #009900">{{$t('message.NewPassword')}}</p>
