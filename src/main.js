@@ -26,7 +26,7 @@ let html = "<span>\
               </a>\
               <el-dialog class='file-preview' :title='name' :visible.sync='previewVisible' fullscreen>\
                 <iframe v-if='previewType === \"doc\"' width='100%' height='100%' :src='previewUrl'></iframe>\
-                <div v-if='previewType === \"img\"' style='width: 100%; height: 100%;'><img :src='previewUrl'/> </div>\
+                <div class='img-preview' v-if='previewType === \"img\"' style='width: 100%; height: 100%;'><img :src='previewUrl'/> </div>\
                 <div v-if='previewType == \"video\"' style='width: 100%; height: 100%;'>Video </div>\
                 <div v-if='previewType == \"audio\"' style='width: 100%; height: 100%;'>Video </div>\
               </el-dialog>\
