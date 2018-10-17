@@ -185,7 +185,7 @@
                 this.editDiscussId = undefined;
                 this.createPanelShow = false;
               } else {
-                this.$message.error(res.data.message);
+                this.$message.error(this.$t("message.assignmentSaveNeedContentOrAttachmentNotEmpty"));
               }
             }).catch((err) => {
               this.$message.error(err)

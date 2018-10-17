@@ -56,7 +56,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true,
-      favicon:'static/loggogo.ico'
+      favicon: 'static/loggogo.ico'
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
