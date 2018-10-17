@@ -27,10 +27,12 @@ let html = "<span>\
               <el-dialog class='file-preview' :title='name' :visible.sync='previewVisible' fullscreen>\
                 <iframe v-if='previewType === \"doc\"' width='100%' height='100%' :src='previewUrl'></iframe>\
                 <div class='img-preview' v-if='previewType === \"img\"' style='width: 100%; height: 100%;'><img :src='previewUrl'/> </div>\
-                <div v-if='previewType == \"video\"' style='width: 100%; height: 100%;'>Video </div>\
-                <div v-if='previewType == \"audio\"' style='width: 100%; height: 100%;'>Video </div>\
+                <div v-show='previewType == \"video\"' style='width: 100%; height: 100%;'>\
+                </div>\
+                <div v-show='previewType == \"audio\"' style='width: 100%; height: 100%;'>Video </div>\
               </el-dialog>\
             </span>";
+
 
 Vue.component("file-template", {
   props: ["id", "url", "name"],
@@ -61,15 +63,15 @@ Vue.component("file-template", {
         this.previewUrl = this.url + "/download?id=" + this.id;
       } else if (/\.(mp4|swf)$/.test(filename)) {
         this.previewType = "video";
-        this.previewUrl = this.url + "/download?id=" + this.id;
+        this.previewUrl = `${process.env.NODE_ENV}` + "/" + this.url + "/download?id=" + this.id;
       } else {
         this.previewType = "";
         this.previewUrl = "";
         this.$message.error("File type is not support preview");
         return;
       }
-
       this.previewVisible = true;
+
       this.$emit("afterPreview");
     }
   }
