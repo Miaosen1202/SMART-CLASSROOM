@@ -16,7 +16,7 @@
           <ul style="padding-left: 2%">
             <li v-for="(attachment,ind) in assignment.attachments" :key="ind">
 
-              <span @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
+              <span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
               <a :href="attachment.fileUrl" :download="attachment.fileName">
                 <!--<i class="el-icon-download" style="cursor: pointer;"></i>-->
                 <i  style="cursor: pointer;">
@@ -75,7 +75,7 @@
             }
           }).catch((err) => {
           console.error("preview fail", err);
-          this.$message.error("预览文件失败，请下载至本地查看");
+          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
 

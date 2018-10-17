@@ -15,14 +15,20 @@
         <ul style="padding-left: 2%" v-for="(option,index) in exercises.options" :key="index">
           <li>
             <el-radio v-model="selectedAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '1'">
-              <span style="padding-right: 2%" >{{option.answerCode}}</span>
-              <span style="padding-left: 2%">{{option.answerContent}}</span>
+              <span style="padding-right: 2%" >{{option.answerCode}}
+              </span>
+              <span style="padding-left: 2%">{{option.answerContent}}
+               <!-- <i class="el-icon-circle-check-outline" style="color: green"></i>
+                <i class="el-icon-circle-close-outline" style="color: red"></i>-->
+              </span>
             </el-radio>
             <el-checkbox v-model="selectedMultiAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '2'">
               <span style="padding-right: 2%" >{{option.answerCode}}</span>
-              <span style="padding-left: 2%">{{option.answerContent}}</span>
+              <span style="padding-left: 2%">{{option.answerContent}}
+                <!--<i class="el-icon-circle-check-outline" style="color: green"></i>
+                <i class="el-icon-circle-close-outline" style="color: red"></i>-->
+              </span>
             </el-checkbox>
-
           </li>
         </ul>
          <!-- <el-checkbox-group
@@ -32,20 +38,16 @@
               <span style="padding-left: 2%">{{option.answerContent}}</span>
             </el-checkbox>
           </el-checkbox-group>-->
-
       </div>
       <div class="submitt">
         <el-button style="margin: 2%;background-color: #0e38b1;color: #fff" :disabled="disableSubmit"  round @click="submitQuestionAnswer(existExercisesList[0])">{{$t('message.submit')}}</el-button>
       </div>
-
       <div class="answer" v-for="exercises in existExercisesList" v-show="hasAnswerSubmit">
         <div>
           <span>{{$t('message.CorrectAnswer')}} ：</span>
           <span v-for="(option,index) in exercises.options" v-if="option.isCorrect == 1">{{option.answerCode}} </span>
         </div>
-
         <p>{{$t('message.YourAnswer')}} ：<span style="color: red">{{answer.answerContent}}</span></p>
-
         <P>{{$t('message.Explanation')}}</P>
         <span  style="width: 60%;display: inline-block">
           {{exercises.analysis}}
