@@ -76,23 +76,24 @@
       },
 
       preview: function (filePath) {
-        this.filePreviewDialogVisible = true;
+
         this.previewHtml = "";
 
         this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
           .then((res) => {
             if (res.data.code == 200) {
               this.previewHtml = res.data.entity;
+              this.filePreviewDialogVisible = true;
             } else if (res.data.code == 300) {
               this.$message.error(res.data.message);
               this.$router.push("/");
             } else {
               console.error("preview fail", res.data.message);
-              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally.'));/*预览文件失败，请下载至本地查看*/
+              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));/*预览文件失败，请下载至本地查看*/
             }
           }).catch((err) => {
           console.error("preview fail", err);
-          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally.'));
+          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
 

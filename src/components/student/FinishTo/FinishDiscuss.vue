@@ -39,7 +39,7 @@
 
             <ul v-for="(attachment,ind) in submitHistory.attachments" :key="ind">
               <a href="javascript:void(0)"><span style="cursor: pointer"
-                @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
+                                                 @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
 
               <a :href="attachment.fileUrl" :download="attachment.fileName">
                 <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
@@ -159,13 +159,14 @@
         return [year, month, day].join('-') + " " + [hour, min, sec].join(":");
       },
       preview: function (filePath) {
-        this.filePreviewDialogVisible = true;
+
         this.previewHtml = "";
 
         this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
           .then((res) => {
             if (res.data.code == 200) {
               this.previewHtml = res.data.entity;
+              this.filePreviewDialogVisible = true;
             } else if (res.data.code == 300) {
               this.$message.error(res.data.message);
               this.$router.push("/");

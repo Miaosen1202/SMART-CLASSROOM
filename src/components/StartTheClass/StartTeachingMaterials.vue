@@ -2,20 +2,22 @@
   <div id="start">
 
     <div class="top">
-      <div >
-        <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer">
+      <div>
+        <p @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer">
           <img src="../../../static/images/logo.png" alt="">
         </p>
         <div style="margin: 0 auto;color: #2c6cae;cursor: pointer;display: inline-block;padding-left: 34%">
           <!--Class Code :{{lessonCode}}-->
-          <el-button type="text" @click="centerDialogVisible = true">{{$t('message.classcode')}} :{{lessonCode}}</el-button>
+          <el-button type="text" @click="centerDialogVisible = true">{{$t('message.classcode')}} :{{lessonCode}}
+          </el-button>
         </div>
-       <!-- <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>-->
-        <p v-on:click="backlogin" style="float: right;margin-top:1.6%;padding-right: 2%;cursor: pointer;vertical-align:middle">
+        <!-- <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>-->
+        <p v-on:click="backlogin"
+           style="float: right;margin-top:1.6%;padding-right: 2%;cursor: pointer;vertical-align:middle">
           <img src="../../../static/images/u118.png" alt="">
         </p>
         <div @click="mycourse" style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
-        <span >
+        <span>
          <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
           {{ getLoginUser().name }}
         </span>
@@ -23,7 +25,7 @@
 
         <!--语言包引入-->
         <div class="select" style="float: right;margin-right: 2%;width: 7%;margin-top: 0.5%">
-          <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
+          <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -53,7 +55,7 @@
       <!--<img src="../../assets/images/u231.png" alt="">-->
       {{$t('message.close')}}
     </el-button>
-    <!--<el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>-->
+          <!--<el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>-->
   </span>
       </el-dialog>
 
@@ -83,27 +85,28 @@
     </canvas>
 
     <div class="tool">
-      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;" circle><!--background-color: #0e38b1-->
-        <img src="../../../static/images/toolkit.png"  alt="">
+      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;" circle>
+        <!--background-color: #0e38b1-->
+        <img src="../../../static/images/toolkit.png" alt="">
       </el-button>
       <div class="tool" style="float: right;margin-top: 1%;display: inline-block" v-show="isShow">
         <div class="view" @click="goObjectProjection">
-          <el-tooltip class="item"  :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
-            <el-button style="float: right;border: none;"  round >
+          <el-tooltip class="item" :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
+            <el-button style="float: right;border: none;" round>
               <img src="../../../static/images/Objectprojection-blue.png" alt="">
             </el-button>
           </el-tooltip>
         </div>
         <!--<div class="view" >-->
-          <!--<el-tooltip class="item" effect="dark" content="share my screen" placement="bottom">-->
-            <!--<el-button style="float: right;border: none;"  round >-->
-              <!--<img src="../../../static/images/sharemyscreen-blue.png" alt="">-->
-            <!--</el-button>-->
-          <!--</el-tooltip>-->
+        <!--<el-tooltip class="item" effect="dark" content="share my screen" placement="bottom">-->
+        <!--<el-button style="float: right;border: none;"  round >-->
+        <!--<img src="../../../static/images/sharemyscreen-blue.png" alt="">-->
+        <!--</el-button>-->
+        <!--</el-tooltip>-->
         <!--</div>-->
-        <div class="view" @click="viewPresence" >
+        <div class="view" @click="viewPresence">
           <el-tooltip class="item" effect="dark" :content="$t('message.Attendance')" placement="bottom">
-            <el-button style="float: right;border: none;"  round >
+            <el-button style="float: right;border: none;" round>
               <img src="../../../static/images/attentance-blue.png" alt="">
             </el-button>
           </el-tooltip>
@@ -111,12 +114,12 @@
 
         <div class="view" @click="draw">
           <el-tooltip class="item" effect="dark" :content="$t('message.Markpen')" placement="bottom">
-          <el-button style="float: right;border: none;"  round >
-            <img src="../../../static/images/pen-blue.png" alt="">
-          </el-button>
+            <el-button style="float: right;border: none;" round>
+              <img src="../../../static/images/pen-blue.png" alt="">
+            </el-button>
           </el-tooltip>
         </div>
-        <div class="view" @click="gobackLesson()" >
+        <div class="view" @click="gobackLesson()">
           <el-tooltip class="item" effect="dark" :content="$t('message.Viewmylessons')" placement="bottom">
             <el-button style="float: right;border: none" round @click="gobackLesson()">
               <img src="../../../static/images/viewmylesson-blue.png" alt="">
@@ -125,8 +128,8 @@
         </div>
         <div class="view" v-show="!lessonIsEnd" @click="takeAbreak">
           <el-tooltip class="item" effect="dark" :content="$t('message.Endtheclass')" placement="bottom">
-            <el-button style="float: right;;border: none"  round @click="takeAbreak">
-              <img src="../../../static/images/over-red.png"  alt="">
+            <el-button style="float: right;;border: none" round @click="takeAbreak">
+              <img src="../../../static/images/over-red.png" alt="">
             </el-button>
           </el-tooltip>
         </div>
@@ -134,71 +137,79 @@
     </div>
 
     <div style="position: absolute;top: 10%;left: 10%;width: 60%">
-      <div class="main" >
+      <div class="main">
         <el-scrollbar>
-          <el-tabs :tab-position="tabPosition" type="card" activeName="materialTab" @tab-click="tabChange" style="color: #0e38b1">
+          <el-tabs :tab-position="tabPosition" type="card" activeName="materialTab" @tab-click="tabChange"
+                   style="color: #0e38b1">
 
             <!--<el-tab-pane name="materialTab" :label="'Teaching Materials(' + materialNumber + ')'">-->
             <el-tab-pane name="materialTab" :label="$t('message.TeachingMaterials')">
               <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
-              <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">{{$t('message.checkall')}}
+              <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">
+                {{$t('message.checkall')}}
               </el-checkbox>
               <el-checkbox-group v-model="checkedMaterialList">
                 <div class="list" v-for="material in materialList">
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
                     <!--<a :href="material.materialUrl" :download="material.materialName">{{material.materialName}}</a>-->
-                    <file-template :id="material.id" :url="material.materialUrl" :name="material.materialName"></file-template>
+                    <file-template :id="material.id" :url="material.materialUrl"
+                                   :name="material.materialName"></file-template>
 
                     <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
                     <!--<a :href="material.materialUrl" :download="material.materialName">-->
-                      <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
-                      <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                    <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                    <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
                     <!--</a>-->
                   </el-checkbox>
                 </div>
               </el-checkbox-group>
-              <el-button style="margin-bottom: 10%;background-color: #0e38b1;color: #fff;margin-top: 1%"  @click="shareMaterial">{{$t('message.SendTo')}}</el-button>
+              <el-button style="margin-bottom: 10%;background-color: #0e38b1;color: #fff;margin-top: 1%"
+                         @click="shareMaterial">{{$t('message.SendTo')}}
+              </el-button>
             </el-tab-pane>
 
             <!--<el-tab-pane name="discussTab" :label="'Discussion(' + discussNumber + ')'" style="margin-bottom: 10%;">-->
             <el-tab-pane name="discussTab" :label="$t('message.Discussion')" style="margin-bottom: 10%;">
               <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
-              <div  v-for="(discussion, index) in discussionList" :key="discussion.id">
+              <div v-for="(discussion, index) in discussionList" :key="discussion.id">
                 <div class="have">
-                <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
-                <p>{{discussion.discussContent}}</p>
-                <ul>
-                  <li v-for="atth in discussion.attachments" >
-                    <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
+                  <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
+                  <p>{{discussion.discussContent}}</p>
+                  <ul>
+                    <li v-for="atth in discussion.attachments">
+                      <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
 
-                    <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
-                    <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
-                    <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
+                      <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
+                      <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
+                      <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
                       <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
                       <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
-                    <!--</a>-->
-                  </li>
-                </ul>
-                <div class="news" v-on:click="getDiscussAnswer(discussion.id)">
-                  <img src="../../assets/images/u2503.png" alt="">
-                  <span class="discuss-answer-number"></span>
-                </div>
+                      <!--</a>-->
+                    </li>
+                  </ul>
+                  <div class="news" v-on:click="getDiscussAnswer(discussion.id)">
+                    <img src="../../assets/images/u2503.png" alt="">
+                    <span class="discuss-answer-number"></span>
+                  </div>
                 </div>
                 <div>
                   <div class="discussion-answer-items" :data-id="discussion.id" v-show="false"><!--messageDisplay-->
-                    <span v-show="discussAnswers.length == 0" style="margin-bottom: 10px; display: inline-block; color: gray;">{{$t('message.Noanswerrecords')}}</span>
+                    <span v-show="discussAnswers.length == 0"
+                          style="margin-bottom: 10px; display: inline-block; color: gray;">{{$t('message.Noanswerrecords')}}</span>
                     <div v-show="discussAnswers.length > 0" class="leftcolor" v-for="discussAnswer in discussAnswers">
                       <span style="color: #999;display: inline-block">{{discussAnswer.studentName}}</span>
-                      <span style="float: right;color: #999;padding-right: 2%">{{ formatDateTime(discussAnswer.updateTime) }}</span>
+                      <span
+                        style="float: right;color: #999;padding-right: 2%">{{ formatDateTime(discussAnswer.updateTime)
+                        }}</span>
                       <p style="word-break: break-all;">{{discussAnswer.answerContent }}</p>
                       <ul>
-                        <li v-for="atth in discussAnswer.attachments" >
+                        <li v-for="atth in discussAnswer.attachments">
                           <!--<a :href="getFileDownloadPath(atth.fileUrl)" :download="atth.fileName">{{ atth.fileName }}</a>-->
                           <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
                           <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
                           <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
-                            <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
-                            <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                          <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                          <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
                           <!--</a>-->
                         </li>
                       </ul>
@@ -208,18 +219,21 @@
               </div>
             </el-tab-pane>
             <!--<el-tab-pane name="exercisesTab" :label="'Exercises(' + execisesNumber + ')'" >-->
-            <el-tab-pane name="exercisesTab" :label="$t('message.Exercises')" >
+            <el-tab-pane name="exercisesTab" :label="$t('message.Exercises')">
               <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
               <div class="exercise">
                 <div class="leftexerc" style="height: 350px">
                   <el-scrollbar style="height: 90%;">
                     <div class="elbtn" style="float: right;padding-right: 2%">
-                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle @click="goBack"></el-button>
+                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle
+                                 @click="goBack"></el-button>
                       <h4 style="display: inline-block">{{currentPage}}/{{pages}}</h4>
-                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle @click="toNextPage"></el-button>
+                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle
+                                 @click="toNextPage"></el-button>
                     </div>
                     <div v-for="(exercises,index) in existExercisesList">
-                      <h4 style="display:inline-block; border-bottom: 2px solid #999">{{$t('message.Exercises')}} {{exercises.sort}}</h4>
+                      <h4 style="display:inline-block; border-bottom: 2px solid #999">
+                        {{$t('message.Exercises')}} {{exercises.sort}}</h4>
                       <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%"
                             v-show="exercises.questionType == '1'">{{$t('message.Singlechoice')}}</span>
                       <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%"
@@ -270,8 +284,8 @@
                       <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
                       <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
                       <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
-                        <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
-                        <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
+                      <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                      <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
                       <!--</a>-->
                     </li>
                   </ul>
@@ -283,70 +297,70 @@
               <img src="../../assets/images/u273.png" alt="">
             </span>
               <!--<p>Lesson： {{ lessonName }}</p>-->
-             <!-- <div class="exercise" style="width: 100%;margin-right: 2%">
-                &lt;!&ndash;<div class="leftexerc" style="height: 350px">
-                  <el-scrollbar style="height: 100%">
-                    <h6 style="display:inline-block; border-bottom: 2px solid #999">Exercises1</h6>
-                    <div style="padding-left:2%; border-bottom: 1px solid #ccc">
-                      <img src="../../assets/images/u558.png" alt="">
-                      <p style="display:inline-block">Which of the planets of the solar</p>
-                    </div>
-                  </el-scrollbar>
-                </div>&ndash;&gt;
+              <!-- <div class="exercise" style="width: 100%;margin-right: 2%">
+                 &lt;!&ndash;<div class="leftexerc" style="height: 350px">
+                   <el-scrollbar style="height: 100%">
+                     <h6 style="display:inline-block; border-bottom: 2px solid #999">Exercises1</h6>
+                     <div style="padding-left:2%; border-bottom: 1px solid #ccc">
+                       <img src="../../assets/images/u558.png" alt="">
+                       <p style="display:inline-block">Which of the planets of the solar</p>
+                     </div>
+                   </el-scrollbar>
+                 </div>&ndash;&gt;
 
-                &lt;!&ndash;<div class="rightexerc" :style="{width: '300px', height: '300px'}">
-                  <div id="bmyChart"></div>
-                </div>&ndash;&gt;
-                &lt;!&ndash;<div>
-                  <p style="display: inline-block;padding-left: 2%">Statistics Responses </p>
-                  <h3 style="color: #880000;display: inline-block">14</h3>/<span>16</span>
-                  &lt;!&ndash;<span class="el-icon-arrow-left"></span>&ndash;&gt;
-                  <el-button style="margin-left: 8%" type="primary" icon="el-icon-caret-left" circle></el-button>
-                  <el-button type="primary" icon="el-icon-caret-right" circle></el-button>
-                </div>&ndash;&gt;
-                <div style="float: left;width: 38%;height: 300px;margin: 1% 0%">
-                  &lt;!&ndash;<el-scrollbar style="height: 100%">
-                    <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%;">
-                      <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
-                      <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
-                      <p>
-                        <img src="../../assets/images/u558.png" alt="">
-                        than the famous Sirius, the</p>
-                    </div>
-                    <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
-                      <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
-                      <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
-                      <p>
-                        <img src="../../assets/images/u558.png" alt="">
-                        than the famous Sirius, the</p>
-                    </div>
-                    <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
-                      <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
-                      <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
-                      <p>
-                        <img src="../../assets/images/u558.png" alt="">
-                        than the famous Sirius, the</p>
-                    </div>
-                    <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
-                      <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
-                      <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
-                      <p>
-                        <img src="../../assets/images/u558.png" alt="">
-                        than the famous Sirius, the
-                      </p>
-                    </div>
-                    <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
-                      <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
-                      <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
-                      <p>
-                        <img src="../../assets/images/u558.png" alt="">
-                        than the famous Sirius, the
-                      </p>
-                    </div>
-                  </el-scrollbar>&ndash;&gt;
+                 &lt;!&ndash;<div class="rightexerc" :style="{width: '300px', height: '300px'}">
+                   <div id="bmyChart"></div>
+                 </div>&ndash;&gt;
+                 &lt;!&ndash;<div>
+                   <p style="display: inline-block;padding-left: 2%">Statistics Responses </p>
+                   <h3 style="color: #880000;display: inline-block">14</h3>/<span>16</span>
+                   &lt;!&ndash;<span class="el-icon-arrow-left"></span>&ndash;&gt;
+                   <el-button style="margin-left: 8%" type="primary" icon="el-icon-caret-left" circle></el-button>
+                   <el-button type="primary" icon="el-icon-caret-right" circle></el-button>
+                 </div>&ndash;&gt;
+                 <div style="float: left;width: 38%;height: 300px;margin: 1% 0%">
+                   &lt;!&ndash;<el-scrollbar style="height: 100%">
+                     <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%;">
+                       <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
+                       <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
+                       <p>
+                         <img src="../../assets/images/u558.png" alt="">
+                         than the famous Sirius, the</p>
+                     </div>
+                     <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
+                       <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
+                       <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
+                       <p>
+                         <img src="../../assets/images/u558.png" alt="">
+                         than the famous Sirius, the</p>
+                     </div>
+                     <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
+                       <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
+                       <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
+                       <p>
+                         <img src="../../assets/images/u558.png" alt="">
+                         than the famous Sirius, the</p>
+                     </div>
+                     <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
+                       <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
+                       <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
+                       <p>
+                         <img src="../../assets/images/u558.png" alt="">
+                         than the famous Sirius, the
+                       </p>
+                     </div>
+                     <div style="border: 1px solid #ccc;border-radius: 4px;margin: 1% 4% 0px 2%">
+                       <p style="display: inline-block">Alexander</p><span>[201102099011]</span>
+                       <span style="display: inline-block;float: right">12:00:36  02/01/2017</span>
+                       <p>
+                         <img src="../../assets/images/u558.png" alt="">
+                         than the famous Sirius, the
+                       </p>
+                     </div>
+                   </el-scrollbar>&ndash;&gt;
 
-                </div>
-              </div>-->
+                 </div>
+               </div>-->
             </el-tab-pane>
           </el-tabs>
               
@@ -372,7 +386,8 @@
 
           <div>
             <div style="text-align: center;">
-              <object classid="clsid:49CBC347-34CD-4687-9D5C-C45E3D3314F0" id="JetionCapturer" width="1000" height="860">
+              <object classid="clsid:49CBC347-34CD-4687-9D5C-C45E3D3314F0" id="JetionCapturer" width="1000"
+                      height="860">
                 <span>{{$t('message.Yourbrowserdosenotsupportobjectprojection')}}</span>
               </object>
             </div>
@@ -391,7 +406,8 @@
             <div>{{$t('message.Totalattendance')}} {{studentPresence.list.length}}</div>
             <div style="width: 80%; margin: auto">
               <el-tag class="presence-student" type="success" v-for="student in studentPresence.list"
-                      :key="index"    style="padding: 20px; margin-right: 40px; margin-bottom: 20px; height: auto; width: 150px; font-size: 18px; color: #666; background-color: #f8f8f8">
+                      :key="index"
+                      style="padding: 20px; margin-right: 40px; margin-bottom: 20px; height: auto; width: 150px; font-size: 18px; color: #666; background-color: #f8f8f8">
                 <span style="display: block; overflow: hidden;">
                   {{student.name}}
                 </span>
@@ -400,10 +416,10 @@
                 </span>
               </el-tag>
               <!--<el-row :gutter="20">-->
-                <!--<el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
+              <!--<el-col :span="6"><div class="grid-content bg-purple"></div></el-col>-->
               <!--</el-row>-->
               <!--<ul>-->
-                <!--<li v-for="student in studentPresence.list">{{student.name}}</li>-->
+              <!--<li v-for="student in studentPresence.list">{{student.name}}</li>-->
               <!--</ul>-->
             </div>
           </div>
@@ -430,8 +446,8 @@
     data() {
       return {
         lessonIsEnd: false,
-        selectValue:'',
-        options:[
+        selectValue: '',
+        options: [
           {
             value: 'cn',
             label: '中文'
@@ -472,11 +488,11 @@
             answerContent:'',
           }*!/
         ],*/
-        pageSize:1,//页大小
-        currentPage:1,//当前页
+        pageSize: 1,//页大小
+        currentPage: 1,//当前页
         pages: 0,//总页数
-        total:0,//总条数
-        isSubmit:1,
+        total: 0,//总条数
+        isSubmit: 1,
         msg: '',
 
         filePreviewDialogVisible: false,
@@ -497,7 +513,7 @@
     created() {
       let that = this;
       console.log(localStorage.lang)
-      that.selectValue = localStorage.lang == undefined?'en':localStorage.lang
+      that.selectValue = localStorage.lang == undefined ? 'en' : localStorage.lang
       this.langChange(that.selectValue)
     },
     mounted() {
@@ -505,12 +521,12 @@
       this.loadFinishexercise();
       this.getMaterialList();
       this.getLessonDetail();
-     /* this.getAssignmentListByLessonId();*/
+      /* this.getAssignmentListByLessonId();*/
     },
     methods: {
       getLoginUser: util.getLoginUser,
 
-      execisesAnswerShowToggle: function() {
+      execisesAnswerShowToggle: function () {
         this.execisesAnswerShow = !this.execisesAnswerShow;
       },
 
@@ -556,7 +572,8 @@
         let captureImg = JetionCapturer.CaptureToBase64();
 
         if (!captureImg) {
-          this.$message.error(this.$t('message.Captureprojectionfail'));/* "Capture projection fail"*/
+          this.$message.error(this.$t('message.Captureprojectionfail'));
+          /* "Capture projection fail"*/
           return;
         }
         captureImg = captureImg.replace(/\r|\n/g, "");
@@ -584,19 +601,19 @@
         /*debugger;*/
         var oC = document.getElementById('c1');
         var oCG = oC.getContext('2d');
-        oCG.strokeStyle="red";
-        oCG.lineWidth=3;
-        oC.onmousedown = function(ev) {
+        oCG.strokeStyle = "red";
+        oCG.lineWidth = 3;
+        oC.onmousedown = function (ev) {
 
           var ev = ev || window.event;
-          oCG.moveTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);
+          oCG.moveTo(ev.clientX - oC.offsetLeft, ev.clientY - oC.offsetTop);
           //ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop鼠标在当前画布上X,Y坐标
-          document.onmousemove = function(ev) {
+          document.onmousemove = function (ev) {
             var ev = ev || window.event;//获取event对象
-            oCG.lineTo(ev.clientX-oC.offsetLeft,ev.clientY-oC.offsetTop);
+            oCG.lineTo(ev.clientX - oC.offsetLeft, ev.clientY - oC.offsetTop);
             oCG.stroke();
           };
-          oC.onmouseup = function() {
+          oC.onmouseup = function () {
             document.onmousemove = null;
             document.onmouseup = null;
           };
@@ -618,19 +635,19 @@
               this.$message.error(res.data.message);
             }
           }).catch((err) => {
-            console.error("preview fail", err);
-            this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
+          console.error("preview fail", err);
+          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
         });
       },
 
-      downFile(filePath){
+      downFile(filePath) {
         /*window.open(`${process.env.NODE_ENV}/http://localhost:8088/${filePath}`);*/
         window.open(`${process.env.NODE_ENV}${filePath}`);
       },
 
       centerDialogVisibleShow() {
         console.log(this.$route.query.isShow);
-        if (this.$route.query.isShow==undefined) {
+        if (this.$route.query.isShow == undefined) {
           this.centerDialogVisible = true
         } else {
           this.lessonIsEnd = this.$route.query.isShow;
@@ -686,7 +703,7 @@
         }
 
         this.myChart.setOption({
-          title: {text:this.$t('message.Responses') + answerRecordVos.length + '/' + studentNumber },
+          title: {text: this.$t('message.Responses') + answerRecordVos.length + '/' + studentNumber}, /*this.total*/
           tooltip: {},
           xAxis: {
             data: ["A", "B", "C", "D", "E", "F", "G", "H"]
@@ -798,7 +815,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.materialList = res.data.entity;
-               //this.materialNumber = res.data.entity.length;
+              //this.materialNumber = res.data.entity.length;
             } else {
               alert(res.data.message);
             }
@@ -879,7 +896,7 @@
           this.getExercisesList();
         } else if (tab.name == "assignmentTab") {
           this.getAssignmentList();
-        }else if(tab.name=="goback"){
+        } else if (tab.name == "goback") {
           this.$router.push({path: "/homePage/prepare"});
         }
       },
@@ -887,13 +904,13 @@
         this.checkedMaterialList = val ? this.materialList : [];
         this.isIndeterminate = false;
       },
-     /* gobackk: function () {
-        this.$router.push({path: "/homePage/goTeach"});
-      },*/
+      /* gobackk: function () {
+         this.$router.push({path: "/homePage/goTeach"});
+       },*/
       gobackLesson: function () {
         this.$router.push({path: "/personalCenterManagement/myCourse"});
       },
-      backlogin:function (){
+      backlogin: function () {
         let that = this;
         this.post("/logout", null, function () {
           that.$message.success(this.$t('message.LogoutSuccess'));
@@ -917,7 +934,8 @@
       },*/
       shareMaterial: function () {
         if (this.checkedMaterialList.length == 0) {
-          this.$message.error(this.$t('message.Pleaseselectmaterialtoshare'));/*"Please select material to share"*/
+          this.$message.error(this.$t('message.Pleaseselectmaterialtoshare'));
+          /*"Please select material to share"*/
           return;
         }
         let shareMaterialIds = [];
@@ -933,7 +951,8 @@
         this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/shareStatus/edit`, param)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info(this.$t('message.Sharematerialsuccess'));/*"Share material success"*/
+              this.$message.info(this.$t('message.Sharematerialsuccess'));
+              /*"Share material success"*/
               // this.checkedMaterialList = [];
               this.getMaterialList();
             } else {
@@ -945,22 +964,21 @@
       },
 
       //选择题分页
-
-      loadFinishexercise:function () {
+      loadFinishexercise: function () {
         var param = {
-          lessonId:this.lessonId,
+          lessonId: this.lessonId,
           pageIndex: this.currentPage,
           pageSize: this.pageSize
         };
-        this.$http.get(`${process.env.NODE_ENV}/choiceQuestion/pageList`, {params:param})
+        this.$http.get(`${process.env.NODE_ENV}/choiceQuestion/pageList`, {params: param})
           .then((res) => {
             if (res.data.code == 200) {
               this.existExercisesList = res.data.entity.list;
               this.total = res.data.entity.total;
               this.currentPage = res.data.entity.pageIndex;
-              this.pages = (res.data.entity.total)%(res.data.entity.pageSize) == 0 ?
-                (res.data.entity.total)/(res.data.entity.pageSize) :
-                (res.data.entity.total)/(res.data.entity.pageSize)+1;
+              this.pages = (res.data.entity.total) % (res.data.entity.pageSize) == 0 ?
+                (res.data.entity.total) / (res.data.entity.pageSize) :
+                (res.data.entity.total) / (res.data.entity.pageSize) + 1;
               this.pageSize = res.data.entity.pageSize;
 
               if (this.existExercisesList.length > 0) {
@@ -985,15 +1003,15 @@
         });
       },
       //向下翻页
-      toNextPage(){
-        this.currentPage = this.currentPage+1;
-        if(this.currentPage > this.pages){
+      toNextPage() {
+        this.currentPage = this.currentPage + 1;
+        if (this.currentPage > this.pages) {
           this.$message({
             message: this.$t('message.lastpage'),
             type: 'warning'
           });
           this.currentPage--;
-        }else if(this.currentPage <= this.pages){
+        } else if (this.currentPage <= this.pages) {
           this.selectedAnswerCode = "";
           this.isSubmit = 1;
           this.loadFinishexercise();
@@ -1001,30 +1019,30 @@
 
       },
       //向上翻页
-      goBack(){
-        this.currentPage = this.currentPage-1;
-        if(this.currentPage == 0){
+      goBack() {
+        this.currentPage = this.currentPage - 1;
+        if (this.currentPage == 0) {
           this.$message({
             message: this.$t('message.firstpage'),
             type: 'warning'
           });
           this.currentPage++;
-        }else{
+        } else {
           this.selectedAnswerCode = "";
           this.isSubmit = 1;
           this.loadFinishexercise();
         }
 
       },
-      takeAbreak:function () {
+      takeAbreak: function () {
         var abreak = {
-          lessonCode:this.lessonCode,
+          lessonCode: this.lessonCode,
         }
-        this.$http.post(`${process.env.NODE_ENV}/teaching/end/edit`,abreak)
-          .then((res)=>{
-            if (res.data.code == 200){
+        this.$http.post(`${process.env.NODE_ENV}/teaching/end/edit`, abreak)
+          .then((res) => {
+            if (res.data.code == 200) {
               this.$message({
-                message:this.$t('message.Classisover'),
+                message: this.$t('message.Classisover'),
                 type: 'success'
               });
               this.$router.push({path: "/homePage/goTeach"});
@@ -1034,19 +1052,19 @@
         });
       },
 
-      goToFirst(){
-        this.$router.push({path:"/homePage/prepare"});
+      goToFirst() {
+        this.$router.push({path: "/homePage/prepare"});
       },
-     /* backlogin() {
-         this.$router.push({path: "/"});
-      },*/
+      /* backlogin() {
+          this.$router.push({path: "/"});
+       },*/
       mycourse() {
         this.$router.push({path: "/personalCenterManagement/myCourse"});
       },
       //语言切换
-      langChange(e){
+      langChange(e) {
         // console.log(e)
-        localStorage.setItem('lang',e);
+        localStorage.setItem('lang', e);
         this.$i18n.locale = e;
       }
 
@@ -1059,14 +1077,15 @@
   .student-presence .el-dialog.is-fullscreen {
     width: 80% !important;
   }
+
   .student-presence .el-dialog.is-fullscreen .el-dialog__body {
     height: 90%;
   }
 
-
   .object-projection .el-dialog.is-fullscreen {
     width: 80% !important;
   }
+
   .object-projection .el-dialog.is-fullscreen .el-dialog__body {
     height: 90%;
   }
@@ -1074,6 +1093,7 @@
   .file-preview .el-dialog.is-fullscreen {
     width: 80% !important;
   }
+
   .file-preview .el-dialog.is-fullscreen .el-dialog__body {
     height: 90%;
   }
@@ -1200,26 +1220,31 @@
     padding-left: 2%;
     float: left;
   }
-.view {
-  margin-top: 1%;
-  float: right;
-  cursor: pointer;
-}
+
+  .view {
+    margin-top: 1%;
+    float: right;
+    cursor: pointer;
+  }
+
   .view:active {
     background-color: #12128c;
     cursor: pointer;
   }
+
   .tool {
     background-color: #fff;
     box-shadow: 0 0 5px #0647ff;
     border-radius: 30px;
   }
-  .tooll{
+
+  .tooll {
     background-color: #0e38b1
   }
+
   .tooll:focus {
     background-color: #28caff;
-   /* box-shadow: 0 0 5px #60d6ff;
-    border-radius: 30px;*/
+    /* box-shadow: 0 0 5px #60d6ff;
+     border-radius: 30px;*/
   }
 </style>

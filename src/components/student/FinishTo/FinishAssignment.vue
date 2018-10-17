@@ -1,10 +1,10 @@
 <template>
   <div class="all">
       <el-scrollbar style="height: 100%">
-      <!--<div class="have">
-        <h5>Assignment 1</h5>
-        <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">12121212</p>
-        <ul style="padding-left: 2%">
+        <!--<div class="have">
+          <h5>Assignment 1</h5>
+          <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">12121212</p>
+          <ul style="padding-left: 2%">
           <li >name <i class="el-icon-download" style="cursor: pointer;"></i></li>
         </ul>
       </div>-->
@@ -59,13 +59,14 @@
     },
     methods: {
       preview: function (filePath) {
-        this.filePreviewDialogVisible = true;
+
         this.previewHtml = "";
 
         this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
           .then((res) => {
             if (res.data.code == 200) {
               this.previewHtml = res.data.entity;
+              this.filePreviewDialogVisible = true;
             } else if (res.data.code == 300) {
               this.$message.error(res.data.message);
               this.$router.push("/");
