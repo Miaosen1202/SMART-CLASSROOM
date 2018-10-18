@@ -9,31 +9,17 @@
       <el-checkbox-group v-model="checkedMaterials" @change="handleCheckedCitiesChange">
         <el-checkbox v-for="(material, index) in materialList" :key="index" :label="material"
                      style="display: block;padding-top: 2%">
-          <!--<img src="../../../assets/images/u558.png" alt="">-->
-          <!--<a :href="material.materialUrl" :download="material.materialName">{{ material.materialName }}</a>-->
-            <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
-            <!--<i class="el-icon-download" @click="downFile(material.materialUrl)" style="cursor: pointer;"></i>-->
-          <span @click="preview(material.localPath)">{{material.materialName}}</span>
-          <a :href="material.materialUrl" :download="material.materialName">
-            <i  style="cursor: pointer;">
-              <img src="../../../../static/images/UPLOAD.png" alt="">
-            </i>
-
-          </a>
+          <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
+          <!--<a :href="material.materialUrl" :download="material.materialName">-->
+            <!--<i  style="cursor: pointer;">-->
+              <!--<img src="../../../../static/images/UPLOAD.png" alt="">-->
+            <!--</i>-->
+          <!--</a>-->
+          <file-template :id="material.id" :url="material.materialUrl" :name="material.materialName"></file-template>
         </el-checkbox>
       </el-checkbox-group>
     </el-scrollbar>
 
-
-    <el-dialog
-      class="file-preview"
-      :title="$t('message.preview')"
-      :visible.sync="filePreviewDialogVisible"
-      width="100%"
-      fullscreen>
-      <iframe :src="previewHtml" style="width: 100%; height: 100%">
-      </iframe>
-    </el-dialog>
   </div>
 </template>
 
@@ -75,28 +61,6 @@
         return;
       },
 
-      preview: function (filePath) {
-
-        this.previewHtml = "";
-
-        this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
-          .then((res) => {
-            if (res.data.code == 200) {
-              this.previewHtml = res.data.entity;
-              this.filePreviewDialogVisible = true;
-            } else if (res.data.code == 300) {
-              this.$message.error(res.data.message);
-              this.$router.push("/");
-            } else {
-              console.error("preview fail", res.data.message);
-              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));/*预览文件失败，请下载至本地查看*/
-            }
-          }).catch((err) => {
-          console.error("preview fail", err);
-          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
-        });
-      },
-
       handleCheckAllChange(val) {
         this.checkedMaterials = val ? this.materialList : [];
         this.isIndeterminate = false;
@@ -124,14 +88,7 @@
   }
 </script>
 
-<style>
-  .file-preview .el-dialog.is-fullscreen {
-    width: 80% !important;
-  }
-  .file-preview .el-dialog.is-fullscreen .el-dialog__body {
-    height: 90%;
-  }
-</style>
+
 <style scoped="">
   .all {
     margin: 0px 2%;

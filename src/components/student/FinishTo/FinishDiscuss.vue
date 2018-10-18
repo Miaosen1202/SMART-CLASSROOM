@@ -16,13 +16,14 @@
         <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{discussion.discussContent}}</p>
         <ul style="padding-left: 2%">
           <li v-for="(attachment,ind) in discussion.attachments" :key="ind">
-            <span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>
-            <a :href="attachment.fileUrl" :download="attachment.fileName">
-              <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
-              <i style="cursor: pointer;">
-                <img src="../../../../static/images/UPLOAD.png" alt="">
-              </i>
-            </a>
+            <!--<span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>-->
+            <!--<a :href="attachment.fileUrl" :download="attachment.fileName">-->
+              <!--<i style="cursor: pointer;">-->
+                <!--<img src="../../../../static/images/UPLOAD.png" alt="">-->
+              <!--</i>-->
+            <!--</a>-->
+            <file-template :id="attachment.id" :url="attachment.fileUrl" :name="attachment.fileName"></file-template>
+
             <!--<a :href="attachment.fileUrl" :download="attachment.fileName">-->
             <!--<span>{{attachment.fileName}}</span><i class="el-icon-download" style="cursor: pointer;"></i>-->
             <!--</a>-->
@@ -38,15 +39,17 @@
             <P>{{submitHistory.answerContent}}</P>
 
             <ul v-for="(attachment,ind) in submitHistory.attachments" :key="ind">
-              <a href="javascript:void(0)"><span style="cursor: pointer"
-                                                 @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>
 
-              <a :href="attachment.fileUrl" :download="attachment.fileName">
-                <!-- <i class="el-icon-download" style="cursor: pointer;"></i>-->
-                <i style="cursor: pointer;">
-                  <img src="../../../../static/images/UPLOAD.png" alt="">
-                </i>
-              </a>
+              <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
+
+              <!--<a href="javascript:void(0)"><span style="cursor: pointer"-->
+                                                 <!--@click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span></a>-->
+              <!--<a :href="attachment.fileUrl" :download="attachment.fileName">-->
+                <!--&lt;!&ndash; <i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
+                <!--<i style="cursor: pointer;">-->
+                  <!--<img src="../../../../static/images/UPLOAD.png" alt="">-->
+                <!--</i>-->
+              <!--</a>-->
             </ul>
             <!--上传文件-->
           </div>
@@ -84,25 +87,15 @@
 
             <!--按钮-->
             <span slot="footer" class="dialog-footer">
-        <el-button style="margin-top: 1%;margin-left: 40%;margin-bottom: 1%;background-color: #0e38b1;" size="medium"
-                   type="primary" @click="submitQuestionAnswer(discussionList[0])">{{$t('message.submit')}}</el-button>
-        <el-button size="medium">{{$t('message.cancel')}}</el-button>
-      </span>
+              <el-button style="margin-top: 1%;margin-left: 40%;margin-bottom: 1%;background-color: #0e38b1;" size="medium"
+                         type="primary" @click="submitQuestionAnswer(discussionList[0])">{{$t('message.submit')}}</el-button>
+              <el-button size="medium">{{$t('message.cancel')}}</el-button>
+            </span>
           </div>
         </div>
       </div>
 
     </el-scrollbar>
-
-    <el-dialog
-      class="file-preview"
-      :title="$t('message.preview')"
-      :visible.sync="filePreviewDialogVisible"
-      width="100%"
-      fullscreen>
-      <iframe :src="previewHtml" style="width: 100%; height: 100%">
-      </iframe>
-    </el-dialog>
   </div>
 </template>
 
@@ -157,28 +150,6 @@
         sec = sec.length < 2 ? ('0' + sec) : sec;
 
         return [year, month, day].join('-') + " " + [hour, min, sec].join(":");
-      },
-      preview: function (filePath) {
-
-        this.previewHtml = "";
-
-        this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
-          .then((res) => {
-            if (res.data.code == 200) {
-              this.previewHtml = res.data.entity;
-              this.filePreviewDialogVisible = true;
-            } else if (res.data.code == 300) {
-              this.$message.error(res.data.message);
-              this.$router.push("/");
-            } else {
-              console.error("preview fail", res.data.message);
-              this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
-              /*ThepreviewfilefailedPleasedownloadittoviewitlocally*/
-            }
-          }).catch((err) => {
-          console.error("preview fail", err);
-          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
-        });
       },
 
       toggle: function () {
@@ -349,15 +320,6 @@
   }
 </script>
 
-<style>
-  .file-preview .el-dialog.is-fullscreen {
-    width: 80% !important;
-  }
-
-  .file-preview .el-dialog.is-fullscreen .el-dialog__body {
-    height: 90%;
-  }
-</style>
 <style scoped>
   .all {
     margin: 0px 2%;

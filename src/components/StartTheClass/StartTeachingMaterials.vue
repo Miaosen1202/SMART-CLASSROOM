@@ -280,13 +280,7 @@
                   <p>{{assignment.assignmentName}}</p>
                   <ul>
                     <li v-for="atth in assignment.attachments">
-                      <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
                       <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
-                      <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
-                      <!--<a :href="atth.fileUrl" :download="atth.fileName">-->
-                      <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->
-                      <!--<img src="../../../static/images/UPLOAD.png" alt="" style="cursor: pointer;">-->
-                      <!--</a>-->
                     </li>
                   </ul>
                 </div>
@@ -365,16 +359,6 @@
           </el-tabs>
               
         </el-scrollbar>
-
-        <el-dialog
-          class="file-preview"
-          :title="$t('message.preview')"
-          :visible.sync="filePreviewDialogVisible"
-          width="100%"
-          fullscreen>
-          <iframe :src="previewHtml" style="width: 100%; height: 100%">
-          </iframe>
-        </el-dialog>
 
         <el-dialog
           class="object-projection"
@@ -618,26 +602,6 @@
             document.onmouseup = null;
           };
         };
-      },
-      preview: function (filePath) {
-        this.filePreviewDialogVisible = true;
-        this.previewHtml = "";
-
-        this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
-          .then((res) => {
-            if (res.data.code == 200) {
-              this.previewHtml = res.data.entity;
-            } else if (res.data.code == 300) {
-              this.$message.error(res.data.message);
-              this.$router.push("/");
-            } else {
-              console.error("preview fail", res.data.message);
-              this.$message.error(res.data.message);
-            }
-          }).catch((err) => {
-          console.error("preview fail", err);
-          this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
-        });
       },
 
       downFile(filePath) {
@@ -1087,14 +1051,6 @@
   }
 
   .object-projection .el-dialog.is-fullscreen .el-dialog__body {
-    height: 90%;
-  }
-
-  .file-preview .el-dialog.is-fullscreen {
-    width: 80% !important;
-  }
-
-  .file-preview .el-dialog.is-fullscreen .el-dialog__body {
     height: 90%;
   }
 </style>

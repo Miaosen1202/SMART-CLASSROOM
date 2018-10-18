@@ -94,16 +94,6 @@
         <el-button type="primary" @click="batchUpload">{{$t('message.save')}}</el-button>
       </span>
     </el-dialog>
-
-    <el-dialog
-      class="file-preview"
-      :title="$t('message.preview')"
-      :visible.sync="filePreview.dialogVisible"
-      width="100%"
-      fullscreen>
-      <iframe :src="filePreview.previewUrl" style="width: 100%; height: 100%">
-      </iframe>
-    </el-dialog>
   </div>
 </template>
 
@@ -168,27 +158,6 @@
     methods: {
       dateTimeFormatter: function (row, col, date) {
         return util.formatDateTime(date);
-      },
-
-      preview: function (filePath) {
-        this.filePreview.dialogVisible = true;
-        this.filePreview.previewUrl = "";
-
-        this.$http.get(`${process.env.NODE_ENV}/file/preview`, {params: {filePath: filePath}})
-          .then((res) => {
-            if (res.data.code == 200) {
-              this.filePreview.previewUrl = res.data.entity;
-            } else if (res.data.code == 300) {
-              this.$message.error(res.data.message);
-              this.$router.push("/");
-            } else {
-              console.error("preview fail", res.data.message);
-              this.$message.error(res.data.message);
-            }
-          }).catch((err) => {
-            console.error("preview fail", err);
-            this.$message.error(this.$t('message.ThepreviewfilefailedPleasedownloadittoviewitlocally'));
-        });
       },
 
       handleSelectionChange(val) {
@@ -329,14 +298,7 @@
   }
 </script>
 
-<style>
-  .file-preview .el-dialog.is-fullscreen {
-    width: 80% !important;
-  }
-  .file-preview .el-dialog.is-fullscreen .el-dialog__body {
-    height: 90%;
-  }
-</style>
+
 <style scoped="">
   .all {
     margin: 2%;
