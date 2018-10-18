@@ -86,7 +86,7 @@ var $http = axios.create({
 
 // 为请求增加动态随机数，防止浏览器缓存
 $http.interceptors.request.use(function (request) {
-  request.headers["language"] = "zh";
+  request.headers["language"] = localStorage.lang || "en";
   if (request.method.toUpperCase() === "GET") {
     if (request.params) {
       request.params["_str"] = new Date().getTime();
