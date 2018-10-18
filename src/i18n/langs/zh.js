@@ -238,6 +238,8 @@ const zh = {
     "pleaseSelectLeastOneRowOfData": "请至少选择一行数据",
 
     'onlySupportFileType': '仅支持文件类型: ',
+    'Anerroroccurredinrequest':'请求出现错误',
+    'Filetypeisnotsupportpreview':'文件类型不支持预览',
 
     // 管理端菜单
     // -------- start -----------

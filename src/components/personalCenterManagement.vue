@@ -43,28 +43,28 @@
     background-color: #ccc;
   }
   .left{
-    width: 18%;
-    height: 88%;
+    width: 12%;
+    height: 90%;
     float: left;
     background-color: #0138b1;
   }
   .right {
-    width: 82%;
+    width: 85%;
     height: 90%;
     /* background-color: blue;*/
     float: left;
   }
   .right-top{
     width: 100%;
-    height: 8%;
-    border: 1px solid #929292;
+    /*height: 8%;*/
+    /*border: 1px solid #929292;*/
     background-color: white;
   }
   .right-main{
-    width: 98%;
-    height: 96%;
-    margin-top: 1%;
-    margin-left: 2%;
+    width: 100%;
+    height: 96.6%;
+    margin-top: 1.6%;
+    margin-left: 1.6%;
     background-color: #fff;
 
   }

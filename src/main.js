@@ -68,7 +68,7 @@ Vue.component("file-template", {
       } else {
         this.previewType = "";
         this.previewUrl = "";
-        this.$message.error("File type is not support preview");
+        this.$message.error(this.$t("message.Filetypeisnotsupportpreview"));/*"File type is not support preview"*/
         return;
       }
       this.previewVisible = true;
@@ -81,7 +81,16 @@ Vue.component("file-template", {
 var $http = axios.create({
   baseURL: process.env.BASE_API,
   timeout: 5000,
-  withCredentials: true
+  withCredentials: true,
+  // headers: {"language": "zh"}
+  // transformRequest: [function (data, header) {
+  //   // Do whatever you want to transform the data
+  //   console.log("header", header)
+  //   header.common["language"] = "zh"
+  //   console.log("header", header)
+  //   return data;
+  // }],
+
 });
 
 // 为请求增加动态随机数，防止浏览器缓存
@@ -96,10 +105,8 @@ $http.interceptors.request.use(function (request) {
       }
     }
   }
-
   return request;
 });
-
 // 拦截全局响应，处理未登录操作
 $http.interceptors.response.use(function (response) {
   if (response.data.code === 300) {
@@ -113,7 +120,7 @@ $http.interceptors.response.use(function (response) {
   }
 }, function (error) {
   console.error("request error", error)
-  Vue.prototype.$message.error("An error occurred in request");
+  Vue.prototype.$message.error(this.$t("message.Anerroroccurredinrequest"));/*"An error occurred in request"*/
   // 不调用 Promise.reject(error), 使用默认处理：提示一个错误
   // return Promise.reject(error);
   return error;
@@ -171,7 +178,7 @@ Vue.prototype._del = function (path, param, successCallback, errorCallback) {
     cancelButtonText: this.$t('message.cancel'),
     type: 'warning'
   })
-  // this.$confirm('确认删除？')
+  // this.$confirm('确认删除？'
     .then(() => {
       this.post(path + "/deletes", param, (data)=>{
         successCallback(data);
