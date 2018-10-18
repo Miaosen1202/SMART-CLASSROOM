@@ -1,5 +1,5 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN' //引入element语言包
-const cn = {
+const zh = {
   message: {
     /*登陆页面*/
     'AccountName':'用户名',
@@ -282,4 +282,4 @@ const cn = {
   ...zhLocale
 }
 
-export default cn;
+export default zh;

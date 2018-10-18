@@ -60,7 +60,8 @@ Vue.component("file-template", {
         this.previewUrl = this.url + "/download?id=" + this.id;
       } else if (/\.mp3$/.test(filename)) {
         this.previewType = "audio";
-        this.previewUrl = this.url + "/download?id=" + this.id;
+        this.previewUrl = "/" + this.url + "/download?id=" + this.id;
+        console.log(this.previewUrl)
       } else if (/\.(mp4|swf)$/.test(filename)) {
         this.previewType = "video";
         this.previewUrl = `${process.env.NODE_ENV}` + "/" + this.url + "/download?id=" + this.id;
@@ -85,6 +86,7 @@ var $http = axios.create({
 
 // 为请求增加动态随机数，防止浏览器缓存
 $http.interceptors.request.use(function (request) {
+  request.headers["language"] = "zh";
   if (request.method.toUpperCase() === "GET") {
     if (request.params) {
       request.params["_str"] = new Date().getTime();
