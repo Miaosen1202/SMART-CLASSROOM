@@ -12,12 +12,15 @@
               <input class="form-control" type="password" :placeholder="$t('message.Password')" v-model="password">
             </div>
             <div style="padding: 4%;overflow: auto;"><!--Please contact the system administrator-->
-              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" :content="$t('message.Pleasecontact')"
+              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark"
+                          :content="$t('message.Pleasecontact')"
                           placement="top" popper-class="test">
                 <a href="javascript:;">{{$t('message.Forgotyourpassword')}}</a>
               </el-tooltip>
             </div>
-            <el-button  v-on:click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button> <!--@click="goToLogin"-->
+            <el-button v-on:click="goToLogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">
+              {{$t('message.Login')}}
+            </el-button> <!--@click="goToLogin"-->
           </el-tab-pane>
 
 
@@ -32,12 +35,15 @@
               <input class="form-control" type="text" :placeholder="$t('message.lessonCode')" v-model="lessonCode">
             </div>
             <div style="padding: 4%;overflow: auto;">
-              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark" :content="$t('message.Pleasecontact')"
+              <el-tooltip style="float: right" class="item forget-pwd-tip" effect="dark"
+                          :content="$t('message.Pleasecontact')"
                           placement="top" popper-class="test">
                 <a href="javascript:;">{{$t('message.Forgotyourpassword')}}</a>
               </el-tooltip>
             </div>
-            <el-button v-on:click="studentslogin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button> <!--@click="goToLogin"-->
+            <el-button v-on:click="studentslogin()"
+                       style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}
+            </el-button> <!--@click="goToLogin"-->
           </el-tab-pane>
 
 
@@ -48,15 +54,17 @@
             <div class="password">
               <input class="form-control" type="password" :placeholder="$t('message.Password')" v-model="password">
             </div>
-            <el-button v-on:click="goToadmin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">{{$t('message.Login')}}</el-button>
+            <el-button v-on:click="goToadmin()" style="width: 100%;background-color: #0e38b1;height: 40px;color: #fff">
+              {{$t('message.Login')}}
+            </el-button>
           </el-tab-pane>
-
+          <!-- @keyup.enter="submit"-->
         </el-tabs>
       </div>
     </div>
     <!--语言包引入--><!--    background-color: #0e38b1;color: #fff;-->
     <div class="select" style="float: right;margin-right: 2%;width: 6%;margin-top: 0.5%;">
-      <el-select  v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')" >
+      <el-select v-show="true" v-model="selectValue" @change="langChange" :placeholder="$t('message.pleaseselect')">
         <el-option
           v-for="item in options"
           :key="item.value"
@@ -72,16 +80,16 @@
 <script>
   import util from '../utils/util'
 
- /* import crypto from 'crypto'*/
+  /* import crypto from 'crypto'*/
   export default {
     data() {
       return {
         activeName: 'teacher',
         toolTipClass: 'page-login-toolTipClass',
         userName: "",
-       /* password: "e10adc3949ba59abbe56e057f20f883e",*/
-        password:"",
-        lessonCode:'',
+        /* password: "e10adc3949ba59abbe56e057f20f883e",*/
+        password: "",
+        lessonCode: '',
         entity: "",
         identity: {
           manager: 1,
@@ -93,8 +101,8 @@
           password: "",
           lessonCode: null
         },
-        selectValue:'',
-        options:[
+        selectValue: '',
+        options: [
           {
             value: 'cn',
             label: '中文'
@@ -108,7 +116,7 @@
     created() {
       let that = this;
       console.log(localStorage.lang)
-      that.selectValue = localStorage.lang == undefined?'en':localStorage.lang
+      that.selectValue = localStorage.lang == undefined ? 'en' : localStorage.lang
       this.langChange(that.selectValue)
     },
     mounted() {
@@ -137,19 +145,23 @@
             }
 
           }
-        }/*if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
+        }
+        /*if(isFirefox=navigator.userAgent.indexOf("Firefox")>0){
 
-        }*/
+                }*/
       },
 
       login() {
         console.log(this.activeName);
         switch (this.activeName) {
-          case "admin": this.goToadmin();
+          case "admin":
+            this.goToadmin();
             return;
-          case "teacher": this.goToLogin();
+          case "teacher":
+            this.goToLogin();
             return;
-          case "student":this.studentslogin();
+          case "student":
+            this.studentslogin();
             return;
         }
       },
@@ -163,7 +175,8 @@
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.teacher != res.data.entity.identity) {
-                this.$message.error(this.$t('message.Loginuserisnotateacher'));/* "Login user is not a teacher"*/
+                this.$message.error(this.$t('message.Loginuserisnotateacher'));
+                /* "Login user is not a teacher"*/
                 return;
               }
 
@@ -188,7 +201,8 @@
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.manager != res.data.entity.identity) {
-                this.$message.error(this.$t('message.Loginuserisnotateacher'));/*"Login user is not a manager"*/
+                this.$message.error(this.$t('message.Loginuserisnotateacher'));
+                /*"Login user is not a manager"*/
                 return;
               }
 
@@ -203,25 +217,29 @@
           this.$message.error(err);
         });
       },
-      studentslogin:function () {
+      studentslogin: function () {
         let login = {
           "userName": this.userName,
           "password": this.$md5(this.password),
-          "lessonCode":this.lessonCode
+          "lessonCode": this.lessonCode
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
             this.password = "";
             if (res.data.code == 200) {
               if (this.identity.student != res.data.entity.identity) {
-                this.$message.error(this.$t('message.Loginuserisnotastudent'));/*"Login user is not a student"*/
+                this.$message.error(this.$t('message.Loginuserisnotastudent'));
+                /*"Login user is not a student"*/
                 return;
               }
 
               util.storeLoginUser(res.data.entity);
 
               this.entity = res.data.entity;
-              this.$router.push({path: "/LearningHomework/FinishMaterials",query:{lessonId:this.entity.lessonId,lessonCode:this.entity.lessonCode}});
+              this.$router.push({
+                path: "/LearningHomework/FinishMaterials",
+                query: {lessonId: this.entity.lessonId, lessonCode: this.entity.lessonCode}
+              });
             } else {
               this.$message.error(res.data.message)
             }
@@ -231,9 +249,9 @@
 
       },
       //语言切换
-      langChange(e){
+      langChange(e) {
         // console.log(e)
-        localStorage.setItem('lang',e);
+        localStorage.setItem('lang', e);
         this.$i18n.locale = e;
       }
 
@@ -338,11 +356,13 @@
   .el-tooltip__popper[x-placement^=top] .popper__arrow {
     border-top-color: rgb(255, 204, 204);
   }
-.mainmain {
-  background-color: #fff;
-  padding: 10%;
-  border-radius: 2px;
-}
+
+  .mainmain {
+    background-color: #fff;
+    padding: 10%;
+    border-radius: 2px;
+  }
+
   .el-input el-input--suffix input {
     background-color: red;
   }

@@ -40,15 +40,17 @@
             :on-success="handleSuccess"
             :with-credentials="true"
             :file-list="fileList3">
-            <el-button size="mini"  style="background-color: #0e38b1">
+            <el-button size="mini" style="background-color: #0e38b1">
               <img src="../../../assets/images/u166.png" alt="">
             </el-button>
             <div slot="tip" class="el-upload__tip">{{$t('message.AddAttachments')}}</div>
           </el-upload>
           <!--按钮-->
           <span slot="footer" class="dialog-footer" style="margin-left: 40%">
-            <el-button style="margin-top: 2%;background-color: #0e38b1;color: #fff" size="medium"  v-on:click="sure">{{$t('message.save')}}</el-button>
-            <el-button size="medium" style="color: #333333" @click="cancelCreateDiscuss">{{$t('message.cancel')}}</el-button>
+            <el-button style="margin-top: 2%;background-color: #0e38b1;color: #fff" size="medium"
+                       v-on:click="sure">{{$t('message.save')}}</el-button>
+            <el-button size="medium" style="color: #333333"
+                       @click="cancelCreateDiscuss">{{$t('message.cancel')}}</el-button>
           </span>
         </div>
 
@@ -82,49 +84,49 @@
         discussContent: '',
         fileList3: [],
         action: process.env.NODE_ENV + '/file/upload',
-        removedFileName:"",
+        removedFileName: "",
         fileEntity: {},
         boName: '',
         loading: true,
-        lessonId:this.$route.query.lessonId,
+        lessonId: this.$route.query.lessonId,
         discussionId: "",
         attachments: [],
-        discussionList:[],//课堂列表
+        discussionList: [],//课堂列表
         editDiscussId: undefined,
       };
     },
-    mounted(){
+    mounted() {
       this.getDiscussionListByLessonId();
     },
     methods: {
-      cancelCreateDiscuss: function() {
+      cancelCreateDiscuss: function () {
         this.createPanelShow = false;
         this.discussContent = "",
-        this.fileList3 = [];
+          this.fileList3 = [];
         this.attachments = [];
         this.editDiscussId = undefined;
         this.showDiscussListPanel = this.discussionList.length > 0;
       },
-      goToAddDiscussion: function() {
+      goToAddDiscussion: function () {
         this.showDiscussListPanel = true;
         this.createPanelShow = true;
       },
-      createPanelToggle: function(){
+      createPanelToggle: function () {
         this.createPanelShow = !this.createPanelShow;
       },
-      beforeRemove(file,fileList){
+      beforeRemove(file, fileList) {
         this.removedFileName = file.name;
       },
-      removeFile(file,fileList){
+      removeFile(file, fileList) {
         console.log(fileList);
         /*this.attachments.forEach((e)=>{
           if(e.fileName == this.removedFileName){
           }
         })*/
 
-        for(let i=0;i<this.attachments.length;i++){
-          if(this.attachments[i].fileName == this.removedFileName){
-            this.attachments.splice(i,1);
+        for (let i = 0; i < this.attachments.length; i++) {
+          if (this.attachments[i].fileName == this.removedFileName) {
+            this.attachments.splice(i, 1);
             break;
           }
         }
@@ -155,11 +157,11 @@
           let me = this;
           this._add("/classDiscuss", discussion, data => {
             me.discussContent = "",
-            me.fileList3 = [];
+              me.fileList3 = [];
             me.attachments = [];
             me.getDiscussionListByLessonId();
             me.createPanelShow = false;
-            eventBus.$emit("getDiscissionNum","");
+            eventBus.$emit("getDiscissionNum", "");
           });
           // this.$http.post(`${process.env.NODE_ENV}/classDiscuss/add`, discussion)
           //   .then((res) => {
@@ -188,17 +190,17 @@
                 this.$message.error(this.$t("message.assignmentSaveNeedContentOrAttachmentNotEmpty"));
               }
             }).catch((err) => {
-              this.$message.error(err)
+            this.$message.error(err)
           });
         }
       },
 
       //课堂讨论列表
-      getDiscussionListByLessonId(){
+      getDiscussionListByLessonId() {
         this.$http.get(`${process.env.NODE_ENV}/classDiscuss/list?lessonId=${this.lessonId}`)
           .then((res) => {
             if (res.data.code == 200) {
-              eventBus.$emit("getDiscissionNum","");
+              eventBus.$emit("getDiscissionNum", "");
               this.discussionList = res.data.entity;
               this.showDiscussListPanel = this.discussionList.length > 0;
               this.createPanelShow = this.discussionList.length == 0;
@@ -226,9 +228,9 @@
         }
       },
       /*删除列表*/
-      deleteDiscussion:function (id) {
+      deleteDiscussion: function (id) {
         let me = this;
-        this._del("/classDiscuss",[id],()=>me.getDiscussionListByLessonId());
+        this._del("/classDiscuss", [id], () => me.getDiscussionListByLessonId());
 
         // this.$http.post(`${process.env.NODE_ENV}/classDiscuss/deletes`,[id])
         //   .then((res) => {
@@ -251,7 +253,7 @@
     height: 100%;
   }
 
- .create p {
+  .create p {
     display: inline-block;
     padding-top: 2%;
     margin: 0px;
@@ -264,9 +266,11 @@
   .el-button--small {
     padding: 0px 3%;
   }
+
   .create {
     margin: 2% 0px;
   }
+
   .discussion {
     border: 1px solid #ccc;
     width: 96%;
@@ -293,16 +297,19 @@
   .el-upload-list__item-name {
     color: #0066CC !important;
   }
+
   .have {
     border: 1px solid #ccc;
     width: 96%;
     padding-left: 2%;
     margin-top: 2%;
   }
+
   .have ul li {
     color: #0066CC;
     font-size: 12px;
   }
+
   .have h5 {
     display: inline-block;
     border-bottom: 2px solid #999;
@@ -313,21 +320,26 @@
     float: right;
     padding-right: 2%;
   }
+
   .el-icon-delete:before {
     color: red !important;
   }
+
   .no-discuss {
     text-align: center;
     margin-top: 4%;
   }
+
   .no-discuss p:first-child {
     color: #ccc;
     margin-bottom: 3%;
   }
+
   .no-discuss p:nth-child(2) {
     color: #999;
     margin-bottom: 3%;
   }
+
   .no-discuss .el-button--medium {
     padding: 1% 5%;
   }

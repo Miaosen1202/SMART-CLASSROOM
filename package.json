@@ -14,10 +14,12 @@
     "babel-polyfill": "^6.26.0",
     "echarts": "^4.1.0",
     "element-ui": "^2.4.6",
+    "jquery": "^3.3.1",
     "js-md5": "^0.7.3",
     "vue": "^2.5.2",
     "vue-i18n": "^8.1.0",
     "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
