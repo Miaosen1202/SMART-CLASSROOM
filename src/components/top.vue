@@ -34,9 +34,9 @@
            </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="mycourse">mycourse</el-dropdown-item>
-            <el-dropdown-item >reply</el-dropdown-item>
+            <!--<el-dropdown-item >reply</el-dropdown-item>
             <el-dropdown-item >Quit</el-dropdown-item>
-            <el-dropdown-item >help</el-dropdown-item>
+            <el-dropdown-item >help</el-dropdown-item>-->
             <el-dropdown-item @click.native="dialogFormVisible = true">{{$t('message.ModifyPassword')}}</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
