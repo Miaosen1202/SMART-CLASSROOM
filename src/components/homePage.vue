@@ -43,7 +43,7 @@ export default {
     background-color: #f4f4f4;
   }
 .left{
-  width: 18%;
+  width: 16%;
   height: 89%;
   float: left;
   color: #c3c7d5;
@@ -57,8 +57,8 @@ export default {
 }
 .right-top{
   width: 100%;
-  height: 8%;
-  border: 1px solid #929292;
+  /*height: 8%;
+  border: 1px solid #929292;*/
   background-color: white;
 }
 .right-main{

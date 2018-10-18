@@ -1,14 +1,14 @@
 <template>
   <div>
     <div>
-      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer">
+      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer;padding-top: 0.6%">
         <img src="../../../static/images/logo.png" alt="">
       </p>
       <span style="color: blue;margin-left: 4%">{{$t('message.text')}}</span>
-      <p v-on:click="backlogin" style="float: right;margin-top:1.6%;padding-right: 2%;cursor: pointer;vertical-align:middle">
+      <p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../../static/images/u118.png" alt="">
       </p>
-      <div style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
+      <div style="float: right;padding-right: 1%;margin-top: 0.6%;cursor: pointer;">
         <span >
       <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
         <!--{{$t('message.Teacher')}}-->{{ getLoginUser().name }}</span>

@@ -1,15 +1,15 @@
 <template>
   <div class="logo">
     <div>
-      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer">
+      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer;padding-top: 0.6%">
         <img src="../../static/images/logo.png" alt="">
       </p>
       <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>
       <!--<span @click="dialogFormVisible = true" class="password" style="padding-top: 1%;margin-left: 2%;cursor: pointer">{{$t('message.ModifyPassword')}}</span>-->
-      <p v-on:click="backlogin" style="float: right;margin-top:1.6%;padding-right: 2%;cursor: pointer;vertical-align:middle">
+      <p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../static/images/u118.png" alt="">
       </p>
-      <div  style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
+      <div  style="float: right;padding-right: 1%;margin-top: 0.7%;cursor: pointer;">
         <span >
          <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
          <!-- {{ getLoginUser().name }}-->
@@ -124,7 +124,7 @@
           backlogin() {
             let that = this;
             this.post("/logout", null, function () {
-              that.$message.success("Logout Success");
+              that.$message.success("Logout Success");/*logoutSuccess*/
               that.$router.push({path: "/"});
             }, undefined, function () {
               that.$message.error("Logout error: " + err);
