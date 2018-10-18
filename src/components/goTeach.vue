@@ -116,7 +116,7 @@
         selectValue:'',
         options:[
           {
-            value: 'cn',
+            value: 'zh',
             label: '中文'
           }, {
             value: 'en',
