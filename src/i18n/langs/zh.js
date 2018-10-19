@@ -101,6 +101,7 @@ const zh = {
 
 
 
+
     /*teacher center*/
     'back':'返回',
     'Author':'作者',
@@ -228,7 +229,7 @@ const zh = {
     'medin':'Medin',
     'Replysuccess':'回复成功',
 
-
+    'lessonname':'课时名称',
 
 
 

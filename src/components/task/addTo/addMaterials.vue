@@ -42,7 +42,7 @@
           :on-success="handleFileUploadSuccess"
         >
           <el-button size="small" type="primary" style="background-color: #26b196">
-            <img src="../../../../static/images/UPLOAD.png" height="15px" alt="">
+            <img src="../../../../static/images/UPLOAD1.png" height="15px" alt="">
             {{$t('message.upload')}}
           </el-button>
 

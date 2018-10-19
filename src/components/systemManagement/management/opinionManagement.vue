@@ -28,7 +28,10 @@
 
       <el-button  @click="loadFeedbackRecord(1)"  style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
 
-      <el-button @click="batchDelete"  size="mini" style="float: right;margin-left: 1%;background-color: #0138b1;color: #fff">{{$t('message.batchdelete')}}</el-button>
+      <el-button @click="batchDelete"  size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Deleteinbatches.png" height="18" alt="">
+        {{$t('message.batchdelete')}}
+      </el-button>
     </div>
 
     <div class="mangementtable">
@@ -283,7 +286,6 @@
         //     this.$message.error(err);
         // });
       },
-
       cancelReply: function () {
         this.replyDialogVisible = false;
         this.reply.content = '';

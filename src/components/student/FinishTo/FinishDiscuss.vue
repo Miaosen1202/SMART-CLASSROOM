@@ -6,8 +6,9 @@
         <h4 style="display: inline-block">{{currentPage}}/{{pages}}</h4>
         <el-button type="success" icon="el-icon-arrow-right" circle @click="toNextPage"></el-button>
       </div>
-      <el-button v-on:click="toggle(exercises)"
-                 style="margin: 1% 0px 0px 1%;background-color: #0e38b1;color: white;font-weight: 700">
+      <el-button size="mini" v-on:click="toggle(exercises)"
+                 style="margin: 1% 0px 0px 1%;color: #0e38b1;font-weight: 700;border: 1px solid #0e38b1">
+        <img src="../../../../static/images/Reply.png" alt="" height="18">
         {{$t('message.reply')}}
       </el-button>
       <div class="have" v-for="(discussion,index) in discussionList" :key="index">
@@ -78,7 +79,7 @@
               :on-success="handleSuccess"
               :with-credentials="true"
               :file-list="fileList3">
-              <el-button size="mini" type="primary" style="background-color: #0e38b1;">
+              <el-button size="mini" type="primary" style="background-color: #26be96;border: 1px solid #14be7b">
                 <img src="../../../assets/images/u166.png" alt="">
               </el-button>
 

@@ -59,7 +59,7 @@
         <ul>
           <li>
             <span>{{$t('message.NameS')}}：</span>
-            <el-input size="small" v-model="lessonName" :placeholder="$t('message.coursename')" style="width: 60%">12112312</el-input>
+            <el-input size="small" v-model="lessonName" :placeholder="$t('message.coursename')" style="width: 60%"></el-input>
           </li>
         </ul>
       </div>

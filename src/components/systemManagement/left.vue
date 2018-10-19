@@ -122,7 +122,7 @@
     /*border: 1px solid #ccc;*/
     cursor: pointer;
     color: #c3c7d5;
-    padding-top: 12%;
+    padding-top: 18%;
     margin-top: 10%;
     padding-left: 10%;
 

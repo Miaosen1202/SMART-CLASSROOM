@@ -13,8 +13,14 @@
         </el-option>
       </el-select>
       <el-button @click="resourceManagementQuery(1)" style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
-      <el-button type="primary" size="mini" @click="batchDelete" style="float: right;margin-left: 1%;background-color: #0138b1;">{{$t('message.batchdelete')}}</el-button>
-      <el-button type="primary" size="mini" @click="goBatchUpload" style="float: right;margin-left: 1%;background-color: #0138b1;">{{$t('message.batchUpload')}}</el-button>
+      <el-button size="mini" @click="batchDelete" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Deleteinbatches.png" height="18" alt="">
+        {{$t('message.batchdelete')}}
+      </el-button>
+      <el-button type="primary" size="mini" @click="goBatchUpload" style="float: right;margin-left: 1%;background-color: #26be96;border: 1px solid #28be6b">
+        <img src="../../../../static/images/BatchUpload.png" height="18" alt="">
+        {{$t('message.batchUpload')}}
+      </el-button>
     </div>
     <div>
       <el-table

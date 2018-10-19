@@ -13,8 +13,12 @@
           <!--:value="item.value">-->
         <!--</el-option>-->
       <!--</el-select>-->
-      <el-button type="primary" @click="batchDelete" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1;color: #fff;">{{$t('message.batchdelete')}}</el-button>
-      <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1;color: #fff;">{{$t('message.Uploads')}}</el-button>
+      <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Deleteinbatches.png" alt="" height="18">
+        {{$t('message.batchdelete')}}</el-button>
+      <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
+        <img src="../../../../static/images/BatchUpload.png" alt="" height="18">
+        {{$t('message.Uploads')}}</el-button>
     </div>
     <div>
       <el-table
