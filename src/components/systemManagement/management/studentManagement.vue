@@ -125,13 +125,15 @@
             <el-input disabled v-model="editStudent.studentNo" size="small" :placeholder="$t('message.Account')" style="width: 60%"></el-input>
             <el-input disabled v-show="false" v-model="editStudent.id" size="small" style="width: 60%"></el-input>
           </li>
-          <li><span>{{$t('message.Name')}}：</span><el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input></li>
+          <li><span>{{$t('message.Name')}}：</span><el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
+            <i class="el-icon-star-off" style="color: red" ></i>
+          </li>
           <li><span>{{$t('message.EMail')}}：</span><el-input v-model="editStudent.email" size="small" :placeholder="$t('message.EMail')" style="width: 60%"></el-input></li>
           <li><span>{{$t('message.Phone')}}：</span><el-input v-model="editStudent.cellPhoneNo" size="small" :placeholder="$t('message.Phone')" style="width: 60%"></el-input></li>
           <li><span>{{$t('message.class')}}：</span><el-input v-model="editStudent.className" size="small" :placeholder="$t('message.class')" style="width: 60%"></el-input></li>
           <li><span>{{$t('message.major')}}：</span>
             <template>
-              <el-select v-model="editStudent.major" :placeholder="$t('message.pleaseselect')">
+              <el-select v-model="editStudent.major" size="small" style="width: 60%" :placeholder="$t('message.pleaseselect')">
                 <el-option
                   v-for="item in studentMajors"
                   :key="item.dictionaryCode"
@@ -145,6 +147,7 @@
             <span style="padding-right: 10%">{{$t('message.Status')}}：</span>
             <el-radio name="studentStatus" v-model="editStudent.status" label="1">{{$t('message.enable')}}</el-radio>
             <el-radio name="studentStatus" v-model="editStudent.status" label="0">{{$t('message.disable')}}</el-radio>
+            <span style="color: red;padding-left: 18%">“<i class="el-icon-star-off" style="color: red" ></i>”{{$t('message.Forarequireditem')}}</span>
           </li>
         </ul>
       </div>

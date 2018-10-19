@@ -264,6 +264,7 @@
       handleFileUploadSuccess: function (resp, file, fileList) {
         if (resp.code == 200) {
           var newMaterial = {
+            accessScope: 2,
             materialName: resp.entity.fileOriginName,
             localPath: resp.entity.fileTmpName,
           };
@@ -283,9 +284,11 @@
           return;
         }
 
-        this.$http.post(`${process.env.NODE_ENV}/materialBank/batchUpload/edit`, this.addMaterials)
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/batchUpload/edit`,this.addMaterials)
+
           .then((res) => {
             if (res.data.code == 200) {
+
               this.batchUploadDialogVisible = false;
               this.addMaterials = [];
 
