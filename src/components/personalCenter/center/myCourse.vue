@@ -31,7 +31,9 @@
       </div>
 
       <el-button type="primary" @click="loadLessonRecords(1)" style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
-      <el-button type="primary" @click="batchDelete()" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1;">{{$t('message.batchdelete')}}</el-button>
+      <el-button  @click="batchDelete()" size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Deleteinbatches.png" alt=""  height="18">
+        {{$t('message.batchdelete')}}</el-button>
     </div>
     <div>
       <el-table

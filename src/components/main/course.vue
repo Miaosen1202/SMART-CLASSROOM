@@ -33,7 +33,7 @@
         </li>
         <li :class="{active2 : activeFlag == 'discussion'}" @click="showContent('discussion')" style="background-color: #d8fff5;color:#26be96">
           <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width: 76%">{{$t('message.Discussion')}}</p>
-          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Discussion.png" alt=""></p>
+          <p style="display: inline-block;margin-top: 13%;color: #0f0f0f"><img src="../../../static/images/Discussion.png" alt="" ></p>
           <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{discussNumber}}</h2>
         </li>
         <li :class="{active3 : activeFlag == 'exercises'}" @click="showContent('exercises')" style="background-color: #d6e1ff;color:#0138b1">
@@ -199,14 +199,6 @@
           }).catch((err) => {
           console.log(err);
         });
-        /* this.$http.get(`${process.env.NODE_ENV}/lesson/detail/query?lessonId=57`)
-           .then((res) => {
-             if(res.data.code == 200){
-               this.entity = res.data.entity;
-             }
-           }).catch((err) => {
-           console.log(err);
-         });*/
       },
     },
     components: {},

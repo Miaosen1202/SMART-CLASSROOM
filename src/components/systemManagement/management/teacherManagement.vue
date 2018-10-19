@@ -4,9 +4,15 @@
       <p style="display: inline-block">{{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
       <el-input v-model="teacherNameSearch" size="small" :placeholder="$t('message.pleaseenter')" style="width: 20%;margin-left: 1%"></el-input>
       <el-button @click="loadTeacherRecords(1)" style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
-      <el-button @click="resetPassword" type="primary" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1">{{$t('message.ResetPassword')}}</el-button>
-      <el-button type="primary" @click="goImportStudent" size="mini" style="float: right;background-color: #0138b1">{{$t('message.Import')}}</el-button>
-      <el-button type="primary" @click="getImportTpl" size="mini" style="float: right;background-color: #0138b1">{{$t('message.Download')}}</el-button>
+      <el-button @click="resetPassword"  size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Resettheinitializationpassword.png" height="18" alt="">
+        {{$t('message.ResetPassword')}}</el-button>
+      <el-button type="primary" @click="goImportStudent" size="mini" style="float: right;background-color: #0138b1">
+        <img src="../../../../static/images/Importteacherdata.png" height="18" alt="">
+        {{$t('message.Import')}}</el-button>
+      <el-button  @click="getImportTpl" size="mini" style="float: right;">
+        <img src="../../../../static/images/UPLOAD.png" height="18" alt="">
+        {{$t('message.Download')}}</el-button>
       <!--<el-upload
         class="upload-demo"
         :action="action"

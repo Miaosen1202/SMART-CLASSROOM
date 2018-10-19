@@ -232,6 +232,7 @@ const en = {
     'Importstudentdatasuccess':'Done',
     'medin':'Media',
     'Replysuccess':'Done.',
+    'lessonname':'Lesson Name',
 
 
 

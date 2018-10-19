@@ -5,11 +5,23 @@
       <p style="display: inline-block"> {{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
       <el-input v-model="studentNameSearch" size="small" :placeholder="$t('message.Studentname')" style="width: 20%"></el-input>
       <el-button type="primary" @click="loadStudentRecords(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
-      <el-button type="primary" @click="batchDelete" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1">{{$t('message.batchdelete')}}</el-button>
-      <el-button type="primary" @click="resetPassword" size="mini" style="float: right;margin-left: 1%;background-color: #0138b1">{{$t('message.ResetPassword')}}</el-button>
+      <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Deleteinbatches.png" height="18" alt="">
+        {{$t('message.batchdelete')}}
+      </el-button>
+      <el-button @click="resetPassword" size="mini" style="float: right;margin-left: 1%;">
+        <img src="../../../../static/images/Resettheinitializationpassword.png" height="18" alt="">
+        {{$t('message.ResetPassword')}}
+      </el-button>
       <!--<el-button type="primary" @click="getImportModelFile" size="mini" style="float: right;">获取学生导入模板</el-button>-->
-      <el-button type="primary" @click="goImportStudent" size="mini" style="float: right;background-color: #0138b1">{{$t('message.importdata')}}</el-button>
-      <el-button type="primary" @click="getImportTpl" size="mini" style="float: right;background-color: #0138b1">{{$t('message.Download')}}</el-button>
+      <el-button type="primary" @click="goImportStudent" size="mini" style="float: right;background-color: #0138b1">
+        <img src="../../../../static/images/Importteacherdata.png" height="18" alt="">
+        {{$t('message.importdata')}}
+      </el-button>
+      <el-button  @click="getImportTpl" size="mini" style="float: right;">
+        <img src="../../../../static/images/UPLOAD.png" height="18" alt="">
+        {{$t('message.Download')}}
+      </el-button>
 
     </div>
     <div>
