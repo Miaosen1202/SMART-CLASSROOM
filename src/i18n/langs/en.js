@@ -242,6 +242,8 @@ const en = {
     "pleaseSelectLeastOneRowOfData": "Please select at least one record.",
 
     'onlySupportFileType': 'Supported File Types: ',
+    'Anerroroccurredinrequest':'An error occurred in request',
+    'Filetypeisnotsupportpreview':'File type is not support preview',
 
     // 管理端菜单
     // -------- start -----------

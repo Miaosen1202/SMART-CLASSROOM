@@ -116,7 +116,7 @@
         selectValue:'',
         options:[
           {
-            value: 'cn',
+            value: 'zh',
             label: '中文'
           }, {
             value: 'en',
@@ -329,7 +329,7 @@
 
   .teachtop {
     width: 100%;
-    height: 6%;
+    height: 0%;
     font-family: 'Arial Normal', 'Arial';
     /*background-color: rgb(215, 215, 215);*/
     background-color: rgba(248, 248, 248, 1);
@@ -349,7 +349,7 @@
     height: 100%;
     margin: 0 auto;
     overflow: auto;
-    padding-top: 2%;
+    /*padding-top: 2%;*/
 
   }
 

@@ -1,5 +1,5 @@
 import zhLocale from 'element-ui/lib/locale/lang/zh-CN' //引入element语言包
-const cn = {
+const zh = {
   message: {
     /*登陆页面*/
     'AccountName':'用户名',
@@ -67,7 +67,7 @@ const cn = {
     'Course':'课程',
     'Teacher':'老师',
     'DateTime':'日期时间',
-    'Publish':'发表',
+    'Publish':'发布',
     'quantity':'数量',
     'Classisover':'下课！',
     'Sharematerialsuccess':'共享材料成功!',
@@ -89,7 +89,7 @@ const cn = {
     'Pleaseselectacoursefirst':'请先选择课程',
     'Pleaseinputcoursenamefirst':'请先输入课程名称',
     'Pleaseinputlessonnamefirst':'请先输入课时名称',
-    'Unpublished':'未发表的',
+    'Unpublished':'未发布的',
     'Submitthelesson':'提交课程，你可以在“管理所有课程”中找到它。',
     'Deletethelesson':'删除本课下的课程和所有数据。',
     'coursename':'课程名称',
@@ -238,6 +238,8 @@ const cn = {
     "pleaseSelectLeastOneRowOfData": "请至少选择一行数据",
 
     'onlySupportFileType': '仅支持文件类型: ',
+    'Anerroroccurredinrequest':'请求出现错误',
+    'Filetypeisnotsupportpreview':'文件类型不支持预览',
 
     // 管理端菜单
     // -------- start -----------
@@ -282,4 +284,4 @@ const cn = {
   ...zhLocale
 }
 
-export default cn;
+export default zh;

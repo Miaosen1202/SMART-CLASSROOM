@@ -433,7 +433,7 @@
         selectValue: '',
         options: [
           {
-            value: 'cn',
+            value: 'zh',
             label: '中文'
           }, {
             value: 'en',
@@ -865,7 +865,15 @@
         }
       },
       handleCheckAllChange: function (val) {
-        this.checkedMaterialList = val ? this.materialList : [];
+
+        let unshared = [];
+        for (let i = 0; i < this.materialList.length; i++) {
+          if (this.materialList[i].isShare == 0) {
+            unshared.push(this.materialList[i]);
+          }
+        }
+
+        this.checkedMaterialList = val ? unshared : [];
         this.isIndeterminate = false;
       },
       /* gobackk: function () {
@@ -919,6 +927,7 @@
               /*"Share material success"*/
               // this.checkedMaterialList = [];
               this.getMaterialList();
+              this.checkedMaterialList = []
             } else {
               this.$message.error(res.data.message);
             }
