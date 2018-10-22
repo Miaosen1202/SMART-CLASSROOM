@@ -255,7 +255,6 @@
         //     }
         //   });
       },
-
       handleFileChange: function (file, fileList) {
         console.log("upload change", file);
         console.log("upload change", fileList);
@@ -268,7 +267,6 @@
             materialName: resp.entity.fileOriginName,
             localPath: resp.entity.fileTmpName,
           };
-
           this.addMaterials.push(newMaterial);
         } else if (resp.code == 300) {
           this.$message.error(resp.message);
