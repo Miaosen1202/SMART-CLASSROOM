@@ -46,16 +46,16 @@ Vue.component("file-template", {
         this.previewUrl = "/static/pdf/web/viewer.html?file=" + encodeURIComponent("/" + this.url + "/preview?id=" + this.id);
       } else if (/\.(gif|png|jpe?g|bmp)$/.test(filename)) {
         this.previewType = "img";
-        this.previewUrl = this.url + "/download?id=" + this.id;
+        this.previewUrl = this.url + "/preview?id=" + this.id;
       } else if (/\.mp3$/.test(filename)) {
         this.state = false;
         this.previewType = "audio";
-        this.previewUrl = "/" + this.url + "/download?id=" + this.id;
+        this.previewUrl = "/" + this.url + "/preview?id=" + this.id;
         console.log(this.previewUrl)
       } else if (/\.(mp4|swf)$/.test(filename)) {
         this.state = false;
         this.previewType = "video";
-        this.previewUrl = `${process.env.NODE_ENV}` + "/" + this.url + "/download?id=" + this.id;
+        this.previewUrl = `${process.env.NODE_ENV}` + "/" + this.url + "/preview?id=" + this.id;
       } else {
         this.previewType = "";
         this.previewUrl = "";

@@ -33,22 +33,19 @@
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
           <template slot-scope="scope">
-            <file-template :id="scope.row.id" :url="scope.row.materialUrl" :name="scope.row.materialName"></file-template>
+            <file-template :id="scope.row.id"
+                           :url="scope.row.materialUrl"
+                           :name="scope.row.materialName"
+                           @download="resourceManagementQuery"
+                           @afterPreview="resourceManagementQuery"
+            ></file-template>
           </template>
-          <!--<template slot-scope="scope">-->
-            <!--<span @click="preview(scope.row.localPath)">{{scope.row.materialName}}</span>-->
-            <!--<a :href="scope.row.materialUrl" :download="scope.row.materialName">-->
-              <!--<i  style="cursor: pointer;">-->
-                <!--<img src="../../../../static/images/UPLOAD.png" alt="">-->
-              <!--</i>-->
-            <!--</a>-->
-          <!--</template>-->
         </el-table-column>
         <el-table-column prop="createUserName" :label="$t('message.createUser')" min-width="30%"></el-table-column>
         <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%"></el-table-column>
         <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%"></el-table-column>
-        <!--<el-table-column prop="downloadCount" :label="$t('message.viewNumber')" width="130"></el-table-column>-->
+        <el-table-column prop="viewCount" :label="$t('message.viewNumber')" width="130"></el-table-column>
         <el-table-column :label="$t('message.Operation')">
           <template slot-scope="scope">
             <el-button
