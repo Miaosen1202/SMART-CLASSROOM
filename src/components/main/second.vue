@@ -6,9 +6,17 @@
       <el-collapse accordion class="course-item" @change="courseCollapseChange">
         <el-collapse-item v-for="(course, courseIndex) in courseList"
                           :title="course.courseName" :name="course.id" :key="course.id" >
-          <template slot="title">
+          <template slot="title" slot-scope="scope">
             <img src="../../../static/images/course.png" alt="">
             <span class="course-name" :data-course-id="course.id">{{ course.courseName }}</span>
+            <el-button
+              size="mini"
+              style="border: none"
+              @click="courseModifyNameHandler(scope.row)"
+              ><!--@click="courseDelete(course.id, courseIndex)"-->
+              <img src="../../../static/images/Modify.png" alt="">
+            </el-button>
+
             <el-button
               size="mini"
               style="border: none"
@@ -50,9 +58,28 @@
         </el-collapse-item>
       </el-collapse>
     </div>
-    <!--编辑弹框-->
+    <!--修改course-->
     <el-dialog
       :title="$t('message.coursename')"
+      :visible.sync="courseDialogVisible"
+      width="30%">
+      <div class="projectile" style="padding-left: 10%">
+        <ul>
+          <li>
+            <span>{{$t('message.NameS')}}：</span>
+            <el-input size="small" v-model="courseName" :placeholder="$t('message.coursename')" style="width: 60%"></el-input>
+          </li>
+        </ul>
+      </div>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="hideCourseEditDialog">{{$t('message.cancel')}}</el-button>
+    <el-button type="primary" @click="modifyNameHandlerConfirmcourse">{{$t('message.confirm')}}</el-button>
+  </span>
+    </el-dialog>
+
+    <!--编辑弹框-->
+    <el-dialog
+      :title="$t('message.lessonname')"
       :visible.sync="teacherEditDialogVisable"
       width="20%">
       <div class="projectile" style="padding-left: 10%">
@@ -76,13 +103,16 @@
     export default {
         data() {
             return {
+              courseDialogVisible: false,
               courseList:[],
               lessonList: [],
               tableData: [],
               teacherEditDialogVisable: false,
               lessonName: null,
               lessonId: null,
-              courseId: null
+              courseId: null,
+              courseName:null,
+              id:null
             }
         },
         mounted() {
@@ -110,6 +140,31 @@
               });
             }
           },
+
+          courseModifyNameHandler(row) {
+            this.courseDialogVisible = true;
+            debugger;
+            this.courseName =row.courseName;
+            this.id =row.id;
+            /* this.courseId =row.courseId;*/
+          },
+          modifyNameHandlerConfirmcourse() {
+            if (this.id != null && this.courseName != null) {
+              this.$http.post(`${process.env.NODE_ENV}/course/modify`, {"id": this.id,"courseName":this.courseName})
+                .then((res) => {
+                  if (res.data.code == 200) {
+                    this.courseCollapseChange(this.courseId);
+                    this.courseDialogVisible=false
+                  } else {
+                    this.$message.error(res.data.message);
+                  }
+                }).catch((err) => {
+                this.$message.error(err);
+              });
+            }
+          },
+
+
           courseCollapseChange: function(courseId) {
             if (typeof courseId !== "undefined") {
               this.$http.get(`${process.env.NODE_ENV}/lesson/list?courseId=` + courseId)
@@ -137,6 +192,9 @@
           },
           hideTeacherEditDialog: function() {
             this.teacherEditDialogVisable = false;
+          },
+          hideCourseEditDialog: function() {
+            this.courseDialogVisible = false;
           },
           handleEdit(index, row) {
             console.log("edit lesson, id=", row.id);

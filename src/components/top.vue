@@ -9,7 +9,7 @@
       <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../static/images/u118.png" alt="">
       </p>-->
-      <div  style="float: right;padding-right: 2%;margin-top: 0.7%;cursor: pointer;">
+      <div  style="float: right;padding-right: 2%;margin-top: 0.7%;">
         <span >
          <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
          <!-- {{ getLoginUser().name }}-->
@@ -35,7 +35,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item @click.native="mycourse">
               <img src="../../static/images/mycourse.png" alt="">
-              mycourse
+              {{$t('message.mycourses')}}
             </el-dropdown-item>
             <!--<el-dropdown-item >
               <img src="../../static/images/reply-blue.png" alt="">
@@ -47,11 +47,11 @@
             </el-dropdown-item>
             <el-dropdown-item class="help" >
               <i><img src="../../static/images/help-blue.png" alt=""></i>
-              help
+              {{$t('message.help')}}
             </el-dropdown-item>
             <el-dropdown-item v-on:click.native="backlogin" >
               <img src="../../static/images/Quit-blue.png" alt="">
-              Quit
+              {{$t('message.Quit')}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -237,7 +237,6 @@
   }
   .help:hover {
     background: url("../../static/images/help-blue.png")no-repeat;
-
   }*/
 
 </style>

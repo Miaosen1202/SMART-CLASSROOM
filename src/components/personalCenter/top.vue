@@ -8,7 +8,7 @@
       <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../../static/images/u118.png" alt="">
       </p>-->
-      <div style="float: right;padding-right: 1%;margin-top: 0.6%;cursor: pointer;">
+      <div style="float: right;padding-right: 2%;margin-top: 0.6%;">
         <span >
       <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
         <!--{{$t('message.Teacher')}}--><!--{{ getLoginUser().name }}--></span>
@@ -25,7 +25,7 @@
             </el-dropdown-item>-->
             <el-dropdown-item  @click.native="goReply()">
               <img src="../../../static/images/reply-blue.png" alt="">
-              reply
+              {{$t('message.reply')}}
             </el-dropdown-item>
             <el-dropdown-item class="password" @click.native="dialogFormVisible = true">
               <img src="../../../static/images/ResetPassword-blue.png" alt="">
@@ -33,11 +33,11 @@
             </el-dropdown-item>
             <el-dropdown-item class="help" >
               <i><img src="../../../static/images/help-blue.png" alt=""></i>
-              help
+              {{$t('message.help')}}
             </el-dropdown-item>
             <el-dropdown-item v-on:click.native="backlogin" >
               <img src="../../../static/images/Quit-blue.png" alt="">
-              Quit
+              {{$t('message.Quit')}}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
