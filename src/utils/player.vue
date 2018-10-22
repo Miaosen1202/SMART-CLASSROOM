@@ -88,12 +88,12 @@
 <style scoped>
   #alls {
     width: 100%;
-    height: 100%;
-    background-color: #0e38b1;
+    height: 50%;
+    /*background-color: #0e38b1;*/
   }
 
   .player-container {
-    background-color: #efefef;
+    /*background-color: #efefef;*/
     min-height: 100%;
   }
 </style>
