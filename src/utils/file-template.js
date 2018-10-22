@@ -4,7 +4,7 @@ import player from './player'
 let html = "<span>\
               <span style='margin-right: 5px;' v-on:click='preview'>{{ name }}</span>\
               <a class='file-download' v-on:click='download' target='_blank' :href=\"serverPath + url + '/download?id=' + id\" :download='name'>\
-                <img src='../static/images/UPLOAD.png' alt='Download' style='cursor: pointer;'>\
+                <img src='../../static/images/UPLOAD.png' alt='Download' style='cursor: pointer;'>\
               </a>\
               <el-dialog class='file-preview' :title='name' :visible.sync='previewVisible' @close='previewDialogClose' fullscreen>\
                 <iframe v-if='previewType === \"doc\"' width='100%' height='100%' :src='previewUrl'></iframe>\
