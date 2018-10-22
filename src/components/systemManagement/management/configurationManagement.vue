@@ -5,7 +5,7 @@
         <ul>
           <li>
             <h4 style="color: #333333">{{$t('message.ResourceName')}}:</h4>
-            <el-input v-model="editMaterialBank.materialName"  size="small" :placeholder="$t('message.Pleaseinputresourcename')"></el-input>
+            <el-input disabled v-model="editMaterialBank.materialName"  size="small" :placeholder="$t('message.Pleaseinputresourcename')"></el-input>
           </li>
           <li style="margin-top: 4%">
             <h4>{{$t('message.Category')}}:</h4>

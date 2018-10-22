@@ -228,7 +228,7 @@ const zh = {
     'Importstudentdatasuccess':'导入学生数据成功',
     'medin':'Medin',
     'Replysuccess':'回复成功',
-
+    'Forarequireditem':'为必填项',
     'lessonname':'课时名称',
 
 

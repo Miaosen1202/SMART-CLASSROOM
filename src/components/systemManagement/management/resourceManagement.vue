@@ -255,7 +255,6 @@
         //     }
         //   });
       },
-
       handleFileChange: function (file, fileList) {
         console.log("upload change", file);
         console.log("upload change", fileList);
@@ -264,10 +263,10 @@
       handleFileUploadSuccess: function (resp, file, fileList) {
         if (resp.code == 200) {
           var newMaterial = {
+            accessScope: 2,
             materialName: resp.entity.fileOriginName,
             localPath: resp.entity.fileTmpName,
           };
-
           this.addMaterials.push(newMaterial);
         } else if (resp.code == 300) {
           this.$message.error(resp.message);
@@ -283,9 +282,11 @@
           return;
         }
 
-        this.$http.post(`${process.env.NODE_ENV}/materialBank/batchUpload/edit`, this.addMaterials)
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/batchUpload/edit`,this.addMaterials)
+
           .then((res) => {
             if (res.data.code == 200) {
+
               this.batchUploadDialogVisible = false;
               this.addMaterials = [];
 

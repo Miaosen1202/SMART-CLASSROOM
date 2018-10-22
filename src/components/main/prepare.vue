@@ -190,10 +190,7 @@
         //   }).catch((err) => {
         //   console.log(err);
         // });
-
-
       }
-
     },
     watch: {
       submitCourseFlag(newV, oldV) {

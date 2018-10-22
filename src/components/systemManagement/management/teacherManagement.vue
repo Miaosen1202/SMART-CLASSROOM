@@ -82,6 +82,7 @@
             <li>
               <span>{{$t('message.Name')}}：</span>
               <el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
+              <i class="el-icon-star-off" style="color: red" ></i>
             </li>
             <li>
               <span>{{$t('message.EMail')}}：</span>
@@ -95,6 +96,7 @@
               <span style="padding-right: 10%">{{$t('message.Status')}}：</span>
               <el-radio v-model="editStudent.status" label="1">{{$t('message.enable')}}</el-radio>
               <el-radio v-model="editStudent.status" label="0">{{$t('message.disable')}}</el-radio>
+                   <span style="color: red;padding-left: 18%">“<i class="el-icon-star-off" style="color: red" ></i>”{{$t('message.Forarequireditem')}}</span>
             </li>
           </ul>
         </div>

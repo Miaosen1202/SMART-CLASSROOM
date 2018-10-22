@@ -6,10 +6,10 @@
       </p>
       <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>
       <!--<span @click="dialogFormVisible = true" class="password" style="padding-top: 1%;margin-left: 2%;cursor: pointer">{{$t('message.ModifyPassword')}}</span>-->
-      <p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
+      <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../static/images/u118.png" alt="">
-      </p>
-      <div  style="float: right;padding-right: 1%;margin-top: 0.7%;cursor: pointer;">
+      </p>-->
+      <div  style="float: right;padding-right: 2%;margin-top: 0.7%;cursor: pointer;">
         <span >
          <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
          <!-- {{ getLoginUser().name }}-->
@@ -33,11 +33,26 @@
               {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
            </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="mycourse">mycourse</el-dropdown-item>
-            <!--<el-dropdown-item >reply</el-dropdown-item>
-            <el-dropdown-item >Quit</el-dropdown-item>
-            <el-dropdown-item >help</el-dropdown-item>-->
-            <el-dropdown-item @click.native="dialogFormVisible = true">{{$t('message.ModifyPassword')}}</el-dropdown-item>
+            <el-dropdown-item @click.native="mycourse">
+              <img src="../../static/images/mycourse.png" alt="">
+              mycourse
+            </el-dropdown-item>
+            <!--<el-dropdown-item >
+              <img src="../../static/images/reply-blue.png" alt="">
+              reply
+            </el-dropdown-item>-->
+            <el-dropdown-item class="password" @click.native="dialogFormVisible = true">
+              <img src="../../static/images/ResetPassword-blue.png" alt="">
+             {{$t('message.ModifyPassword')}}
+            </el-dropdown-item>
+            <el-dropdown-item class="help" >
+              <i><img src="../../static/images/help-blue.png" alt=""></i>
+              help
+            </el-dropdown-item>
+            <el-dropdown-item v-on:click.native="backlogin" >
+              <img src="../../static/images/Quit-blue.png" alt="">
+              Quit
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -203,4 +218,26 @@
   .el-icon-arrow-down {
     font-size: 12px;
   }
+
+ /* .password {
+    line-height: 26px;
+    　vertical-align:middle;
+    background: url("../../static/images/ResetPassword.png")no-repeat;
+
+  }
+  .password:hover {
+    background: url("../../static/images/ResetPassword-blue.png")no-repeat;
+
+  }
+  .help {
+    line-height:26px;
+    　vertical-align:middle;
+    background: url("../../static/images/help.png")no-repeat;
+
+  }
+  .help:hover {
+    background: url("../../static/images/help-blue.png")no-repeat;
+
+  }*/
+
 </style>

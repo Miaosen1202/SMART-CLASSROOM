@@ -5,7 +5,7 @@
     <ul>
       <li :class="{active : activeFlag == 'prepare'}" @click="goToFirst('prepare')">
         <el-button type="text" @click="dialogVisible = true">
-        <img src="../../static/images/Preparealesson.png"  alt="">
+        <img src="../../static/images/Preparealesson1.png"  alt="">
         <p style="color: #fff">{{$t('message.NewLesson')}}</p>
         </el-button>
       </li>
@@ -18,7 +18,7 @@
         <P>{{$t('message.StartAClass')}}</P>
       </li>
       <li :class="{active : activeFlag == 'ViewHistory'}" @click="viewHistory('ViewHistory')">
-        <img src="../../static/images/history.png"  alt="">
+        <img src="../../static/images/history-white.png"  alt="">
         <P>{{$t('message.History')}}</P>
       </li>
     </ul>

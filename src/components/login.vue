@@ -1,5 +1,6 @@
 <template>
   <div id="alls">
+    <div >
     <div id="login">
       <p><img src="../assets/images/u2081.png" alt=""></p>
       <div class="mainmain">
@@ -61,6 +62,7 @@
           <!-- @keyup.enter="submit"-->
         </el-tabs>
       </div>
+    </div>
     </div>
     <!--语言包引入--><!--    background-color: #0e38b1;color: #fff;-->
     <div class="select" style="float: right;margin-right: 2%;width: 6%;margin-top: 0.5%;">

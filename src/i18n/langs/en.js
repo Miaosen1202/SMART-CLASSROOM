@@ -233,6 +233,7 @@ const en = {
     'medin':'Media',
     'Replysuccess':'Done.',
     'lessonname':'Lesson Name',
+    'Forarequireditem':'For a required item',
 
 
 

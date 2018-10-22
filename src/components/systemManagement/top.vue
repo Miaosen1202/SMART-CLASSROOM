@@ -5,14 +5,33 @@
           <img src="../../../static/images/logo.png" alt="">
         </p>
         <span style="color: blue;margin-left: 2%">{{$t('message.text')}}</span>
-        <p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
+        <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
           <img src="../../../static/images/u118.png" alt="">
-        </p>
-        <div style="float: right;padding-right: 1%;margin-top: 0.6%;">
+        </p>-->
+        <div style="float: right;padding-right: 2%;margin-top: 0.6%;">
         <span >
          <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
-          {{ getLoginUser().name }}
+          <!--{{ getLoginUser().name }}-->
         </span>
+
+          <el-dropdown>
+           <span class="el-dropdown-link">
+              {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
+           </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item class="help" >
+                <i><img src="../../../static/images/help-blue.png" alt=""></i>
+                help
+              </el-dropdown-item>
+              <el-dropdown-item v-on:click.native="backlogin" >
+                <img src="../../../static/images/Quit-blue.png" alt="">
+                Quit
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+
+
+
         </div>
         <!--<el-select v-model="value" placeholder="admin" style="border: none">
           <el-option
