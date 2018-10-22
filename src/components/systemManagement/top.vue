@@ -21,11 +21,11 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item class="help" >
                 <i><img src="../../../static/images/help-blue.png" alt=""></i>
-                help
+                {{$t('message.help')}}
               </el-dropdown-item>
               <el-dropdown-item v-on:click.native="backlogin" >
                 <img src="../../../static/images/Quit-blue.png" alt="">
-                Quit
+                {{$t('message.Quit')}}
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>

@@ -257,6 +257,9 @@ const en = {
     'MyCourse':'My Course',
     'MyResources':'My Resources',
     'MyOpinion':'My Opinion',
+    'mycourses':'My Course',
+    'help':'Help',
+    'Quit':'Quit',
     // -------- end -----------
 
     // 通用按钮

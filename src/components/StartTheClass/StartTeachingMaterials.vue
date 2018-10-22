@@ -3,7 +3,7 @@
 
     <div class="top">
       <div>
-        <p @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer">
+        <p @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer;padding-top: 0.6%">
           <img src="../../../static/images/logo.png" alt="">
         </p>
         <div style="margin: 0 auto;color: #2c6cae;cursor: pointer;display: inline-block;padding-left: 34%">
@@ -12,15 +12,46 @@
           </el-button>
         </div>
         <!-- <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>-->
-        <p v-on:click="backlogin"
+        <!--<p v-on:click="backlogin"
            style="float: right;margin-top:1.6%;padding-right: 2%;cursor: pointer;vertical-align:middle">
           <img src="../../../static/images/u118.png" alt="">
-        </p>
-        <div @click="mycourse" style="float: right;padding-right: 1%;margin-top: 1%;cursor: pointer;">
+        </p>-->
+        <div style="float: right;padding-right: 2%;margin-top: 0.6%;">
         <span>
          <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
-          {{ getLoginUser().name }}
+          <!--{{ getLoginUser().name }}-->
         </span>
+
+          <!--下拉框-->
+          <el-dropdown>
+           <span class="el-dropdown-link">
+              {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
+           </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="mycourse">
+                <img src="../../../static/images/mycourse.png" alt="">
+                {{$t('message.mycourses')}}
+              </el-dropdown-item>
+              <!--<el-dropdown-item >
+                <img src="../../static/images/reply-blue.png" alt="">
+                reply
+              </el-dropdown-item>-->
+              <el-dropdown-item class="password" @click.native="dialogFormVisible = true">
+                <img src="../../../static/images/ResetPassword-blue.png" alt="">
+                {{$t('message.ModifyPassword')}}
+              </el-dropdown-item>
+              <el-dropdown-item class="help" >
+                <i><img src="../../../static/images/help-blue.png" alt=""></i>
+                {{$t('message.help')}}
+              </el-dropdown-item>
+              <el-dropdown-item v-on:click.native="backlogin" >
+                <img src="../../../static/images/Quit-blue.png" alt="">
+                {{$t('message.Quit')}}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+
+
         </div>
 
         <!--语言包引入-->
@@ -34,7 +65,27 @@
             </el-option>
           </el-select>
         </div>
+        <!--密码修改-->
+        <el-dialog :title="$t('message.ModifyPassword')"
+                   :visible.sync="dialogFormVisible"
+                   @close="modifyPasswordDialogClose"
+                   style="height: 100%">
+          <!-- <div v-for="(password,index) in oldpasswordlist" :key="index">-->
+          <p style="color: #009900">{{$t('message.Password')}}</p>
+          <el-input type="password" v-model="oldPassword" :placeholder="$t('message.pleaseenter')"></el-input>
 
+          <p style="color: #009900">{{$t('message.NewPassword')}}</p>
+          <el-input type="password" v-model="newPassword" :placeholder="$t('message.pleaseenter')"></el-input>
+
+          <p style="color: #009900">{{$t('message.ConfirmPassword')}}</p>
+          <el-input type="password" v-model="newPasswordConfirm" :placeholder="$t('message.pleaseenter')"></el-input>
+
+          <div slot="footer" class="dialog-footer">
+            <el-button size="medium" @click="dialogFormVisible = false">{{$t('message.cancel')}}</el-button>
+            <el-button size="medium" style="background-color: #0138b1;color: #fff"  @click="updatepassword">{{$t('message.confirm')}}</el-button>
+          </div>
+          <!--</div>-->
+        </el-dialog>
       </div>
 
       <!--<div v-on:click="goback()" style="display: inline-block">
@@ -430,6 +481,10 @@
     data() {
       return {
         lessonIsEnd: false,
+        dialogFormVisible: false,
+        oldPassword: '',
+        newPassword:'',
+        newPasswordConfirm: '',
         selectValue: '',
         options: [
           {
@@ -1039,7 +1094,53 @@
         // console.log(e)
         localStorage.setItem('lang', e);
         this.$i18n.locale = e;
-      }
+      },
+    //  修改密码
+      modifyPasswordDialogClose: function () {
+        this.oldPassword = '';
+        this.newPassword = '';
+        this.newPasswordConfirm = "";
+      },
+      updatepassword: function () {
+        if ((this.oldPassword == "" || this.oldPassword.trim() == "")) {
+          this.$message.error(this.$t('message.Pleaseenteroldpassword'));/*"Please enter old password"*/
+          return;
+        }
+        if ((this.newPassword == "" || this.newPassword.trim() == "")) {
+          this.$message.error(this.$t('message.Pleaseenternewpassword'));/*"Please enter new password"*/
+          return;
+        }
+        if ((this.newPasswordConfirm == "" || this.newPasswordConfirm.trim() == "")) {
+          this.$message.error(this.$t('message.Pleaseenternewpasswordagain'));/*"Please enter new password again"*/
+          return;
+        }
+        if (this.newPassword !== this.newPasswordConfirm) {
+          this.$message.error(this.$t('message.Newpasswordnotmatchtheconfirmpassword'));/*"New password not match the confirm password"*/
+          return;
+        }
+
+        let oldpassword = {
+          oldPassword: this.$md5(this.oldPassword),
+          newPassword: this.$md5(this.newPassword),
+        };
+        this.$http.post(`${process.env.NODE_ENV}/user/updatePassword/edit`,oldpassword)
+          .then((res) => {
+            if (res.data.code == 200) {
+              /* this.oldpasswordlist = res.data.entity;*/
+
+              this.$message({
+                message: this.$t('Passwordmodificationsucceeded!'),/*Password modification succeeded!*/
+                type: 'success'
+              });
+              this.oldPassword="",
+                this.newPassword="",
+                this.dialogFormVisible= false;
+            }
+          }).catch((err) => {
+          console.log(err);
+        });
+      },
+
 
     }
 
@@ -1070,7 +1171,7 @@
   }
 
   .top {
-    height: 8%;
+    /*height: 8%;*/
     /* background-color: #0066CC;*/
     background-color: rgba(248, 248, 248, 1);;
   }

@@ -252,6 +252,9 @@ const zh = {
     'MyCourse':'我的课程',
     'MyResources':'我的资源',
     'MyOpinion':'我的意见',
+    'mycourses':'个人中心',
+    'help':'帮助',
+    'Quit':'退出',
     // -------- end -----------
 
     // 通用按钮
