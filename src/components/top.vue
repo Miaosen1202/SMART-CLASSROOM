@@ -1,19 +1,16 @@
 <template>
   <div class="logo">
     <div>
-      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:middle;cursor: pointer;padding-top: 0.6%">
+      <p  @click="goToFirst" style="display:inline-block;padding-left: 1%;vertical-align:bottom;cursor: pointer;padding-top: 0.6%">
         <img src="../../static/images/logo.png" alt="">
       </p>
-      <span style="color: blue;margin-left: 8%">{{$t('message.text')}}</span>
+      <span style="color: blue;margin-left: 4%;font-weight: 700">{{$t('message.text')}}</span>
       <!--<span @click="dialogFormVisible = true" class="password" style="padding-top: 1%;margin-left: 2%;cursor: pointer">{{$t('message.ModifyPassword')}}</span>-->
       <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
         <img src="../../static/images/u118.png" alt="">
       </p>-->
       <div  style="float: right;padding-right: 2%;margin-top: 0.7%;">
-        <span >
-         <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
-         <!-- {{ getLoginUser().name }}-->
-        </span>
+
         <!--<el-dropdown @command="handleCommand">
        <span class="el-dropdown-link">
         <i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>
@@ -55,6 +52,10 @@
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
+        <span >
+         <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
+          <!-- {{ getLoginUser().name }}-->
+        </span>
       </div>
 
 

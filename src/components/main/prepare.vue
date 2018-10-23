@@ -236,6 +236,8 @@
 
   .red {
     color: red;
+    padding-left: 5%;
+    padding-top: 1%;
   }
 
   .step2 {

@@ -145,7 +145,8 @@ Vue.prototype._add = function (path, param, successCallback, errorCallback) {
     if (errorCallback != undefined) {
       errorCallback(res);
     } else {
-      this.$message.error(res.data.message)
+      // this.$message.error(res.data.message)
+      this.$message.error(this.$t("message.assignmentSaveNeedContentOrAttachmentNotEmpty"));
     }
     // el.disabled = false;
   },(err)=>{

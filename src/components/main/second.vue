@@ -9,13 +9,13 @@
           <template slot="title" slot-scope="scope">
             <img src="../../../static/images/course.png" alt="">
             <span class="course-name" :data-course-id="course.id">{{ course.courseName }}</span>
-            <el-button
+           <!-- <el-button
               size="mini"
               style="border: none"
               @click="courseModifyNameHandler(scope.row)"
-              ><!--@click="courseDelete(course.id, courseIndex)"-->
+              >&lt;!&ndash;@click="courseDelete(course.id, courseIndex)"&ndash;&gt;
               <img src="../../../static/images/Modify.png" alt="">
-            </el-button>
+            </el-button>-->
 
             <el-button
               size="mini"

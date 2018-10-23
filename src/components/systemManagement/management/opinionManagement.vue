@@ -1,7 +1,7 @@
 <template>
   <div class="management">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
       <!--<el-input v-model="input" size="small" placeholder="请输入意见内容查询" style="width: 14%"></el-input>-->
       <el-input v-model="search.replyerName" size="small" :placeholder="$t('message.plfrom')" style="width: 14%"></el-input>
       <el-select v-model="search.replyStatus" size="small" clearable :placeholder="$t('message.plStatus')" style="width: 14%">

@@ -46,7 +46,7 @@ const zh = {
     'Order':'排序',
     'Typequestion':'在这里输入问题...',
     'Option':'添加选项',
-    'Pleasetick':'请勾选出正确答案。',
+    'Pleasetick':'请勾选出正确答案。(所选择项为正确答案)',
     'Explanations':'输入解释说明',
     'CreateanAssignment':'创建作业',
     'NewAssignment':'新建作业',
@@ -280,6 +280,10 @@ const zh = {
     'deleteSuccess': "删除成功",
     "success": "成功",
     'enter':'进入',
+    'Top':'顶部',
+    'Bottom':'底部',
+    'Up':'上移',
+    'Down':'下移',
 
 
 

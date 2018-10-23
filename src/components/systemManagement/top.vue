@@ -1,19 +1,14 @@
 <template>
     <div>
       <div>
-        <p style="display:inline-block;padding-left: 1%;vertical-align:middle;padding-top: 0.5%">
+        <p style="display:inline-block;padding-left: 1%;vertical-align:bottom;padding-top: 0.5%">
           <img src="../../../static/images/logo.png" alt="">
         </p>
-        <span style="color: blue;margin-left: 2%">{{$t('message.text')}}</span>
+        <span style="color: blue;margin-left: 2%;font-weight: 700">{{$t('message.text')}}</span>
         <!--<p v-on:click="backlogin" style="float: right;margin-top:1%;padding-right: 2%;cursor: pointer;vertical-align:middle">
           <img src="../../../static/images/u118.png" alt="">
         </p>-->
         <div style="float: right;padding-right: 2%;margin-top: 0.6%;">
-        <span >
-         <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
-          <!--{{ getLoginUser().name }}-->
-        </span>
-
           <el-dropdown>
            <span class="el-dropdown-link">
               {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
@@ -29,9 +24,10 @@
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-
-
-
+          <span >
+         <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
+            <!--{{ getLoginUser().name }}-->
+        </span>
         </div>
         <!--<el-select v-model="value" placeholder="admin" style="border: none">
           <el-option

@@ -9,25 +9,25 @@
       <li :class="{active : activeFlag == 'teacherManagement'}" @click="goToteacherManagement('teacherManagement')">
         <el-button type="text" @click="dialogVisible = true">
 
-          <p style="color: #c3c7d5;">
-            <img src="../../../static/images/Teache.png" alt="" style="padding-right: 8%">
+          <p style="color: #fff;">
+            <img src="../../../static/images/Teache-white.png" alt="" style="padding-right: 8%">
             {{$t('message.teacherManagement')}}</p>
         </el-button>
       </li>
       <li :class="{active : activeFlag == 'studentManagement'}" @click="goTostudentManagement('studentManagement')">
         <P>
-          <img src="../../../static/images/Student.png" alt="" style="padding-right: 8%">
+          <img src="../../../static/images/Student-white.png" alt="" style="padding-right: 8%">
           {{$t('message.studentManagement')}}</P>
       </li>
       <li :class="{active : activeFlag == 'resourceManagement'}" @click="goToresourceManagement('resourceManagement')">
 
         <P>
-          <img src="../../../static/images/Resource.png" alt="" style="padding-right: 8%">
+          <img src="../../../static/images/Resource-white.png" alt="" style="padding-right: 8%">
           {{$t('message.resourceManagement')}}</P>
       </li><li :class="{active : activeFlag == 'curriculumRecovery'}" @click="goTocurriculumRecovery('curriculumRecovery')">
 
       <P>
-        <img src="../../../static/images/CurriculumRecovery.png" alt="" style="padding-right: 8%">
+        <img src="../../../static/images/CurriculumRecovery-white.png" alt="" style="padding-right: 8%">
         {{$t('message.curriculumRecovery')}}</P>
    <!-- </li><li :class="{active : activeFlag == 'configurationManagement'}" @click="goToconfigurationManagement('configurationManagement')">
 
@@ -35,7 +35,7 @@
     </li><li :class="{active : activeFlag == 'opinionManagement'}" @click="goToopinionManagement('opinionManagement')">
 
       <P>
-        <img src="../../../static/images/OpinionManagement.png" alt="" style="padding-right: 8%">
+        <img src="../../../static/images/OpinionManagement-white.png" alt="" style="padding-right: 8%">
         {{$t('message.opinionManagement')}}</P>
     </li>
     </ul>

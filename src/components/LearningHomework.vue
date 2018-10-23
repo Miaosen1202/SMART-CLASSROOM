@@ -7,15 +7,47 @@
       <p style="font-weight: 700;display: inline-block;">
         {{$t('message.Welcome')}} {{ getLoginUser().name }} ! <!--text-->
       </p>
-      <span @click="dialogFormVisible = true" class="password" style="padding-top: 1%;margin-left: 2%;cursor: pointer">{{$t('message.ModifyPassword')}}</span>
+      <!--<span @click="dialogFormVisible = true" class="password" style="padding-top: 1%;margin-left: 2%;cursor: pointer">{{$t('message.ModifyPassword')}}</span>-->
       <!--<p style="float: right;padding-right: 3%;cursor: pointer"><img v-on:click="goback()" src="../assets/images/u4.png" alt=""></p>-->
-      <p v-on:click="goback()" style="float: right;padding-right: 3%;padding-top:1%;cursor: pointer">
+     <!-- <p v-on:click="goback()" style="float: right;padding-right: 3%;padding-top:1%;cursor: pointer">
         <img src="../../static/images/u118.png" alt="">
-      </p>
-      <span style="float: right;padding-top:0.8%;">
+      </p>-->
+      <div class="passwordstudent" style="float: right;padding-top:0.8%;padding-right: 2%;">
+
+
+      <!--下拉框及退出-->
+      <el-dropdown>
+           <span class="el-dropdown-link">
+              {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
+           </span>
+        <el-dropdown-menu slot="dropdown">
+          <!--<el-dropdown-item @click.native="mycourse">
+            <img src="../../static/images/mycourse.png" alt="">
+            {{$t('message.mycourses')}}
+          </el-dropdown-item>-->
+          <!--<el-dropdown-item >
+            <img src="../../static/images/reply-blue.png" alt="">
+            reply
+          </el-dropdown-item>-->
+          <el-dropdown-item class="password" @click.native="dialogFormVisible = true">
+            <img src="../../static/images/ResetPassword-blue.png" alt="">
+            {{$t('message.ModifyPassword')}}
+          </el-dropdown-item>
+          <el-dropdown-item class="help" >
+            <i><img src="../../static/images/help-blue.png" alt=""></i>
+            {{$t('message.help')}}
+          </el-dropdown-item>
+          <el-dropdown-item v-on:click.native="goback()" >
+            <img src="../../static/images/Quit-blue.png" alt="">
+            {{$t('message.Quit')}}
+          </el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
+        <span >
           <img src="../../static/images/yuan10.png" width="34" height="34" alt="">
-          {{ getLoginUser().name }}
+          <!-- {{ getLoginUser().name }}-->
         </span>
+      </div>
 
       <div class="select" v-show="true" style="float: right;margin-right: 2%;width: 7%;margin-top: 0.5%">
         <el-select  v-model="selectValue" @change="langChange" placeholder="请选择" >
@@ -50,13 +82,13 @@
       </div>
     </div>
 
-
+    <div class="passwordvisible">
     <el-dialog :title="$t('message.ModifyPassword')"
                :visible.sync="dialogFormVisible"
                @close="modifyPasswordDialogClose"
-               style="width: 50%;height: 100%">
+               style="height: 100%">
       <!-- <div v-for="(password,index) in oldpasswordlist" :key="index">-->
-      <p>{{$t('message.Password')}}</p>
+      <p style="color: #009900">{{$t('message.Password')}}</p>
       <el-input type="password" v-model="oldPassword" :placeholder="$t('message.pleaseenter')"></el-input>
 
       <p style="color: #009900">{{$t('message.NewPassword')}}</p>
@@ -71,6 +103,7 @@
       </div>
       <!--</div>-->
     </el-dialog>
+    </div>
   </div>
 </template>
 
@@ -211,7 +244,7 @@
   }
   .right-top{
     width: 100%;
-    height: 8%;
+    height: 6%;
     border: 1px solid #929292;
     background-color: #fff;
     color: #0f0f0f;
@@ -231,13 +264,16 @@
     padding-left: 2%;
     margin: 0px !important;
   }
+  .passwordvisible p {
+    padding-top: 1%;
+  }
   .coursetop p {
     width: 60%;
     padding-left: 2%;
   }
 
   .coursetop {
-    height: 12%;
+    height: 10%;
     /*margin-top: 2%;*/
     border-bottom: 1px solid #ddd;
     margin:1% 2%;

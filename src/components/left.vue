@@ -5,12 +5,12 @@
     <ul>
       <li :class="{active : activeFlag == 'prepare'}" @click="goToFirst('prepare')">
         <el-button type="text" @click="dialogVisible = true">
-        <img src="../../static/images/Preparealesson1.png"  alt="">
+        <img src="../../static/images/Preparealesson.png"  alt="">
         <p style="color: #fff">{{$t('message.NewLesson')}}</p>
         </el-button>
       </li>
       <li :class="{active : activeFlag == 'second'}" @click="goToSecond('second')">
-        <img src="../../static/images/Manangealllessons.png"  alt="">
+        <img src="../../static/images/manangelesson.png"  alt="">
         <P>{{$t('message.CourseManagement')}}</P>
       </li>
       <li :class="{active : activeFlag == 'goTeach'}" @click="goTeach('goTeach')">

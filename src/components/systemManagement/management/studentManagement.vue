@@ -2,7 +2,7 @@
   <div class="management">
     <!--{{$t('message.studentManagement')}}-->
     <div>
-      <p style="display: inline-block"> {{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
+      <p style="display: inline-block"> {{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
       <el-input v-model="studentNameSearch" size="small" :placeholder="$t('message.Studentname')" style="width: 20%"></el-input>
       <el-button type="primary" @click="loadStudentRecords(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
       <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
@@ -165,6 +165,7 @@
       center>
 
       <el-upload
+        style="padding-left: 4%"
         class="student-data-upload"
         name="file"
         with-credentials
@@ -173,14 +174,16 @@
         :on-change="handleUploadFileChange"
         :before-upload="beforeUpload"
         :on-success="handleUploadFileSuccess">
-        <el-button size="small" type="primary">{{$t('message.upload')}}</el-button>
+        <el-button size="small" style="background-color: #0e38b1;color: #fff">
+          <img src="../../../../static/images/UPLOAD1.png" alt="">
+          {{$t('message.upload')}}</el-button>
       </el-upload>
 
-      <el-checkbox v-model="overrideExistsStudentNoData">{{$t('message.overwriteExistsData')}}</el-checkbox>
+      <el-checkbox style="padding-left: 4%;padding-top: 2%" v-model="overrideExistsStudentNoData">{{$t('message.overwriteExistsData')}}</el-checkbox>
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="cancelImport">{{$t('message.cancel')}}</el-button>
-        <el-button type="primary" @click="confirmImport">{{$t('message.confirm')}}</el-button>
+        <el-button style="background-color: #0e38b1;color: #fff" @click="confirmImport">{{$t('message.confirm')}}</el-button>
       </span>
     </el-dialog>
 

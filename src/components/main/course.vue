@@ -238,9 +238,11 @@
     height: 80%;
     float: left;
     position: fixed;
-    top: 26%;
+    top: 16%;
     right: 0px;
     border-left: 1px solid #ccc;
+    margin-top: 1%;
+    padding-top: 4%;
   }
 
   .right ul {

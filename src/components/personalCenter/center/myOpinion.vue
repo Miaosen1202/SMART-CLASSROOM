@@ -1,7 +1,7 @@
 <template>
   <div class="management">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
       <el-select v-model="search.replyStatus" size="small" clearable :placeholder="$t('message.Status')" style="width: 14%">
         <el-option
           v-for="stat in replyStatusOps"

@@ -153,47 +153,50 @@
         <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic">{{$t('message.Explanation')}} :</p>
         <p style="word-wrap: break-word; word-break: normal;width: 90% ">{{exercises.analysis}}</p>
       </div>
-      <el-dialog
-        :title="$t('message.Order')"
-        @close="cancel"
-        :visible.sync="showExercisesDialogVisible"
+      <div class="orderexercise">
+        <el-dialog
+          :title="$t('message.Order')"
+          @close="cancel"
+          :visible.sync="showExercisesDialogVisible"
 
-        width="100%">
-        <!--<div v-for="existExercises in existExercisesList">-->
-        <!--<el-radio v-model="radio" :label="existExercises.id">{{existExercises.questionTitle}}</el-radio>-->
-        <!--</div>-->
-        <el-row>
-          <el-button type="text" size="mini" v-bind:disabled="moveTopBtn" @click="moveTopBtnHandler">Top</el-button>
-          <el-button type="text" size="mini" v-bind:disabled="moveBoBtn" @click="moveBoBtnHandler">Bottom</el-button>
-          <el-button type="text" size="mini" v-bind:disabled="moveUpBtn" @click="moveUpBtnHandler">Up</el-button>
-          <el-button type="text" size="mini" v-bind:disabled="moveDownBtn" @click="moveDownBtnHandler">Down</el-button>
-        </el-row>
+          width="100%">
+          <!--<div v-for="existExercises in existExercisesList">-->
+          <!--<el-radio v-model="radio" :label="existExercises.id">{{existExercises.questionTitle}}</el-radio>-->
+          <!--</div>-->
+          <el-row style="padding-left: 3%">
+            <el-button type="text" size="mini" v-bind:disabled="moveTopBtn" @click="moveTopBtnHandler">{{$t('message.Top')}}</el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveBoBtn" @click="moveBoBtnHandler">{{$t('message.Bottom')}}</el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveUpBtn" @click="moveUpBtnHandler">{{$t('message.Up')}}</el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveDownBtn" @click="moveDownBtnHandler">{{$t('message.Down')}}</el-button>
+          </el-row>
 
-        <template>
-          <el-table
-            ref="singleTable"
-            :data="existExercisesList"
-            highlight-current-row
-            :show-header="false"
-            @row-click="handleCurrentChange"
-            style="width: 100%">
-            <el-table-column
-              type="index"
-              width="100"
-              :index="indexMethod">
-            </el-table-column>
+          <template>
+            <el-table
+              ref="singleTable"
+              :data="existExercisesList"
+              highlight-current-row
+              :show-header="false"
+              @row-click="handleCurrentChange"
+              style="width: 100%;padding-left: 3%">
+              <el-table-column
+                type="index"
+                width="100"
+                :index="indexMethod">
+              </el-table-column>
 
-            <el-table-column
-              property="questionTitle"
-              min-width="70%">
-            </el-table-column>
-          </el-table>
-        </template>
-        <span slot="footer" class="dialog-footer">
+              <el-table-column
+                property="questionTitle"
+                min-width="70%">
+              </el-table-column>
+            </el-table>
+          </template>
+          <span slot="footer" class="dialog-footer">
           <el-button size="medium" type="primary" @click="resetSort">{{$t('message.OK')}}</el-button>
           <el-button size="medium" @click="showExercisesDialogVisible = false">{{$t('message.cancel')}}</el-button>
         </span>
-      </el-dialog>
+        </el-dialog>
+      </div>
+
     </el-scrollbar>
   </div>
 </template>
@@ -623,7 +626,7 @@
   }
 
   .option {
-    width: 80%;
+    /*width: 86%;*/
     margin-left: 3%;
     margin-top: 1%;
   }

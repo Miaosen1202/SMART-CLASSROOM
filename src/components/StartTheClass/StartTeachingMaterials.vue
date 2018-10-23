@@ -17,10 +17,7 @@
           <img src="../../../static/images/u118.png" alt="">
         </p>-->
         <div style="float: right;padding-right: 2%;margin-top: 0.6%;">
-        <span>
-         <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
-          <!--{{ getLoginUser().name }}-->
-        </span>
+
 
           <!--下拉框-->
           <el-dropdown>
@@ -50,7 +47,10 @@
               </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-
+          <span>
+         <img src="../../../static/images/yuan10.png" width="34" height="34" alt="">
+            <!--{{ getLoginUser().name }}-->
+        </span>
 
         </div>
 

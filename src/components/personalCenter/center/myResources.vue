@@ -1,7 +1,7 @@
 <template>
   <div class="all">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span>{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
       <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
 
       <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>

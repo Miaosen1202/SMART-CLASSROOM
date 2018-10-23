@@ -8,7 +8,7 @@
       </div>
       <el-checkbox-group v-model="checkedMaterials" @change="handleCheckedCitiesChange">
         <el-checkbox v-for="(material, index) in materialList" :key="index" :label="material"
-                     style="display: block;padding-top: 2%">
+                     style="display: block;padding-top: 1%">
           <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
           <!--<a :href="material.materialUrl" :download="material.materialName">-->
             <!--<i  style="cursor: pointer;">-->
