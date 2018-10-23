@@ -6,16 +6,16 @@
       <el-collapse accordion class="course-item" @change="courseCollapseChange">
         <el-collapse-item v-for="(course, courseIndex) in courseList"
                           :title="course.courseName" :name="course.id" :key="course.id" >
-          <template slot="title" slot-scope="scope">
+          <template slot="title">
             <img src="../../../static/images/course.png" alt="">
             <span class="course-name" :data-course-id="course.id">{{ course.courseName }}</span>
-           <!-- <el-button
+            <el-button
               size="mini"
               style="border: none"
-              @click="courseModifyNameHandler(scope.row)"
-              >&lt;!&ndash;@click="courseDelete(course.id, courseIndex)"&ndash;&gt;
+              @click="courseModifyNameHandler(course)"
+              >
               <img src="../../../static/images/Modify.png" alt="">
-            </el-button>-->
+            </el-button>
 
             <el-button
               size="mini"
@@ -72,9 +72,9 @@
         </ul>
       </div>
       <span slot="footer" class="dialog-footer">
-    <el-button @click="hideCourseEditDialog">{{$t('message.cancel')}}</el-button>
-    <el-button type="primary" @click="modifyNameHandlerConfirmcourse">{{$t('message.confirm')}}</el-button>
-  </span>
+        <el-button @click="hideCourseEditDialog">{{$t('message.cancel')}}</el-button>
+        <el-button type="primary" @click="modifyNameHandlerConfirmcourse">{{$t('message.confirm')}}</el-button>
+      </span>
     </el-dialog>
 
     <!--编辑弹框-->
@@ -118,6 +118,7 @@
         mounted() {
           this.getCourseList();
         },
+
         methods: {
           modifyNameHandler(row) {
             this.teacherEditDialogVisable = true;
@@ -141,12 +142,10 @@
             }
           },
 
-          courseModifyNameHandler(row) {
+          courseModifyNameHandler(course) {
             this.courseDialogVisible = true;
-            debugger;
-            this.courseName =row.courseName;
-            this.id =row.id;
-            /* this.courseId =row.courseId;*/
+            this.courseName = course.courseName;
+            this.id = course.id;
           },
           modifyNameHandlerConfirmcourse() {
             if (this.id != null && this.courseName != null) {
@@ -154,7 +153,8 @@
                 .then((res) => {
                   if (res.data.code == 200) {
                     this.courseCollapseChange(this.courseId);
-                    this.courseDialogVisible=false
+                    this.courseDialogVisible=false;
+                    this.getCourseList();
                   } else {
                     this.$message.error(res.data.message);
                   }
