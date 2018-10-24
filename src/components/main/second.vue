@@ -151,9 +151,10 @@
               this.$http.post(`${process.env.NODE_ENV}/course/modify`, {"id": this.id,"courseName":this.courseName})
                 .then((res) => {
                   if (res.data.code == 200) {
-                    this.courseCollapseChange(this.courseId);
-                    this.courseDialogVisible=false;
                     this.getCourseList();
+                    this.courseCollapseChange();
+                    this.courseDialogVisible=false;
+
                   } else {
                     this.$message.error(res.data.message);
                   }
