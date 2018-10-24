@@ -1,5 +1,13 @@
 <template>
   <div style="height: 100%;width: 100%;padding: 2%">
+    <div style="margin-top: -1%">
+      <ul>
+        <li >
+          <img src="../../../../static/images/back1.png" alt="" @click="back()" style="cursor: pointer;">
+          <h4 style="display: inline-block;vertical-align: middle;color: #144efc">{{$t('message.back')}}</h4>
+        </li>
+      </ul>
+    </div>
     <div style="float: left;width: 40%;height: 80%">
       <div>
         <ul>
@@ -130,6 +138,9 @@
       },
       handlePreview(file) {
         console.log(file);
+      },
+      back() {
+        this.$router.push({path: "/admin/resourceManagement"});
       },
     }
   }
