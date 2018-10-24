@@ -148,6 +148,8 @@ const zh = {
     'LearningMaterial':'学习材料',
     'Exercise':'练习',
     'Pleaseselectamaterialfirst':'请先选择材料',
+    'question':'问题答案已提交!',
+    'Lessonpublish':'发布成功！',
 
 
 

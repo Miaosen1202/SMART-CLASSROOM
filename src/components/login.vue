@@ -4,7 +4,7 @@
     <div id="login">
       <p><img src="../assets/images/u2081.png" alt=""></p>
       <div class="mainmain">
-        <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tabs v-model="activeName">
           <el-tab-pane :label="$t('message.Teacher')" name="teacher">
             <div class="account">
               <input class="form-control" type="text" :placeholder="$t('message.AccountName')" v-model="userName">
@@ -126,22 +126,19 @@
     },
 
     methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      },
       registerEnterLogin() {
         let me = this;
 
         if (navigator.userAgent.indexOf("MSIE") > 0) {
           //IE
-          document.onkeydown = function () {
+          document.onkeydown = function (event) {
             if (13 == event.keyCode && (me.$route.path === "/" || me.$route.path === "/login")) {
               me.login()
             }
           }
         } else {
           //非IE
-          window.onkeydown = function () {
+          window.onkeydown = function (event) {
             if (13 == event.keyCode && (me.$route.path === "/" || me.$route.path === "/login")) {
               me.login()
             }

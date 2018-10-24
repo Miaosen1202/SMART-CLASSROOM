@@ -161,7 +161,7 @@
           this.$http.post(`${process.env.NODE_ENV}/lesson/publish/edit`, {"id": this.entity.lesson.id})
             .then((res) => {
               if (res.data.code == 200) {
-                this.$message.info("Lesson publish success");
+                this.$message.info(this.$t('message.Lessonpublish'));/* "Lesson publish success"*/
               } else {
                 this.$message.error(res.data.message);
               }

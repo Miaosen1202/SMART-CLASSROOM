@@ -6,7 +6,7 @@
         <h4 style="display: inline-block">{{currentPage}}/{{pages}}</h4>
         <el-button type="success" icon="el-icon-arrow-right" circle @click="toNextPage"></el-button>
       </div>
-      <el-button size="mini" v-on:click="toggle(exercises)"
+      <el-button :disabled="exercises == null" size="mini" v-on:click="toggle(exercises)"
                  style="margin: 1% 0px 0px 1%;color: #0e38b1;font-weight: 700;border: 1px solid #0e38b1">
         <img src="../../../../static/images/Reply.png" alt="" height="18">
         {{$t('message.reply')}}
@@ -89,8 +89,8 @@
             <!--按钮-->
             <span slot="footer" class="dialog-footer">
               <el-button style="margin-top: 1%;margin-left: 40%;margin-bottom: 1%;background-color: #0e38b1;" size="medium"
-                         type="primary" @click="submitQuestionAnswer(discussionList[0])">{{$t('message.submit')}}</el-button>
-              <el-button size="medium">{{$t('message.cancel')}}</el-button>
+                         type="primary" @click="submitQuestionAnswer()">{{$t('message.submit')}}</el-button>
+              <el-button size="medium" @click="isShow = false">{{$t('message.cancel')}}</el-button>
             </span>
           </div>
         </div>
@@ -125,7 +125,7 @@
         pages: 0,//总页数
         total: 0,//总条数
         isSubmit: 1,
-        exercises: {},
+        exercises: null,
 
         filePreviewDialogVisible: false,
         previewHtml: "",
@@ -205,8 +205,6 @@
         /*window.open(`${process.env.NODE_ENV}/http://localhost:8088/${filePath}`);*/
         window.open(`${process.env.NODE_ENV}${filePath}`);
       },
-
-
       loadFinishexercise: function () {
         let param = {
           lessonId: this.lessonId,
@@ -223,6 +221,10 @@
                 (res.data.entity.total) / (res.data.entity.pageSize) :
                 (res.data.entity.total) / (res.data.entity.pageSize) + 1;
               this.pageSize = res.data.entity.pageSize;
+
+              if (this.discussionList.length > 0) {
+                this.exercises = this.discussionList[0];
+              }
 
               this.fileList3 = [];
               this.getsubmitHistoryLessonId();
@@ -260,10 +262,10 @@
           this.isSubmit = 1;
           this.loadFinishexercise();
         }
-
       },
       //提交问题答案
-      submitQuestionAnswer(exercises) {
+      submitQuestionAnswer() {
+        var exercises = this.exercises;
         var queryParam = {
           questionId: exercises.id,
           /*questionType:exercises.questionType,*/
@@ -273,13 +275,17 @@
           isSubmit: 1,
           attachments: this.attachments,
         }
-        console.log(this.discussionList[0].id);
+
+        if (!this.selectedAnswerCode || this.selectedAnswerCode.trim().length === 0) {
+          this.$message.error(this.$t("message.Pleaseinputreplycontent"));
+          return;
+        }
+
         this.$http.post(`${process.env.NODE_ENV}/questionAnswer/submit/edit`, queryParam)
           .then((res) => {
-
             if (res.data.code == 200) {
               this.isSubmit = 1;
-              this.exercises = exercises;
+              // this.exercises = exercises;
               this.toggle()
               this.fileList3 = [];
               this.attachments = [];
@@ -290,7 +296,7 @@
               });
             } else {
               this.$message({
-                message: res.data.message,
+                  message:this.$t('message.question'),
                 type: 'error'
               });
             }
