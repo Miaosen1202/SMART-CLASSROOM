@@ -127,6 +127,7 @@
         isSubmit: 1,
         exercises: {},
 
+
         filePreviewDialogVisible: false,
         previewHtml: "",
       }
@@ -165,7 +166,6 @@
           if(e.fileName == this.removedFileName){
            subdiscussion
           }
-
         })*/
         for (let i = 0; i < this.attachments.length; i++) {
           if (this.attachments[i].fileName == this.removedFileName) {
@@ -188,7 +188,6 @@
             });
         }
       },
-
       /*  getDiscussionListByLessonId(){
           this.$http.get(`${process.env.NODE_ENV}/classDiscuss/list?lessonId=${this.lessonId}`)
             .then((res) => {
@@ -205,8 +204,6 @@
         /*window.open(`${process.env.NODE_ENV}/http://localhost:8088/${filePath}`);*/
         window.open(`${process.env.NODE_ENV}${filePath}`);
       },
-
-
       loadFinishexercise: function () {
         let param = {
           lessonId: this.lessonId,
@@ -223,7 +220,6 @@
                 (res.data.entity.total) / (res.data.entity.pageSize) :
                 (res.data.entity.total) / (res.data.entity.pageSize) + 1;
               this.pageSize = res.data.entity.pageSize;
-
               this.fileList3 = [];
               this.getsubmitHistoryLessonId();
             }
@@ -260,7 +256,6 @@
           this.isSubmit = 1;
           this.loadFinishexercise();
         }
-
       },
       //提交问题答案
       submitQuestionAnswer(exercises) {
@@ -276,7 +271,6 @@
         console.log(this.discussionList[0].id);
         this.$http.post(`${process.env.NODE_ENV}/questionAnswer/submit/edit`, queryParam)
           .then((res) => {
-
             if (res.data.code == 200) {
               this.isSubmit = 1;
               this.exercises = exercises;
@@ -290,7 +284,7 @@
               });
             } else {
               this.$message({
-                message: res.data.message,
+                  message:this.$t('message.question'),
                 type: 'error'
               });
             }

@@ -234,6 +234,8 @@ const en = {
     'Replysuccess':'Done.',
     'lessonname':'Lesson Name',
     'Forarequireditem':'For a required item',
+    'question':'Question answer has submit!',
+
 
 
 

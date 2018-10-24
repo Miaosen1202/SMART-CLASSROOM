@@ -55,7 +55,6 @@
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
-
               @click="handleDelete(scope.$index, scope.row)">{{$t("message.delete")}}</el-button>
           </template>
         </el-table-column>
@@ -110,8 +109,7 @@
         batchUploadDialogVisible: false,
         fileUploadPath: `${process.env.NODE_ENV}/file/upload`,
         fileList: [],
-       addMaterials : [],
-
+        addMaterials : [],
         filePreview: {
           dialogVisible: false,
           previewUrl: ""
