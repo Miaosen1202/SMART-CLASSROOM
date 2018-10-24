@@ -7,7 +7,6 @@
           <h4 style="display: inline-block;vertical-align: middle;color: #144efc">{{$t('message.back')}}</h4>
         </li>
       </ul>
-
     </div>
     <div style="float: left;width: 40%;height: 80%">
       <div>

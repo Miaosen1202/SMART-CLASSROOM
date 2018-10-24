@@ -205,8 +205,6 @@
         /*window.open(`${process.env.NODE_ENV}/http://localhost:8088/${filePath}`);*/
         window.open(`${process.env.NODE_ENV}${filePath}`);
       },
-
-
       loadFinishexercise: function () {
         let param = {
           lessonId: this.lessonId,
@@ -264,7 +262,6 @@
           this.isSubmit = 1;
           this.loadFinishexercise();
         }
-
       },
       //提交问题答案
       submitQuestionAnswer() {
@@ -286,7 +283,6 @@
 
         this.$http.post(`${process.env.NODE_ENV}/questionAnswer/submit/edit`, queryParam)
           .then((res) => {
-
             if (res.data.code == 200) {
               this.isSubmit = 1;
               // this.exercises = exercises;
@@ -300,7 +296,7 @@
               });
             } else {
               this.$message({
-                message: res.data.message,
+                  message:this.$t('message.question'),
                 type: 'error'
               });
             }

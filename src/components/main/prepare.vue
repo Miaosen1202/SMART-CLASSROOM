@@ -119,6 +119,7 @@
               }
             } else {
               this.$message.error(res.data.message);
+              // this.$message.error(this.$t('message.Coursenamealreadyexistsandcannotbesubmitted'))
             }
           }).catch((err) => {
           console.log(err);
@@ -173,23 +174,23 @@
           return;
         }
 
-        let me = this;
+        /*let me = this;
         this._add("/lesson",postParam,data=>{
           me.lessonId = data.entity;
           this.$router.push({path: "/homePage/course", query: {"lessonId": me.lessonId}});
-        });
+        });*/
 
-        // this.$http.post(`${process.env.NODE_ENV}/lesson/add`, postParam)
-        //   .then((res) => {
-        //     if (res.data.code == 200) {
-        //       this.lessonId = res.data.entity;
-        //       this.$router.push({path: "/homePage/course", query: {"lessonId": this.lessonId}});
-        //     }else {
-        //       this.$message.error('The new class name already exists');
-        //     }
-        //   }).catch((err) => {
-        //   console.log(err);
-        // });
+        this.$http.post(`${process.env.NODE_ENV}/lesson/add`, postParam)
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.lessonId = res.data.entity;
+              this.$router.push({path: "/homePage/course", query: {"lessonId": this.lessonId}});
+            }else {
+              this.$message.error(this.$t('message.Coursenamealreadyexistsandcannotbesubmitted'));
+            }
+          }).catch((err) => {
+          console.log(err);
+        });
       }
     },
     watch: {

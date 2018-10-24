@@ -54,7 +54,6 @@
               </template>
             </el-table-column>
           </el-table>
-
         </el-collapse-item>
       </el-collapse>
     </div>
@@ -152,9 +151,10 @@
               this.$http.post(`${process.env.NODE_ENV}/course/modify`, {"id": this.id,"courseName":this.courseName})
                 .then((res) => {
                   if (res.data.code == 200) {
-                    this.courseCollapseChange(this.courseId);
-                    this.courseDialogVisible=false;
                     this.getCourseList();
+                    this.courseCollapseChange();
+                    this.courseDialogVisible=false;
+
                   } else {
                     this.$message.error(res.data.message);
                   }
@@ -182,7 +182,7 @@
           getCourseList: function() {
             this.$http.get(`${process.env.NODE_ENV}/course/list?status=1`)
               .then((res) => {
-                console.log("course list", res.data);
+               /* console.log("course list", res.data);*/
                 if (res.data.code == 200) {
                   this.courseList = res.data.entity;
                 }

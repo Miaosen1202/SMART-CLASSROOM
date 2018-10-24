@@ -95,6 +95,7 @@ const en = {
     'NameS':'Name',
     'Thetitlemustbenotempty':'The title must be not empty',
     'Theoptionsmustbegreater':'The options must be greater than 1 and less than 11',
+    'Coursenamealreadyexistsandcannotbesubmitted':'Course name already exists and cannot be submitted.',
 
 // -------- end -----------
 
@@ -234,6 +235,9 @@ const en = {
     'Replysuccess':'Done.',
     'lessonname':'Lesson Name',
     'Forarequireditem':'For a required item',
+    'question':'Question answer has submit!',
+    'Lessonpublish':'Lesson publish success',
+
 
 
 

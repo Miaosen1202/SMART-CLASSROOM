@@ -96,6 +96,7 @@ const zh = {
     'NameS':'名称',
     'Thetitlemustbenotempty':'标题不能为空',
     'Theoptionsmustbegreater':'选项必须大于1，小于11。',
+    'Coursenamealreadyexistsandcannotbesubmitted':'课程名已存在不能提交',
 
 
 
@@ -148,6 +149,8 @@ const zh = {
     'LearningMaterial':'学习材料',
     'Exercise':'练习',
     'Pleaseselectamaterialfirst':'请先选择材料',
+    'question':'问题答案已提交!',
+    'Lessonpublish':'发布成功！',
 
 
 
