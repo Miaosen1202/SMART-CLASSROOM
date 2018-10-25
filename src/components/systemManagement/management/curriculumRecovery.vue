@@ -39,18 +39,24 @@
 
         <el-table-column
           prop="lessonName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.lessonName')"
           min-width="30%">
         </el-table-column>
 
         <el-table-column
           prop="courseName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.course')"
           min-width="40%">
         </el-table-column>
 
         <el-table-column
           prop="createUserName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.createUser')"
           min-width="30%">
         </el-table-column>
@@ -207,7 +213,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .curriculumRecovery {
     margin: 2%;

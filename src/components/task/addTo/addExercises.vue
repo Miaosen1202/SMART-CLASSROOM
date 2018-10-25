@@ -151,7 +151,7 @@
         </div>
 
         <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic">{{$t('message.Explanation')}} :</p>
-        <p style="word-wrap: break-word; word-break: normal;width: 90% ">{{exercises.analysis}}</p>
+        <p style="word-wrap: break-word; word-break: normal;width: 90%;display: block;padding-top: 0px">{{exercises.analysis}}</p>
       </div>
       <div class="orderexercise">
         <el-dialog

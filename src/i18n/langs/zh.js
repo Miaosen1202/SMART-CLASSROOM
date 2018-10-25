@@ -287,7 +287,7 @@ const zh = {
     'Bottom':'底部',
     'Up':'上移',
     'Down':'下移',
-
+    'studentlogin':'该课程已下课',
 
 
     // -------- end -----------

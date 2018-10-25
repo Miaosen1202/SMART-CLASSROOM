@@ -33,12 +33,25 @@
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="teacherNo" :label="$t('message.Account')" min-width="30%"></el-table-column>
-        <el-table-column prop="name" :label="$t('message.Name')" min-width="30%"></el-table-column>
-        <el-table-column prop="email" :label="$t('message.EMail')" min-width="40%"></el-table-column>
+        <el-table-column prop="name"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.Name')"
+                         min-width="30%">
+        </el-table-column>
+        <el-table-column prop="email"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.EMail')"
+                         min-width="40%">
+        </el-table-column>
         <el-table-column prop="cellPhoneNo" :label="$t('message.Phone')" min-width="40%"></el-table-column>
-        <el-table-column prop="subject" :label="$t('message.Category')" min-width="30%"></el-table-column>
-
-
+        <el-table-column prop="subject"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.Category')"
+                         min-width="30%">
+        </el-table-column>
         <el-table-column prop="updateTime" :label="$t('message.updateTime')" min-width="30%">
            <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
 
@@ -82,7 +95,7 @@
             <li>
               <span>{{$t('message.Name')}}：</span>
               <el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
-              <i class="el-icon-star-off" style="color: red" ></i>
+              <i style="color: red;font-size: 22px" >*</i>
             </li>
             <li>
               <span>{{$t('message.EMail')}}：</span>
@@ -96,7 +109,7 @@
               <span style="padding-right: 10%">{{$t('message.Status')}}：</span>
               <el-radio v-model="editStudent.status" label="1">{{$t('message.enable')}}</el-radio>
               <el-radio v-model="editStudent.status" label="0">{{$t('message.disable')}}</el-radio>
-                   <span style="color: red;padding-left: 18%">“<i class="el-icon-star-off" style="color: red" ></i>”{{$t('message.Forarequireditem')}}</span>
+                  <!-- <span style="color: red;padding-left: 18%">“*”{{$t('message.Forarequireditem')}}</span>-->
             </li>
           </ul>
         </div>
@@ -403,7 +416,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .management {
     margin: 2%;

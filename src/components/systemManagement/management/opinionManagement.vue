@@ -57,6 +57,8 @@
 
         <el-table-column
           prop="replyerName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.from')"
           min-width="30%">
         </el-table-column>
@@ -353,6 +355,8 @@
   .el-tooltip__popper {
     max-width: 400px;
     line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
   }
 </style>
 <style scoped="">

@@ -364,6 +364,8 @@
   .el-tooltip__popper {
     max-width: 400px;
     line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
   }
 </style>
 <style scoped="">

@@ -8,7 +8,7 @@
                           :title="course.courseName" :name="course.id" :key="course.id" >
           <template slot="title">
             <img src="../../../static/images/course.png" alt="">
-            <span class="course-name" :data-course-id="course.id">{{ course.courseName }}</span>
+            <span class="course-name" :data-course-id="course.id" style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;display: inline-block;width: 70%;vertical-align: middle;">{{ course.courseName }}</span>
             <el-button
               size="mini"
               style="border: none"
@@ -24,7 +24,6 @@
               <img src="../../../static/images/shanchu.png" alt="">
             </el-button>
           </template>
-
           <el-table v-show="true"
             :show-header="false"
             :data="tableData"
@@ -32,10 +31,12 @@
             class="lesson-items"
             style="width: 90%">
             <el-table-column width="600">
+              data-placement="auto"
+              :show-overflow-tooltip="true"
               <template slot-scope="scope">
                 <!--<i class="el-icon-time"></i>--><!---->
                 <img @click="handleEdit(scope.$index, scope.row)"  src="../../../static/images/lesson.png" alt="" style="cursor: pointer">
-                <span style="margin-left: 10px">{{ scope.row.lessonName }}</span>
+                <span style="text-overflow:ellipsis;display: inline-block;width: 60%;vertical-align: middle;overflow:hidden;white-space:nowrap;" >{{ scope.row.lessonName }}</span>
               </template>
             </el-table-column>
             <el-table-column >

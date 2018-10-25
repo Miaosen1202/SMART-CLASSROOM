@@ -292,7 +292,7 @@ const en = {
     'Bottom':'Bottom',
     'Up':'Up',
     'Down':'Down',
-
+    'studentlogin':'The course has been dismissed.',
 
     // -------- end -----------
   },

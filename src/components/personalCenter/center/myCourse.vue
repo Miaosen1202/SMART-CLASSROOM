@@ -51,18 +51,24 @@
 
         <el-table-column
           prop="lessonName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.Lesson')"
           min-width="60%">
         </el-table-column>
 
         <el-table-column
           prop="courseName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.Course')"
           min-width="50%">
         </el-table-column>
 
         <el-table-column
           prop="teacherName"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.Author')"
           min-width="30%">
         </el-table-column>
