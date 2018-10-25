@@ -31,7 +31,13 @@
         <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
           <!--{{materialName}}-->
           <template slot-scope="scope">
-            <file-template :id="scope.row.id" :url="scope.row.materialUrl" :name="scope.row.materialName"></file-template>
+            <file-template
+              data-placement="auto"
+              :show-overflow-tooltip="true"
+              :id="scope.row.id"
+              :url="scope.row.materialUrl"
+              :name="scope.row.materialName">
+            </file-template>
           </template>
           <!--<file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>-->
         </el-table-column>

@@ -7,11 +7,6 @@
       </p>
     </div>-->
 
-
-
-
-
-
     <!--表格建立 样式修改2018/9/6-->
     <!--:header-cell-style="{background:'#ccc',color:'#fff'}"-->
     <div class="all">
@@ -21,8 +16,10 @@
         stripe
         :default-sort="{prop: 'date', order: 'descending'}"
        >
-        <el-table-column prop="lessonName" :label="$t('message.Lesson')" width="180"></el-table-column>
-        <el-table-column prop="courseName" :label="$t('message.Course')" width="180"></el-table-column>
+        <el-table-column prop="lessonName"  data-placement="auto"
+                         :show-overflow-tooltip="true" :label="$t('message.Lesson')" width="180"></el-table-column>
+        <el-table-column prop="courseName"  data-placement="auto"
+                         :show-overflow-tooltip="true" :label="$t('message.Course')" width="180"></el-table-column>
         <el-table-column prop="teacherName" :label="$t('message.Teacher')" width="180"></el-table-column>
         <el-table-column prop="time" :label="$t('message.DateTime')" :formatter="formatter"></el-table-column>
         <el-table-column :label="$t('message.Operation')">
@@ -136,7 +133,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .all {
     width: 90%;

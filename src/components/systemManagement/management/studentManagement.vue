@@ -37,17 +37,23 @@
         </el-table-column>
 
         <el-table-column
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           prop="userName"
           :label="$t('message.Account')"
           min-width="30%">
         </el-table-column>
         <el-table-column
           prop="name"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.Name')"
           min-width="30%">
         </el-table-column>
         <el-table-column
           prop="email"
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           :label="$t('message.EMail')"
           min-width="30%">
         </el-table-column>
@@ -57,11 +63,15 @@
           min-width="30%">
         </el-table-column>
         <el-table-column
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           prop="majorName"
           :label="$t('message.major')"
           min-width="30%">
         </el-table-column>
         <el-table-column
+          data-placement="auto"
+          :show-overflow-tooltip="true"
           prop="className"
           :label="$t('message.class')"
           min-width="30%">
@@ -126,7 +136,7 @@
             <el-input disabled v-show="false" v-model="editStudent.id" size="small" style="width: 60%"></el-input>
           </li>
           <li><span>{{$t('message.Name')}}：</span><el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
-            <i class="el-icon-star-off" style="color: red" ></i>
+            <i style="color: red;font-size: 22px" >*</i>
           </li>
           <li><span>{{$t('message.EMail')}}：</span><el-input v-model="editStudent.email" size="small" :placeholder="$t('message.EMail')" style="width: 60%"></el-input></li>
           <li><span>{{$t('message.Phone')}}：</span><el-input v-model="editStudent.cellPhoneNo" size="small" :placeholder="$t('message.Phone')" style="width: 60%"></el-input></li>
@@ -147,7 +157,7 @@
             <span style="padding-right: 10%">{{$t('message.Status')}}：</span>
             <el-radio name="studentStatus" v-model="editStudent.status" label="1">{{$t('message.enable')}}</el-radio>
             <el-radio name="studentStatus" v-model="editStudent.status" label="0">{{$t('message.disable')}}</el-radio>
-            <span style="color: red;padding-left: 18%">“<i class="el-icon-star-off" style="color: red" ></i>”{{$t('message.Forarequireditem')}}</span>
+            <!--<span style="color: red;padding-left: 18%;">“*”{{$t('message.Forarequireditem')}}</span>-->
           </li>
         </ul>
       </div>
@@ -456,7 +466,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .management {
     margin: 2%;

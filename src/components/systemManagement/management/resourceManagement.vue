@@ -33,15 +33,23 @@
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
           <template slot-scope="scope">
-            <file-template :id="scope.row.id"
-                           :url="scope.row.materialUrl"
-                           :name="scope.row.materialName"
-                           @download="resourceManagementQuery"
-                           @afterPreview="resourceManagementQuery"
+            <file-template
+              data-placement="auto"
+              :show-overflow-tooltip="true"
+              :id="scope.row.id"
+              :url="scope.row.materialUrl"
+              :name="scope.row.materialName"
+              @download="resourceManagementQuery"
+              @afterPreview="resourceManagementQuery"
             ></file-template>
           </template>
         </el-table-column>
-        <el-table-column prop="createUserName" :label="$t('message.createUser')" min-width="30%"></el-table-column>
+        <el-table-column prop="createUserName"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.createUser')"
+                         min-width="30%">
+        </el-table-column>
         <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%"></el-table-column>
         <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%"></el-table-column>
@@ -299,7 +307,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 
 <style scoped="">
   .all {

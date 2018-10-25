@@ -240,7 +240,7 @@
                 query: {lessonId: this.entity.lessonId, lessonCode: this.entity.lessonCode}
               });
             } else {
-              this.$message.error(res.data.message)
+              this.$message.error(this.$t('message.studentlogin'))
             }
           }).catch((err) => {
           this.$message.error(err);

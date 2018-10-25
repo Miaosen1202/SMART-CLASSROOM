@@ -47,9 +47,9 @@
           <span>{{$t('message.CorrectAnswer')}} ：</span>
           <span v-for="(option,index) in exercises.options" v-if="option.isCorrect == 1">{{option.answerCode}} </span>
         </div>
-        <p>{{$t('message.YourAnswer')}} ：<span style="color: red">{{answer.answerContent}}</span></p>
-        <P>{{$t('message.Explanation')}}</P>
-        <span  style="width: 60%;display: inline-block">
+        <p>{{$t('message.YourAnswer')}} :<span style="color: red">{{answer.answerContent}}</span></p>
+        <P>{{$t('message.Explanation')}}:</P>
+        <span style="width: 60%;display:block">
           {{exercises.analysis}}
         </span>
       </div>

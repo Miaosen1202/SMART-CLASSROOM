@@ -53,11 +53,11 @@
         </p>
         <div class="lessonteach">
           <div class="have" v-for="(course,index) in courselist" :key="index">
-            <div v-on:click="toggle(course.id)" style="cursor: pointer;display: inline-block">
+            <div v-on:click="toggle(course.id)" style="cursor: pointer;">
               <i class="el-icon-arrow-down"></i>
               <img src="../../static/images/course.png" alt="">
             <!--  <h5 >Course：Journey of the Universe: A Story for Our Times1 </h5>-->
-              <h5>{{course.courseName}}</h5>
+              <h5 style="width: 60%;overflow: hidden;white-space: nowrap;vertical-align: middle;text-overflow: ellipsis;">{{course.courseName}}</h5>
             </div>
            <!-- <h5 v-on:click="deletecours(course.id)" class="el-icon-delete"
                 style="color: red;cursor: pointer;float: right;margin-right: 1%"></h5>-->
