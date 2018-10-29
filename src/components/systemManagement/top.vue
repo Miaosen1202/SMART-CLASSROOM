@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <p style="display:inline-block;padding-left: 1%;vertical-align:bottom;padding-top: 0.5%">
+        <p style="display:inline-block;padding-left: 1%;vertical-align:middle;padding-top: 0.5%">
           <img src="../../../static/images/logo.png" alt="">
         </p>
         <span style="color: blue;margin-left: 2%;font-weight: 700">{{$t('message.text')}}</span>

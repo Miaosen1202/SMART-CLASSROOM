@@ -59,9 +59,7 @@
           </el-option>
         </el-select>
       </div>
-
     </div>
-
     <div class="left">
       <left :lessonId="lessonId" :lessonCode="lessonCode"></left>
   </div>
