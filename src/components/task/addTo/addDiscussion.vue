@@ -40,7 +40,7 @@
             :on-success="handleSuccess"
             :with-credentials="true"
             :file-list="fileList3">
-            <el-button size="mini" style="background-color: #0e38b1">
+            <el-button size="mini" style="background-color: #26be96">
               <img src="../../../assets/images/u166.png" alt="">
             </el-button>
             <div slot="tip" class="el-upload__tip">{{$t('message.AddAttachments')}}</div>

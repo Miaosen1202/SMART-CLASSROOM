@@ -278,7 +278,7 @@
         this.$http.post(`${process.env.NODE_ENV}/teacher/modify`, this.editStudent)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info(this.$t('message.Modifyteachersuccess'));/* "Modify teacher success"*/
+              this.$message.info(this.$t('message.Modifyteachersuccess'));/*"Modify teacher success"*/
               this.hideTeacherEditDialog();
               this.loadTeacherRecords(this.pageIndex);
             } else {
