@@ -401,7 +401,7 @@
           questionTitle: this.questionTitle,
           questionType: this.questionType,
           analysis: this.analysis,
-          options: queryOptions
+          options: queryOptions,
         };
 
         if (typeof this.questionTitle !== "string" || this.questionTitle.trim().length === 0) {
@@ -412,7 +412,10 @@
           this.$message.error(this.$t('message.Theoptionsmustbegreater'));/*  The options must be greater than 1 and less than 11*/
           return;
         }
-
+        /*if (typeof this.options.answerContent !== "" || this.options.answerContent.trim().length === 0) {
+          this.$message.error(this.$t('message.Thetitlemustbenotempty'));/!* "The title must be not empty"*!/
+          return;
+        }*/
         let me = this;
         this._add("/choiceQuestion", exercises, data => {
           eventBus.$emit("getExercisesNumber","");

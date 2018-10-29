@@ -147,7 +147,20 @@
                   v-model="fd.content">
                 </el-input>
               </p>
+
             </li>
+            <!--<li>
+              <el-upload
+                :action="action"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-remove="handleRemove">
+                <i class="el-icon-plus"></i>
+              </el-upload>
+              <el-dialog :visible.sync="dialogVisible">
+                <img width="100%" :src="dialogImageUrl" alt="">
+              </el-dialog>
+            </li>-->
           </ul>
         </div>
         <el-input
@@ -169,12 +182,12 @@
 </template>
 <script>
   import util from '@/utils/util'
-
+  import eventBus from '../../../eventBus'
   export default {
     data() {
       return {
         replyDialogVisible: false,
-
+        action: process.env.NODE_ENV + '/file/upload',
         replyStatusOps: [{
           /*label: "待反馈",*/
           label:this.$t('message.notReplied'),
