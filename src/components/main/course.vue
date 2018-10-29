@@ -27,22 +27,22 @@
     <div class="right">
       <ul>
         <li :class="{active1 : activeFlag == 'teaching'}" @click="showContent('teaching')" style="background-color: #fff4e3;color:#f17e26">
-          <p style="display: inline-block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.TeachingMaterials')}}</p>
+          <p style="display: block;color: #898989;float: left;padding-left: 4%;width: 74%;margin-bottom: 0px">{{$t('message.TeachingMaterials')}}</p>
           <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Materials.png" alt=""></p>
           <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{materialNumber}}</div>
         </li>
         <li :class="{active2 : activeFlag == 'discussion'}" @click="showContent('discussion')" style="background-color: #d8fff5;color:#26be96">
-          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Discussion')}}</p>
+          <p style="display: block;color: #898989;float: left;padding-left: 4%;width: 70%;margin-bottom: 0px">{{$t('message.Discussion')}}</p>
           <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Discussion.png" alt="" ></p>
           <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{discussNumber}}</div>
         </li>
         <li :class="{active3 : activeFlag == 'exercises'}" @click="showContent('exercises')" style="background-color: #d6e1ff;color:#0138b1">
-          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Exercises')}}</p>
+          <p style="display: block;color: #898989;float: left;padding-left: 4%;width: 70%;margin-bottom: 0px">{{$t('message.Exercises')}}</p>
           <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Exericises.png" alt=""></p>
           <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{exercisesNumber}}</div>
         </li>
         <li :class="{active4 : activeFlag == 'assignment'}" @click="showContent('assignment')" style="background-color: #f2dafc;color:#b10eab">
-          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Assignment')}}</p>
+          <p style="display: block;color: #898989;float: left;padding-left: 4%;width: 70%;margin-bottom: 0px">{{$t('message.Assignment')}}</p>
           <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Assignment.png" alt=""></p>
           <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{assignmentNumber}}</div>
 
@@ -238,11 +238,12 @@
     height: 80%;
     float: left;
     position: fixed;
-    top: 16%;
+    top: 20%;
     right: 0px;
     border-left: 1px solid #ccc;
-    margin-top: 1%;
+    margin-top: 2%;
     padding-top: 4%;
+    overflow: hidden;
   }
 
   .right ul {
