@@ -238,10 +238,10 @@
     height: 80%;
     float: left;
     position: fixed;
-    top: 16%;
+    top: 20%;
     right: 0px;
     border-left: 1px solid #ccc;
-    margin-top: 1%;
+    margin-top: 2%;
     padding-top: 4%;
   }
 
