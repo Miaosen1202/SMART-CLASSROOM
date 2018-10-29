@@ -42,7 +42,8 @@ var $http = axios.create({
 // 为请求增加动态随机数，防止浏览器缓存
 $http.interceptors.request.use(function (request) {
   request.headers["language"] = localStorage.lang || "en";
-  if (request.method.toUpperCase() === "GET") {
+  let method = request.method.toUpperCase();
+  if (method === "GET") {
     if (request.params) {
       request.params["_str"] = new Date().getTime();
     } else {
@@ -50,11 +51,20 @@ $http.interceptors.request.use(function (request) {
         "_str": new Date().getTime(),
       }
     }
+  } else if (method === "POST" || method === "PUT" || method === "PATCH" || method === "DELETE") {
+    let token = sessionStorage.getItem("_form_token");
+    request.headers["_form_token"] = token
   }
   return request;
 });
 // 拦截全局响应，处理未登录操作
 $http.interceptors.response.use(function (response) {
+  let method = response.config.method.toUpperCase();
+  if (method === "POST" || method === "PUT" || method === "PATCH" || method === "DELETE") {
+    let formToken = response.headers["_form_token"];
+    sessionStorage.setItem("_form_token", formToken);
+  }
+
   if (response.data.code === 300) {
     Vue.prototype.$message.error(response.data.message);
     router.push("/");
