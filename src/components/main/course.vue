@@ -27,24 +27,24 @@
     <div class="right">
       <ul>
         <li :class="{active1 : activeFlag == 'teaching'}" @click="showContent('teaching')" style="background-color: #fff4e3;color:#f17e26">
-          <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width: 76%">{{$t('message.TeachingMaterials')}}</p>
-          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Materials.png" alt=""></p>
-          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{materialNumber}}</h2>
+          <p style="display: inline-block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.TeachingMaterials')}}</p>
+          <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Materials.png" alt=""></p>
+          <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{materialNumber}}</div>
         </li>
         <li :class="{active2 : activeFlag == 'discussion'}" @click="showContent('discussion')" style="background-color: #d8fff5;color:#26be96">
-          <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width: 76%">{{$t('message.Discussion')}}</p>
-          <p style="display: inline-block;margin-top: 13%;color: #0f0f0f"><img src="../../../static/images/Discussion.png" alt="" ></p>
-          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{discussNumber}}</h2>
+          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Discussion')}}</p>
+          <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Discussion.png" alt="" ></p>
+          <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{discussNumber}}</div>
         </li>
         <li :class="{active3 : activeFlag == 'exercises'}" @click="showContent('exercises')" style="background-color: #d6e1ff;color:#0138b1">
-          <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width:76%">{{$t('message.Exercises')}}</p>
-          <p style="display: inline-block;margin-top: 12%"><img src="../../../static/images/Exericises.png" alt=""></p>
-          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{exercisesNumber}}</h2>
+          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Exercises')}}</p>
+          <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Exericises.png" alt=""></p>
+          <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{exercisesNumber}}</div>
         </li>
         <li :class="{active4 : activeFlag == 'assignment'}" @click="showContent('assignment')" style="background-color: #f2dafc;color:#b10eab">
-          <p style="display: inline-block;padding-left: 1%;color: #898989;font-weight: 700;width:76%">{{$t('message.Assignment')}}</p>
-          <p style="display: inline-block;margin-top: 13%"><img src="../../../static/images/Assignment.png" alt=""></p>
-          <h2 style="display: inline-block;margin-top: 0px;padding-left: 4%">{{assignmentNumber}}</h2>
+          <p style="display: block;color: #898989;float: left;padding-left: 6%;width: 70%;margin-bottom: 0px">{{$t('message.Assignment')}}</p>
+          <p style="margin-top: 6%;float: right;padding-right: 6%;margin-bottom: 0px;"><img src="../../../static/images/Assignment.png" alt=""></p>
+          <div style="margin: 0px;padding-left: 6%;font-size: 40px;float: left;">{{assignmentNumber}}</div>
 
         </li>
       </ul>
@@ -257,8 +257,8 @@
     width: 80%;
     height: 18%;
     /*padding-left: 20px;*/
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-left: 6%;
+    margin-top: 6%;
     background-color: rgba(242, 242, 242, 1);
     /* box-shadow:10px 10px 5px #888888;*/
   }
@@ -279,13 +279,13 @@
     }
   .right ul li p:first-child {
     padding-top: 8%;
-    text-align: center;
+    /*text-align: center;*/
 
   }
 
   .right ul li p:last-child {
     /*padding-top: 6%;*/
-    text-align: center;
+    /*text-align: center;*/
   }
 
   .coursetop p {
