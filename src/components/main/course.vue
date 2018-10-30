@@ -238,9 +238,9 @@
     height: 80%;
     float: left;
     position: fixed;
-    top: 20%;
+    top: 14%;
     right: 0px;
-    border-left: 1px solid #ccc;
+    /*border-left: 1px solid #ccc;*/
     margin-top: 2%;
     padding-top: 4%;
     overflow: hidden;
@@ -253,12 +253,12 @@
 
   .right ul li {
     cursor: pointer;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     border-radius: 4px;
     width: 80%;
     height: 18%;
     /*padding-left: 20px;*/
-    margin-left: 6%;
+   /* margin-left: 6%;*/
     margin-top: 6%;
     background-color: rgba(242, 242, 242, 1);
     /* box-shadow:10px 10px 5px #888888;*/

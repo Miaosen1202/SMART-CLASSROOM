@@ -17,7 +17,7 @@
       </div>
       <!--新增exercises开始-->
       <div class="exercises" v-show="showAdd">
-        <h5>{{$t('message.Exercises')}}1</h5>
+        <h5>{{$t('message.Exercises')}}</h5>
 
         <el-radio-group v-model="questionType">
           <el-radio :label="1">{{$t('message.Singlechoice')}}</el-radio>
@@ -78,8 +78,8 @@
         <h5>{{$t('message.Exercises')}} {{exerciseEntity.sort}}</h5>
 
         <el-radio-group v-model="exerciseEntity.questionType">
-          <el-radio :label="'1'">{{$t('message.Singlechoice')}}</el-radio>
-          <el-radio :label="'2'">{{$t('message.Multiplechoice')}}</el-radio>
+          <el-radio disabled :label="'1'">{{$t('message.Singlechoice')}}</el-radio>
+          <el-radio disabled :label="'2'">{{$t('message.Multiplechoice')}}</el-radio>
           <!--<el-radio :label="'3'">Other</el-radio>-->
         </el-radio-group>
         <el-input
@@ -597,7 +597,7 @@
     width: 96%;
     padding-left: 2%;
     margin-top: 2%;
-    /*margin-bottom: 2%;*/
+    margin-bottom: 1%;
   }
 
   .have ul li {
