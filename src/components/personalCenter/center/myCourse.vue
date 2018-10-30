@@ -2,7 +2,7 @@
   <div class="management">
     <!--{{$t('message.mycourse')}}-->
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
       <el-input v-model="search.courseName" size="small" :placeholder="$t('message.CourseName')" style="width: 14%"></el-input>
       <el-input v-model="search.lessonName" size="small" :placeholder="$t('message.lessonName')" style="width: 14%"></el-input>
 
@@ -50,6 +50,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="lessonName"
           data-placement="auto"
           :show-overflow-tooltip="true"
@@ -58,6 +59,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="courseName"
           data-placement="auto"
           :show-overflow-tooltip="true"
@@ -66,6 +68,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="teacherName"
           data-placement="auto"
           :show-overflow-tooltip="true"
@@ -74,6 +77,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="startTime"
           :label="$t('message.DateTime')"
           :formatter="formatDateTime"
@@ -81,6 +85,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="status"
           :label="$t('message.Status')"
           min-width="30%">
@@ -89,9 +94,10 @@
           </template>
         </el-table-column>
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope" v-if="scope.row.status != 0 && scope.row.status != 10">
             <el-button size="mini" style="border: none;color: #0e38b1" @click="handleInto(scope.$index, scope.row)">{{$t('message.enter')}}</el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button size="mini" style="border: none;color: #0e38b1" @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>
           </template>
         </el-table-column>
@@ -253,7 +259,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .management {
     margin: 2%;

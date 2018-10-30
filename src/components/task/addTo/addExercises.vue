@@ -4,8 +4,8 @@
       <!--<p>增加练习 第一个页面 </p>
       <p>There is no exercises yet.</p>-->
       <div class="order">
-        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26">
-          <p>
+        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" v-on:click="createPanelToggle()">
+          <p >
             <img src="../../../../static/images/Creat.png" alt="">
             {{$t('message.CreateAnExercise')}}
           </p>
@@ -125,9 +125,9 @@
           :placeholder="$t('message.Explanations')"
           v-model="exerciseEntity.analysis" style="width: 70%;display: block;margin-top: 2%">
         </el-input>
-        <span slot="footer" class="dialog-footer">
-        <el-button size="medium" type="primary" style="margin-top: 2%" v-on:click="edit()">{{$t('message.save')}}</el-button>
-        <el-button size="medium">{{$t('message.cancel')}}</el-button>
+        <span slot="footer" class="dialog-footer" style="margin-left: 40%">
+        <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff" v-on:click="edit()">{{$t('message.save')}}</el-button>
+        <el-button size="medium" style="color: #333333">{{$t('message.cancel')}}</el-button>
       </span>
       </div>
       <!--修改exercises结束-->
@@ -533,7 +533,12 @@
           console.log(err);
         });
 
-      }
+      },
+      createPanelToggle: function () {
+         /*this.isShow = !this.isShow;*/
+        this.showAdd = !this.showAdd;
+      },
+
 
     }
   }

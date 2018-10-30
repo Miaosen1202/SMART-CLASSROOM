@@ -2,7 +2,7 @@
   <div class="curriculumRecovery">
     <!--课程找回-->
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%">{{ page.total }}</span>
       <el-input v-model="search.lessonName" size="small" :placeholder="$t('message.lessonName')" style="width: 14%"></el-input>
       <el-input v-model="search.createUserName" size="small" :placeholder="$t('message.createUser')" style="width: 14%"></el-input>
       <div class="block" style="width: 30%;display: inline-block" >
@@ -34,7 +34,7 @@
         @selection-change="handleSelectionChange">
         <el-table-column
           type="selection"
-          width="50">
+          width="50" align="center">
         </el-table-column>
 
         <el-table-column
@@ -42,7 +42,7 @@
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.lessonName')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
 
         <el-table-column
@@ -50,7 +50,7 @@
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.course')"
-          min-width="40%">
+          min-width="40%" align="center">
         </el-table-column>
 
         <el-table-column
@@ -58,22 +58,23 @@
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.createUser')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
 
         <el-table-column
           prop="updateTime"
           :label="$t('message.updateTime')"
-          min-width="50%">
+          min-width="50%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
               @click="lessonRecovery(scope.$index, scope.row)">{{$t('message.recovery')}}</el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"

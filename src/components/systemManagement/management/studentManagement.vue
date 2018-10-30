@@ -2,7 +2,7 @@
   <div class="management">
     <!--{{$t('message.studentManagement')}}-->
     <div>
-      <p style="display: inline-block"> {{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block"> {{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%">{{ page.total }}</span>
       <el-input v-model="studentNameSearch" size="small" :placeholder="$t('message.Studentname')" style="width: 20%"></el-input>
       <el-button type="primary" @click="loadStudentRecords(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
       <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
@@ -41,55 +41,55 @@
           :show-overflow-tooltip="true"
           prop="userName"
           :label="$t('message.Account')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           prop="name"
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.Name')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           prop="email"
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.EMail')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           prop="cellPhoneNo"
           :label="$t('message.Phone')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           data-placement="auto"
           :show-overflow-tooltip="true"
           prop="majorName"
           :label="$t('message.major')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           data-placement="auto"
           :show-overflow-tooltip="true"
           prop="className"
           :label="$t('message.class')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
         <el-table-column
           prop="updateTime"
           :label="$t('message.updateTime')"
-          min-width="36%">
+          min-width="42%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
         <el-table-column
           prop="status"
           :label="$t('message.Status')"
-          min-width="26%">
+          min-width="26%" align="center">
           <template slot-scope="scope">{{ scope.row.status == 1 ? $t("message.enable") : $t("message.disable") }}</template>
         </el-table-column>
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="260" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0138b1;"
@@ -104,7 +104,6 @@
             <el-button
               style="border: none;color: #0138b1;"
               size="mini"
-
               @click="deleteStudent(scope.$index, scope.row)">{{$t("message.delete")}}</el-button>
           </template>
         </el-table-column>

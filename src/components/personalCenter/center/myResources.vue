@@ -1,7 +1,7 @@
 <template>
   <div class="all">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
       <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
 
       <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
@@ -28,12 +28,11 @@
         style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="30"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
+        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" :show-overflow-tooltip="true" min-width="80%">
           <!--{{materialName}}-->
           <template slot-scope="scope">
             <file-template
-              data-placement="auto"
-              :show-overflow-tooltip="true"
+
               :id="scope.row.id"
               :url="scope.row.materialUrl"
               :name="scope.row.materialName">
@@ -42,21 +41,21 @@
           <!--<file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>-->
         </el-table-column>
         <!--<el-table-column prop="createUserName" label="创建人" min-width="30%"></el-table-column>-->
-        <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="30%"></el-table-column>
-        <el-table-column prop="fileSize" :label="$t('message.Size')" min-width="30%">
+        <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="40%" align="center"></el-table-column>
+        <el-table-column prop="fileSize" :label="$t('message.Size')" min-width="60%" align="center">
           <template slot-scope="scope">{{ fileSizeConvert(scope.row.fileSize) }}</template>
         </el-table-column>
-        <el-table-column prop="updateTime" :label="$t('message.DateTime')" min-width="50%">
+        <el-table-column prop="updateTime" :label="$t('message.DateTime')" min-width="90%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
-        <el-table-column prop="viewCount" :label="$t('message.Views')" width="130">
+        <el-table-column prop="viewCount" :label="$t('message.Views')" min-width="70%" align="center">
         </el-table-column>
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button>
+              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
@@ -284,7 +283,14 @@
     }
   }
 </script>
-
+<style>
+  .el-tooltip__popper {
+    max-width: 400px;
+    line-height: 180%;
+    word-break: break-all;
+    word-wrap:break-word;
+  }
+</style>
 <style scoped="">
   .all {
     margin: 2%;

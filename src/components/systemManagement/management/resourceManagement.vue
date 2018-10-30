@@ -2,7 +2,7 @@
   <div class="all">
     <!--资源管理-->
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%">{{ page.total }}</span>
       <el-input v-model="search.materialName" size="small" :placeholder="$t('message.resourceName')" style="width: 20%"></el-input>
       <el-select v-model="search.materialType" clearable="" :placeholder="$t('message.pleaseselect')" size="small">
         <el-option
@@ -30,8 +30,8 @@
 
         style="width: 100%"
         @selection-change="handleSelectionChange">
-        <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%">
+        <el-table-column type="selection" width="55" align="center"></el-table-column>
+        <el-table-column prop="materialName" :label="$t('message.fileName')" min-width="50%" align="center">
           <template slot-scope="scope">
             <file-template
               data-placement="auto"
@@ -48,18 +48,19 @@
                          data-placement="auto"
                          :show-overflow-tooltip="true"
                          :label="$t('message.createUser')"
-                         min-width="30%">
+                         min-width="30%" align="center">
         </el-table-column>
-        <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%"></el-table-column>
-        <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%"></el-table-column>
-        <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%"></el-table-column>
-        <el-table-column prop="viewCount" :label="$t('message.viewNumber')" width="130"></el-table-column>
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%" align="center"></el-table-column>
+        <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%" align="center"></el-table-column>
+        <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%" align="center"></el-table-column>
+        <el-table-column prop="viewCount" :label="$t('message.viewNumber')" width="130" align="center"></el-table-column>
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
               @click="modifyPageSkip(scope.row)">{{$t("message.edit")}}</el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"

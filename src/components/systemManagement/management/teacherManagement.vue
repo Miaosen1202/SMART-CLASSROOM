@@ -37,30 +37,30 @@
                          data-placement="auto"
                          :show-overflow-tooltip="true"
                          :label="$t('message.Name')"
-                         min-width="30%">
+                         min-width="30%" align="center">
         </el-table-column>
         <el-table-column prop="email"
                          data-placement="auto"
                          :show-overflow-tooltip="true"
                          :label="$t('message.EMail')"
-                         min-width="40%">
+                         min-width="40%" align="center">
         </el-table-column>
-        <el-table-column prop="cellPhoneNo" :label="$t('message.Phone')" min-width="40%"></el-table-column>
+        <el-table-column prop="cellPhoneNo" :label="$t('message.Phone')" min-width="40%" align="center"></el-table-column>
         <el-table-column prop="subject"
                          data-placement="auto"
                          :show-overflow-tooltip="true"
                          :label="$t('message.Category')"
                          min-width="30%">
         </el-table-column>
-        <el-table-column prop="updateTime" :label="$t('message.updateTime')" min-width="30%">
+        <el-table-column prop="updateTime" :label="$t('message.updateTime')" min-width="42%" align="center">
            <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
 
         </el-table-column>
-        <el-table-column prop="status" :label="$t('message.Status')" min-width="30%">
+        <el-table-column prop="status" :label="$t('message.Status')" min-width="30%" align="center">
           <template slot-scope="scope">{{ scope.row.status == 1 ? $t("message.enable") : $t("message.disable") }}</template>
         </el-table-column>
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="260" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button style="border: none;color: #0138b1;"  size="mini" @click="editTeacher(scope.$index, scope.row)">{{ scope.row.status == 1 ? $t("message.disable") : $t("message.enable") }}</el-button>
             <el-button style="border: none;color: #0138b1;"  size="mini" @click="showStudentEditDialog(scope.$index, scope.row)" >| {{$t("message.edit")}} |</el-button>

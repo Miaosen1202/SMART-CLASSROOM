@@ -1,7 +1,7 @@
 <template>
   <div class="management">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
       <el-select v-model="search.replyStatus" size="small" clearable :placeholder="$t('message.Status')" style="width: 14%">
         <el-option
           v-for="stat in replyStatusOps"
@@ -39,11 +39,13 @@
         @selection-change="handleSelectionChange">
 
         <el-table-column
+
           type="selection"
           width="50">
         </el-table-column>
 
         <el-table-column
+          align="center"
           data-placement="auto"
           :show-overflow-tooltip="true"
           prop="content"
@@ -52,6 +54,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="startTime"
           :label="$t('message.DateTime')"
           min-width="50%">
@@ -59,6 +62,7 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="replyStatus"
           :label="$t('message.Status')"
           min-width="30%">
@@ -66,18 +70,20 @@
         </el-table-column>
 
         <el-table-column
+          align="center"
           prop="endTime"
           :label="$t('message.TimeofDisposal')"
           min-width="60%">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
 
             <el-button style="border: none;color: #0e38b1" size="mini" :disabled="scope.row.replyStatus == 0"
-              @click="goReply(scope.row)"> {{$t('message.reply')}}</el-button>
-
+              @click="goReply(scope.row)"> {{$t('message.reply')}}
+            </el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"

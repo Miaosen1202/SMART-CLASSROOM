@@ -1,7 +1,7 @@
 <template>
   <div class="management">
     <div>
-      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
+      <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%">{{ page.total }}</span>
       <!--<el-input v-model="input" size="small" placeholder="请输入意见内容查询" style="width: 14%"></el-input>-->
       <el-input v-model="search.replyerName" size="small" :placeholder="$t('message.plfrom')" style="width: 14%"></el-input>
       <el-select v-model="search.replyStatus" size="small" clearable :placeholder="$t('message.plStatus')" style="width: 14%">
@@ -44,7 +44,7 @@
 
         <el-table-column
           type="selection"
-          width="50">
+          width="50" align="center">
         </el-table-column>
 
         <el-table-column
@@ -52,7 +52,7 @@
           :show-overflow-tooltip="true"
           prop="content"
           :label="$t('message.feedback')"
-          min-width="60%">
+          min-width="60%" align="center">
         </el-table-column>
 
         <el-table-column
@@ -60,37 +60,38 @@
           data-placement="auto"
           :show-overflow-tooltip="true"
           :label="$t('message.from')"
-          min-width="30%">
+          min-width="30%" align="center">
         </el-table-column>
 
         <el-table-column
           prop="createTime"
           :label="$t('message.fromdata')"
-          min-width="50%">
+          min-width="50%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.createTime) }}</template>
         </el-table-column>
 
         <el-table-column
           prop="replyStatus"
           :label="$t('message.Status')"
-          min-width="30%">
+          min-width="30%" align="center">
           <template slot-scope="scope">{{ scope.row.replyStatus == 1 ? $t('message.replied') : $t('message.notReplied') }}</template>
         </el-table-column>
 
         <el-table-column
           prop="updateTime"
           :label="$t('message.Disposaltime')"
-          min-width="60%">
+          min-width="60%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
 
 
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
               @click="goReply(scope.$index, scope.row)">{{$t('message.reply')}}</el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
