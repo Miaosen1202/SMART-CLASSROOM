@@ -250,7 +250,7 @@
 <style scoped="">
   .all {
     width: 98%;
-    height: 100%;
+    height: 106%;
   }
 
   p {
@@ -299,6 +299,7 @@
     width: 96%;
     padding-left: 2%;
     margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   .have ul li {

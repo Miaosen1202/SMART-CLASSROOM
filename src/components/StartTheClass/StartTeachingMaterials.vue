@@ -204,8 +204,8 @@
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
                     <!--<a :href="material.materialUrl" :download="material.materialName">{{material.materialName}}</a>-->
                     <file-template :id="material.id" :url="material.materialUrl"
-                                   :name="material.materialName"></file-template>
-
+                                   :name="material.materialName">
+                    </file-template>
                     <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
                     <!--<a :href="material.materialUrl" :download="material.materialName">-->
                     <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->

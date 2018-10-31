@@ -8,7 +8,7 @@
       </el-button>
     </div>
 
-    <div class="discuss-panel" style="height: 100%" v-show="showDiscussListPanel">
+    <div class="discuss-panel" style="height: 106%" v-show="showDiscussListPanel">
       <el-scrollbar style="height: 100%">
 
         <div class="create" v-on:click="createPanelToggle()">
@@ -304,6 +304,7 @@
     width: 96%;
     padding-left: 2%;
     margin-top: 2%;
+    margin-bottom: 2%;
   }
 
   .have ul li {
