@@ -466,7 +466,7 @@
                   e.isCorrect = false;
                 }
 
-              })
+              });
 
               this.exerciseEntity = res.data.entity;
               this.optionsShow = res.data.entity.options.length >= this.codeObjList.length;
