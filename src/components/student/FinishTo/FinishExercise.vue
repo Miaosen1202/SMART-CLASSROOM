@@ -9,8 +9,8 @@
       </div>
       <div class="have" v-for="(exercises,index) in existExercisesList">
         <h5 style="display: inline-block">{{$t('message.Exercises')}} {{exercises.sort}}</h5>
-        <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%" v-show="exercises.questionType == '1'">{{$t('message.Singlechoice')}}</span>
-        <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%" v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
+        <span style="padding: 1px;margin-left: 4%;color: #999" v-show="exercises.questionType == '1'">{{$t('message.Singlechoice')}}</span>
+        <span style="padding: 1px;margin-left: 4%;color: #999" v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
         <p class="pexer">{{exercises.questionTitle}}</p>
         <ul style="padding-left: 2%" v-for="(option,index) in exercises.options" :key="index">
           <li>

@@ -20,7 +20,8 @@
           </el-button>
         </div>
         <div class="discussion" v-show="createPanelShow">
-          <h5>{{$t('message.NewDiscussion')}}</h5>
+          <!--<h5>{{$t('message.NewDiscussion')}}</h5>-->
+          <h5>{{$t('message.Discussion')}}</h5>
           <!--v-model="lessonName"-->
           <!--输入框输入内容-->
           <el-input

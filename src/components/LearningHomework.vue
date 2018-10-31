@@ -1,7 +1,7 @@
 <template>
   <div id="all">
     <div class="right-top">
-      <p style="display:inline-block;padding-left: 1%;vertical-align: bottom;">
+      <p style="display:inline-block;padding-left: 1%;vertical-align:bottom;line-height: 8%">
         <img src="../../static/images/logo.png" alt="">
       </p>
       <p style="font-weight: 700;display: inline-block;">
@@ -70,7 +70,7 @@
           <p style="padding-top: 1%">{{entity.lesson.lessonName}}<!--Emergence--><!--{{entity.lesson.lessonName}}-->
             <!--<img src="../assets/images/u475.png" alt="">-->
           </p>
-          <p style="padding-top: 1%">
+          <p style="padding-top: 0%">
             <img src="../assets/images/u434.png" alt="">
             {{entity.course.courseName}}
            <!-- Course : Journey of the Universe: A Story for Our Times-->
@@ -242,7 +242,7 @@
   }
   .right-top{
     width: 100%;
-    height: 6%;
+    height: 8%;
     border: 1px solid #929292;
     background-color: #fff;
     color: #0f0f0f;

@@ -18,7 +18,8 @@
           </el-button>
         </div>
         <div class="discussion" v-show="createPanelShow">
-          <h5>{{$t('message.NewAssignment')}}</h5>
+          <!--<h5>{{$t('message.NewAssignment')}}</h5>-->
+          <h5>{{$t('message.Assignment')}}</h5>
           <el-input
             type="textarea"
             autosize
@@ -83,7 +84,6 @@
         boName: '',
         loading: true,
         lessonId: this.$route.query.lessonId,
-       /* assignmentId: '',*/
         attachments: [],
         assignmentList: [],
         editAssignmentId: undefined,
