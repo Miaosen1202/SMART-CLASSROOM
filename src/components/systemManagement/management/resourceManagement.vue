@@ -89,6 +89,7 @@
     >
 
       <el-upload
+        style="padding-left: 4%"
         class="material-batch-upload"
         name="file"
         accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
@@ -97,13 +98,14 @@
         with-credentials
         :on-change="handleFileChange"
         :on-remove="removeFile"
-        :on-success="handleFileUploadSuccess">
-        <el-button size="small" type="primary">{{$t('message.upload')}}</el-button>
+        :on-success="handleFileUploadSuccess"
+        >
+        <el-button size="small" type="primary" style="background-color: #0e38b1;color: #fff">{{$t('message.upload')}}</el-button>
       </el-upload>
 
       <span slot="footer" class="dialog-footer">
         <el-button @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
-        <el-button type="primary" @click="batchUpload">{{$t('message.save')}}</el-button>
+        <el-button style="background-color: #0e38b1;color: #fff" @click="batchUpload">{{$t('message.save')}}</el-button>
       </span>
     </el-dialog>
   </div>
