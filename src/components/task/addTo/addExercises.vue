@@ -4,7 +4,7 @@
       <!--<p>增加练习 第一个页面 </p>
       <p>There is no exercises yet.</p>-->
       <div class="order">
-        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" ><!--v-on:click="createPanelToggle()"-->
+        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" v-on:click="createPanelToggle()" ><!--v-on:click="createPanelToggle()"-->
           <p >
             <img src="../../../../static/images/Creat.png" alt="">
             {{$t('message.CreateAnExercise')}}
