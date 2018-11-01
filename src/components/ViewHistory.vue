@@ -16,15 +16,36 @@
         stripe
         :default-sort="{prop: 'date', order: 'descending'}"
        >
-        <el-table-column prop="lessonName"  data-placement="auto"
-                         :show-overflow-tooltip="true" :label="$t('message.Lesson')" width="180"></el-table-column>
-        <el-table-column prop="courseName"  data-placement="auto"
-                         :show-overflow-tooltip="true" :label="$t('message.Course')" width="180"></el-table-column>
-        <el-table-column prop="teacherName" :label="$t('message.Teacher')" width="180"></el-table-column>
-        <el-table-column prop="time" :label="$t('message.DateTime')" :formatter="formatter"></el-table-column>
-        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
+        <el-table-column prop="lessonName"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.Lesson')"
+                         min-width="40%">
+        </el-table-column>
+        <el-table-column prop="courseName"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         :label="$t('message.Course')"
+                         min-width="40%">
+        </el-table-column>
+        <el-table-column prop="teacherName"
+                         :label="$t('message.Teacher')"
+                         data-placement="auto"
+                         :show-overflow-tooltip="true"
+                         min-width="40%">
+        </el-table-column>
+        <el-table-column prop="time"
+                         :label="$t('message.DateTime')"
+                         :formatter="formatter"
+                         min-width="40%">
+        </el-table-column>
+        <el-table-column :label="$t('message.Operation')"
+                         align="center"
+                         width="200"
+                         fixed="right">
           <template slot-scope="scope">
             <el-button style="border: none;color: #0138b1;" size="mini" @click="goTeaching(scope.$index, scope.row)">{{$t('message.enter')}}</el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button style="border: none;color: #0138b1;" size="mini"  @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>
           </template>
         </el-table-column>
@@ -143,7 +164,7 @@
 </style>
 <style scoped="">
   .all {
-    width: 90%;
+    width: 96%;
     height: 80%;
     display: inline-block;
     vertical-align: middle;

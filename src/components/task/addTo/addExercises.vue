@@ -4,7 +4,7 @@
       <!--<p>增加练习 第一个页面 </p>
       <p>There is no exercises yet.</p>-->
       <div class="order">
-        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" v-on:click="createPanelToggle()">
+        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" ><!--v-on:click="createPanelToggle()"-->
           <p >
             <img src="../../../../static/images/Creat.png" alt="">
             {{$t('message.CreateAnExercise')}}
@@ -68,7 +68,7 @@
         </el-input>
         <span slot="footer" class="dialog-footer" style="margin-left: 40%">
         <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff" v-on:click="sure()">{{$t('message.save')}}</el-button>
-        <el-button size="medium" style="color: #333333">{{$t('message.cancel')}}</el-button>
+        <el-button size="medium" style="color: #333333" @click="cancelAddOrUpdate">{{$t('message.cancel')}}</el-button>
       </span>
       </div>
       <!--新增exercises结束-->
@@ -127,7 +127,7 @@
         </el-input>
         <span slot="footer" class="dialog-footer" style="margin-left: 40%">
         <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff" v-on:click="edit()">{{$t('message.save')}}</el-button>
-        <el-button size="medium" style="color: #333333">{{$t('message.cancel')}}</el-button>
+        <el-button size="medium" style="color: #333333" @click="xgcancelAddOrUpdate">{{$t('message.cancel')}}</el-button>
       </span>
       </div>
       <!--修改exercises结束-->
@@ -138,7 +138,7 @@
         <span v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
         <el-button v-on:click="deleteExercises(exercises.id)" type="text" icon="el-icon-delete">
         </el-button>
-        <el-button type="text" icon="el-icon-edit" @click="getExecisesDetail(exercises.id)">
+        <el-button type="text" icon="el-icon-edit" class="scrollTop" @click="getExecisesDetail(exercises.id)">
         </el-button>
         <div style="word-wrap: break-word; word-break: normal;width: 90%">{{exercises.questionTitle}}</div>
         <ul v-for="(option,index) in exercises.options">
@@ -468,7 +468,7 @@
                   e.isCorrect = false;
                 }
 
-              })
+              });
 
               this.exerciseEntity = res.data.entity;
               this.optionsShow = res.data.entity.options.length >= this.codeObjList.length;
@@ -546,6 +546,24 @@
            this.isShow = false;
          }
       },
+      cancelAddOrUpdate: function() {
+        /*this.showAdd = false;*/
+        this.questionTitle = "";
+        this.attachments = [];
+
+        this.answerCode="A";
+        this.answerContent="";
+        this.exercisesList = [];
+        this.analysis = "";
+        this.codeObjList= "";
+        // window.location.reload();
+      },
+      xgcancelAddOrUpdate:function () {
+        this.exerciseEntity.questionTitle = "";
+        this.exerciseEntity.sort = 1;
+        this.exerciseEntity.analysis = "";
+        this.showAdd = true;
+      }
 
 
     }
@@ -650,4 +668,5 @@
   .el-alert__closebtn el-icon-close {
     display: none;
   }
+
 </style>

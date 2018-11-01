@@ -136,11 +136,11 @@
     </canvas>
 
     <div class="tool">
-      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;" circle>
+      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;position: fixed;right: 2%;bottom: 2%;" circle>
         <!--background-color: #0e38b1-->
         <img src="../../../static/images/toolkit.png" alt="">
       </el-button>
-      <div class="tool" style="float: right;margin-top: 1%;display: inline-block" v-show="isShow">
+      <div class="tool" style="float: right;margin-top: 1%;position: fixed;right: 7%;bottom: 2%;display: inline-block" v-show="isShow">
         <div class="view" @click="goObjectProjection">
           <el-tooltip class="item" :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
             <el-button style="float: right;border: none;" round>
@@ -204,8 +204,8 @@
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
                     <!--<a :href="material.materialUrl" :download="material.materialName">{{material.materialName}}</a>-->
                     <file-template :id="material.id" :url="material.materialUrl"
-                                   :name="material.materialName"></file-template>
-
+                                   :name="material.materialName">
+                    </file-template>
                     <!--<span @click="preview(material.localPath)">{{material.materialName}}</span>-->
                     <!--<a :href="material.materialUrl" :download="material.materialName">-->
                     <!--&lt;!&ndash;<i class="el-icon-download" style="cursor: pointer;"></i>&ndash;&gt;-->

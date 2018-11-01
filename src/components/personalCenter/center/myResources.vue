@@ -83,6 +83,7 @@
       :visible.sync="batchUploadDialogVisible"
       width="30%"
       @close="batchUploadDialogClosed"
+
       >
       <el-upload
         class="material-batch-upload"
@@ -93,12 +94,14 @@
         :on-change="handleFileChange"
         :on-remove="removeFile"
         :on-success="handleFileUploadSuccess">
-        <el-button size="small" type="primary">{{$t('message.upload')}}</el-button>
+        <el-button size="small" style="background-color: #0e38b1;color: #fff">
+          <img src="../../../../static/images/UPLOAD1.png" alt="">
+          {{$t('message.upload')}}</el-button>
       </el-upload>
 
       <span slot="footer" class="dialog-footer">
-        <el-button @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
-        <el-button type="primary" @click="batchUpload">{{$t('message.save')}}</el-button>
+        <el-button  @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
+        <el-button style="background-color: #0e38b1;color: #fff" @click="batchUpload">{{$t('message.save')}}</el-button>
       </span>
     </el-dialog>
 
