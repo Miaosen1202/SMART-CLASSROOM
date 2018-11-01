@@ -27,7 +27,7 @@
           <!--<img src="../../../assets/images/u60.png" alt="">More-->
           <!--</el-button>-->
           <el-button size="small" type="primary" @click="copyToClike" style="background-color: #f17e26;border: none">
-            <img src="../../../../static/images/COPYTO.png" alt="" width="20px" height="15px">
+            <img src="../../../../static/images/COPYTO.png" alt=""  height="15px">
             {{$t('message.CopyTo')}}
           </el-button>
         </div>
@@ -35,13 +35,14 @@
         <el-upload
           class="material-upload"
           name="file"
+          accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
           with-credentials
           :show-file-list="showUploadFileList"
           :action="UploadUrl()"
           :on-change="handleChange"
           :on-success="handleFileUploadSuccess"
         >
-          <el-button size="small" type="primary" style="background-color: #26b196">
+          <el-button size="small" type="primary" style="background-color: #26b196;margin-left: 10%">
             <img src="../../../../static/images/UPLOAD1.png" height="15px" alt="">
             {{$t('message.upload')}}
           </el-button>

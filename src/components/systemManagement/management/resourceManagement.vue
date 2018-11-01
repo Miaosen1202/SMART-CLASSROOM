@@ -91,6 +91,7 @@
       <el-upload
         class="material-batch-upload"
         name="file"
+        accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
         :file-list="fileList"
         :action="fileUploadPath"
         with-credentials

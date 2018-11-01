@@ -35,6 +35,7 @@
           <el-upload
             class="upload-demo"
             :action="action"
+            accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
             :before-remove="beforeRemove"
             :on-remove="removeFile"
             :on-change="handleChange"

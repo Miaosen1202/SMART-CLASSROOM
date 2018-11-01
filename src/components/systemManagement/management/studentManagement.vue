@@ -177,6 +177,7 @@
         style="padding-left: 4%"
         class="student-data-upload"
         name="file"
+        accept=".xls,.xlsx,"
         with-credentials
         :file-list="studentDataFileList"
         :action="getUploadFilePath()"

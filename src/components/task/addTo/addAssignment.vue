@@ -35,6 +35,7 @@
             :on-change="handleChange"
             :on-success="handleSuccess"
             :with-credentials="true"
+            accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
             :file-list="attachmentFileList">
             <el-button size="mini" style="background-color: #26be96">
               <img src="../../../assets/images/u166.png" alt="">
