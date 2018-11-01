@@ -96,6 +96,7 @@ const en = {
     'Thetitlemustbenotempty':'The title must be not empty',
     'Theoptionsmustbegreater':'The options must be greater than 1 and less than 11',
     'Coursenamealreadyexistsandcannotbesubmitted':'Course name already exists and cannot be submitted.',
+    'Uploadfileerror':'Upload file error: File type are not allowed',
 
 // -------- end -----------
 

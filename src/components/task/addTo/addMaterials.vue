@@ -150,7 +150,8 @@
               })
           });
         } else {
-          alert("Upload file error: " + resp.message);
+        /*  alert("Upload file error: " + resp.message);*/
+          this.$message.error(this.$t('message.Uploadfileerror'));/*Upload file error: File type are not allowed*/
         }
       },
       handleChange(file, fileList) {
