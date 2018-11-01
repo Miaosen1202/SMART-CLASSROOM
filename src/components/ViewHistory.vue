@@ -22,7 +22,7 @@
                          :show-overflow-tooltip="true" :label="$t('message.Course')" width="180"></el-table-column>
         <el-table-column prop="teacherName" :label="$t('message.Teacher')" width="180"></el-table-column>
         <el-table-column prop="time" :label="$t('message.DateTime')" :formatter="formatter"></el-table-column>
-        <el-table-column :label="$t('message.Operation')">
+        <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button style="border: none;color: #0138b1;" size="mini" @click="goTeaching(scope.$index, scope.row)">{{$t('message.enter')}}</el-button>
             <el-button style="border: none;color: #0138b1;" size="mini"  @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>

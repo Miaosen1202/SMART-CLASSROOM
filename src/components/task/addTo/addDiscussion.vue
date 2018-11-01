@@ -20,7 +20,8 @@
           </el-button>
         </div>
         <div class="discussion" v-show="createPanelShow">
-          <h5>{{$t('message.NewDiscussion')}}</h5>
+          <h5 v-if="flag == 'add'">{{$t('message.NewDiscussion')}}</h5>
+          <h5 v-if="flag == 'edit'">{{$t('message.Discussion')}}{{showSort}}</h5>
           <!--v-model="lessonName"-->
           <!--输入框输入内容-->
           <el-input
@@ -58,7 +59,7 @@
           <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
           <el-button v-on:click="deleteDiscussion(discussion.id)" type="text" icon="el-icon-delete"><!--错误符号-->
           </el-button>
-          <el-button v-on:click="goEditDiscuss(discussion.id, index)" type="text" icon="el-icon-edit">
+          <el-button v-on:click="goEditDiscuss(discussion.id,discussion.sort, index)" type="text" icon="el-icon-edit">
           </el-button>
           <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{discussion.discussContent}}</p>
           <ul style="padding-left: 2%">
@@ -93,6 +94,8 @@
         attachments: [],
         discussionList: [],//课堂列表
         editDiscussId: undefined,
+        showSort:1,
+        flag:'add',
       };
     },
     mounted() {
@@ -110,9 +113,11 @@
       goToAddDiscussion: function () {
         this.showDiscussListPanel = true;
         this.createPanelShow = true;
+
       },
       createPanelToggle: function () {
         this.createPanelShow = !this.createPanelShow;
+        this.flag = 'add';
       },
       beforeRemove(file, fileList) {
         this.removedFileName = file.name;
@@ -210,11 +215,13 @@
         });
 
       },
-      goEditDiscuss: function (id, index) {
+      goEditDiscuss: function (id, sort,index) {
         let editDiscuss = this.discussionList[index];
-        console.log("go edit, id=" + id + ", index=" + index, editDiscuss);
+        /*console.log("go edit, id=" + id + ", index=" + index, editDiscuss);*/
 
         this.createPanelShow = true;
+        this.flag = 'edit';
+        this.showSort = sort;
         this.editDiscussId = editDiscuss.id;
         this.discussContent = editDiscuss.discussContent;
         this.attachments = editDiscuss.attachments ? editDiscuss.attachments.slice() : [];

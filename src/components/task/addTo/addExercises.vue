@@ -74,7 +74,7 @@
       <!--新增exercises结束-->
 
       <!--修改exercises开始-->
-      <div class="exercises" v-show="!showAdd">
+      <div class="exercises" v-show="isShow">
         <h5>{{$t('message.Exercises')}} {{exerciseEntity.sort}}</h5>
 
         <el-radio-group v-model="exerciseEntity.questionType">
@@ -240,7 +240,8 @@
           }
         ],
         optionsShow:false,
-        showAdd: true,
+        showAdd: false,
+        isShow:false,
         exerciseEntity: {},
         selectEditItem: "",
         moveTopBtn: true,
@@ -454,6 +455,7 @@
       },
       /*获取选择题详情*/
       getExecisesDetail(id) {
+        this.isShow = true;
         this.showAdd = false;
         this.$http.get(`${process.env.NODE_ENV}/choiceQuestion/get`, {params: {data: id}})
           .then((res) => {
@@ -536,7 +538,13 @@
       },
       createPanelToggle: function () {
          /*this.isShow = !this.isShow;*/
-        this.showAdd = !this.showAdd;
+         if(this.showAdd ||this.isShow){
+           this.showAdd = false;
+           this.isShow = false;
+         }else{
+           this.showAdd = true;
+           this.isShow = false;
+         }
       },
 
 
