@@ -18,8 +18,8 @@
           </el-button>
         </div>
         <div class="discussion" v-show="createPanelShow">
-          <!--<h5>{{$t('message.NewAssignment')}}</h5>-->
-          <h5>{{$t('message.Assignment')}}</h5>
+          <h5 v-if="flag == 'add'">{{$t('message.NewAssignment')}}</h5>
+          <h5 v-if="flag == 'edit'">{{$t('message.Assignment')}}{{showSort}}</h5>
           <el-input
             type="textarea"
             autosize
@@ -52,7 +52,7 @@
           <h5>{{$t('message.Assignment')}} {{assignment.sort}}</h5>
           <el-button v-on:click="deleteAssignment(assignment.id, index)" type="text" icon="el-icon-delete">
           </el-button>
-          <el-button v-on:click="goEditAssignment(assignment.id, index)" type="text" icon="el-icon-edit">
+          <el-button v-on:click="goEditAssignment(assignment.id,assignment.sort, index)" type="text" icon="el-icon-edit">
           </el-button>
           <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{assignment.assignmentName}}</p>
           <ul style="padding-left: 2%">
@@ -87,6 +87,8 @@
         attachments: [],
         assignmentList: [],
         editAssignmentId: undefined,
+        showSort:1,
+        flag:'add',
       }
     },
     mounted() {
@@ -96,6 +98,7 @@
       createPanelToggle: function () {
         // this.isShow = !this.isShow;
         this.createPanelShow = !this.createPanelShow;
+        this.flag = 'add';
       },
       goToAddAssignment: function() {
         this.createPanelShow = true;
@@ -228,10 +231,12 @@
         // });
       },
 
-      goEditAssignment: function (id, index) {
+      goEditAssignment: function (id,sort,index) {
         let editAssignment = this.assignmentList[index];
 
         this.createPanelShow = true;
+        this.flag = 'edit';
+        this.showSort = sort;
         this.editAssignmentId = editAssignment.id;
         this.assignmentName = editAssignment.assignmentName;
         this.attachments = editAssignment.attachments || [];
