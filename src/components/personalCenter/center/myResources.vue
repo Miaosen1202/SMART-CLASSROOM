@@ -98,8 +98,8 @@
         <el-button size="small" style="background-color: #0e38b1;color: #fff">
           <img src="../../../../static/images/UPLOAD1.png" alt="">
           {{$t('message.upload')}}</el-button>
+        <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
       </el-upload>
-
       <span slot="footer" class="dialog-footer">
         <el-button  @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
         <el-button style="background-color: #0e38b1;color: #fff" @click="batchUpload">{{$t('message.save')}}</el-button>
@@ -300,6 +300,11 @@
     margin: 2%;
     margin-top: 0px;
     padding-top: 2%;
+  }
+  .el-upload__tip {
+    display: inline-block;
+    padding-left: 2%;
+    color: #999;
   }
 </style>
 

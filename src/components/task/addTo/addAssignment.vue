@@ -19,15 +19,18 @@
         </div>
         <div class="discussion" v-show="createPanelShow">
           <h5 v-if="flag == 'add'">{{$t('message.NewAssignment')}}</h5>
-          <h5 v-if="flag == 'edit'">{{$t('message.Assignment')}}{{showSort}}</h5>
+          <h5 v-if="flag == 'edit'">{{$t('message.Assignment')}}  {{showSort}}</h5>
           <el-input
+            style="width: 98%"
             type="textarea"
             autosize
             :placeholder="$t('message.pleaseenter')"
             v-model="assignmentName">
           </el-input>
+          <span style="float: right;padding-right: 2%;font-size: 12px;color: #999999">{{$t('message.1000byte')}}</span>
           <!-- <div style="margin: 20px 0;"></div>-->
           <el-upload
+            style="padding-top: 2%"
             class="upload-demo"
             :action="action"
             :before-remove="beforeRemove"
@@ -37,10 +40,11 @@
             :with-credentials="true"
             accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
             :file-list="attachmentFileList">
-            <el-button size="mini" style="background-color: #26be96">
+            <el-button size="mini" style="background-color: #26be96;color: #fff;">
               <img src="../../../assets/images/u166.png" alt="">
+              {{$t('message.AddAttachments')}}
             </el-button>
-            <div slot="tip" class="el-upload__tip">{{$t('message.AddAttachments')}}</div>
+            <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div><!--Only support-->
           </el-upload>
 
           <span slot="footer" class="dialog-footer" style="margin-left: 40%">
@@ -55,7 +59,7 @@
           </el-button>
           <el-button v-on:click="goEditAssignment(assignment.id,assignment.sort, index)" type="text" icon="el-icon-edit">
           </el-button>
-          <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{assignment.assignmentName}}</p>
+          <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%;word-break: break-all;">{{assignment.assignmentName}}</p>
           <ul style="padding-left: 2%">
             <li v-for="(attachment,ind) in assignment.attachments" :key="ind">
               <!--{{attachment.fileName}}-->
@@ -281,10 +285,10 @@
     background-color: #f9f9f9;
   }
 
-  .el-textarea {
+ /* .el-textarea {
     width: 70%;
     padding-bottom: 3%;
-  }
+  }*/
 
   .el-upload {
     width: 30% !important;

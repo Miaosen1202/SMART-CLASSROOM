@@ -187,6 +187,7 @@
         <el-button size="small" style="background-color: #0e38b1;color: #fff">
           <img src="../../../../static/images/UPLOAD1.png" alt="">
           {{$t('message.upload')}}</el-button>
+        <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupportxls')}}</div>
       </el-upload>
 
       <el-checkbox style="padding-left: 4%;padding-top: 2%" v-model="overrideExistsStudentNoData">{{$t('message.overwriteExistsData')}}</el-checkbox>
@@ -482,5 +483,10 @@
   }
   .projectile ul li {
     margin-top: 2%;
+  }
+  .el-upload__tip {
+    display: inline-block;
+    padding-left: 2%;
+    color: #999;
   }
 </style>

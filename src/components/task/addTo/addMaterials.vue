@@ -30,9 +30,11 @@
             <img src="../../../../static/images/COPYTO.png" alt=""  height="15px">
             {{$t('message.CopyTo')}}
           </el-button>
+
         </div>
 
         <el-upload
+          style="width: 70%;padding-bottom: 2%"
           class="material-upload"
           name="file"
           accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
@@ -47,9 +49,11 @@
             {{$t('message.upload')}}
           </el-button>
 
-          <!--<div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>-->
+          <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
         </el-upload>
-        <div style="margin: 15px 0;"></div>
+
+
+        <!--<div style="margin: 15px 0;"></div>-->
         <!--<el-checkbox-group v-model="checkedMaterials" @change="handleCheckedCitiesChange">-->
         <!--<div v-for="city in cities">-->
         <!--<el-checkbox :label="city" :key="city">{{city}}</el-checkbox>-->
@@ -372,5 +376,10 @@
   .lesson-item.el-radio {
     margin: 10px;
     margin-left: 30px;
+  }
+  .el-upload__tip {
+    display: inline-block;
+    padding-left: 2%;
+    color: #999;
   }
 </style>

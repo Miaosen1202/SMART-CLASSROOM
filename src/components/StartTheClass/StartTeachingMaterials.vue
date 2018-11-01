@@ -131,16 +131,16 @@
       </div>
     </div>-->
 
-    <canvas id="c1" width="1400px" height="500px">
-      <span>{{$t('message.canvas')}}</span><!--该浏览器不支持canvas内容-->
-    </canvas>
+   <!-- <canvas id="c1" width="1400px" height="500px">
+      <span>{{$t('message.canvas')}}</span>&lt;!&ndash;该浏览器不支持canvas内容&ndash;&gt;
+    </canvas>-->
 
     <div class="tool">
-      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;position: fixed;right: 2%;bottom: 2%;" circle>
+      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;position: fixed;right: 14%;bottom: 6%;z-index: 999" circle>
         <!--background-color: #0e38b1-->
         <img src="../../../static/images/toolkit.png" alt="">
       </el-button>
-      <div class="tool" style="float: right;margin-top: 1%;position: fixed;right: 7%;bottom: 2%;display: inline-block" v-show="isShow">
+      <div class="tool" style="float: right;margin-top: 1%;position: fixed;right: 20%;bottom: 6%;display: inline-block;z-index: 999" v-show="isShow">
         <div class="view" @click="goObjectProjection">
           <el-tooltip class="item" :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
             <el-button style="float: right;border: none;" round>
@@ -163,13 +163,13 @@
           </el-tooltip>
         </div>
 
-        <div class="view" @click="draw">
+       <!-- <div class="view" @click="draw">
           <el-tooltip class="item" effect="dark" :content="$t('message.Markpen')" placement="bottom">
             <el-button style="float: right;border: none;" round>
               <img src="../../../static/images/pen-blue.png" alt="">
             </el-button>
           </el-tooltip>
-        </div>
+        </div>-->
         <div class="view" @click="gobackLesson()">
           <el-tooltip class="item" effect="dark" :content="$t('message.Viewmylessons')" placement="bottom">
             <el-button style="float: right;border: none" round @click="gobackLesson()">
@@ -187,18 +187,19 @@
       </div>
     </div>
 
-    <div style="position: absolute;top: 10%;left: 10%;width: 60%">
+    <div style="position: absolute;top: 10%;bottom:2%;left: 10%;width: 80%;background-color: #fff;padding: 3% 2% 17%;"><!--type="card"-->
       <div class="main">
-        <el-scrollbar>
-          <el-tabs :tab-position="tabPosition" type="card" activeName="materialTab" @tab-click="tabChange"
-                   style="color: #0e38b1">
-
+        <el-scrollbar style="height: 100%;">
+          <el-tabs :tab-position="tabPosition" activeName="materialTab" @tab-click="tabChange"
+                    >
+            <span style="position: fixed;top: 12%;right: 12%;cursor: pointer" @click="backparpare">
+              <img src="../../../static/images/home.png" alt="">
+            </span>
             <!--<el-tab-pane name="materialTab" :label="'Teaching Materials(' + materialNumber + ')'">-->
             <el-tab-pane name="materialTab" :label="$t('message.TeachingMaterials')">
-              <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
-              <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">
-                {{$t('message.checkall')}}
-              </el-checkbox>
+              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ materialNumber }}</p>
+
               <el-checkbox-group v-model="checkedMaterialList">
                 <div class="list" v-for="material in materialList">
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
@@ -214,18 +215,26 @@
                   </el-checkbox>
                 </div>
               </el-checkbox-group>
-              <el-button style="margin-bottom: 10%;background-color: #0e38b1;color: #fff;margin-top: 1%"
+
+              <div style="position: fixed;bottom: 18%;right: 14%">
+                <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" >
+                  {{$t('message.checkall')}}
+                </el-checkbox>
+                <el-button style="background-color: #0e38b1;color: #fff;"
                          @click="shareMaterial">{{$t('message.SendTo')}}
-              </el-button>
+                </el-button>
+
+              </div>
             </el-tab-pane>
 
             <!--<el-tab-pane name="discussTab" :label="'Discussion(' + discussNumber + ')'" style="margin-bottom: 10%;">-->
             <el-tab-pane name="discussTab" :label="$t('message.Discussion')" style="margin-bottom: 10%;">
-              <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ discussNumber }}</p>
               <div v-for="(discussion, index) in discussionList" :key="discussion.id">
                 <div class="have">
                   <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
-                  <p>{{discussion.discussContent}}</p>
+                  <p style="word-break: break-all;width: 98%;color: #999999">{{discussion.discussContent}}</p>
                   <ul>
                     <li v-for="atth in discussion.attachments">
                       <!--<a :href="atth.fileUrl" :download="atth.fileName">{{atth.fileName}}</a>-->
@@ -252,7 +261,7 @@
                       <span
                         style="float: right;color: #999;padding-right: 2%">{{ formatDateTime(discussAnswer.updateTime)
                         }}</span>
-                      <p style="word-break: break-all;">{{discussAnswer.answerContent }}</p>
+                      <p style="word-break: break-all;width: 98%;">{{discussAnswer.answerContent }}</p>
                       <ul>
                         <li v-for="atth in discussAnswer.attachments">
                           <!--<a :href="getFileDownloadPath(atth.fileUrl)" :download="atth.fileName">{{ atth.fileName }}</a>-->
@@ -271,28 +280,37 @@
             </el-tab-pane>
             <!--<el-tab-pane name="exercisesTab" :label="'Exercises(' + execisesNumber + ')'" >-->
             <el-tab-pane name="exercisesTab" :label="$t('message.Exercises')">
-              <p>{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{pages}}</p>
               <div class="exercise">
                 <div class="leftexerc" style="height: 350px">
                   <el-scrollbar style="height: 90%;">
-                    <div class="elbtn" style="float: right;padding-right: 2%">
-                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle
-                                 @click="goBack"></el-button>
-                      <h4 style="display: inline-block">{{currentPage}}/{{pages}}</h4>
-                      <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle
-                                 @click="toNextPage"></el-button>
+                      <!--<div class="elbtn" style="float: right;padding-right: 2%">
+                        <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle
+                                   @click="goBack"></el-button>
+                        <h4 style="display: inline-block;">{{currentPage}}/{{pages}}</h4>
+
+                        <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle
+                                   @click="toNextPage"></el-button>
+                      </div>-->
+                    <div style="position: fixed;bottom: 30%;right: 14%">
+                      <el-button-group>
+                        <el-button @click="goBack" type="small" round icon="el-icon-arrow-left" >{{$t('message.pre')}}</el-button>
+                        <el-button @click="toNextPage" type="small" round>{{$t('message.next')}}<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+                      </el-button-group>
                     </div>
+
                     <div v-for="(exercises,index) in existExercisesList">
                       <h4 style="display:inline-block; border-bottom: 2px solid #999">
                         {{$t('message.Exercises')}} {{exercises.sort}}</h4>
-                      <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%"
+                      <span style="padding: 1px;margin-left: 8%;color: #999999"
                             v-show="exercises.questionType == '1'">{{$t('message.Singlechoice')}}</span>
-                      <span style="border: 1px solid #ccc;padding: 1px;margin-left: 1%"
+                      <span style="padding: 1px;margin-left: 8%;color: #999999"
                             v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
-                      <p>{{exercises.questionTitle}}</p>
+                      <p style="word-break: break-all;width: 96%;">{{exercises.questionTitle}}</p>
                       <ul v-for="(option,index) in exercises.options" :key="index">
                         <li><h4 style="display: inline-block">{{option.answerCode}}:</h4>
-                          <span>{{option.answerContent}}</span></li>
+                          <span style="display:inline-block;word-break: break-all;width: 90%;">{{option.answerContent}}</span></li>
                       </ul>
 
                       <div style="cursor: pointer" v-on:click="execisesAnswerShowToggle()">
@@ -306,7 +324,7 @@
                           <h4 v-if="option.isCorrect == 1">{{option.answerCode}}</h4>
                         </div>
                         <i style="font-weight: 700;color: #5cb85c">{{$t('message.Explanation')}} :</i>
-                        <p style="word-break: break-all;">{{exercises.analysis}}</p>
+                        <p style="word-break: break-all;width: 96%;">{{exercises.analysis}}</p>
                       </div>
                     </div>
                   </el-scrollbar>
@@ -325,10 +343,11 @@
             <!--<el-tab-pane name="assignmentTab" :label="'Assignment(' + assignmentNumber + ')'" style="margin-bottom: 10%;">-->
             <el-tab-pane name="assignmentTab" :label="$t('message.Assignment')" style="margin-bottom: 10%;">
               <div>
-                <h5>{{$t('message.lesson')}}： {{ lessonName }}</h5>
+                <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+                <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{assignmentNumber}}</p>
                 <div class="have" v-for="assignment in assignmentList">
                   <h5>{{$t('message.Assignment')}} {{assignment.sort}}</h5>
-                  <p>{{assignment.assignmentName}}</p>
+                  <p style="word-break: break-all;width: 98%;color: #999999">{{assignment.assignmentName}}</p>
                   <ul>
                     <li v-for="atth in assignment.attachments">
                       <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
@@ -337,10 +356,10 @@
                 </div>
               </div>
             </el-tab-pane>
-            <el-tab-pane name="goback">
+           <!-- <el-tab-pane name="goback">
             <span slot="label">
               <img src="../../assets/images/u273.png" alt="">
-            </span>
+            </span>-->
               <!--<p>Lesson： {{ lessonName }}</p>-->
               <!-- <div class="exercise" style="width: 100%;margin-right: 2%">
                  &lt;!&ndash;<div class="leftexerc" style="height: 350px">
@@ -406,7 +425,7 @@
 
                  </div>
                </div>-->
-            </el-tab-pane>
+            <!--</el-tab-pane>-->
           </el-tabs>
               
         </el-scrollbar>
@@ -572,7 +591,9 @@
       studentPresenceDialogClose: function () {
 
       },
-
+      backparpare:function(){
+        this.$router.push({path: "/homePage/prepare"});
+      },
       viewPresence: function () {
         console.log("view");
         this.studentPresence.dialogVisible = true;
@@ -834,7 +855,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.materialList = res.data.entity;
-              //this.materialNumber = res.data.entity.length;
+              this.materialNumber = res.data.entity.length;
             } else {
               alert(res.data.message);
             }
@@ -847,7 +868,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.discussionList = res.data.entity;
-              // this.discussNumber = res.data.entity.length;
+             this.discussNumber = res.data.entity.length;
             } else {
               alert(res.data.message);
             }
@@ -863,7 +884,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.assignmentList = res.data.entity;
-              // this.assignmentNumber = res.data.entity.length;
+              this.assignmentNumber = res.data.entity.length;
             } else {
               alert(res.data.message);
             }
@@ -915,9 +936,9 @@
           this.getExercisesList();
         } else if (tab.name == "assignmentTab") {
           this.getAssignmentList();
-        } else if (tab.name == "goback") {
+        }/* else if (tab.name == "goback") {
           this.$router.push({path: "/homePage/prepare"});
-        }
+        }*/
       },
       handleCheckAllChange: function (val) {
 
@@ -1168,27 +1189,28 @@
   #start {
     width: 100%;
     height: 100%;
+    background-color: #f4f4f4;
   }
 
   .top {
     /*height: 8%;*/
     /* background-color: #0066CC;*/
-    background-color: rgba(248, 248, 248, 1);;
+    background-color: #fff;
   }
 
   .main {
     width: 100%;
     margin: 2% auto;
-    height: 80%;
+    height: 100%;
     overflow: auto;
   }
 
   .list {
     border: 1px solid #ccc;
-    width: 100%;
+    width: 98%;
     border-radius: 2%;
     padding: 1% 2%;
-    border-radius: 4px;
+
 
   }
 
@@ -1197,11 +1219,14 @@
   }
 
   .have {
-    border: 1px solid #ccc;
-    width: 84%;
+    /*border: 1px solid #ccc;*/
+    width: 98%;
     padding-left: 2%;
+    margin-left: 1%;
     margin-top: 2%;
     position: relative;
+    box-shadow: 0 0 10px -1px #ccc;
+    padding-bottom: 1%;
   }
 
   .have ul li {
@@ -1211,8 +1236,8 @@
 
   .have h5 {
     display: inline-block;
-    border-bottom: 2px solid #999;
-    font-weight: 700;
+   /* border-bottom: 2px solid #999;*/
+    font-weight: 600;
   }
 
   .news {
@@ -1225,12 +1250,15 @@
   }
 
   .discussion-answer-items {
-    border: 1px solid #ccc;
-    width: 84%;
+    /*border: 1px solid #ccc;*/
+    width: 98%;
     padding-left: 6%;
+    margin-left: 1%;
     position: relative;
     border-top: none;
     padding-top: 1%;
+    box-shadow: 0 10px 10px -1px #ccc;
+
   }
 
   .discussion-answer-items p {
@@ -1257,12 +1285,15 @@
   }
 
   .exercise {
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;*/
     width: 100%;
     height: 100%;
     margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
     display: inline-block;
     border-radius: 4px;
+    box-shadow: 0 0 10px -1px #ccc;
   }
 
   .leftexerc {
@@ -1274,7 +1305,7 @@
     padding-left: 2%;
     overflow: auto;
     padding-right: 2%;
-    border-right: 2px solid #ccc;
+    /*border-right: 2px solid #ccc;*/
     margin-top: 2%;
   }
 
@@ -1312,5 +1343,12 @@
     background-color: #28caff;
     /* box-shadow: 0 0 5px #60d6ff;
      border-radius: 30px;*/
+  }
+  .pages {
+    display: inline-block;
+    width: 40px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
   }
 </style>

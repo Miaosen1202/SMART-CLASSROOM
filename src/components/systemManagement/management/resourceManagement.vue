@@ -101,6 +101,7 @@
         :on-success="handleFileUploadSuccess"
         >
         <el-button size="small" type="primary" style="background-color: #0e38b1;color: #fff">{{$t('message.upload')}}</el-button>
+        <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
       </el-upload>
 
       <span slot="footer" class="dialog-footer">
@@ -325,6 +326,11 @@
     margin: 2%;
     margin-top: 0px;
     padding-top: 2%;
+  }
+  .el-upload__tip {
+    display: inline-block;
+    padding-left: 2%;
+    color: #999;
   }
 </style>
 

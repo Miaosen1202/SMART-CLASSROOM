@@ -80,8 +80,8 @@
         <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
 
-            <el-button style="border: none;color: #0e38b1" size="mini" :disabled="scope.row.replyStatus == 0"
-              @click="goReply(scope.row)"> {{$t('message.reply')}}
+            <el-button style="border: none;color: #0e38b1" size="mini"
+              @click="goReply(scope.row)"> {{$t('message.reply')}}<!--:disabled="scope.row.replyStatus == 0"-->
             </el-button>
             <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button

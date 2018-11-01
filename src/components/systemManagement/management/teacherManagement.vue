@@ -109,7 +109,7 @@
               <span style="padding-right: 10%">{{$t('message.Status')}}：</span>
               <el-radio v-model="editStudent.status" label="1">{{$t('message.enable')}}</el-radio>
               <el-radio v-model="editStudent.status" label="0">{{$t('message.disable')}}</el-radio>
-                  <!-- <span style="color: red;padding-left: 18%">“*”{{$t('message.Forarequireditem')}}</span>-->
+              <!-- <span style="color: red;padding-left: 18%">“*”{{$t('message.Forarequireditem')}}</span>-->
             </li>
           </ul>
         </div>
@@ -141,6 +141,7 @@
         <el-button size="small" style="background-color: #0e38b1;color: #fff">
           <img src="../../../../static/images/UPLOAD1.png" alt="">
           {{$t('message.upload')}}</el-button>
+        <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupportxls')}}</div>
       </el-upload>
 
       <el-checkbox style="padding-left: 4%;padding-top: 2%" v-model="overrideExistsTeacherNoData">
@@ -438,6 +439,11 @@
 
   .projectile ul li {
     margin-top: 2%;
+  }
+  .el-upload__tip {
+    display: inline-block;
+    padding-left: 2%;
+    color: #999;
   }
 
 </style>
