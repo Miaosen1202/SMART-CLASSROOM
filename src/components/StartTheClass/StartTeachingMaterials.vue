@@ -198,9 +198,14 @@
 
             <!--<el-tab-pane name="materialTab" :label="'Teaching Materials(' + materialNumber + ')'">-->
             <el-tab-pane name="materialTab" :label="$t('message.TeachingMaterials')">
+
+             <!-- <div v-if="flag == 'edit'">{{$t('message.Assignment')}}</div>-->
               <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ materialNumber }}</p>
+              <div v-if="materialNumber == '0'">
 
+                <img src="../../../static/images/u550.png" alt="" style="margin:6% 40%">
+              </div>
               <el-checkbox-group v-model="checkedMaterialList">
                 <div class="list" v-for="material in materialList">
                   <el-checkbox :label="material" :disabled="material.isShare == 1">
@@ -232,6 +237,10 @@
             <el-tab-pane name="discussTab" :label="$t('message.Discussion')" style="margin-bottom: 10%;">
               <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ discussNumber }}</p>
+              <div v-if="discussNumber == '0'">
+
+                <img src="../../../static/images/u550.png" alt="" style="margin:3% 40%;padding-top: 1%">
+              </div>
               <div v-for="(discussion, index) in discussionList" :key="discussion.id">
                 <div class="have">
                   <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
@@ -264,7 +273,7 @@
                         }}</span>
                       <p style="word-break: break-all;width: 98%;">{{discussAnswer.answerContent }}</p>
                       <ul>
-                        <li v-for="atth in discussAnswer.attachments">
+                        <li v-for="atth in discussAnswer.attachments" style="padding-bottom: 1%">
                           <!--<a :href="getFileDownloadPath(atth.fileUrl)" :download="atth.fileName">{{ atth.fileName }}</a>-->
                           <file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>
                           <!--<span @click="preview(atth.fileLocalPath)">{{atth.fileName}}</span>-->
@@ -281,11 +290,18 @@
             </el-tab-pane>
             <!--<el-tab-pane name="exercisesTab" :label="'Exercises(' + execisesNumber + ')'" >-->
             <el-tab-pane name="exercisesTab" :label="$t('message.Exercises')">
+
               <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{pages}}</p>
-              <div class="exercise">
-                <div class="leftexerc" style="height: 350px">
+              <div v-if="pages == '0'">
+                <img src="../../../static/images/u550.png" alt="" style="position: fixed;top:30%;right: 50%;">
+              </div>
+              <div class="exercise" v-if="pages != '0'"><!--v-show="Exercisesshow"-->
+
+                <div class="leftexerc" style="height: 400px">
+
                   <el-scrollbar style="height: 90%;">
+
                       <!--<div class="elbtn" style="float: right;padding-right: 2%">
                         <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle
                                    @click="goBack"></el-button>
@@ -346,6 +362,9 @@
               <div>
                 <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
                 <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{assignmentNumber}}</p>
+                <div v-if="assignmentNumber == '0'">
+                  <img src="../../../static/images/u550.png" alt="" style="margin:3% 40%;">
+                </div>
                 <div class="have" v-for="assignment in assignmentList">
                   <h5>{{$t('message.Assignment')}} {{assignment.sort}}</h5>
                   <p style="word-break: break-all;width: 98%;color: #999999">{{assignment.assignmentName}}</p>
@@ -532,6 +551,7 @@
         lessonId: this.$route.query.lessonId,
         checked: true,
         isShow: false,
+        Exercisesshow:false,
         execisesAnswerShow: false,
         discussAnswerIsShow: false,
         checkAll: false,
@@ -1258,7 +1278,7 @@
     position: relative;
     border-top: none;
     padding-top: 1%;
-    box-shadow: 0 10px 10px -1px #ccc;
+    box-shadow: 0 10px 10px -7px #ccc;
 
   }
 

@@ -14,7 +14,7 @@
       <div class="have" v-for="(discussion,index) in discussionList" :key="index">
         <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
 
-        <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%;word-break: break-all;">{{discussion.discussContent}}</p>
+        <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%;word-break: break-all;width: 80%">{{discussion.discussContent}}</p>
         <ul style="padding-left: 2%">
           <li v-for="(attachment,ind) in discussion.attachments" :key="ind">
             <!--<span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>-->
@@ -35,9 +35,9 @@
         <div style="margin: 2% 0px" v-show="isSubmit == 0">
           <div class="discussion" v-for="(submitHistory,index) in submitHistoryList" :key="index">
             <P><b>{{submitHistory.studentName}}</b> [{{submitHistory.studentId}}] </P>
-            <P style="margin-left: 75%">{{dateTimeformat(submitHistory.createTime)}}</P>
+            <P style="margin-left: 75%;word-break: break-all;">{{dateTimeformat(submitHistory.createTime)}}</P>
             <br>
-            <P>{{submitHistory.answerContent}}</P>
+            <P style="word-break: break-all">{{submitHistory.answerContent}}</P>
 
             <ul v-for="(attachment,ind) in submitHistory.attachments" :key="ind">
 
@@ -73,17 +73,19 @@
             <el-upload
               class="upload-demo"
               :action="action"
+              accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
               :before-remove="beforeRemove"
               :on-remove="removeFile"
               :on-change="handleChange"
               :on-success="handleSuccess"
               :with-credentials="true"
               :file-list="fileList3">
-              <el-button size="mini" type="primary" style="background-color: #26be96;border: 1px solid #14be7b">
+              <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
                 <img src="../../../assets/images/u166.png" alt="">
+                {{$t('message.AddAttachments')}}
               </el-button>
 
-              <div slot="tip" class="el-upload__tip">{{$t('message.AddAttachments')}}</div>
+              <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
             </el-upload>
 
             <!--按钮-->
