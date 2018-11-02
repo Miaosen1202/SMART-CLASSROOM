@@ -239,7 +239,7 @@
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ discussNumber }}</p>
               <div v-if="discussNumber == '0'">
 
-                <img src="../../../static/images/u550.png" alt="" style="margin:3% 40%;padding-top: 1%">
+                <img src="../../../static/images/u674.png" alt="" style="margin:3% 40%;padding-top: 1%">
               </div>
               <div v-for="(discussion, index) in discussionList" :key="discussion.id">
                 <div class="have">
@@ -294,7 +294,7 @@
               <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{pages}}</p>
               <div v-if="pages == '0'">
-                <img src="../../../static/images/u550.png" alt="" style="position: fixed;top:30%;right: 50%;">
+                <img src="../../../static/images/u768.png" alt="" style="position: fixed;top:30%;right: 50%;">
               </div>
               <div class="exercise" v-if="pages != '0'"><!--v-show="Exercisesshow"-->
 
@@ -363,7 +363,7 @@
                 <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
                 <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{assignmentNumber}}</p>
                 <div v-if="assignmentNumber == '0'">
-                  <img src="../../../static/images/u550.png" alt="" style="margin:3% 40%;">
+                  <img src="../../../static/images/u1046.png" height="140px" width="140px" alt="" style="margin:3% 40%;">
                 </div>
                 <div class="have" v-for="assignment in assignmentList">
                   <h5>{{$t('message.Assignment')}} {{assignment.sort}}</h5>

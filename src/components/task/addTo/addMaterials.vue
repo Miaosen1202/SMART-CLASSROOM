@@ -3,7 +3,7 @@
   <div style="height: 100%">
     <div class="teach" v-show="!showUpload">
       <div class="no-material">
-        <p><img src="../../../assets/images/u768.png" alt=""></p>
+        <p><img src="../../../assets/images/u550.png" alt=""></p>
         <p>{{$t('message.Empty')}}</p>
         <el-button style="background-color: #0e38b1" size="medium" type="primary" @click="goToAddMaterials">
           <img src="../../../assets/images/u60.png" alt="">

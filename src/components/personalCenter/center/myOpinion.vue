@@ -125,6 +125,24 @@
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
+
+          <!--<el-upload
+            class="upload-demo"
+            :action="action"
+            accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
+            :before-remove="beforeRemove"
+            :on-remove="removeFile"
+            :on-change="handleChange"
+            :on-success="handleSuccess"
+            :with-credentials="true"
+            :file-list="fileList3">
+            <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
+              <img src="../../../assets/images/u166.png" alt="">
+              {{$t('message.AddAttachments')}}
+            </el-button>
+
+            <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
+          </el-upload>-->
         </div>
 
         <div>
@@ -145,6 +163,24 @@
                 </el-input>
               </p>
             </li>
+            <el-upload
+              class="upload-demo"
+              :action="action"
+              accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
+              :before-remove="beforeRemove"
+              :on-remove="removeFile"
+              :on-change="handleChange"
+              :on-success="handleSuccess"
+              :with-credentials="true"
+              :file-list="fileList3">
+              <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
+                <img src="../../../assets/images/u166.png" alt="">
+                {{$t('message.AddAttachments')}}
+              </el-button>
+
+              <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
+            </el-upload>
+
           </ul>
         </div>
         <el-input
@@ -169,6 +205,10 @@
   export default {
     data() {
       return {
+        fileList3: [],
+        action: process.env.NODE_ENV + '/file/upload',
+        removedFileName: "",
+        attachments: [],
         multipleSelection: [],
         page: {
           total: 0,
@@ -209,6 +249,39 @@
     },
     methods: {
       formatDateTime: util.formatDateTime,
+      beforeRemove(file, fileList) {
+        this.removedFileName = file.name;
+      },
+      removeFile(file, fileList) {
+        console.log(fileList);
+        /*this.attachments.forEach((e)=>{
+          if(e.fileName == this.removedFileName){
+          }
+        })*/
+
+        for (let i = 0; i < this.attachments.length; i++) {
+          if (this.attachments[i].fileName == this.removedFileName) {
+            this.attachments.splice(i, 1);
+            break;
+          }
+        }
+      },
+      handleChange(file, fileList) {
+        this.fileList3 = fileList;
+      },
+
+      handleSuccess(res, file) {
+        if (res.code == 200) {
+          this.fileEntity = res.entity;
+          this.attachments.push(
+            {
+              fileLocalPath: this.fileEntity.fileTmpName,
+              fileName: this.fileEntity.fileOriginName
+            });
+        }
+      },
+
+
 
       loadFeedbackRecord: function (pageIndex) {
         if (this.searchTimeRange != null && this.searchTimeRange.length >= 2) {
