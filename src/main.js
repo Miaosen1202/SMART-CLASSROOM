@@ -42,6 +42,7 @@ var $http = axios.create({
 // 为请求增加动态随机数，防止浏览器缓存
 $http.interceptors.request.use(function (request) {
   request.headers["language"] = localStorage.lang || "en";
+  request.headers["Accept-Language"] = localStorage.lang || "en";
   let method = request.method.toUpperCase();
   if (method === "GET") {
     if (request.params) {
