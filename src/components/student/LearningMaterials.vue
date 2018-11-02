@@ -3,8 +3,8 @@
 
   <div class="teach">
 
-    <p style="padding-top: 10%"><img @click="goToAddMaterials" src="../../assets/images/u550.png" alt=""></p>
-    <p>No learning materials from your teacher.</p>
+    <p style="padding-top: 10%"><img  src="../../assets/images/u550.png" alt=""></p>
+    <p>{{$t('message.Nolearningmaterials')}}</p><!--No learning materials from your teacher.-->
 
     <!--<el-button size="medium" type="primary" @click="goToAddMaterials">
       <img src="../../assets/images/u60.png" alt="">

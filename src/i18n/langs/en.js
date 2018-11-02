@@ -156,6 +156,10 @@ const en = {
     'LearningMaterial':'Learning Material',
     'Exercise':'Exercise',
     'Pleaseselectamaterialfirst':'Please select a material first',
+    'Nolearningmaterials':'No learning materials from your teacher.',
+    'Thereisnoassignmenthere':'There is no assignment here.',
+    'Thereisnodiscussionhere':'There is no discussion here.',
+    'Therearenoexerciseshere':'There are no exercises here.',
 
 
     // -------- end -----------

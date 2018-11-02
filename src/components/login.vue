@@ -236,7 +236,7 @@
 
               this.entity = res.data.entity;
               this.$router.push({
-                path: "/LearningHomework/FinishMaterials",
+                path: "/LearningHomework/LearningMaterials",
                 query: {lessonId: this.entity.lessonId, lessonCode: this.entity.lessonCode}
               });
             } else {

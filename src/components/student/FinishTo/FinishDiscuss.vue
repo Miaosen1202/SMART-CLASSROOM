@@ -14,7 +14,7 @@
       <div class="have" v-for="(discussion,index) in discussionList" :key="index">
         <h5>{{$t('message.Discussion')}} {{discussion.sort}}</h5>
 
-        <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{discussion.discussContent}}</p>
+        <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%;word-break: break-all;">{{discussion.discussContent}}</p>
         <ul style="padding-left: 2%">
           <li v-for="(attachment,ind) in discussion.attachments" :key="ind">
             <!--<span style="cursor: pointer" @click="preview(attachment.fileLocalPath)">{{attachment.fileName}}</span>-->

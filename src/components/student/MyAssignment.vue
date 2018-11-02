@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="teach" @click="goToAddMaterials">
+    <div class="teach" ><!--@click="goToAddMaterials"-->
 
       <p style="padding-top: 10%"><img  src="../../assets/images/u1046.png" width="140" height="139" alt=""></p>
-      <p>There is no assignment here.</p>
+      <p>{{$t('message.Thereisnoassignmenthere')}}</p><!--There is no assignment here.-->
 
       <!--<el-button size="medium" type="primary" @click="goToAddMaterials">
         <img src="../../assets/images/u60.png" alt="">

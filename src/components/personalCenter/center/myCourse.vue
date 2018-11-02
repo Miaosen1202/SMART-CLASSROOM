@@ -135,13 +135,13 @@
         value6: '',
 
         classRecordStatus: [{
-            label: this.$t('message.Tobeinclass'),
+            label: this.$t('message.Unpublished'),
             value: 0
           }, {
-            label: this.$t('message.Haveinhand'),/*Have in hand*/
+            label: this.$t('message.Started'),/*Have in hand*/
             value: 1
           }, {
-            label: this.$t('message.Finished'),/*Finished*/
+            label: this.$t('message.Over'),/*Finished*/
             value: 2
         }],
 

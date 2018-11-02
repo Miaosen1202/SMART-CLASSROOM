@@ -11,20 +11,20 @@
         <h5 style="display: inline-block">{{$t('message.Exercises')}} {{exercises.sort}}</h5>
         <span style="padding: 1px;margin-left: 4%;color: #999" v-show="exercises.questionType == '1'">{{$t('message.Singlechoice')}}</span>
         <span style="padding: 1px;margin-left: 4%;color: #999" v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
-        <p class="pexer">{{exercises.questionTitle}}</p>
+        <p class="pexer" style="word-break: break-all;">{{exercises.questionTitle}}</p>
         <ul style="padding-left: 2%" v-for="(option,index) in exercises.options" :key="index">
           <li>
             <el-radio v-model="selectedAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '1'">
               <span style="padding-right: 2%" >{{option.answerCode}}
               </span>
-              <span style="padding-left: 2%">{{option.answerContent}}
+              <span style="padding-left: 2%;display:inline-block;width:90%;word-wrap:break-word;white-space:normal;">{{option.answerContent}}
                <!-- <i class="el-icon-circle-check-outline" style="color: green"></i>
                 <i class="el-icon-circle-close-outline" style="color: red"></i>-->
               </span>
             </el-radio>
             <el-checkbox v-model="selectedMultiAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '2'">
               <span style="padding-right: 2%" >{{option.answerCode}}</span>
-              <span style="padding-left: 2%">{{option.answerContent}}
+              <span style="padding-left: 2%;display:inline-block;width:90%;word-wrap:break-word;white-space:normal;">{{option.answerContent}}
                 <!--<i class="el-icon-circle-check-outline" style="color: green"></i>
                 <i class="el-icon-circle-close-outline" style="color: red"></i>-->
               </span>
@@ -49,7 +49,7 @@
         </div>
         <p>{{$t('message.YourAnswer')}} :<span style="color: red">{{answer.answerContent}}</span></p>
         <P>{{$t('message.Explanation')}}:</P>
-        <span style="width: 60%;display:block">
+        <span style="width: 90%;display:block;word-break: break-all;">
           {{exercises.analysis}}
         </span>
       </div>

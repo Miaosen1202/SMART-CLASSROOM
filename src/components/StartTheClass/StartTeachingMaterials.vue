@@ -195,6 +195,7 @@
             <span style="position: fixed;top: 12%;right: 12%;cursor: pointer" @click="backparpare">
               <img src="../../../static/images/home.png" alt="">
             </span>
+
             <!--<el-tab-pane name="materialTab" :label="'Teaching Materials(' + materialNumber + ')'">-->
             <el-tab-pane name="materialTab" :label="$t('message.TeachingMaterials')">
               <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>

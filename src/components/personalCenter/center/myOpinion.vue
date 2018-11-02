@@ -51,7 +51,8 @@
           prop="content"
           :label="$t('message.Description')"
           min-width="60%">
-        </el-table-column>
+        </el-table-column><!--<!--data-placement="auto"
+          :show-overflow-tooltip="true"-->-->
 
         <el-table-column
           align="center"
@@ -368,7 +369,7 @@
 
 <style>
   .el-tooltip__popper {
-    max-width: 400px;
+    max-width: 70%;
     line-height: 180%;
     word-break: break-all;
     word-wrap:break-word;

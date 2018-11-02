@@ -2,8 +2,8 @@
   <div>
     <div class="teach">
 
-      <p style="padding-top: 10%"><img @click="goToAddMaterials" src="../../assets/images/u674.png" alt=""></p>
-      <p>There is no discussion here.</p>
+      <p style="padding-top: 10%"><img  src="../../assets/images/u674.png" alt=""></p><!--@click="goToAddMaterials"-->
+      <p>{{$t('message.Thereisnodiscussionhere')}}</p><!--There is no discussion here.-->
 
       <!--<el-button size="medium" type="primary" @click="goToAddMaterials">
         <img src="../../assets/images/u60.png" alt="">

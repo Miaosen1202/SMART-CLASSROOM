@@ -12,7 +12,7 @@
         <div class="have" v-for="(assignment,index) in assignmentList" :key="index">
           <h5>{{$t('message.Assignment')}} {{assignment.sort}}</h5>
 
-          <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%">{{assignment.assignmentName}}</p>
+          <p style="display: block;padding-bottom: 1%; margin: 0;padding-left: 2%;word-break: break-all;">{{assignment.assignmentName}}</p>
           <ul style="padding-left: 2%">
             <li v-for="(attachment,ind) in assignment.attachments" :key="ind">
 

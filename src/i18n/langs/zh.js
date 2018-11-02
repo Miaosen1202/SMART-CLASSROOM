@@ -157,7 +157,10 @@ const zh = {
     'Pleaseselectamaterialfirst':'请先选择材料',
     'question':'问题答案已提交!',
     'Lessonpublish':'发布成功！',
-
+    'Nolearningmaterials':'没有老师的学习材料。',
+    'Thereisnoassignmenthere':'这里还没有作业！',
+    'Thereisnodiscussionhere':'这里还没有讨论',
+    'Therearenoexerciseshere':'这里还没有练习',
 
 
     /*admin*/
