@@ -45,9 +45,9 @@
         </el-table-column>
 
         <el-table-column
+          style="overflow: hidden;width: 200px"
           align="center"
-          data-placement="auto"
-          :show-overflow-tooltip="true"
+
           prop="content"
           :label="$t('message.Description')"
           min-width="60%">
@@ -369,10 +369,20 @@
 
 <style>
   .el-tooltip__popper {
-    max-width: 70%;
+    max-width: 400px;
     line-height: 180%;
     word-break: break-all;
     word-wrap:break-word;
+  }
+  .el-table .cell {
+    -webkit-box-sizing: border-box;
+    /* box-sizing: border-box; */
+    white-space: normal;
+    /* word-break: break-all; */
+    line-height: 23px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
   }
 </style>
 <style scoped="">

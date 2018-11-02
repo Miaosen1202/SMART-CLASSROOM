@@ -30,6 +30,8 @@
         :data="teacherRecords"
         tooltip-effect="dark"
         style="width: 98%"
+        min-height="70%"
+
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="teacherNo" :label="$t('message.Account')" min-width="30%"></el-table-column>

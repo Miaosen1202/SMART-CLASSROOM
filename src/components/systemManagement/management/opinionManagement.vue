@@ -48,8 +48,6 @@
         </el-table-column>
 
         <el-table-column
-          data-placement="auto"
-          :show-overflow-tooltip="true"
           prop="content"
           :label="$t('message.feedback')"
           min-width="60%" align="center">
@@ -372,6 +370,16 @@
     word-break: break-all;
     word-wrap:break-word;
   }
+ .el-table .cell {
+   -webkit-box-sizing: border-box;
+   box-sizing: border-box;
+   /*white-space: normal;*/
+   word-break: inherit;
+   line-height: 23px;
+   width: 100%;
+   overflow: hidden;
+   white-space: nowrap;
+ }
 </style>
 <style scoped="">
   .management {

@@ -2,10 +2,10 @@
   <div class="all">
     <div class="coursetop">
       <!--Lesson : Our Solar System and Life’s Emergence  v-for="lessonId in existCourseList"{{lessonId.courseName}}-->
-      <p><!--Emergence-->{{entity.lesson.lessonName}}
+      <p style="width: 80%;word-break: break-all;"><!--Emergence-->{{entity.lesson.lessonName}}
         <!--<img src="../../assets/images/u475.png" alt="">-->
       </p>
-      <p>
+      <p style="width: 80%;word-break: break-all;">
         <img src="../../assets/images/u434.png" alt="">
         {{entity.course.courseName}}
         <!--Course : Journey of the Universe: A Story for Our Times-->

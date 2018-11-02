@@ -271,7 +271,7 @@ const en = {
     'MyCourse':'My Course',
     'MyResources':'My Resources',
     'MyOpinion':'My Opinion',
-    'mycourses':'My Course',
+    'mycourses':'Personal Center',
     'help':'Help',
     'Quit':'Quit',
     // -------- end -----------
