@@ -34,7 +34,7 @@
         <div v-for="(option,index) in options" :key="index" v-if="questionType == 1">
           <el-radio v-model="selectItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
             <span class="opt-answer-code">{{option.answerCode}}</span>
-            <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
+            <el-input type="textarea" v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
                       style="width: 60%;display: inline-block"></el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
           </el-radio>
@@ -92,8 +92,14 @@
         <div v-for="(option,index) in exerciseEntity.options" :key="index" v-if="exerciseEntity.questionType == 1">
           <el-radio v-model="selectEditItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
             <span class="opt-answer-code">{{option.answerCode}}</span>
-            <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
+            <el-input  type="textarea" v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
                       style="width: 60%;display: inline-block"></el-input>
+            <!--<el-input
+              type="textarea"
+              autosize
+              :placeholder="$t('message.Explanations')"
+              v-model="exerciseEntity.analysis" style="width: 70%;display: block;margin-top: 2%">
+            </el-input>-->
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
           </el-radio>
         </div>
@@ -142,7 +148,7 @@
         </el-button>
         <div style="word-wrap: break-word; word-break: normal;width: 90%">{{exercises.questionTitle}}</div>
         <ul v-for="(option,index) in exercises.options">
-          <li style="color: #000" :key="index"><P style="padding-right: 2%">{{option.answerCode}}</P><span>{{option.answerContent}}</span>
+          <li style="color: #000" :key="index"><P style="padding-right: 2%">{{option.answerCode}}</P><p style="word-wrap: break-word; word-break: normal;width: 90%">{{option.answerContent}}</p>
           </li>
         </ul>
         <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic;display: inline-block">{{$t('message.answer')}} :</p>
@@ -517,6 +523,7 @@
             if (res.data.code == 200) {
               this.optionsShow = false;
               this.showAdd = true;
+              this.isShow = false;
               this.questionType = 1;
               this.questionTitle = "";
               this.options = [
@@ -555,14 +562,15 @@
         this.answerContent="";
         this.exercisesList = [];
         this.analysis = "";
-        this.codeObjList= "";
+        /*this.codeObjList= "";*/
         // window.location.reload();
       },
       xgcancelAddOrUpdate:function () {
-        this.exerciseEntity.questionTitle = "";
+        /*his.exerciseEntity.questionTitle = "";
         this.exerciseEntity.sort = 1;
-        this.exerciseEntity.analysis = "";
+        this.exerciseEntity.analysis = "";*/
         this.showAdd = true;
+        this.isShow = false;
       }
 
 
