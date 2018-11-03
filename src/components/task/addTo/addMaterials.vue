@@ -62,13 +62,15 @@
           </div>
         </el-checkbox-group>
         <!-- 拷贝课时资料 -->
+        <div class="clone">
         <el-dialog ref="copyToDialog"
                    id="copyToDialog"
                    :title="$t('message.SelectaLesson')"
                    :visible.sync="copyToDialogVisible"
                    @open="copyMaterialDialogOpen"
                    width="30%">
-          <div>
+          <div style="height: 360px">
+            <el-scrollbar style="height: 100%">
             <el-collapse accordion v-model="activeName" @change="courseCollapseChange">
               <el-collapse-item v-for="course in courseList"
                                 :title="course.courseName"
@@ -76,16 +78,24 @@
                                 :key="course.id">
                 <el-radio class="lesson-item" v-for="les in lessonList" v-model="copyToLessonRadio" :label="les.id"
                           :key="les.id">
-                  {{les.lessonName}}
+                  <span style="white-space: nowrap;
+                  text-overflow: ellipsis;
+                  overflow: hidden;
+                  display: inline-block;
+                  width: 74%;vertical-align: middle;">
+                    {{les.lessonName}}
+                  </span>
                 </el-radio>
               </el-collapse-item>
             </el-collapse>
+            </el-scrollbar>
           </div>
           <span slot="footer" class="dialog-footer">
        <el-button style="background-color: #0e38b1;" type="primary" @click="copyMaterialToLesson">{{$t('message.OK')}}</el-button>
        <el-button @click="copyToDialogVisible = false">{{$t('message.cancel')}}</el-button>
       </span>
         </el-dialog>
+        </div>
       </el-scrollbar>
     </div>
 

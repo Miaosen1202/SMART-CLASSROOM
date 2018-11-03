@@ -161,6 +161,7 @@ const zh = {
     'Thereisnoassignmenthere':'这里还没有作业！',
     'Thereisnodiscussionhere':'这里还没有讨论',
     'Therearenoexerciseshere':'这里还没有练习',
+    'Usernameorpasswordisincorrect':'用户名或密码不正确',
 
 
     /*admin*/

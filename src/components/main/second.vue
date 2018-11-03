@@ -3,6 +3,7 @@
 
     <div class="over">
       <p style="color: #999999">{{$t('message.Pleasemodify')}}</p><!--Revise your course name and lesson name.-->
+      <el-scrollbar style="height: 90%">
       <el-collapse accordion class="course-item" @change="courseCollapseChange">
         <el-collapse-item v-for="(course, courseIndex) in courseList"
                           :title="course.courseName" :name="course.id" :key="course.id" >
@@ -29,34 +30,39 @@
             :data="tableData"
             :data-course-id="course.id"
             class="lesson-items"
-            style="width: 90%">
+            style="width: 99%">
             <el-table-column width="600">
               data-placement="auto"
               :show-overflow-tooltip="true"
               <template slot-scope="scope">
                 <!--<i class="el-icon-time"></i>--><!---->
-                <img @click="handleEdit(scope.$index, scope.row)"  src="../../../static/images/lesson.png" alt="" style="cursor: pointer">
-                <span style="text-overflow:ellipsis;display: inline-block;width: 60%;vertical-align: middle;overflow:hidden;white-space:nowrap;" >{{ scope.row.lessonName }}</span>
+                <span @click="handleEdit(scope.$index, scope.row)">
+                  <img   src="../../../static/images/lesson.png" alt="" style="cursor: pointer">
+                <span style="text-overflow:ellipsis;display: inline-block;width: 96%;vertical-align: middle;overflow:hidden;white-space:nowrap;cursor: pointer" >{{ scope.row.lessonName }}</span>
+                </span>
+
               </template>
             </el-table-column>
             <el-table-column >
               <template slot-scope="scope"><!-- @click="courseModify(scope.$index, scope.row)"-->
                 <el-button
-                  style="border: none"
                   size="mini"
-                  @click="modifyNameHandler(scope.row)">
-                 <img src="../../../static/images/Modify.png" alt=""></el-button><!-- @click="handleEdit(scope.$index, scope.row)"-->
-                <el-button
-                  size="mini"
-                  style="border: none"
+                  style="border: none;float: right;margin-right: 16%"
                   @click="handleDelete(scope.$index, scope.row)">
                   <img src="../../../static/images/shanchu.png" alt="">
                 </el-button>
+                <el-button
+                  style="border: none;float: right;margin-right: 1%;"
+                  size="mini"
+                  @click="modifyNameHandler(scope.row)">
+                 <img src="../../../static/images/Modify.png" alt=""></el-button><!-- @click="handleEdit(scope.$index, scope.row)"-->
+
               </template>
             </el-table-column>
           </el-table>
         </el-collapse-item>
       </el-collapse>
+      </el-scrollbar>
     </div>
     <!--修改course-->
     <el-dialog
@@ -219,8 +225,8 @@
   }
   .over {
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
+    /*overflow-x: hidden;
+    overflow-y: auto;*/
     padding-left: 3%;
     padding-top: 2%;
     background-color: #fff;
@@ -234,7 +240,7 @@
     height: 2px!important;
   }
   .el-table {
-    padding-left: 6%;
+    padding-left: 2%;
   }
   .el-collapse-item__content {
     padding-bottom: 0px;

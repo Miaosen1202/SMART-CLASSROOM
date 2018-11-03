@@ -36,10 +36,24 @@
     }
     .el-collapse-item__header {
       color: #6d6d6d;
-      border-bottom: 1px solid #ebeef5;
+     /* border-bottom: 1px solid #ebeef5;*/
       font-size: 17px !important;
       font-weight: 700 !important;
-      padding-left: 2%;
+      /*padding-left: 2%;*/
+
+    }
+    .clone .el-collapse-item__header {
+      color: #6d6d6d;
+      /* border-bottom: 1px solid #ebeef5;*/
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      /*padding-left: 2%;*/
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: inline-block;
+      width: 80%;
+      vertical-align: middle;
     }
     .el-upload__input {
       display: none!important;
@@ -107,6 +121,9 @@
     }
     .management .el-dialog__body {
       padding: 2% 2%!important;
+    }
+    .clone .el-dialog__body {
+      padding: 2% 6%!important;
     }
     .el-select-dropdown__list {
       padding: 0 0 10% 0 !important;
@@ -191,7 +208,7 @@
     .main .el-tabs__active-bar {
       background-color: #0e38b1;
     }
-    .el-collapse-item__arrow el-icon-arrow-right {
+    .el-collapse-item__arrow {
       float: left!important;
     }
   </style>

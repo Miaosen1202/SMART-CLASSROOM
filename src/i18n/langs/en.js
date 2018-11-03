@@ -303,6 +303,7 @@ const en = {
     'Up':'Up',
     'Down':'Down',
     'studentlogin':'The course has been dismissed.',
+    'Usernameorpasswordisincorrect':'Username or password is incorrect',
 
     // -------- end -----------
   },

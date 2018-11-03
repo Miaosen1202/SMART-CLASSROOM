@@ -240,14 +240,14 @@
                 query: {lessonId: this.entity.lessonId, lessonCode: this.entity.lessonCode}
               });
             } else {
-              this.$message.error(this.$t('message.studentlogin'))
+              this.$message.error(this.$t('message.Usernameorpasswordisincorrect'))
             }
           }).catch((err) => {
           this.$message.error(err);
         });
 
       },
-      //语言切换
+      //语言切换Username or password is incorrect
       langChange(e) {
         // console.log(e)
         localStorage.setItem('lang', e);
