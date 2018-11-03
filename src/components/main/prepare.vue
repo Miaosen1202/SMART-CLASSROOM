@@ -56,7 +56,7 @@
     >
       <el-scrollbar style="height: 100%">
         <div v-for="existCourse in existCourseList">
-          <el-radio v-model="radio" :label="existCourse.id">{{existCourse.courseName}}</el-radio>
+          <el-radio v-model="radio" :label="existCourse.id" ><span style="word-break: break-all;overflow:hidden;width: 100%;display: inline-block;hite-space: nowrap;text-overflow: ellipsis;">{{existCourse.courseName}}</span></el-radio>
         </div>
       </el-scrollbar>
       <span slot="footer" class="dialog-footer">
