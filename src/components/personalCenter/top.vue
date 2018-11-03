@@ -211,7 +211,7 @@
               /* this.oldpasswordlist = res.data.entity;*/
 
               this.$message({
-                message: this.$t('Passwordmodificationsucceeded!'),/*Password modification succeeded!*/
+                message: this.$t('message.Passwordmodificationsucceeded'),/*Password modification succeeded!*/
                 type: 'success'
               });
               this.oldPassword="",

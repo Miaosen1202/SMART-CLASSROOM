@@ -8,7 +8,7 @@
                           :title="course.courseName" :name="course.id" :key="course.id" >
           <template slot="title">
             <img src="../../../static/images/course.png" alt="">
-            <span class="course-name" :data-course-id="course.id" style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;display: inline-block;width: 70%;vertical-align: middle;">{{ course.courseName }}</span>
+            <span class="course-name" :data-course-id="course.id" style="white-space: nowrap;text-overflow:ellipsis;overflow: hidden;display: inline-block;width: 80%;vertical-align: middle;">{{ course.courseName }}</span>
             <el-button
               size="mini"
               style="border: none"
@@ -245,5 +245,7 @@
     font-size: 17px !important;
     font-weight: 700 !important;
   }*/
-
+.el-collapse-item__arrow el-icon-arrow-left {
+  float: left!important;
+}
 </style>

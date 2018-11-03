@@ -545,7 +545,7 @@
       },
       createPanelToggle: function () {
          /*this.isShow = !this.isShow;*/
-         if(this.showAdd ||this.isShow){
+         if(this.showAdd || this.isShow){
            this.showAdd = false;
            this.isShow = false;
          }else{

@@ -10,7 +10,6 @@
         </el-button>
       </div>
     </div>
-
     <div class="material-panel all" v-show="showUpload">
       <el-scrollbar>
 
@@ -30,9 +29,7 @@
             <img src="../../../../static/images/COPYTO.png" alt=""  height="15px">
             {{$t('message.CopyTo')}}
           </el-button>
-
         </div>
-
         <el-upload
           style="width: 70%;padding-bottom: 2%"
           class="material-upload"
@@ -48,11 +45,8 @@
             <img src="../../../../static/images/UPLOAD1.png" height="15px" alt="">
             {{$t('message.upload')}}
           </el-button>
-
           <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
         </el-upload>
-
-
         <!--<div style="margin: 15px 0;"></div>-->
         <!--<el-checkbox-group v-model="checkedMaterials" @change="handleCheckedCitiesChange">-->
         <!--<div v-for="city in cities">-->
@@ -67,7 +61,6 @@
             </el-checkbox>
           </div>
         </el-checkbox-group>
-
         <!-- 拷贝课时资料 -->
         <el-dialog ref="copyToDialog"
                    id="copyToDialog"
@@ -75,14 +68,12 @@
                    :visible.sync="copyToDialogVisible"
                    @open="copyMaterialDialogOpen"
                    width="30%">
-
           <div>
             <el-collapse accordion v-model="activeName" @change="courseCollapseChange">
               <el-collapse-item v-for="course in courseList"
                                 :title="course.courseName"
                                 :name="course.id"
-                                :key="course.id"
-              >
+                                :key="course.id">
                 <el-radio class="lesson-item" v-for="les in lessonList" v-model="copyToLessonRadio" :label="les.id"
                           :key="les.id">
                   {{les.lessonName}}
