@@ -13,7 +13,7 @@
         <span style="padding: 1px;margin-left: 4%;color: #999" v-show="exercises.questionType == '2'">{{$t('message.Multiplechoice')}}</span>
         <p class="pexer" style="word-break: break-all;">{{exercises.questionTitle}}</p>
         <ul style="padding-left: 2%" v-for="(option,index) in exercises.options" :key="index">
-          <li>
+          <li style="width: 90%">
             <el-radio v-model="selectedAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '1'">
               <span style="padding-right: 2%" >{{option.answerCode}}
               </span>

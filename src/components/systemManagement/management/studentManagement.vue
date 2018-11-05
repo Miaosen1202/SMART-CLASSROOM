@@ -135,7 +135,7 @@
             <el-input disabled v-show="false" v-model="editStudent.id" size="small" style="width: 60%"></el-input>
           </li>
           <li><span>{{$t('message.Name')}}：</span><el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
-            <i style="color: red;font-size: 22px" >*</i>
+            <i class="double" style="color: red;font-size: 22px" >*</i>
           </li>
           <li><span>{{$t('message.EMail')}}：</span><el-input v-model="editStudent.email" size="small" :placeholder="$t('message.EMail')" style="width: 60%"></el-input></li>
           <li><span>{{$t('message.Phone')}}：</span><el-input v-model="editStudent.cellPhoneNo" size="small" :placeholder="$t('message.Phone')" style="width: 60%"></el-input></li>
@@ -483,6 +483,18 @@
   }
   .projectile ul li {
     margin-top: 2%;
+
+  }
+
+  .projectile ul li{
+     text-align: right;
+     padding-right: 18%;
+    position: relative;
+   }
+  .double{
+    position: absolute;
+    top:0;
+    right:40px;
   }
   .el-upload__tip {
     display: inline-block;
