@@ -450,7 +450,7 @@
   .el-table .cell {
     -webkit-box-sizing: border-box;
     /* box-sizing: border-box; */
-    white-space: normal;
+    /*white-space: normal;*/
     /* word-break: break-all; */
     line-height: 23px;
     width: 100%;
