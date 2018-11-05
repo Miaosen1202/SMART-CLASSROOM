@@ -243,6 +243,7 @@ const zh = {
     'Replysuccess':'回复成功',
     'Forarequireditem':'为必填项',
     'lessonname':'课时名称',
+    'pleaseentername':'请输入名字',
 
 
 

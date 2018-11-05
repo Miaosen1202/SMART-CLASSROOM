@@ -247,6 +247,7 @@ const en = {
     'Forarequireditem':'For a required item',
     'question':'Question answer has submit!',
     'Lessonpublish':'Lesson publish success',
+    'pleaseentername':'please enter name',
 
 
 

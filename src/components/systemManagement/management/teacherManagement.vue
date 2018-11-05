@@ -2,7 +2,7 @@
   <div class="management">
     <div>
       <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700">{{ page.total }}</span>
-      <el-input v-model="teacherNameSearch" size="small" :placeholder="$t('message.pleaseenter')" style="width: 20%;margin-left: 1%"></el-input>
+      <el-input v-model="teacherNameSearch" size="small" :placeholder="$t('message.pleaseentername')" style="width: 20%;margin-left: 1%"></el-input>
       <el-button @click="loadTeacherRecords(1)" style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
       <el-button @click="resetPassword"  size="mini" style="float: right;margin-left: 1%;">
         <img src="../../../../static/images/Resettheinitializationpassword.png" height="18" alt="">

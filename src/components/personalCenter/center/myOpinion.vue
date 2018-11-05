@@ -163,7 +163,7 @@
                 </el-input>
               </p>
             </li>
-            <el-upload
+          <!--  <el-upload
               class="upload-demo"
               :action="action"
               accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
@@ -179,7 +179,7 @@
               </el-button>
 
               <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
-            </el-upload>
+            </el-upload>-->
 
           </ul>
         </div>
