@@ -302,20 +302,20 @@
 
                   <el-scrollbar style="height: 90%;">
 
-                      <div class="elbtn" style="float: right;padding-right: 2%">
+                      <!--<div class="elbtn" style="float: right;padding-right: 2%">
                         <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-left" circle
                                    @click="goBack"></el-button>
                         <h4 style="display: inline-block;">{{currentPage}}/{{pages}}</h4>
 
                         <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle
                                    @click="toNextPage"></el-button>
-                      </div>
-                    <!--<div style="position: fixed;bottom: 30%;right: 14%">
+                      </div>-->
+                    <div style="position: fixed;bottom: 22%;right: 24%">
                       <el-button-group>
                         <el-button @click="goBack" type="small" round icon="el-icon-arrow-left" >{{$t('message.pre')}}</el-button>
-                        <el-button @click="toNextPage" type="small" round>{{$t('message.next')}}<i class="el-icon-arrow-right el-icon&#45;&#45;right"></i></el-button>
+                        <el-button @click="toNextPage" type="small" round>{{$t('message.next')}}<i class="el-icon-arrow-right el-icon--right"></i></el-button>
                       </el-button-group>
-                    </div>-->
+                    </div>
 
                     <div v-for="(exercises,index) in existExercisesList">
                       <h4 style="display:inline-block; border-bottom: 2px solid #999">
