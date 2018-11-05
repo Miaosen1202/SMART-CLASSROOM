@@ -377,7 +377,7 @@
    line-height: 23px;
    width: 100%;
    overflow: hidden;
-   /*white-space: nowrap;*/
+   white-space: nowrap;
  }
 </style>
 <style scoped="">
