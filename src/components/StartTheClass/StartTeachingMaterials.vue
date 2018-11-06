@@ -136,11 +136,11 @@
     </canvas>-->
 
     <div class="tool">
-      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;position: fixed;right: 14%;bottom: 6%;z-index: 999" circle>
+      <el-button v-on:click="tooll()" class="tooll" style="float: right;border: none;position: fixed;right: 2%;bottom: 2%;z-index: 99999" circle>
         <!--background-color: #0e38b1-->
         <img src="../../../static/images/toolkit.png" alt="">
       </el-button>
-      <div class="tool" style="float: right;margin-top: 1%;position: fixed;right: 20%;bottom: 6%;display: inline-block;z-index: 999" v-show="isShow">
+      <div class="tool" style="float: right;margin-top: 1%;position: fixed;right: 8%;bottom: 2%;display: inline-block;z-index: 99999" v-show="isShow">
         <div class="view" @click="goObjectProjection">
           <el-tooltip class="item" :content="$t('message.ObjectProjection')" placement="bottom"><!--effect="dark"-->
             <el-button style="float: right;border: none;" round>
@@ -187,7 +187,7 @@
       </div>
     </div>
 
-    <div style="position: absolute;top: 10%;bottom:2%;left: 10%;width: 80%;background-color: #fff;padding: 3% 2% 17%;"><!--type="card"-->
+    <div style="position: absolute;top: 10%;bottom:2%;left: 10%;width: 80%;background-color: #fff;padding: 3% 2% 3%;"><!--type="card"-->
       <div class="main">
         <el-scrollbar style="height: 100%;">
           <el-tabs :tab-position="tabPosition" activeName="materialTab" @tab-click="tabChange"
@@ -222,7 +222,7 @@
                 </div>
               </el-checkbox-group>
 
-              <div style="position: fixed;bottom: 18%;right: 14%">
+              <div style="float: right;padding-top: 1%;padding-right: 2%">
                 <el-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange" >
                   {{$t('message.checkall')}}
                 </el-checkbox>
@@ -298,7 +298,7 @@
               </div>
               <div class="exercise" v-if="pages != '0'"><!--v-show="Exercisesshow"-->
 
-                <div class="leftexerc" style="height: 400px">
+                <div class="leftexerc" style="height: 500px">
 
                   <el-scrollbar style="height: 90%;">
 
@@ -310,7 +310,7 @@
                         <el-button style="background-color: #0e38b1" type="primary" icon="el-icon-arrow-right" circle
                                    @click="toNextPage"></el-button>
                       </div>-->
-                    <div style="position: fixed;bottom: 30%;right: 14%">
+                    <div style="position: fixed;bottom: 22%;right: 24%">
                       <el-button-group>
                         <el-button @click="goBack" type="small" round icon="el-icon-arrow-left" >{{$t('message.pre')}}</el-button>
                         <el-button @click="toNextPage" type="small" round>{{$t('message.next')}}<i class="el-icon-arrow-right el-icon--right"></i></el-button>
@@ -1241,7 +1241,7 @@
 
   .have {
     /*border: 1px solid #ccc;*/
-    width: 98%;
+    width: 97%;
     padding-left: 2%;
     margin-left: 1%;
     margin-top: 2%;

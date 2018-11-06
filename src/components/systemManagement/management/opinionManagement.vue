@@ -373,7 +373,6 @@
  .el-table .cell {
    -webkit-box-sizing: border-box;
    box-sizing: border-box;
-   /*white-space: normal;*/
    word-break: inherit;
    line-height: 23px;
    width: 100%;
