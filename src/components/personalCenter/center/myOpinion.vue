@@ -447,16 +447,6 @@
     word-break: break-all;
     word-wrap:break-word;
   }
-  /*.el-table .cell {
-    -webkit-box-sizing: border-box;
-    !* box-sizing: border-box; *!
-    !* word-break: break-all; *!
-    line-height: 23px;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap!important;
-    word-break: break-all;
-  }*/
 </style>
 <style scoped="">
   .management {
