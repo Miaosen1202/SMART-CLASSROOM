@@ -370,15 +370,6 @@
     word-break: break-all;
     word-wrap:break-word;
   }
- .el-table .cell {
-   -webkit-box-sizing: border-box;
-   box-sizing: border-box;
-   word-break: inherit;
-   line-height: 23px;
-   width: 100%;
-   overflow: hidden;
-   white-space: nowrap;
- }
 </style>
 <style scoped="">
   .management {
@@ -406,6 +397,16 @@
 
   .el-radio {
     width: 60%;
+  }
+
+  .el-table .cell {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    word-break: inherit;
+    line-height: 23px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap!important;
   }
 </style>
 
