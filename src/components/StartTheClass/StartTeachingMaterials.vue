@@ -446,8 +446,7 @@
                  </div>
                </div>-->
             <!--</el-tab-pane>-->
-          </el-tabs>
-              
+          </el-tabs> 
         </el-scrollbar>
 
         <el-dialog
@@ -505,7 +504,9 @@
 </template>
 
 <script>
+
   import util from '../../utils/util'
+
   import eventBus from '../../eventBus'
   /*require('echarts-wordcloud');*/
   // 引入基本模板
@@ -1372,4 +1373,5 @@
     border-radius: 10px;
     border: 1px solid #ccc;
   }
+
 </style>

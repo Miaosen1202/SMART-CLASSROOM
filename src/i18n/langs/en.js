@@ -98,7 +98,7 @@ const en = {
     'Coursenamealreadyexistsandcannotbesubmitted':'Course name already exists and cannot be submitted.',
     'Uploadfileerror':'Upload file error: File type are not allowed',
     'Onlysupport':'Only support ppt,pptx,doc,docx,xls,xlsx,pdf,mp3,mp4,swf,jpg,jpeg,png,gif,bmp,and type files.',
-    '1000byte':'1000byte',
+    '1000byte':'1000Bytes',
     'Onlysupportxls':'Only support xls,xlsx,and type files.',
     'pre':'Pre',
     'next':'Next',
