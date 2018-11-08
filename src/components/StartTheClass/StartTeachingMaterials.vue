@@ -725,7 +725,7 @@
 
         let studentNumber = data.entity.studentNumber;
         let answerRecordVos = data.entity.questionAnswerRecordVos;
-        let answerCount = [0, 0, 0, 0, 0, 0, 0, 0]
+        let answerCount = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         for (let i = 0; i < answerRecordVos.length; i++) {
           let ans = answerRecordVos[i].answerContent;
           if (ans != null) {
@@ -757,6 +757,13 @@
                 case "H":
                   answerCount[7]++;
                   break;
+                case "I":
+                  answerCount[8]++;
+                  break;
+                case "J":
+                  answerCount[9]++;
+                  break;
+
                 default:
                   break;
               }
@@ -768,7 +775,7 @@
           title: {text: this.$t('message.Responses') + answerRecordVos.length + '/' + studentNumber}, /*this.total*/
           tooltip: {},
           xAxis: {
-            data: ["A", "B", "C", "D", "E", "F", "G", "H"]
+            data: ["A", "B", "C", "D", "E", "F", "G", "H","I","J"]
           },
           yAxis: {},
           series: [{
