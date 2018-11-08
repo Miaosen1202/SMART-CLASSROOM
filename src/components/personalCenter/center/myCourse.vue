@@ -136,6 +136,9 @@
 
         classRecordStatus: [{
             label: this.$t('message.Unpublished'),
+            value: 10
+          }, {
+            label: this.$t('message.Published'),
             value: 0
           }, {
             label: this.$t('message.Started'),/*Have in hand*/
