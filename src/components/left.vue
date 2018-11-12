@@ -4,10 +4,10 @@
          src="../assets/images/u164.png" width="80%" alt="">-->
     <ul>
       <li :class="{active : activeFlag == 'prepare'}" @click="goToFirst('prepare')">
-        <el-button type="text" @click="dialogVisible = true">
+        <!--<el-button type="text" @click="dialogVisible = true">-->
         <img src="../../static/images/Preparealesson.png"  alt="">
-        <p style="color: #fff">{{$t('message.NewLesson')}}</p>
-        </el-button>
+        <p>{{$t('message.NewLesson')}}</p>
+        <!--</el-button>-->
       </li>
       <li :class="{active : activeFlag == 'second'}" @click="goToSecond('second')">
         <img src="../../static/images/manangelesson.png"  alt="">
