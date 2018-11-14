@@ -73,7 +73,15 @@
         <ul>
           <li>
             <span>{{$t('message.NameS')}}：</span>
-            <el-input size="small" v-model="courseName" :placeholder="$t('message.coursename')" style="width: 60%"></el-input>
+            <el-input size="small"
+                      maxlength="256"
+                      @input = "descInput"
+                      v-model="courseName"
+                      :placeholder="$t('message.coursename')"
+                      style="width: 60%">
+
+            </el-input>
+            <span style="float: right;padding-right: 24%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
           </li>
         </ul>
       </div>
@@ -85,6 +93,7 @@
 
     <!--编辑弹框-->
     <el-dialog
+
       :title="$t('message.lessonname')"
       :visible.sync="teacherEditDialogVisable"
       width="20%">
@@ -92,7 +101,15 @@
         <ul>
           <li>
             <span>{{$t('message.NameS')}}：</span>
-            <el-input size="small" v-model="lessonName" :placeholder="$t('message.coursename')" style="width: 60%"></el-input>
+            <el-input size="small"
+                      v-model="lessonName"
+                      maxlength="256"
+                      @input = "descInput"
+                      :placeholder="$t('message.coursename')"
+                      style="width: 60%">
+
+            </el-input>
+            <span style="float: right;padding-right: 24%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           </li>
         </ul>
       </div>
@@ -109,6 +126,8 @@
     export default {
         data() {
             return {
+              remnant:256,
+              remnants:256,
               courseDialogVisible: false,
               courseList:[],
               lessonList: [],
@@ -126,6 +145,13 @@
         },
 
         methods: {
+
+          descInput(){
+            var txtVal = this.lessonName.length;
+            var txt = this.courseName.length;
+            this.remnant = 256-txtVal;
+            this.remnants = 256-txt;
+          },
           modifyNameHandler(row) {
             this.teacherEditDialogVisable = true;
             this.lessonName = row.lessonName;

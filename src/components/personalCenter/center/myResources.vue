@@ -27,12 +27,11 @@
         tooltip-effect="dark"
         style="width: 100%"
         @selection-change="handleSelectionChange">
-        <el-table-column type="selection" width="30"></el-table-column>
+        <el-table-column type="selection" width="40"></el-table-column>
         <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" :show-overflow-tooltip="true" min-width="80%">
           <!--{{materialName}}-->
           <template slot-scope="scope">
             <file-template
-
               :id="scope.row.id"
               :url="scope.row.materialUrl"
               :name="scope.row.materialName">

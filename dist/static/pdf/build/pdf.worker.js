@@ -19090,7 +19090,7 @@ var EvaluatorPreprocessor = function EvaluatorPreprocessorClosure() {
       numArgs: 0,
       variableArgs: false
     };
-    t['re'] = {
+    t['optionContentMaxLength'] = {
       id: _util.OPS.rectangle,
       numArgs: 4,
       variableArgs: false

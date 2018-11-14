@@ -64,15 +64,19 @@
             <!--输入框输入内容-->
             <el-input
               type="textarea"
+              maxlength="500"
+              @input="descInput"
               autosize
               :placeholder="$t('message.pleaseEnter')"
               v-model="selectedAnswerCode">
             </el-input>
+            <span style="float: right;padding-right: 28%;font-size: 12px;color: #999999">{{numberWordStudents}}{{$t('message.byte')}}</span>
 
             <!--上传文件-->
             <el-upload
               class="upload-demo"
               :action="action"
+              :beforeUpload="beforeAvatarUpload"
               accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
               :before-remove="beforeRemove"
               :on-remove="removeFile"
@@ -80,7 +84,7 @@
               :on-success="handleSuccess"
               :with-credentials="true"
               :file-list="fileList3">
-              <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
+              <el-button size="mini" type="primary" style="background-color: #26be96;border: none;margin-top: 10%">
                 <img src="../../../assets/images/u166.png" alt="">
                 {{$t('message.AddAttachments')}}
               </el-button>
@@ -106,6 +110,7 @@
   export default {
     data() {
       return {
+        numberWordStudents:500,
         isShow: false,
         /* assignmentName: '',*/
         fileList3: [],
@@ -137,6 +142,21 @@
       this.loadFinishexercise();
     },
     methods: {
+      descInput(){
+        var txtVal = this.selectedAnswerCode.length;
+        this.numberWordStudents = 500-txtVal;
+
+      },
+      beforeAvatarUpload(file) {
+        const isLt2M = file.size / 1000 / 1000 < 30;
+        if(!isLt2M) {
+          this.$message({
+            message: '上传文件大小不能超过 10M',
+            type: 'warning'
+          });/*this.$t('message.lastpage'),*/
+        }
+        return isLt2M
+      },
       dateTimeformat: function (d) {
         var date = new Date(d);
         var month = '' + (date.getMonth() + 1);
@@ -361,7 +381,7 @@
 
   .el-textarea {
     width: 70%;
-    padding-bottom: 3%;
+    padding-bottom: 0%;
   }
 
   .el-upload {

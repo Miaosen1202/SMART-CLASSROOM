@@ -30,10 +30,13 @@
             <h4>{{$t('message.Description')}}:</h4>
             <el-input
               type="textarea"
+              maxlength="4000"
+              @input = "descInput"
               :autosize="{ minRows: 10, maxRows: 16}"
               :placeholder="$t('message.Pleaseinputresourcedescription')"
               v-model="editMaterialBank.materialDesc">
             </el-input>
+            <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           </li>
         </ul>
 
@@ -65,6 +68,7 @@
   export default {
     data() {
       return {
+        remnant:4000,
         editMaterialBank: {
           id: this.$route.query.id,
         },
@@ -86,6 +90,11 @@
     },
 
     methods: {
+      descInput(){
+        var txtVal = this.editMaterialBank.materialDesc.length;
+        this.remnant = 4000-txtVal;
+
+      },
       handleSuccess(res, file) {
         if (res.code == 200) {
           this.fileEntity = res.entity;

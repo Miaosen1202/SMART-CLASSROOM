@@ -4,7 +4,13 @@
       <h4>{{$t('message.step')}} 1:</h4>
       <p class="step">{{$t('message.newlesson')}}</p>
       <div>
-        <input class="form-control step1" type="text" :placeholder="$t('message.pleaseenter')" v-model="lessonName">
+        <input class="form-control step1"
+               type="text"
+               :placeholder="$t('message.pleaseenter')"
+               maxlength="256"
+               @input = "descInput"
+               v-model="lessonName">
+        <span style="float: right;padding-right: 33%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
       </div>
     </div>
 
@@ -25,10 +31,14 @@
       <div class="here">
         <el-radio v-model="submitCourseFlag" label="2">
           <input class="form-control" type="text" id="firstinput3"
+                 maxlength="256"
+                 @input = "descInput"
                  clearable
                  @focus="focusNewCourseNameInput"
                  :placeholder="$t('message.pleaseselect')" v-model="courseName">
+
         </el-radio>
+        <span style="float: right;padding-right: 36%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
         <!--<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">-->
       </div>
     </div>
@@ -56,7 +66,7 @@
     >
       <el-scrollbar style="height: 100%">
         <div v-for="existCourse in existCourseList">
-          <el-radio v-model="radio" :label="existCourse.id" ><span style="word-break: break-all;overflow:hidden;width: 100%;display: inline-block;hite-space: nowrap;text-overflow: ellipsis;">{{existCourse.courseName}}</span></el-radio>
+          <el-radio v-model="radio" :label="existCourse.id" ><span style="word-break: break-all;overflow:hidden;width: 156%;display: inline-block;hite-space: nowrap;text-overflow: ellipsis;">{{existCourse.courseName}}</span></el-radio>
         </div>
       </el-scrollbar>
       <span slot="footer" class="dialog-footer">
@@ -73,6 +83,8 @@
   export default {
     data() {
       return {
+        remnant:256,
+        remnants:256,
         showCourseDialogVisible: false,
         dialogVisible: false,
         lessonName: "",
@@ -100,6 +112,13 @@
       this.isShowDialog();
     },
     methods: {
+
+      descInput(){
+        var txtVal = this.lessonName.length;
+        var txt = this.courseName.length;
+        this.remnant = 256-txtVal;
+        this.remnants = 256-txt;
+      },
       focusNewCourseNameInput: function () {
         this.submitCourseFlag = "2";
       },
