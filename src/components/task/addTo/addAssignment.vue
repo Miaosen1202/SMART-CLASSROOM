@@ -23,11 +23,13 @@
           <el-input
             style="width: 98%"
             type="textarea"
+            maxlength="500"
+            @input = "descInput"
             autosize
             :placeholder="$t('message.pleaseenter')"
             v-model="assignmentName">
           </el-input>
-          <span style="float: right;padding-right: 2%;font-size: 12px;color: #999999">{{$t('message.1000byte')}}</span>
+          <span style="float: right;padding-right: 2%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           <!-- <div style="margin: 20px 0;"></div>-->
           <el-upload
             style="padding-top: 2%"
@@ -35,6 +37,7 @@
             :action="action"
             :before-remove="beforeRemove"
             :on-remove="removeFile"
+            :before-upload="beforeAvatarUpload"
             :on-change="handleChange"
             :on-success="handleSuccess"
             :with-credentials="true"
@@ -45,7 +48,7 @@
               {{$t('message.AddAttachments')}}
             </el-button>
             <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div><!--Only support-->
-          </el-upload>
+          </el-upload><!--  accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"-->
 
           <span slot="footer" class="dialog-footer" style="margin-left: 40%">
         <el-button style="margin-top: 2%;background-color: #0e38b1;color: #fff;" size="medium" type="primary" v-on:click="addOrUpdateAssignment()">{{$t('message.save')}}</el-button>
@@ -78,6 +81,7 @@
   export default {
     data() {
       return {
+        remnant:500,
         showAssignmentListPanel: false,
         createPanelShow: false,
         isShow: true,
@@ -94,12 +98,130 @@
         editAssignmentId: undefined,
         showSort:1,
         flag:'add',
+        videoType:["mp4","mp3"]
+
       }
     },
     mounted() {
       this.getAssignmentListByLessonId();
     },
     methods: {
+
+      descInput(){
+        var txtVal = this.assignmentName.length;
+        this.remnant = 500-txtVal;
+      },
+     /* isSupportBigFile( type) {
+        let result = false;
+        for (let i = 0; i < this.videoType.length; i++) {
+          if (this.videoType[i] == type) {
+            result =true;
+            break;
+          }
+        }
+        return result;
+
+      },
+      beforeAvatarUpload(file) {
+       /!*||docx||ppt||pptx||xls||xlsx||pdf||swf||jpg||jpeg||png||gif||bmp*!/
+        var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
+        let isLt2M;
+        if (this.isSupportBigFile(testmsg)) {
+          //100
+          isLt2M = file.size / 1024 / 1024 < 200;
+          if(!isLt2M) {
+            this.$message({
+              message: '上传文件大小不能超过 200MB!!',
+              type: 'warning'
+            });
+          }
+
+          return isLt2M;
+          //大于100 提示错误
+        }else {
+          //2 0
+          isLt2M = file.size / 1024 / 1024 < 2;
+          if(!isLt2M) {
+            this.$message({
+              message: '上传文件大小不能超过 30MB!!',
+              type: 'warning'
+            });
+          }
+          return isLt2M;
+          //同上 提示错误
+
+        }
+       /!* const extension = testmsg === 'xls';
+        const extension2 = testmsg === 'xlsx';*!/
+     /!*   const isMP = file.type === 'mp4||mp3';*!/
+
+        /!*const isLt1M = file.size / 1024 / 1024 < 200;*!/
+        // if(!isJPGs) {
+        //   this.$message({
+        //     message: '上传文件为 xls、xlsx格式!',
+        //     type: 'warning'
+        //   });
+        // }
+       /!* if(!isMP) {
+          this.$message({
+            message: '上传文件只能是 xls、xlsx格式!',
+            type: 'warning'
+          });
+        }*!/
+        // if(!isLt2M) {
+        //   this.$message({
+        //     message: '上传文件为.doc,.docx,.ppt,.pptx,.xls,.xlsx,.pdf,.swf,.jpg,.jpeg,.png,.gif,.bmp大小不能超过 10MB!',
+        //     type: 'warning'
+        //   });
+        // }
+       /!* if(!isLt1M) {
+          this.$message({
+            message: '上传文件大小不能超过 1MB!',
+            type: 'warning'
+          });
+        }*!/
+        return true;
+
+      },*/
+
+
+
+      beforeAvatarUpload(file) {
+        debugger;
+        var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
+        const extension1 = testmsg === 'doc' || testmsg === 'docx' || testmsg === 'ppt' || testmsg === 'pptx' || testmsg === 'xls' || testmsg === 'xlsx' || testmsg === 'pdf' || testmsg === 'swf' || testmsg === 'jpg' || testmsg === 'jpeg' || testmsg === 'png' || testmsg === 'gif' || testmsg === 'bmp';
+        const extension2 = testmsg === 'mp4' || testmsg === 'mp3';
+        const isLimit30M = file.size / 1024 / 1024 < 1;
+        const isLimit200M = file.size / 1024 / 1024 < 3;
+        if(!(extension1) && !(extension2)) {
+          this.$message({
+            message: '上传文件只能是 doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
+            type: 'warning'
+          });
+        }
+        if(extension1){ //其它文件
+          if(!isLimit30M){
+            this.$message({
+              message: '上传文件大小不能超过 1MB!',
+              type: 'warning'
+            });
+            return false;
+          }
+        }
+        if(extension2){ //视频文件
+          if(!isLimit200M){
+            this.$message({
+              message: '上传文件大小不能超过 2MB!',
+              type: 'warning'
+            });
+            return false;
+          }
+
+        }
+        return (extension1 || extension2) && (isLimit30M || isLimit200M);
+      },
+
+
       createPanelToggle: function () {
         // this.isShow = !this.isShow;
         this.createPanelShow = !this.createPanelShow;

@@ -27,11 +27,13 @@
           <el-input
             style="width: 98%;"
             type="textarea"
+            maxlength="4000"
+            @input = "descInput"
             autosize
             :placeholder="$t('message.Enterdiscussion')"
             v-model="discussContent">
           </el-input><!-- //Enter discussion content here.-->
-          <span style="float: right;padding-right: 2%;font-size: 12px;color: #999999">{{$t('message.1000byte')}}</span>
+          <span style="float: right;padding-right: 2%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           <!--上传文件-->
           <el-upload
             style="padding-top: 2%"
@@ -85,6 +87,7 @@
   export default {
     data() {
       return {
+        remnant:4000,
         showDiscussListPanel: false,
         createPanelShow: false,
         discussContent: '',
@@ -107,6 +110,10 @@
       this.getDiscussionListByLessonId();
     },
     methods: {
+      descInput(){
+        var txtVal = this.discussContent.length;
+        this.remnant = 4000-txtVal;
+      },
       cancelCreateDiscuss: function () {
         this.createPanelShow = false;
         this.discussContent = "",

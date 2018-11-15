@@ -2,7 +2,7 @@ import Vue from "vue";
 import player from './player'
 
 let html = "<span>\
-              <span style='margin-right: 5px;' v-on:click='preview'>{{ name }}</span>\
+              <span style='margin-right: 5px;cursor: pointer;' v-on:click='preview'>{{ name }}</span>\
               <a class='file-download' v-on:click='download' target='_blank' :href=\"serverPath + url + '/download?id=' + id\" :download='name'>\
                 <img src='../../static/images/UPLOAD.png' alt='Download' style='cursor: pointer;'>\
               </a>\

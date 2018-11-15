@@ -100,7 +100,6 @@
                 v-model="this.feedbackDetail.root.content">
               </el-input>
             </div>
-
             <el-input
               type="textarea"
               autosize

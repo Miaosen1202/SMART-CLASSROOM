@@ -115,6 +115,22 @@
       <div class="projectile" style=" width: 100%;height: 400px;overflow: auto">
         <el-scrollbar style="height: 100%">
           <div style="padding:2% 6%;">
+            <el-upload
+              class="upload-demo"
+              :action="action"
+              accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
+              :before-remove="beforeRemove"
+              :on-remove="removeFile"
+              :on-change="handleChange"
+              :on-success="handleSuccess"
+              :with-credentials="true"
+              :file-list="fileList3">
+              <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
+                <img src="../../../assets/images/u166.png" alt="">
+                {{$t('message.AddAttachments')}}
+              </el-button>
+              <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
+            </el-upload>
         <div class="root-reply" v-show="this.feedbackDetail.root.id != null">
           <span><i>{{ this.feedbackDetail.root.replyerName }}</i>{{$t('message.reportedon')}}</span>
           <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
@@ -125,26 +141,7 @@
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
-
-          <!--<el-upload
-            class="upload-demo"
-            :action="action"
-            accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
-            :before-remove="beforeRemove"
-            :on-remove="removeFile"
-            :on-change="handleChange"
-            :on-success="handleSuccess"
-            :with-credentials="true"
-            :file-list="fileList3">
-            <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
-              <img src="../../../assets/images/u166.png" alt="">
-              {{$t('message.AddAttachments')}}
-            </el-button>
-
-            <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
-          </el-upload>-->
         </div>
-
         <div>
           <ul>
             <!--<li v-for="fd in feedbackDetail.replyList">-->
@@ -163,28 +160,17 @@
                 </el-input>
               </p>
             </li>
-          <!--  <el-upload
-              class="upload-demo"
-              :action="action"
-              accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
-              :before-remove="beforeRemove"
-              :on-remove="removeFile"
-              :on-change="handleChange"
-              :on-success="handleSuccess"
-              :with-credentials="true"
-              :file-list="fileList3">
-              <el-button size="mini" type="primary" style="background-color: #26be96;border: none">
-                <img src="../../../assets/images/u166.png" alt="">
-                {{$t('message.AddAttachments')}}
-              </el-button>
-
-              <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
-            </el-upload>-->
+            <li v-for="(attachment,ind) in attachments" :key="ind">
+              <!--{{attachment.fileName}}-->
+              <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
+            </li>
 
           </ul>
         </div>
         <el-input
           type="textarea"
+          maxlength="4000"
+          @input = "descInput"
           autosize
           :placeholder="$t('message.pleaseEnter')"
           v-model="reply.content">
@@ -205,6 +191,8 @@
   export default {
     data() {
       return {
+
+        remnant:4000,
         fileList3: [],
         action: process.env.NODE_ENV + '/file/upload',
         removedFileName: "",
@@ -248,6 +236,11 @@
       this.loadFeedbackRecord();
     },
     methods: {
+      descInput(){
+        var txtVal = this.reply.content.length;
+        this.remnant = 4000-txtVal;
+      },
+
       formatDateTime: util.formatDateTime,
       beforeRemove(file, fileList) {
         this.removedFileName = file.name;
@@ -384,28 +377,28 @@
             me.replyDialogVisible = false;
           }
         });
-        // this.$http.post(`${process.env.NODE_ENV}/feedback/add`, reply)
-        //   .then((res) => {
-        //     if (res.data.code == 200) {
-        //       this.$message.info("Reply success");
-        //       this.reply.content = '';
-        //
-        //       if (reply.replyId) {
-        //         this.loadFeedbackReply(reply.replyId);
-        //       } else {
-        //         this.replyDialogVisible = false;
-        //       }
-        //     } if (res.data.code == 300) {
-        //       this.$message.error(this.data.message);
-        //       this.$router.push("/");
-        //     } else {
-        //       this.$message.error(this.data.message);
-        //     }
-        //
-        //     return null;
-        //   }).catch((err) => {
-        //     this.$message.error(err);
-        // });
+      /*  this.$http.post(`${process.env.NODE_ENV}/feedback/add`, reply)
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.$message.info("Reply success");
+              this.reply.content = '';
+
+              if (reply.replyId) {
+                this.loadFeedbackReply(reply.replyId);
+              } else {
+                this.replyDialogVisible = false;
+              }
+            } if (res.data.code == 300) {
+              this.$message.error(this.data.message);
+              this.$router.push("/");
+            } else {
+              this.$message.error(this.data.message);
+            }
+
+            return null;
+          }).catch((err) => {
+            this.$message.error(err);
+        });*/
       },
 
       cancelReply: function () {
@@ -446,15 +439,6 @@
     line-height: 180%;
     word-break: break-all;
     word-wrap:break-word;
-  }
-  .el-table .cell {
-    -webkit-box-sizing: border-box;
-    /* box-sizing: border-box; */
-    /* word-break: break-all; */
-    line-height: 23px;
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
   }
 </style>
 <style scoped="">

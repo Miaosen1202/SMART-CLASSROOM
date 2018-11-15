@@ -4,15 +4,17 @@
       <!--<p>增加练习 第一个页面 </p>
       <p>There is no exercises yet.</p>-->
       <div class="order">
-        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" v-on:click="createPanelToggle()" ><!--v-on:click="createPanelToggle()"-->
-          <p >
+        <el-button size="medium" style="border: 1px solid #f17e26;color: #f17e26" v-on:click="createPanelToggle()">
+          <!--v-on:click="createPanelToggle()"-->
+          <p>
             <img src="../../../../static/images/Creat.png" alt="">
             {{$t('message.CreateAnExercise')}}
           </p>
         </el-button>
-        <el-button  style="background-color: #26be96;color: #fff;border: 1px solid #26be96" v-bind:disabled="existExercisesList.length<1"  @click="showExercisesDialog" >
+        <el-button style="background-color: #26be96;color: #fff;border: 1px solid #26be96"
+                   v-bind:disabled="existExercisesList.length<1" @click="showExercisesDialog">
           <img src="../../../../static/images/Order.png" alt="">
-         <p>{{$t('message.Order')}}</p>
+          <p>{{$t('message.Order')}}</p>
         </el-button>
       </div>
       <!--新增exercises开始-->
@@ -26,30 +28,49 @@
         </el-radio-group>
         <el-input
           type="textarea"
+          maxlength="500"
+          @input="descInput"
           autosize
           :placeholder="$t('message.Typequestion')"
-          v-model="questionTitle" style="width: 70%;display: block;margin-bottom: 2%">
+          v-model="questionTitle" style="width: 70%;display: block;">
         </el-input><!--Type question here...-->
+        <span style="float: right;padding-right: 27%;font-size: 12px;color: #999999;margin-bottom: 2%">{{remnant}}{{$t('message.byte')}}</span>
         <!--选择题-->
         <div v-for="(option,index) in options" :key="index" v-if="questionType == 1">
           <el-radio v-model="selectItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
             <span class="opt-answer-code">{{option.answerCode}}</span>
-            <el-input type="textarea" v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
-                      style="width: 60%;display: inline-block"></el-input>
+            <el-input type="textarea"
+                      maxlength="100"
+                      v-model="option.answerContent"
+                      :placeholder="$t('message.pleaseenter')"
+                      style="width: 60%;display: inline-block">
+            </el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
+            <span style="float: right;padding-right: 32%;font-size: 12px;color: #999999;margin-bottom: 1%">
+              {{optionContentMaxLength - option.answerContent.length}}{{$t('message.byte')}}
+            </span>
           </el-radio>
         </div>
-        <div v-for="(option,index) in options" :key="index" v-if="questionType == 2" style="width: 100%">
+        <div v-for="(option,index) in options" :key="index" v-if="questionType == 2">
           <el-checkbox v-model="option.isCorrect" style="display: inline-block;width: 90%;">{{option.answerCode}}
-            <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
-                      style="width: 100%;display: inline-block"></el-input>
+            <el-input
+              type="textarea"
+              maxlength="100"
+              v-model="option.answerContent"
+              :placeholder="$t('message.pleaseenter')"
+              style="width: 60%;display: inline-block"></el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
+            <span style="float: right;padding-right: 34%;font-size: 12px;color: #999999;margin-bottom: 1%">
+                {{optionContentMaxLength - option.answerContent.length}}{{$t('message.byte')}}
+            </span>
           </el-checkbox>
         </div>
 
 
         <div class="option">
-          <el-button size="mini" style="display: inline-block;background-color: #f17e26;color: #fff" v-bind:disabled="optionsShow" @click="addSelectItems">+{{$t('message.Option')}}</el-button>
+          <el-button size="mini" style="display: inline-block;background-color: #f17e26;color: #fff"
+                     v-bind:disabled="optionsShow" @click="addSelectItems">+{{$t('message.Option')}}
+          </el-button>
           <div style="display: inline-block;width: 50%">
             <p style="color: #ff6699;padding-left: 2%">
               <i class="el-icon-warning"></i>
@@ -62,12 +83,16 @@
         </div>
         <el-input
           type="textarea"
+          maxlength="500"
+          @input="descInput"
           autosize
           :placeholder="$t('message.Explanations')"
           v-model="analysis" style="width: 70%;display: block;margin-top: 2%">
         </el-input>
+        <span style="float: right;padding-right: 27%;font-size: 12px;color: #999999;margin-bottom: 1%">{{remnants}}{{$t('message.byte')}}</span>
         <span slot="footer" class="dialog-footer" style="margin-left: 40%">
-        <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff" v-on:click="sure()">{{$t('message.save')}}</el-button>
+        <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff"
+                   v-on:click="sure()">{{$t('message.save')}}</el-button>
         <el-button size="medium" style="color: #333333" @click="cancelAddOrUpdate">{{$t('message.cancel')}}</el-button>
       </span>
       </div>
@@ -84,16 +109,24 @@
         </el-radio-group>
         <el-input
           type="textarea"
+          maxlength="500"
+          @input="descInput"
           autosize
           :placeholder="$t('message.Typequestion')"
-          v-model="exerciseEntity.questionTitle" style="width: 70%;display: block;margin-bottom: 2%">
+          v-model="exerciseEntity.questionTitle" style="width: 70%;display: block;">
         </el-input>
+        <span style="float: right;padding-right: 27%;font-size: 12px;color: #999999;margin-bottom: 1%">{{number}}{{$t('message.byte')}}</span>
         <!--选择题-->
         <div v-for="(option,index) in exerciseEntity.options" :key="index" v-if="exerciseEntity.questionType == 1">
           <el-radio v-model="selectEditItem" :label="option.answerCode" style="display: inline-block;width: 90%;">
             <span class="opt-answer-code">{{option.answerCode}}</span>
-            <el-input  type="textarea" v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
-                      style="width: 60%;display: inline-block"></el-input>
+            <el-input type="textarea"
+                      maxlength="100"
+                      v-model="option.answerContent"
+                      :placeholder="$t('message.pleaseenter')"
+                      style="width: 60%;display: inline-block">
+
+            </el-input>
             <!--<el-input
               type="textarea"
               autosize
@@ -101,20 +134,32 @@
               v-model="exerciseEntity.analysis" style="width: 70%;display: block;margin-top: 2%">
             </el-input>-->
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
+            <span style="float: right;padding-right: 32%;font-size: 12px;color: #999999;margin-bottom: 1%">
+                {{optionContentMaxLength - option.answerContent.length}}{{$t('message.byte')}}
+            </span>
           </el-radio>
         </div>
         <div v-for="(option,index) in exerciseEntity.options" :key="index" v-if="exerciseEntity.questionType == 2"
-             style="width: 100%">
+             >
           <el-checkbox v-model="option.isCorrect" style="display: inline-block;width: 90%;">{{option.answerCode}}
-            <el-input v-model="option.answerContent" :placeholder="$t('message.pleaseenter')"
-                      style="width: 100%;display: inline-block"></el-input>
+            <el-input type="textarea"
+                      maxlength="100"
+                      v-model="option.answerContent"
+                      :placeholder="$t('message.pleaseenter')"
+                      style="width: 60%;display: inline-block">
+            </el-input>
             <el-button type="text" icon="el-icon-delete" @click="deleteSelectItems(index)"></el-button>
+            <span style="float: right;padding-right: 35%;font-size: 12px;color: #999999;margin-bottom: 1%">
+                {{optionContentMaxLength - option.answerContent.length}}{{$t('message.byte')}}
+            </span>
           </el-checkbox>
         </div>
 
 
         <div class="option">
-          <el-button size="mini" style="display: inline-block;background-color: #f17e26;color: #fff" v-bind:disabled="optionsShow" @click="addSelectItems">+{{$t('message.Option')}}</el-button>
+          <el-button size="mini" style="display: inline-block;background-color: #f17e26;color: #fff"
+                     v-bind:disabled="optionsShow" @click="addSelectItems">+{{$t('message.Option')}}
+          </el-button>
           <div style="display: inline-block;width: 50%">
             <p style="color: #ff6699;padding-left: 2%">
               <i class="el-icon-warning"></i>
@@ -127,13 +172,20 @@
         </div>
         <el-input
           type="textarea"
+          maxlength="500"
+          @input="descInput"
           autosize
           :placeholder="$t('message.Explanations')"
           v-model="exerciseEntity.analysis" style="width: 70%;display: block;margin-top: 2%">
         </el-input>
+        <span style="float: right;padding-right: 27%;font-size: 12px;color: #999999;margin-bottom: 1%">
+                {{modificationAnalysis}}{{$t('message.byte')}}
+            </span>
         <span slot="footer" class="dialog-footer" style="margin-left: 40%">
-        <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff" v-on:click="edit()">{{$t('message.save')}}</el-button>
-        <el-button size="medium" style="color: #333333" @click="xgcancelAddOrUpdate">{{$t('message.cancel')}}</el-button>
+        <el-button size="medium" type="primary" style="margin-top: 2%;background-color: #0e38b1;color: #fff"
+                   v-on:click="edit()">{{$t('message.save')}}</el-button>
+        <el-button size="medium" style="color: #333333"
+                   @click="xgcancelAddOrUpdate">{{$t('message.cancel')}}</el-button>
       </span>
       </div>
       <!--修改exercises结束-->
@@ -148,16 +200,19 @@
         </el-button>
         <div style="word-wrap: break-word; word-break: normal;width: 90%">{{exercises.questionTitle}}</div>
         <ul v-for="(option,index) in exercises.options">
-          <li style="color: #000" :key="index"><P style="padding-right: 2%">{{option.answerCode}}</P><p style="word-wrap: break-word; word-break: normal;width: 90%">{{option.answerContent}}</p>
+          <li style="color: #000" :key="index"><P style="padding-right: 2%">{{option.answerCode}}</P>
+            <p style="word-wrap: break-word; word-break: normal;width: 90%">{{option.answerContent}}</p>
           </li>
         </ul>
-        <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic;display: inline-block">{{$t('message.answer')}} :</p>
+        <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic;display: inline-block">
+          {{$t('message.answer')}} :</p>
         <div v-for="(option,index) in exercises.options">
           <div v-if="option.isCorrect == 1">{{option.answerCode}}</div>
         </div>
 
         <p style="font-weight: 700;color: rgb(0, 204, 0);font-style: italic">{{$t('message.Explanation')}} :</p>
-        <p style="word-wrap: break-word; word-break: normal;width: 90%;display: block;padding-top: 0px">{{exercises.analysis}}</p>
+        <p style="word-wrap: break-word; word-break: normal;width: 90%;display: block;padding-top: 0px">
+          {{exercises.analysis}}</p>
       </div>
       <div class="orderexercise">
         <el-dialog
@@ -170,10 +225,18 @@
           <!--<el-radio v-model="radio" :label="existExercises.id">{{existExercises.questionTitle}}</el-radio>-->
           <!--</div>-->
           <el-row style="padding-left: 3%">
-            <el-button type="text" size="mini" v-bind:disabled="moveTopBtn" @click="moveTopBtnHandler">{{$t('message.Top')}}</el-button>
-            <el-button type="text" size="mini" v-bind:disabled="moveBoBtn" @click="moveBoBtnHandler">{{$t('message.Bottom')}}</el-button>
-            <el-button type="text" size="mini" v-bind:disabled="moveUpBtn" @click="moveUpBtnHandler">{{$t('message.Up')}}</el-button>
-            <el-button type="text" size="mini" v-bind:disabled="moveDownBtn" @click="moveDownBtnHandler">{{$t('message.Down')}}</el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveTopBtn" @click="moveTopBtnHandler">
+              {{$t('message.Top')}}
+            </el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveBoBtn" @click="moveBoBtnHandler">
+              {{$t('message.Bottom')}}
+            </el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveUpBtn" @click="moveUpBtnHandler">
+              {{$t('message.Up')}}
+            </el-button>
+            <el-button type="text" size="mini" v-bind:disabled="moveDownBtn" @click="moveDownBtnHandler">
+              {{$t('message.Down')}}
+            </el-button>
           </el-row>
 
           <template>
@@ -213,6 +276,11 @@
   export default {
     data() {
       return {
+        optionContentMaxLength: 100,
+        modificationAnalysis:500,
+        number: 500,
+        remnant: 500,
+        remnants: 500,
         selectItem: "A",
         showExercisesDialogVisible: false,
         analysis: '',
@@ -245,9 +313,9 @@
             answerCode: "A"
           }
         ],
-        optionsShow:false,
+        optionsShow: false,
         showAdd: false,
-        isShow:false,
+        isShow: false,
         exerciseEntity: {},
         selectEditItem: "",
         moveTopBtn: true,
@@ -261,8 +329,24 @@
       this.getAssignmentListByLessonId();
     },
     methods: {
+     /* multiChoiceOptionInput() {
+        var txtVal = this.options[0].answerContent.length;
+        this.optionContentMaxLength = 100 - txtVal;
+      },*/
+      descInput() {
+        var txtVal = this.questionTitle.length;
+        this.remnant = 500 - txtVal;
+        var txt = this.analysis.length;
+        this.remnants = 500 - txt;
+
+        var mondeys = this.exerciseEntity.questionTitle ? this.exerciseEntity.questionTitle.length : 0;
+        this.number = 500 - mondeys;
+        // modificationAnalysis
+        var mondey = this.exerciseEntity.analysis ? this.exerciseEntity.analysis.length : 0;
+        this.modificationAnalysis = 500 - mondey;
+      },
       indexMethod(index) {
-        return "Exercises "+(index+1);
+        return "Exercises " + (index + 1);
       },
 
       handleCurrentChange(row) {
@@ -323,7 +407,7 @@
         return currentRowIndex;
       },
       cancel() {
-          this.$refs.singleTable.setCurrentRow(null)
+        this.$refs.singleTable.setCurrentRow(null)
         this.existExercisesList = this.existExercisesListOrigin.slice(0);
       },
       resetSort() {
@@ -360,11 +444,11 @@
           })
         }
         if (this.options.length >= this.codeObjList.length) {
-          this.optionsShow= true;//控制按钮可用状态
+          this.optionsShow = true;//控制按钮可用状态
         }
       },
       deleteSelectItems(ind) {
-        this.optionsShow=false;//控制按钮可用状态
+        this.optionsShow = false;//控制按钮可用状态
         if (this.showAdd == true) {
           this.options.splice(ind, 1);
           // console.log(this.options);
@@ -412,11 +496,13 @@
         };
 
         if (typeof this.questionTitle !== "string" || this.questionTitle.trim().length === 0) {
-          this.$message.error(this.$t('message.Thetitlemustbenotempty'));/* "The title must be not empty"*/
+          this.$message.error(this.$t('message.Thetitlemustbenotempty'));
+          /* "The title must be not empty"*/
           return;
         }
         if (queryOptions.length < 2 || queryOptions.length > 10) {
-          this.$message.error(this.$t('message.Theoptionsmustbegreater'));/*  The options must be greater than 1 and less than 11*/
+          this.$message.error(this.$t('message.Theoptionsmustbegreater'));
+          /*  The options must be greater than 1 and less than 11*/
           return;
         }
         /*if (typeof this.options.answerContent !== "" || this.options.answerContent.trim().length === 0) {
@@ -425,7 +511,7 @@
         }*/
         let me = this;
         this._add("/choiceQuestion", exercises, data => {
-          eventBus.$emit("getExercisesNumber","");
+          eventBus.$emit("getExercisesNumber", "");
           me.questionType = 1;
           me.questionTitle = "";
           me.analysis = "";
@@ -436,7 +522,7 @@
               answerCode: "A"
             }
           ];
-          me.optionsShow=false;
+          me.optionsShow = false;
           me.getAssignmentListByLessonId();
         });
       },
@@ -448,7 +534,7 @@
             if (res.data.code == 200) {
               this.existExercisesList = res.data.entity;
               this.existExercisesListOrigin = res.data.entity.slice(0);
-              eventBus.$emit("getExercisesNumber","");
+              eventBus.$emit("getExercisesNumber", "");
             }
           }).catch((err) => {
           console.log(err);
@@ -457,7 +543,7 @@
       /*删除选项中的列表*/
       deleteExercises: function (id) {
         let me = this;
-        this._del("/choiceQuestion", [id],()=> me.getAssignmentListByLessonId())
+        this._del("/choiceQuestion", [id], () => me.getAssignmentListByLessonId())
       },
       /*获取选择题详情*/
       getExecisesDetail(id) {
@@ -515,6 +601,16 @@
           analysis: this.exerciseEntity.analysis,
           options: queryOptions
         };
+        if (typeof this.exerciseEntity.questionTitle !== "string" || this.exerciseEntity.questionTitle.trim().length === 0) {
+          this.$message.error(this.$t('message.Thetitlemustbenotempty'));
+          /* "The title must be not empty"*/
+          return;
+        }
+        if (queryOptions.length < 2 || queryOptions.length > 10) {
+          this.$message.error(this.$t('message.Theoptionsmustbegreater'));
+          /*  The options must be greater than 1 and less than 11*/
+          return;
+        }
         console.log(exercises);
 
         this.$http.post(`${process.env.NODE_ENV}/choiceQuestion/modify`, exercises)
@@ -538,34 +634,35 @@
               console.log("exercisesId：" + this.exercisesId);
               this.getAssignmentListByLessonId();
             }
+
           }).catch((err) => {
           console.log(err);
         });
 
       },
       createPanelToggle: function () {
-         /*this.isShow = !this.isShow;*/
-         if(this.showAdd || this.isShow){
-           this.showAdd = false;
-           this.isShow = false;
-         }else{
-           this.showAdd = true;
-           this.isShow = false;
-         }
+        /*this.isShow = !this.isShow;*/
+        if (this.showAdd || this.isShow) {
+          this.showAdd = false;
+          this.isShow = false;
+        } else {
+          this.showAdd = true;
+          this.isShow = false;
+        }
       },
-      cancelAddOrUpdate: function() {
+      cancelAddOrUpdate: function () {
         /*this.showAdd = false;*/
         this.questionTitle = "";
         this.attachments = [];
 
-        this.answerCode="A";
-        this.answerContent="";
+        this.answerCode = "A";
+        this.answerContent = "";
         this.exercisesList = [];
         this.analysis = "";
         /*this.codeObjList= "";*/
         // window.location.reload();
       },
-      xgcancelAddOrUpdate:function () {
+      xgcancelAddOrUpdate: function () {
         /*his.exerciseEntity.questionTitle = "";
         this.exerciseEntity.sort = 1;
         this.exerciseEntity.analysis = "";*/
@@ -677,4 +774,7 @@
     display: none;
   }
 
+  .el-checkbox__label {
+    width: 100% !important;
+  }
 </style>

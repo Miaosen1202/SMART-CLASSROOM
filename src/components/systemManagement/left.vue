@@ -7,12 +7,12 @@
     </div>-->
     <ul>
       <li :class="{active : activeFlag == 'teacherManagement'}" @click="goToteacherManagement('teacherManagement')">
-        <el-button type="text" @click="dialogVisible = true">
+        <!--<el-button type="text" @click="dialogVisible = true">-->
 
           <p style="color: #fff;">
             <img src="../../../static/images/Teache-white.png" alt="" style="padding-right: 8%">
             {{$t('message.teacherManagement')}}</p>
-        </el-button>
+        <!--</el-button>-->
       </li>
       <li :class="{active : activeFlag == 'studentManagement'}" @click="goTostudentManagement('studentManagement')">
         <P>

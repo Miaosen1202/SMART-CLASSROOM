@@ -97,7 +97,7 @@
             <li>
               <span>{{$t('message.Name')}}：</span>
               <el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
-              <i style="color: red;font-size: 22px" >*</i>
+              <i class="double" style="color: red;font-size: 22px" >*</i>
             </li>
             <li>
               <span>{{$t('message.EMail')}}：</span>
@@ -441,6 +441,14 @@
 
   .projectile ul li {
     margin-top: 2%;
+    text-align: right;
+    padding-right: 18%;
+    position: relative;
+  }
+  .double{
+    position: absolute;
+    top:0;
+    right:40px;
   }
   .el-upload__tip {
     display: inline-block;

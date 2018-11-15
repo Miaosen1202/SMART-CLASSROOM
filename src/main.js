@@ -14,6 +14,7 @@ import "babel-polyfill"
 import './utils/file-template';
 import VideoPlayer from 'vue-video-player'
 
+
 Vue.use(VideoPlayer);
 
 Vue.prototype.$echarts = echarts;

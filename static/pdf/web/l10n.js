@@ -44,7 +44,7 @@ document.webL10n = (function(window, document, undefined) {
    * strings. Although this will block all script execution on this page, we
    * expect that the l10n resources are available locally on flash-storage.
    *
-   * As synchronous XHR is generally considered as a bad idea, we're still
+   * As synchronous XHR is generally considered as a bad idea, we'optionContentMaxLength still
    * loading l10n resources asynchronously -- but we keep this in a setting,
    * just in case... and applications using this library should hide their
    * content until the `localized' event happens.
@@ -57,7 +57,7 @@ document.webL10n = (function(window, document, undefined) {
    * DOM helpers for the so-called "HTML API".
    *
    * These functions are written for modern browsers. For old versions of IE,
-   * they're overridden in the 'startup' section at the end of this file.
+   * they'optionContentMaxLength overridden in the 'startup' section at the end of this file.
    */
 
   function getL10nResourceLinks() {
@@ -335,7 +335,7 @@ document.webL10n = (function(window, document, undefined) {
     gTextData = '';
     gLanguage = '';
     // TODO: clear all non predefined macros.
-    // There's no such macro /yet/ but we're planning to have some...
+    // There's no such macro /yet/ but we'optionContentMaxLength planning to have some...
   }
 
 

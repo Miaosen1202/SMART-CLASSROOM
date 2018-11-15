@@ -17,14 +17,14 @@
             <el-radio v-model="selectedAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '1'">
               <span style="padding-right: 2%" >{{option.answerCode}}
               </span>
-              <span style="padding-left: 2%;display:inline-block;width:90%;word-wrap:break-word;white-space:normal;">{{option.answerContent}}
+              <p style="padding-left: 2%;display:inline-block;width:90%;word-break: break-all;white-space: initial;">{{option.answerContent}}
                <!-- <i class="el-icon-circle-check-outline" style="color: green"></i>
                 <i class="el-icon-circle-close-outline" style="color: red"></i>-->
-              </span>
+              </p>
             </el-radio>
             <el-checkbox v-model="selectedMultiAnswerCode" :label="option.answerCode" v-show="exercises.questionType == '2'">
               <span style="padding-right: 2%" >{{option.answerCode}}</span>
-              <span style="padding-left: 2%;display:inline-block;width:90%;word-wrap:break-word;white-space:normal;">{{option.answerContent}}
+              <span style="padding-left: 2%;display:inline-block;width:90%;word-break: break-all;white-space: initial;">{{option.answerContent}}
                 <!--<i class="el-icon-circle-check-outline" style="color: green"></i>
                 <i class="el-icon-circle-close-outline" style="color: red"></i>-->
               </span>

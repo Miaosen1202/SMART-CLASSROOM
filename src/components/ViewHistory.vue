@@ -52,6 +52,8 @@
       </el-table>
 
       <el-pagination
+        background
+        style="text-align: center;margin-top: 2%"
         :page-size="pageSize"
         :page-count="5"
         :current-page="pageIndex"
@@ -220,6 +222,7 @@
   .have h5 {
     display: inline-block;
     font-weight: 700;
+
   }
   .lesson {
     border: 1px solid #ccc;
