@@ -96,4 +96,7 @@
     height: 84%;
 
   }
+  .el-scrollbar__thumb {
+      width: 0px!important;
+    }
 </style>

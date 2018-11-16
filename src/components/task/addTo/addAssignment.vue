@@ -191,18 +191,21 @@
         var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
         const extension1 = testmsg === 'doc' || testmsg === 'docx' || testmsg === 'ppt' || testmsg === 'pptx' || testmsg === 'xls' || testmsg === 'xlsx' || testmsg === 'pdf' || testmsg === 'swf' || testmsg === 'jpg' || testmsg === 'jpeg' || testmsg === 'png' || testmsg === 'gif' || testmsg === 'bmp';
         const extension2 = testmsg === 'mp4' || testmsg === 'mp3';
-        const isLimit30M = file.size / 1024 / 1024 < 1;
-        const isLimit200M = file.size / 1024 / 1024 < 3;
+        const isLimit30M = file.size / 1024 / 1024 < 30;
+        const isLimit200M = file.size / 1024 / 1024 < 200;
         if(!(extension1) && !(extension2)) {
           this.$message({
-            message: '上传文件只能是 doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
+            // message: '上传文件只能是 doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
+            message: this.$t('message.Uploadfilecanonly'),
             type: 'warning'
           });
         }
         if(extension1){ //其它文件
           if(!isLimit30M){
             this.$message({
-              message: '上传文件大小不能超过 1MB!',
+              // message: '音视频文件大小不超过200M，其他类型文件不得超过30M!',
+              dangerouslyUseHTMLString:true,
+              message: this.$t('message.Audioandvideo'),
               type: 'warning'
             });
             return false;
@@ -211,7 +214,8 @@
         if(extension2){ //视频文件
           if(!isLimit200M){
             this.$message({
-              message: '上传文件大小不能超过 2MB!',
+              dangerouslyUseHTMLString:true,
+              message: this.$t('message.Audioandvideo'),
               type: 'warning'
             });
             return false;

@@ -168,6 +168,7 @@ const en = {
 
 
     /*admin*/
+    'Pleaseenteryourname':'Please enter name!',
     'Download':'Download Template',
     'Import':'Import Data',
     'ResetPassword':'Reset Password',
@@ -280,6 +281,8 @@ const en = {
 
     // 通用按钮
     // -------- start -----------
+    'Audioandvideo':'Error! Failed to upload the file. Please resize it before uploading.<br> Maximum media file size: 200MB,<br>Maximum document file size: 30MB.',
+    'Uploadfilecanonly':'Upload file can only be doc,docx,mp4,ppt,pptx,xls,xlsx,pdf,mp3,swf,jpg,jpeg,png,gif,bmp format!',
     'batchdelete':'Batch Delete',
     'OK':'OK',
     'CopyTo':'Copy To',

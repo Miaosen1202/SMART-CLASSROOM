@@ -47,10 +47,12 @@
         <el-table-column
           style="overflow: hidden;width: 200px"
           align="center"
-
           prop="content"
           :label="$t('message.Description')"
           min-width="60%">
+          <template slot-scope="scope">
+            <el-button type="text" size="small" @click="goReply(scope.row)">{{scope.row.content}}</el-button>
+          </template>
         </el-table-column><!--<!--data-placement="auto"
           :show-overflow-tooltip="true"-->-->
 

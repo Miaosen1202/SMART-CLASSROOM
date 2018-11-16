@@ -134,7 +134,14 @@
             <el-input disabled v-model="editStudent.studentNo" size="small" :placeholder="$t('message.Account')" style="width: 60%"></el-input>
             <el-input disabled v-show="false" v-model="editStudent.id" size="small" style="width: 60%"></el-input>
           </li>
-          <li><span>{{$t('message.Name')}}：</span><el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
+          <li><span>{{$t('message.Name')}}：</span>
+            <el-input
+              v-model.trim="editStudent.name"
+              ref="test"
+              size="small"
+              :placeholder="$t('message.Name')"
+              style="width: 60%">
+            </el-input>
             <i class="double" style="color: red;font-size: 22px" >*</i>
           </li>
           <li><span>{{$t('message.EMail')}}：</span><el-input v-model="editStudent.email" size="small" :placeholder="$t('message.EMail')" style="width: 60%"></el-input></li>
@@ -302,7 +309,11 @@
 
       editStudentSubmit: function() {
         console.log("update", this.editStudent);
-
+        if(this.editStudent.name === ''){
+          this.$refs.test.focus();
+          this.$message.error(this.$t('message.Pleaseenteryourname'));
+          return ;
+        }
         this.$http.post(`${process.env.NODE_ENV}/student/modify`, this.editStudent)
           .then((res) => {
             if (res.data.code == 200) {

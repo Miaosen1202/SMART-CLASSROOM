@@ -168,6 +168,7 @@
         var login = {
           "userName": this.userName,
           "password": this.$md5(this.password),
+          type:2
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
@@ -194,6 +195,7 @@
         var login = {
           "userName": this.userName,
           "password": this.$md5(this.password),
+          type:1
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
@@ -220,7 +222,8 @@
         let login = {
           "userName": this.userName,
           "password": this.$md5(this.password),
-          "lessonCode": this.lessonCode
+          "lessonCode": this.lessonCode,
+          type:3
         };
         this.$http.post(`${process.env.NODE_ENV}/login`, login)
           .then((res) => {
@@ -240,7 +243,7 @@
                 query: {lessonId: this.entity.lessonId, lessonCode: this.entity.lessonCode}
               });
             } else {
-              this.$message.error(this.$t('message.Usernameorpasswordisincorrect'))
+              this.$message.error(err)
             }
           }).catch((err) => {
           this.$message.error(err);

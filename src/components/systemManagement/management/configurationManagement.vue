@@ -129,7 +129,7 @@
         this.$http.post(`${process.env.NODE_ENV}/materialBank/modify`, this.editMaterialBank)
           .then((res) => {
             if (res.data.code == 200) {
-              this.$message.info("Success");
+              this.$message.info(this.$t('message.Modifyteachersuccess'));
               this.$router.push({path: "/admin/resourceManagement"});
             } else if (res.data.code == 300) {
               this.$message.error(res.data.message);

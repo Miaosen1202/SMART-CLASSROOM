@@ -38,7 +38,7 @@
                  :placeholder="$t('message.pleaseselect')" v-model="courseName">
 
         </el-radio>
-        <span style="float: right;padding-right: 36%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
+        <span style="float: right;padding-right: 38%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
         <!--<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1">-->
       </div>
     </div>

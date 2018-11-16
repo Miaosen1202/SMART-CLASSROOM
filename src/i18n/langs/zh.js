@@ -166,6 +166,7 @@ const zh = {
 
 
     /*admin*/
+    'Pleaseenteryourname':'请输入姓名!',
     'Download':'下载导入模板',
     'Import':'导入老师数据',
     'ResetPassword':'重置初始化密码',
@@ -274,6 +275,8 @@ const zh = {
 
     // 通用按钮
     // -------- start -----------
+    'Audioandvideo':'音视频文件大小不超过200M，其他类型文件不得超过30M!',
+    'Uploadfilecanonly':'doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
     'SelectAll':'选择全部',
     'batchdelete':'批量删除',
     'CopyTo':'复制到',

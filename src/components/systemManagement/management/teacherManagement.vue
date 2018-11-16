@@ -29,7 +29,7 @@
         ref="multipleTable"
         :data="teacherRecords"
         tooltip-effect="dark"
-        style="width: 98%"
+        style="width: 100%"
         min-height="70%"
 
         @selection-change="handleSelectionChange">
@@ -96,7 +96,13 @@
             </li>
             <li>
               <span>{{$t('message.Name')}}：</span>
-              <el-input v-model="editStudent.name" size="small" :placeholder="$t('message.Name')" style="width: 60%"></el-input>
+              <el-input
+                v-model.trim="editStudent.name"
+                size="small"
+                ref="test"
+                :placeholder="$t('message.Name')"
+                style="width: 60%">
+              </el-input>
               <i class="double" style="color: red;font-size: 22px" >*</i>
             </li>
             <li>
@@ -278,14 +284,19 @@
 
       editTeacherModify: function() {
         console.log("update", this.editStudent);
-
+        if(this.editStudent.name === ''){
+          this.$refs.test.focus();
+          this.$message.error(this.$t('message.Pleaseenteryourname'));
+          return ;
+        }
         this.$http.post(`${process.env.NODE_ENV}/teacher/modify`, this.editStudent)
           .then((res) => {
+
             if (res.data.code == 200) {
               this.$message.info(this.$t('message.Modifyteachersuccess'));/*"Modify teacher success"*/
               this.hideTeacherEditDialog();
               this.loadTeacherRecords(this.pageIndex);
-            } else {
+            }else {
               this.$message.error(this.$t('message.Modifyteacherfail') + res.data.message);/*"Modify teacher fail: "*/
             }
           }).catch((err) => {

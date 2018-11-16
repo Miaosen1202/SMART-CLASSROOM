@@ -71,9 +71,9 @@ $http.interceptors.response.use(function (response) {
     Vue.prototype.$message.error(response.data.message);
     router.push("/");
   } else {
-    // if (response.data.code === 500) {
-    //   Vue.prototype.$message.error(response.data.message);
-    // }
+    if (response.data.code === 500) {
+      Vue.prototype.$message.error(response.data.message);
+    }
     return response;
   }
 }, function (error) {

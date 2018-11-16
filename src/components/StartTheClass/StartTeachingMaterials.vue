@@ -933,9 +933,12 @@
           return;
         } else {
           let disAnswerItems = document.querySelectorAll(".discussion-answer-items") || [];
-          disAnswerItems.forEach(function (d) {
+          /*disAnswerItems.forEach(function (d) {
             d.style.display = "none";
-          });
+          });*/
+          for(let d = 0;d < disAnswerItems.length; d++){
+            disAnswerItems[d].style.display= "none";
+          }
         }
         let param = {
           params: {

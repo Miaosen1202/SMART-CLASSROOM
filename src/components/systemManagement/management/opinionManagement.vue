@@ -12,7 +12,6 @@
           :value="item.value">
         </el-option>
       </el-select>
-
       <div class="block" style="width: 30%;display: inline-block" >
         <el-date-picker
           style="width: 100%"
@@ -25,9 +24,7 @@
           >
         </el-date-picker>
       </div>
-
       <el-button  @click="loadFeedbackRecord(1)"  style="background-color: #0138b1;color: #fff" size="small" icon="el-icon-search"></el-button>
-
       <el-button @click="batchDelete"  size="mini" style="float: right;margin-left: 1%;">
         <img src="../../../../static/images/Deleteinbatches.png" height="18" alt="">
         {{$t('message.batchdelete')}}
@@ -51,6 +48,9 @@
           prop="content"
           :label="$t('message.feedback')"
           min-width="60%" align="center">
+          <template slot-scope="scope">
+            <el-button type="text" size="small" @click="goReply(scope.$index, scope.row)">{{scope.row.content}}</el-button>
+          </template>
         </el-table-column>
 
         <el-table-column
@@ -127,12 +127,14 @@
         <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">-->
           <!--{{ this.feedbackDetail.root.content }}-->
         <!--</div>-->
+        <div class="textarea-modify">
           <el-input
             :readonly="true"
             type="textarea"
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
+        </div>
         <div>
           <ul>
             <li v-for="fd in feedbackDetail.replyList">
@@ -407,6 +409,9 @@
     width: 100%;
     overflow: hidden;
     white-space: nowrap!important;
+  }
+  .textarea-modify textarea {
+    border: none;
   }
 </style>
 
