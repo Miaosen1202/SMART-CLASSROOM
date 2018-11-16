@@ -25,13 +25,17 @@
           <!--<el-button size="small" type="primary" @click="goViewMaterialBank">-->
           <!--<img src="../../../assets/images/u60.png" alt="">More-->
           <!--</el-button>-->
+          <el-button size="small"  @click="copyToClike" style="border: 1px solid #0e38b1;color: #0e38b1">
+            <img src="../../../../static/images/tianjia.png" alt=""  height="15px">
+            {{$t('message.frommyresource')}}
+          </el-button>
           <el-button size="small" type="primary" @click="copyToClike" style="background-color: #f17e26;border: none">
             <img src="../../../../static/images/COPYTO.png" alt=""  height="15px">
             {{$t('message.CopyTo')}}
           </el-button>
         </div>
         <el-upload
-          style="width: 70%;padding-bottom: 2%"
+          style="width: 30%;padding-bottom: 2%"
           class="material-upload"
           name="file"
           :before-upload="beforeAvatarUpload"
@@ -46,7 +50,7 @@
             <img src="../../../../static/images/UPLOAD1.png" height="15px" alt="">
             {{$t('message.upload')}}
           </el-button>
-          <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
+         <!-- <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>-->
         </el-upload>
         <!--<div style="margin: 15px 0;"></div>-->
         <!--<el-checkbox-group v-model="checkedMaterials" @change="handleCheckedCitiesChange">-->
@@ -72,13 +76,13 @@
                    width="30%">
           <div style="height: 360px">
             <el-scrollbar style="height: 100%">
-            <el-collapse accordion v-model="activeName" @change="courseCollapseChange">
-              <el-collapse-item v-for="course in courseList"
-                                :title="course.courseName"
-                                :name="course.id"
-                                :key="course.id">
-                <el-radio class="lesson-item" v-for="les in lessonList" v-model="copyToLessonRadio" :label="les.id"
-                          :key="les.id">
+              <el-collapse accordion v-model="activeName" @change="courseCollapseChange">
+                <el-collapse-item v-for="course in courseList"
+                                  :title="course.courseName"
+                                  :name="course.id"
+                                  :key="course.id">
+                  <el-radio class="lesson-item" v-for="les in lessonList" v-model="copyToLessonRadio" :label="les.id"
+                            :key="les.id">
                   <span style="white-space: nowrap;
                   text-overflow: ellipsis;
                   overflow: hidden;
@@ -86,9 +90,9 @@
                   width: 74%;vertical-align: middle;">
                     {{les.lessonName}}
                   </span>
-                </el-radio>
-              </el-collapse-item>
-            </el-collapse>
+                  </el-radio>
+                </el-collapse-item>
+              </el-collapse>
             </el-scrollbar>
           </div>
           <span slot="footer" class="dialog-footer">
@@ -96,7 +100,7 @@
        <el-button @click="copyToDialogVisible = false">{{$t('message.cancel')}}</el-button>
       </span>
         </el-dialog>
-        </div>
+      </div>
       </el-scrollbar>
     </div>
 

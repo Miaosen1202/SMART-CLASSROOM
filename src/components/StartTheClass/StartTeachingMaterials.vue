@@ -25,6 +25,10 @@
               {{ getLoginUser().name }}<i class="el-icon-arrow-down el-icon--right"></i>
            </span>
             <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="goToFirst">
+                <img src="../../../static/images/home-blue.png" alt="">
+                {{$t('message.home')}}
+              </el-dropdown-item>
               <el-dropdown-item @click.native="mycourse">
                 <img src="../../../static/images/mycourse.png" alt="">
                 {{$t('message.mycourses')}}
@@ -33,6 +37,10 @@
                 <img src="../../static/images/reply-blue.png" alt="">
                 reply
               </el-dropdown-item>-->
+              <el-dropdown-item @click.native="goToFirst">
+                <img src="../../../static/images/home-blue.png" alt="">
+                {{$t('message.home')}}
+              </el-dropdown-item>
               <el-dropdown-item class="password" @click.native="dialogFormVisible = true">
                 <img src="../../../static/images/ResetPassword-blue.png" alt="">
                 {{$t('message.ModifyPassword')}}

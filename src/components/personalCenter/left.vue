@@ -13,7 +13,7 @@
              <!--{{$t('message.MyCourse')}}</p>-->
         <!--</el-button>-->
         <p>
-          <img src="../../../static/images/Teache-white.png" alt=""><span style="padding-left: 8%">{{$t('message.MyCourse')}}</span>
+          <img src="../../../static/images/MyCourses-white.png" alt=""><span style="padding-left: 8%">{{$t('message.MyCourse')}}</span>
         </p>
       </li>
       <li :class="{active : activeFlag == 'myResources'}" @click="goToresourceManagement('myResources')">
@@ -24,7 +24,12 @@
       </li>
       <li :class="{active : activeFlag == 'myOpinion'}" @click="goTostudentManagement('myOpinion')">
         <p>
-          <img src="../../../static/images/Student-white.png" alt=""><span style="padding-left: 8%">{{$t('message.MyOpinion')}}</span>
+          <img src="../../../static/images/OpinionManagement.png" alt=""><span style="padding-left: 8%">{{$t('message.MyOpinion')}}</span>
+        </p>
+      </li>
+      <li :class="{active : activeFlag == 'commonsResource'}" @click="goTocommonsResource('commonsResource')">
+        <p>
+          <img src="../../../static/images/common-white.png" alt=""><span style="padding-left: 8%">{{$t('message.commonsResource')}}</span>
         </p>
       </li>
 
@@ -54,6 +59,8 @@
         this.activeFlag = "myResources";
       } else if (path.endsWith("myOpinion")) {
         this.activeFlag = "myOpinion";
+      } else if (path.endsWith("commonsResource")) {
+        this.activeFlag = "commonsResource";
       }
     },
     methods:{
@@ -68,6 +75,10 @@
       goToresourceManagement(s){
         this.activeFlag = s;
         this.$router.push({path:"/personalCenterManagement/myResources"});
+      },
+      goTocommonsResource(s){
+        this.activeFlag = s;
+        this.$router.push({path:"/personalCenterManagement/commonsResource"});
       },
 
 

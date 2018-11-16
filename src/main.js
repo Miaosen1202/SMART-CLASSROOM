@@ -71,6 +71,7 @@ $http.interceptors.response.use(function (response) {
     Vue.prototype.$message.error(response.data.message);
     router.push("/");
   } else {
+    // console.log(response.data);
     if (response.data.code === 500) {
       Vue.prototype.$message.error(response.data.message);
     }

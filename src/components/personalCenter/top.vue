@@ -18,6 +18,10 @@
               <img src="../../../static/images/mycoursr.png" alt="">
               mycourse
             </el-dropdown-item>-->
+            <el-dropdown-item @click.native="goToFirst">
+              <img src="../../../static/images/home-blue.png" alt="">
+              {{$t('message.home')}}
+            </el-dropdown-item>
             <el-dropdown-item  @click.native="goReply()">
               <img src="../../../static/images/reply-blue.png" alt="">
               {{$t('message.reply')}}

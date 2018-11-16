@@ -37,6 +37,7 @@ import opinionManagement from '@/components/systemManagement/management/opinionM
 import personalCenterManagement from '@/components/personalCenterManagement'
 import myCourse from '@/components/personalCenter/center/myCourse'
 import myOpinion from '@/components/personalCenter/center/myOpinion'
+import commonsResource from '@/components/personalCenter/center/commonsResource'
 import myResources from '@/components/personalCenter/center/myResources'
 import modify from '@/components/personalCenter/center/modify'
 
@@ -209,6 +210,10 @@ export default new Router({
         {
           path: 'modify',
           component: modify,
+        },
+        {
+          path: 'commonsResource',
+          component: commonsResource,
         },
       ]
     },
