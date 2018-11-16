@@ -66,7 +66,11 @@
                 <!--<div v-on:click="lessonhistory()" style="cursor: pointer;display: inline-block">
                   <img src="../../static/images/lesson.png" alt="">
                 </div>-->
-                <p v-on:click="goTeaching(lesson.id)">{{lesson.lessonName}}</p>
+                <p v-on:click="goTeaching(lesson.id)"
+                style="width: 58%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
+                  >
+                  {{lesson.lessonName}}
+                </p>
                 <span style="float: right">{{ dateTimeformat(lesson.createTime) }}
                   <!--<i v-on:click="deletelesson(course.id,lesson.id)" class="el-icon-delete" style="color: red;cursor: pointer"></i>-->
                 </span>

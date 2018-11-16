@@ -46,7 +46,7 @@ const en = {
     'Order':'Order',
     'Typequestion':'Type question here...',
     'Option':'Option',
-    'Pleasetick':'Please tick the correct answer(The selected item is the correct answer.).',
+    'Pleasetick':'Please tick the correct answer(The selected item is the correct answer).',
     'Explanations':'Type explanation here...',
     'CreateanAssignment':'Create an Assignment',
     'NewAssignment':'New Assignment',

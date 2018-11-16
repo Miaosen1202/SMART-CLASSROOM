@@ -75,13 +75,13 @@
             <span>{{$t('message.NameS')}}：</span>
             <el-input size="small"
                       maxlength="256"
-                      @input = "descInput"
+                      @input = "descInputS"
                       v-model="courseName"
                       :placeholder="$t('message.coursename')"
                       style="width: 60%">
 
             </el-input>
-            <span style="float: right;padding-right: 24%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
+            <span style="float: right;padding-right: 28%;font-size: 12px;color: #999999">{{remnants}}{{$t('message.byte')}}</span>
           </li>
         </ul>
       </div>
@@ -109,7 +109,7 @@
                       style="width: 60%">
 
             </el-input>
-            <span style="float: right;padding-right: 24%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
+            <span style="float: right;padding-right: 28%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           </li>
         </ul>
       </div>
@@ -145,12 +145,14 @@
         },
 
         methods: {
+          descInputS(){
+            var txt = this.courseName.length;
+            this.remnants = 256-txt;
+          },
 
           descInput(){
             var txtVal = this.lessonName.length;
-            var txt = this.courseName.length;
             this.remnant = 256-txtVal;
-            this.remnants = 256-txt;
           },
           modifyNameHandler(row) {
             this.teacherEditDialogVisable = true;

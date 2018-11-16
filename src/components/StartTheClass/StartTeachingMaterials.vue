@@ -208,7 +208,7 @@
             <el-tab-pane name="materialTab" :label="$t('message.TeachingMaterials')">
 
              <!-- <div v-if="flag == 'edit'">{{$t('message.Assignment')}}</div>-->
-              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p class="classstyle">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ materialNumber }}</p>
               <div v-if="materialNumber == '0'">
 
@@ -243,7 +243,7 @@
 
             <!--<el-tab-pane name="discussTab" :label="'Discussion(' + discussNumber + ')'" style="margin-bottom: 10%;">-->
             <el-tab-pane name="discussTab" :label="$t('message.Discussion')" style="margin-bottom: 10%;">
-              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p class="classstyle">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{ discussNumber }}</p>
               <div v-if="discussNumber == '0'">
 
@@ -299,7 +299,7 @@
             <!--<el-tab-pane name="exercisesTab" :label="'Exercises(' + execisesNumber + ')'" >-->
             <el-tab-pane name="exercisesTab" :label="$t('message.Exercises')">
 
-              <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+              <p class="classstyle">{{$t('message.lesson')}}： {{ lessonName }}</p>
               <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{pages}}</p>
               <div v-if="pages == '0'">
                 <img src="../../../static/images/u768.png" alt="" style="position: fixed;top:30%;right: 50%;">
@@ -368,7 +368,7 @@
             <!--<el-tab-pane name="assignmentTab" :label="'Assignment(' + assignmentNumber + ')'" style="margin-bottom: 10%;">-->
             <el-tab-pane name="assignmentTab" :label="$t('message.Assignment')" style="margin-bottom: 10%;">
               <div>
-                <p style="display: inline-block;color: #333333;font-weight: 700">{{$t('message.lesson')}}： {{ lessonName }}</p>
+                <p class="classstyle">{{$t('message.lesson')}}： {{ lessonName }}</p>
                 <p style="float: right;padding-right: 2%;color: #999999;font-size: 12px">Total:{{assignmentNumber}}</p>
                 <div v-if="assignmentNumber == '0'">
                   <img src="../../../static/images/u1046.png" height="140px" width="140px" alt="" style="margin:3% 40%;">
@@ -1391,5 +1391,13 @@
     border-radius: 10px;
     border: 1px solid #ccc;
   }
-
+  .classstyle {
+  display: inline-block;
+  color: rgb(51, 51, 51);
+  font-weight: 700;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 94%;
+}
 </style>
