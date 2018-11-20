@@ -111,7 +111,7 @@
                      id="copyTofrommyresource"
                      :title="$t('message.SelectaLesson')"
                      :visible.sync="copyTofrommyresource"
-                     @open="copyMaterialDialogOpen"
+                     @open="copyTofrommyresourcelist"
                      width="80%">
             <div style="height: 600px">
               <el-scrollbar style="height: 100%">
@@ -201,10 +201,6 @@
 
               </el-scrollbar>
             </div>
-            <span slot="footer" class="dialog-footer">
-       <el-button style="background-color: #0e38b1;" type="primary" @click="copyMaterialToLesson">{{$t('message.OK')}}</el-button>
-       <el-button @click="copyToDialogVisible = false">{{$t('message.cancel')}}</el-button>
-      </span>
           </el-dialog>
         </div>
       </el-scrollbar>
@@ -280,6 +276,7 @@
     },
     mounted() {
       this.getMaterialList();
+      this.resourceManagementQuery();
     },
     methods: {
       beforeAvatarUpload(file) {
@@ -535,12 +532,14 @@
       },
       resourceManagementQuery: function (pageIndex) {
         let param = {
-          params: this.search
+          params: this.search,
         };
         param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
-        param.params.pageSize = this.page.pageSize;
+        param.params.pageSize = 5;
+        param.params.lessonId=this.lessonId
 
-        this.$http.get(`${process.env.NODE_ENV}/materialBank/pageList`,param)
+
+        this.$http.get(`${process.env.NODE_ENV}/lessonMaterial/pageList`,param,)
           .then((res) => {
             if (res.data.code == 200) {
               this.page = res.data.entity;
@@ -551,7 +550,18 @@
           this.$message.error(err);
         });
       },
-
+      copyTofrommyresourcelist:function() {
+        this.$http.get(`${process.env.NODE_ENV}/lessonMaterial/list`, {params: {lessonId:this.lessonId}})
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.page = res.data.entity;
+            } else {
+              this.$message.error(res.data.message);
+            }
+          }).catch((err) => {
+          this.$message.error(err);
+        });
+      },
       modifyPageSkip:function (row)  {
         this.$router.push({path:"/personalCenterManagement/modify", query: {id: row.id}});
       },
