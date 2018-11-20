@@ -5,7 +5,7 @@
       <p style="width: 80%;word-break: break-all;"><!--Emergence-->{{entity.lesson.lessonName}}
         <!--<img src="../../assets/images/u475.png" alt="">-->
       </p>
-      <p style="width: 80%;word-break: break-all;">
+      <p style="width: 74%;word-break: break-all;">
         <img src="../../assets/images/u434.png" alt="">
         {{entity.course.courseName}}
         <!--Course : Journey of the Universe: A Story for Our Times-->

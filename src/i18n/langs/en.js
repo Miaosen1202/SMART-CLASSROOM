@@ -136,6 +136,7 @@ const en = {
     'Pleaseinputresourcedescription':'Please input resource description',
     'assignmentSaveNeedContentOrAttachmentNotEmpty': 'Error: No content to be saved.',
     'Replacethefile':'Replace the file',
+    'fileType':'FileType',
 
 
 

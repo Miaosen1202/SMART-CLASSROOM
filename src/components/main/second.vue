@@ -96,7 +96,7 @@
 
       :title="$t('message.lessonname')"
       :visible.sync="teacherEditDialogVisable"
-      width="20%">
+      width="30%">
       <div class="projectile" style="padding-left: 10%">
         <ul>
           <li>
@@ -232,7 +232,7 @@
             this.courseDialogVisible = false;
           },
           handleEdit(index, row) {
-            console.log("edit lesson, id=", row.id);
+            /*console.log("edit lesson, id=", row.id);*/
             this.$router.push({path: "/homePage/course/addMaterials", query: {"lessonId": row.id}});
           },
           courseDelete(courseId, index) {

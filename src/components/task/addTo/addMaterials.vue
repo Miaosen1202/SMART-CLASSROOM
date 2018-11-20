@@ -25,7 +25,7 @@
           <!--<el-button size="small" type="primary" @click="goViewMaterialBank">-->
           <!--<img src="../../../assets/images/u60.png" alt="">More-->
           <!--</el-button>-->
-          <el-button size="small"  @click="copyToClike" style="border: 1px solid #0e38b1;color: #0e38b1">
+          <el-button size="small"  @click="frommyresource" style="border: 1px solid #0e38b1;color: #0e38b1">
             <img src="../../../../static/images/tianjia.png" alt=""  height="15px">
             {{$t('message.frommyresource')}}
           </el-button>
@@ -101,19 +101,126 @@
       </span>
         </el-dialog>
       </div>
+
+
+
+
+        <!-- 拷贝课时资料 -->
+        <div class="clones">
+          <el-dialog ref="copyTofrommyresource"
+                     id="copyTofrommyresource"
+                     :title="$t('message.SelectaLesson')"
+                     :visible.sync="copyTofrommyresource"
+                     @open="copyMaterialDialogOpen"
+                     width="80%">
+            <div style="height: 600px">
+              <el-scrollbar style="height: 100%">
+                <div class="addto">
+                  <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
+                  <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
+                  <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
+                    <img src="../../../../static/images/BatchUpload.png" alt="" height="18">
+                    {{$t('message.Uploads')}}</el-button>
+                  <el-table
+                    ref="multipleTable"
+                    :data="page.list"
+                    tooltip-effect="dark"
+                    style="width: 100%"
+                    @selection-change="handleSelectionChange">
+                    <el-table-column type="selection" width="40"></el-table-column>
+                    <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" :show-overflow-tooltip="true" min-width="80%">
+                      <!--{{materialName}}-->
+                      <template slot-scope="scope">
+                        <file-template
+                          :id="scope.row.id"
+                          :url="scope.row.materialUrl"
+                          :name="scope.row.materialName">
+                        </file-template>
+                      </template>
+                    </el-table-column>
+                    <el-table-column prop="fileType" :label="$t('message.fileType')" min-width="40%" align="center"></el-table-column>
+                    <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="40%" align="center"></el-table-column>
+                    <el-table-column prop="fileSize" :label="$t('message.Size')" min-width="60%" align="center">
+                      <template slot-scope="scope">{{ fileSizeConvert(scope.row.fileSize) }}</template>
+                    </el-table-column>
+                    <el-table-column prop="updateTime" :label="$t('message.DateTime')" min-width="90%" align="center">
+                      <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
+                    </el-table-column>
+                    <!--<el-table-column prop="fileType" :label="$t('message.Views')" min-width="70%" align="center">
+                    </el-table-column>-->
+                    <el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
+                      <template slot-scope="scope">
+                        <el-button
+                          size="mini"
+                          style="border: none;color: #0e38b1"
+                          @click="handleDelete(scope.$index, scope.row)">AddTo</el-button>
+                      </template>
+                    </el-table-column>
+                  </el-table>
+                </div>
+                <div style="position: absolute;bottom: 8%;left: 44%">
+                  <el-pagination
+                    background
+                    :page-size="page.pageSize"
+                    :page-count="pageNumber"
+                    :current-page="page.pageIndex"
+                    layout="prev, pager, next"
+                    :total=page.total
+                    @current-change="resourceManagementQuery">
+                  </el-pagination>
+                </div>
+                <!-- 批量上传面板 -->
+                <el-dialog
+                  :title="$t('message.batchUpload')"
+                  :visible.sync="batchUploadDialogVisible"
+                  width="30%"
+                  @close="batchUploadDialogClosed"
+
+                >
+                  <el-upload
+                    class="material-batch-upload"
+                    name="file"
+                    :before-upload="beforeAvatarUpload"
+                    accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
+                    :file-list="fileList"
+                    :action="fileUploadPath"
+                    with-credentials
+                    :on-change="handleFileChange"
+                    :on-remove="removeFile"
+                    :on-success="handleFileUploadSuccess">
+                    <el-button size="small" style="background-color: #0e38b1;color: #fff">
+                      <img src="../../../../static/images/UPLOAD1.png" alt="">
+                      {{$t('message.upload')}}</el-button>
+                    <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
+                  </el-upload>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button  @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
+                    <el-button style="background-color: #0e38b1;color: #fff" @click="batchUpload">{{$t('message.save')}}</el-button>
+                  </span>
+                </el-dialog>
+
+              </el-scrollbar>
+            </div>
+            <span slot="footer" class="dialog-footer">
+       <el-button style="background-color: #0e38b1;" type="primary" @click="copyMaterialToLesson">{{$t('message.OK')}}</el-button>
+       <el-button @click="copyToDialogVisible = false">{{$t('message.cancel')}}</el-button>
+      </span>
+          </el-dialog>
+        </div>
       </el-scrollbar>
     </div>
-
   </div>
 </template>
 
 <script>
   import eventBus from '../../../eventBus'
+  import util from '../../../utils/util'
   export default {
     data() {
       return {
         radio: '1',
         copyToDialogVisible: false,
+        copyTofrommyresource:false,
         materialName: "",
         fromWhere: "",
         showUploadFileList: false,
@@ -127,6 +234,48 @@
         lessonList: [],
         activeName: '0',
         copyToLessonRadio: undefined,
+
+
+
+
+
+
+        /*commonsresource*/
+        batchUploadDialogVisible: false,
+        fileUploadPath: `${process.env.NODE_ENV}/file/upload`,
+        materialFileList: [],
+        /*lessonId:'',*/
+        fileList: [],
+
+        addMaterials: [],
+
+        search: {
+          materialName: null,
+          accessScope: 2
+        },
+        page: {
+          total: 0,
+          pageIndex: 1,
+          pageSize: 5,
+          list: [],
+
+        },
+        pageNumber: 5,
+
+        pageSize: 1,//页大小
+        currentPage: 1,//当前页
+        pages: 0,//总页数
+        total: 0,//总条数
+        resourceManagementList: [],
+        multipleSelection: [],
+        options: [{
+          value: '选项1',
+          label: '1'
+        },  {
+          value: '选项2',
+          label: '2'
+        }],
+        value: ''
       };
     },
     mounted() {
@@ -252,6 +401,13 @@
         this.checkedMaterialList = val ? this.materialList : [];
         this.isIndeterminate = false;
       },
+      frommyresource: function () {
+        if (this.checkedMaterialList.length == 0) {
+          this.$message.error(this.$t('message.pleaseinformation'));//Please select class hour information first.
+          return;
+        }
+        this.copyTofrommyresource = true;
+      },
       copyToClike: function () {
         if (this.checkedMaterialList.length == 0) {
           this.$message.error(this.$t('message.pleaseinformation'));//Please select class hour information first.
@@ -327,6 +483,195 @@
       goViewMaterialBank: function () {
         // todo
         console.log("go view material bank");
+      },
+
+
+
+
+      /*commonsresource*/
+      formatDateTime: util.formatDateTime,
+
+      fileSizeConvert: util.fileSizeConvert,
+
+      handleSelectionChange(val) {
+        this.multipleSelection = val;
+      },
+      beforeAvatarUpload(file) {
+        var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
+        const extension1 = testmsg === 'doc' || testmsg === 'docx' || testmsg === 'ppt' || testmsg === 'pptx' || testmsg === 'xls' || testmsg === 'xlsx' || testmsg === 'pdf' || testmsg === 'swf' || testmsg === 'jpg' || testmsg === 'jpeg' || testmsg === 'png' || testmsg === 'gif' || testmsg === 'bmp';
+        const extension2 = testmsg === 'mp4' || testmsg === 'mp3';
+        const isLimit30M = file.size / 1024 / 1024 < 30;
+        const isLimit200M = file.size / 1024 / 1024 < 200;
+        if(!(extension1) && !(extension2)) {
+          this.$message({
+            // message: '上传文件只能是 doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
+            message: this.$t('message.Uploadfilecanonly'),
+            type: 'warning'
+          });
+        }
+        if(extension1){ //其它文件
+          if(!isLimit30M){
+            this.$message({
+              // message: '音视频文件大小不超过200M，其他类型文件不得超过30M!',
+              dangerouslyUseHTMLString:true,
+              message: this.$t('message.Audioandvideo'),
+              type: 'warning'
+            });
+            return false;
+          }
+        }
+        if(extension2){ //视频文件
+          if(!isLimit200M){
+            this.$message({
+              dangerouslyUseHTMLString:true,
+              message: this.$t('message.Audioandvideo'),
+              type: 'warning'
+            });
+            return false;
+          }
+
+        }
+        return (extension1 || extension2) && (isLimit30M || isLimit200M);
+      },
+      resourceManagementQuery: function (pageIndex) {
+        let param = {
+          params: this.search
+        };
+        param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
+        param.params.pageSize = this.page.pageSize;
+
+        this.$http.get(`${process.env.NODE_ENV}/materialBank/pageList`,param)
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.page = res.data.entity;
+            } else {
+              this.$message.error(res.data.message);
+            }
+          }).catch((err) => {
+          this.$message.error(err);
+        });
+      },
+
+      modifyPageSkip:function (row)  {
+        this.$router.push({path:"/personalCenterManagement/modify", query: {id: row.id}});
+      },
+
+      handleDelete(index, row) {
+        this.doDelete([row.id]);
+      },
+
+      batchDelete: function () {
+        if (this.multipleSelection.length == 0) {
+          this.$message.error(this.$t('message.Pleaseselectatleastonerowofdata'));/*"Please select at least one row of data"*/
+          return;
+        }
+
+        let ids = [];
+        for (let i = 0; i < this.multipleSelection.length; i++) {
+          ids.push(this.multipleSelection[i].id);
+        }
+
+        this.doDelete(ids);
+      },
+
+      doDelete: function (ids) {
+        // let me = this;
+        // this._del("/materialBank", ids, (data) => {
+        //   me.resourceManagementQuery();
+        // });
+        this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/batchDownload`, ids)
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.$message.info("Delete success");
+              this.resourceManagementQuery();
+            } else if (res.data.code == 300) {
+              this.$router.push({path: "/login"});
+            } else {
+              this.$message.error(res.data.message);
+            }
+          });
+        /*
+                this.$http.post(`${process.env.NODE_ENV}/materialBank/deletes`, ids),
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                  confirmButtonText: '确定',
+                  cancelButtonText: '取消',
+                  type: 'warning'}).then((res) => {
+                  if (res.data.code == 200) {
+                    this.$message({
+                      type: 'success',
+                      message: '删除成功!',
+                    }).catch(() => {
+                        this.$message({
+                          type: 'info',
+                          message: '已取消删除'
+                        })
+                      });
+                    this.resourceManagementQuery();
+                  }
+                })*/
+      },
+
+      removeFile: function (file, fileList) {
+        let tmpName = file.response.entity.fileTmpName;
+        for (let i = 0; i < this.addMaterials.length; i++) {
+          if (tmpName  === this.addMaterials[i].localPath) {
+            this.addMaterials.splice(i, 1);
+          }
+        }
+      },
+
+      batchUploadDialogClosed: function () {
+        this.addMaterials = [];
+        this.fileList = [];
+      },
+
+      goBatchUpload: function () {
+        this.batchUploadDialogVisible = true;
+      },
+
+      handleFileChange: function (file, fileList) {
+        console.log("upload change", file);
+        console.log("upload change", fileList);
+      },
+
+      handleFileUploadSuccess: function (resp, file, fileList) {
+        if (resp.code == 200) {
+          var newMaterial = {
+            materialName: resp.entity.fileOriginName,
+            localPath: resp.entity.fileTmpName,
+          };
+
+          this.addMaterials.push(newMaterial);
+        } else if (resp.code == 300) {
+          this.$message.error(resp.message);
+          this.$router.push("/");
+        } else {
+          this.$message.error(resp.message);
+        }
+      },
+
+      batchUpload: function () {
+        if (this.addMaterials.length <= 0) {
+          this.$message.error(this.$t('message.Pleaseuploadfilefirst'));/*"Please upload file first"*/
+          return;
+        }
+
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/batchUpload/edit`, this.addMaterials)
+          .then((res) => {
+            if (res.data.code == 200) {
+              this.batchUploadDialogVisible = false;
+              this.addMaterials = [];
+
+              this.resourceManagementQuery();
+            } else if (res.data.code == 300) {
+              this.$message.error(res.data.message);
+              this.$router.push("/");
+            } else {
+              this.$message.error(res.data.message);
+            }
+          }).catch((err) => {
+          this.$message.error(err);
+        });
       }
     }
   }
@@ -342,11 +687,14 @@
     height: 100%;
   }
 
-  .el-dialog {
+/*  .el-dialog {
     width: 40% !important;
 
-  }
+  }*/
+  .addto .el-dialog {
+    width: 80% !important;
 
+  }
   .el-dialog__body {
     width: 100% !important;
     height: 200px !important;

@@ -28,7 +28,7 @@ const zh = {
     'pleaseenter':'请输入',
     'list':'列表',
     'Select':'列表',
-    'frommyresource':'From my resource',
+    'frommyresource':'资源分享',
     'Next':'下一步',
     'Continue':'继续',
     'giveup':'放弃',
@@ -139,6 +139,7 @@ const zh = {
     'Pleaseinputresourcedescription':'请输入资源描述',
     'assignmentSaveNeedContentOrAttachmentNotEmpty': '没有内容或附件不能保存',
     'Replacethefile':'替换文件',
+    'fileType':'文件类型',
 
 
 
