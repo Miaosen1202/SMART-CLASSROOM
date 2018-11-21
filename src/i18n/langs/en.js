@@ -104,6 +104,10 @@ const en = {
     'Onlysupportxls':'Only support xls,xlsx,and type files.',
     'pre':'Pre',
     'next':'Next',
+    'AddTo':'AddTo',
+    'batchAddTo':'Batch Add To',
+    'sharetocommons':'Share To Commons',
+    'removeFromCommons':'Remove From Commons',
 
 // -------- end -----------
 

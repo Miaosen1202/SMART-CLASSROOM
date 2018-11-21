@@ -109,18 +109,19 @@
         <div class="clones">
           <el-dialog ref="copyTofrommyresource"
                      id="copyTofrommyresource"
-                     :title="$t('message.SelectaLesson')"
+                     :title="$t('message.frommyresource')"
                      :visible.sync="copyTofrommyresource"
-                     @open="copyTofrommyresourcelist"
                      width="80%">
             <div style="height: 600px">
               <el-scrollbar style="height: 100%">
                 <div class="addto">
+                  <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
                   <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
                   <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
-                  <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
-                    <img src="../../../../static/images/BatchUpload.png" alt="" height="18">
-                    {{$t('message.Uploads')}}</el-button>
+                  <el-button  @click="goBatchUpload" size="mini" style="float: right;margin-right: 1%;color:#0e38b1;border: 1px solid #0e38b1">
+                    <img src="../../../../static/images/tianjia.png" alt="" height="18">
+                    {{$t('message.batchAddTo')}}</el-button>
+                  <div>
                   <el-table
                     ref="multipleTable"
                     :data="page.list"
@@ -153,10 +154,11 @@
                         <el-button
                           size="mini"
                           style="border: none;color: #0e38b1"
-                          @click="handleDelete(scope.$index, scope.row)">AddTo</el-button>
+                          @click="materialAdd(scope.$index, scope.row)">{{$t('message.AddTo')}}</el-button>
                       </template>
                     </el-table-column>
                   </el-table>
+                  </div>
                 </div>
                 <div style="position: absolute;bottom: 8%;left: 44%">
                   <el-pagination
@@ -180,14 +182,14 @@
                   <el-upload
                     class="material-batch-upload"
                     name="file"
-                    :before-upload="beforeAvatarUpload"
+                    :before-upload="beforeAvatarUploads"
                     accept=".doc,.docx,.mp4,.ppt,.pptx,.xls,.xlsx,.pdf,.mp3,.swf,.jpg,.jpeg,.png,.gif,.bmp"
                     :file-list="fileList"
                     :action="fileUploadPath"
                     with-credentials
                     :on-change="handleFileChange"
                     :on-remove="removeFile"
-                    :on-success="handleFileUploadSuccess">
+                    :on-success="handleFileUploadSuccesss">
                     <el-button size="small" style="background-color: #0e38b1;color: #fff">
                       <img src="../../../../static/images/UPLOAD1.png" alt="">
                       {{$t('message.upload')}}</el-button>
@@ -201,6 +203,7 @@
 
               </el-scrollbar>
             </div>
+            <!--<el-button @click="copyTofrommyresource = false"></el-button>-->
           </el-dialog>
         </div>
       </el-scrollbar>
@@ -349,7 +352,7 @@
         }
       },
       handleChange(file, fileList) {
-        console.log("upload change", file, fileList)
+        // console.log("upload change", file, fileList)
       },
       handleMaterialRemove: function () {
         var deleteMaterialIds = [];
@@ -399,10 +402,6 @@
         this.isIndeterminate = false;
       },
       frommyresource: function () {
-        if (this.checkedMaterialList.length == 0) {
-          this.$message.error(this.$t('message.pleaseinformation'));//Please select class hour information first.
-          return;
-        }
         this.copyTofrommyresource = true;
       },
       copyToClike: function () {
@@ -493,7 +492,7 @@
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
-      beforeAvatarUpload(file) {
+      beforeAvatarUploads(file) {
         var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
         const extension1 = testmsg === 'doc' || testmsg === 'docx' || testmsg === 'ppt' || testmsg === 'pptx' || testmsg === 'xls' || testmsg === 'xlsx' || testmsg === 'pdf' || testmsg === 'swf' || testmsg === 'jpg' || testmsg === 'jpeg' || testmsg === 'png' || testmsg === 'gif' || testmsg === 'bmp';
         const extension2 = testmsg === 'mp4' || testmsg === 'mp3';
@@ -533,13 +532,12 @@
       resourceManagementQuery: function (pageIndex) {
         let param = {
           params: this.search,
+          accessScope: 2,
         };
         param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
-        param.params.pageSize = 5;
-        param.params.lessonId=this.lessonId
+        param.params.pageSize = this.page.pageSize;
 
-
-        this.$http.get(`${process.env.NODE_ENV}/lessonMaterial/pageList`,param,)
+        this.$http.get(`${process.env.NODE_ENV}/materialBank/pageList`,param)
           .then((res) => {
             if (res.data.code == 200) {
               this.page = res.data.entity;
@@ -550,18 +548,7 @@
           this.$message.error(err);
         });
       },
-      copyTofrommyresourcelist:function() {
-        this.$http.get(`${process.env.NODE_ENV}/lessonMaterial/list`, {params: {lessonId:this.lessonId}})
-          .then((res) => {
-            if (res.data.code == 200) {
-              this.page = res.data.entity;
-            } else {
-              this.$message.error(res.data.message);
-            }
-          }).catch((err) => {
-          this.$message.error(err);
-        });
-      },
+
       modifyPageSkip:function (row)  {
         this.$router.push({path:"/personalCenterManagement/modify", query: {id: row.id}});
       },
@@ -644,9 +631,10 @@
         console.log("upload change", fileList);
       },
 
-      handleFileUploadSuccess: function (resp, file, fileList) {
+      handleFileUploadSuccesss: function (resp, file, fileList) {
         if (resp.code == 200) {
           var newMaterial = {
+            accessScope: 2,
             materialName: resp.entity.fileOriginName,
             localPath: resp.entity.fileTmpName,
           };
@@ -682,7 +670,36 @@
           }).catch((err) => {
           this.$message.error(err);
         });
-      }
+      },
+
+
+      /*课时资料分享*/
+      materialAdd: function (s) {
+          var newMaterial = {
+            lessonId: this.lessonId,
+            fromWhere: 2,
+            isShare: 1,
+            materialName: this.page.list[s].materialName,
+            localPath: this.page.list[s].localPath,
+            materialBankId:this.page.list[s].id,
+          };
+          // let me = this;
+          // this._add("/lessonMaterial", newMaterial, data => {
+            this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/add`,newMaterial)
+              .then((res) => {
+                if (res.data.code == 200) {
+                  this.getMaterialList();
+                  this.materialList.push(res.data.entity);
+                  eventBus.$emit("getMaterialNumber","");
+                  this.copyTofrommyresource=false;
+                  this.$message.success(this.$t('message.success'));//"Copy Success"
+                } else {
+                  this.$message.error(res.data.message);
+                }
+              })
+          // });
+
+      },
     }
   }
 </script>

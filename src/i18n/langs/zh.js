@@ -105,6 +105,10 @@ const zh = {
     'Onlysupportxls':'仅支持xls,xlsx,类型文件',
     'pre':'上一页',
     'next':'下一页',
+    'AddTo':'添加到',
+    'batchAddTo':'批量添加',
+    'sharetocommons':'Share To Commons',
+    'removeFromCommons':'Remove From Commons',
 
 
 

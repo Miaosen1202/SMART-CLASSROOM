@@ -117,7 +117,7 @@ function _mycatch(err, catchCallback) {
 function _mythen(res, successCallback, errorCallback) {
   if (res.data.code == 200) {
     console.log("---200----");
-    successCallback(res.data)
+    successCallback(res.data);
   } else if (res.data.code == 300) {
     console.log("---300----");
     this.$router.push("/")

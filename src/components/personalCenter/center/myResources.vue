@@ -47,9 +47,9 @@
         <el-table-column prop="updateTime" :label="$t('message.DateTime')" min-width="90%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
-        <el-table-column prop="viewCount" :label="$t('message.Views')" min-width="70%" align="center">
+        <el-table-column prop="fileType" :label="$t('message.fileType')" min-width="40%" align="center">
         </el-table-column>
-        <el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
+        <el-table-column  :label="$t('message.Operation')" width="350" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
@@ -58,7 +58,12 @@
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
-              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>
+              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
+            <el-button
+              style="border: none;color: #0138b1;"
+              size="mini"
+              @click="modifyAccessScope(scope.$index, scope.row)">{{ scope.row.accessScope == 2 ? $t("message.sharetocommons") : $t("message.removeFromCommons") }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -118,7 +123,6 @@
         batchUploadDialogVisible: false,
         fileUploadPath: `${process.env.NODE_ENV}/file/upload`,
         materialFileList: [],
-
         fileList: [],
 
         addMaterials: [],
@@ -200,12 +204,13 @@
         return (extension1 || extension2) && (isLimit30M || isLimit200M);
       },
       resourceManagementQuery: function (pageIndex) {
+        // let accessScope = pageIndex.accessScope == 1 ? 2 : 1;
         let param = {
-          params: this.search
+          params: this.search,
+          // accessScope: this.page.list[pageIndex].accessScope,
         };
         param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
         param.params.pageSize = this.page.pageSize;
-
         this.$http.get(`${process.env.NODE_ENV}/materialBank/pageList`, param)
           .then((res) => {
             if (res.data.code == 200) {
@@ -213,11 +218,29 @@
             } else {
               this.$message.error(res.data.message);
             }
+            // pageIndex.accessScope = accessScope;
           }).catch((err) => {
             this.$message.error(err);
         });
       },
-
+      modifyAccessScope(index, row) {
+        debugger;
+        let accessScope = index.accessScope == 1 ? 2 : 1;
+        // let param = {
+        //   accessScope: this.search[index].accessScope,
+        // };
+        debugger;
+        this.$http.get(`${process.env.NODE_ENV}/materialBank/list`)
+          .then((res) => {
+            if (res.data.code != 200) {
+              this.$message.error(res.data.message);
+              return;
+            }
+            row.accessScope = accessScope;
+          }).catch((err) => {
+          this.$message.error(err);
+        });
+      },
       modifyPageSkip:function (row)  {
         this.$router.push({path:"/personalCenterManagement/modify", query: {id: row.id}});
       },

@@ -52,14 +52,19 @@
         </el-table-column>-->
         <el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
-            <el-button
+            <!--<el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
+              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>-->
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
-              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button>
+              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}
+              <!--<a class='file-download' v-on:click='download' target='_blank' :href="serverPath + url + '/download?id=' + id" :download='name'>
+                <img src='../../../../static/images/UPLOAD.png' alt='Download' style='cursor: pointer;'>
+              </a>-->
+            </el-button>
+
           </template>
         </el-table-column>
       </el-table>
@@ -203,10 +208,12 @@
       },
       resourceManagementQuery: function (pageIndex) {
         let param = {
-          params: this.search
+          params: this.search,
+          accessScope: 2,
         };
         param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
         param.params.pageSize = this.page.pageSize;
+
 
         this.$http.get(`${process.env.NODE_ENV}/materialBank/pageList`,param)
           .then((res) => {
@@ -243,11 +250,11 @@
       },
 
       doDelete: function (ids) {
-        // let me = this;
-        // this._del("/materialBank", ids, (data) => {
-        //   me.resourceManagementQuery();
+        let me = this;
+        this._del("/materialBank", ids, (data) => {
+          me.resourceManagementQuery();
         // });
-        this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/batchDownload`, ids)
+       /* this.$http.post(`${process.env.NODE_ENV}/lessonMaterial/batchDownload`, ids)
           .then((res) => {
             if (res.data.code == 200) {
               this.$message.info("Delete success");
@@ -257,28 +264,13 @@
             } else {
               this.$message.error(res.data.message);
             }
-          });
-/*
-        this.$http.post(`${process.env.NODE_ENV}/materialBank/deletes`, ids),
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'}).then((res) => {
-          if (res.data.code == 200) {
-            this.$message({
-              type: 'success',
-              message: '删除成功!',
-            }).catch(() => {
-                this.$message({
-                  type: 'info',
-                  message: '已取消删除'
-                })
-              });
-            this.resourceManagementQuery();
-          }
-        })*/
-        },
+          });*/
 
+        })
+        },
+      download: function () {
+        this.$emit("download");
+      },
       removeFile: function (file, fileList) {
         let tmpName = file.response.entity.fileTmpName;
         for (let i = 0; i < this.addMaterials.length; i++) {
@@ -305,6 +297,7 @@
       handleFileUploadSuccess: function (resp, file, fileList) {
         if (resp.code == 200) {
           var newMaterial = {
+            accessScope: 2,
             materialName: resp.entity.fileOriginName,
             localPath: resp.entity.fileTmpName,
           };
