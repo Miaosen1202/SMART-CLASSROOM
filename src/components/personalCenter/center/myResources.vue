@@ -3,7 +3,7 @@
     <div>
       <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
       <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
-
+      <el-input v-model="search.fileType" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 10%"></el-input>
       <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
       <!--<el-select v-model="value" size="small" placeholder="请选择">-->
         <!--<el-option-->
@@ -28,7 +28,7 @@
         style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="40"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" :show-overflow-tooltip="true" min-width="80%">
+        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" min-width="80%"><!-- :show-overflow-tooltip="true"-->
           <!--{{materialName}}-->
           <template slot-scope="scope">
             <file-template
@@ -59,10 +59,22 @@
               size="mini"
               style="border: none;color: #0e38b1"
               @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
-            <el-button
+            <!--<el-button
               style="border: none;color: #0138b1;"
               size="mini"
-              @click="modifyAccessScope(scope.$index, scope.row)">{{ scope.row.accessScope == 2 ? $t("message.sharetocommons") : $t("message.removeFromCommons") }}
+              @click="modifyAccessScope(scope.$index, scope.row)">{{ scope.row.accessScope == 1 ? $t("message.sharetocommons") : $t("message.removeFromCommons") }}
+            </el-button>-->
+            <el-button
+              v-show="scope.row.isShow"
+              style="border: none;color: #0138b1;"
+              size="mini"
+              @click="modifyAccessScope(scope.$index, scope.row)">{{$t("message.removeFromCommons") }}
+            </el-button>
+            <el-button
+              v-show="!scope.row.isShow"
+              style="border: none;color: #0138b1;"
+              size="mini"
+              @click="modifyAccessScopetwo(scope.$index, scope.row)">{{$t("message.sharetocommons")}}
             </el-button>
           </template>
         </el-table-column>
@@ -115,7 +127,7 @@
 </template>
 
 <script>
-  import util from '@/utils/util'
+  import util from '../../../utils/util'
 
   export default {
     data() {
@@ -124,12 +136,12 @@
         fileUploadPath: `${process.env.NODE_ENV}/file/upload`,
         materialFileList: [],
         fileList: [],
-
+        isShow:true,
         addMaterials: [],
 
         search: {
           materialName: null,
-          accessScope: 1
+          accessScope:  1
         },
         page: {
           total: 0,
@@ -204,10 +216,8 @@
         return (extension1 || extension2) && (isLimit30M || isLimit200M);
       },
       resourceManagementQuery: function (pageIndex) {
-        // let accessScope = pageIndex.accessScope == 1 ? 2 : 1;
         let param = {
           params: this.search,
-          // accessScope: this.page.list[pageIndex].accessScope,
         };
         param.params.pageIndex = (typeof pageIndex == "undefined") ? this.page.pageIndex : pageIndex;
         param.params.pageSize = this.page.pageSize;
@@ -215,28 +225,46 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.page = res.data.entity;
+              this.page.list.forEach((e)=>{
+                e.isShow=true;
+              })
             } else {
               this.$message.error(res.data.message);
             }
-            // pageIndex.accessScope = accessScope;
           }).catch((err) => {
             this.$message.error(err);
         });
       },
       modifyAccessScope(index, row) {
-        debugger;
-        let accessScope = index.accessScope == 1 ? 2 : 1;
-        // let param = {
-        //   accessScope: this.search[index].accessScope,
-        // };
-        debugger;
-        this.$http.get(`${process.env.NODE_ENV}/materialBank/list`)
+         //let accessScope = row.accessScope == 1 ? 2 : 1;
+        let param = {
+          id: row.id,
+        };
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/cancelShare/edit`,param)
           .then((res) => {
             if (res.data.code != 200) {
               this.$message.error(res.data.message);
               return;
             }
-            row.accessScope = accessScope;
+             //row.accessScope = accessScope;
+            this.page.list[index].isShow=false;
+          }).catch((err) => {
+          this.$message.error(err);
+        });
+      },
+      modifyAccessScopetwo(index, row) {
+       // let accessScope = row.accessScope == 1 ? 2 : 1;
+        let param = {
+          id: row.id,
+        };
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`,param)
+          .then((res) => {
+            if (res.data.code != 200) {
+              this.$message.error(res.data.message);
+              return;
+            }
+            this.page.list[index].isShow=true;
+            // row.accessScope = accessScope;
           }).catch((err) => {
           this.$message.error(err);
         });

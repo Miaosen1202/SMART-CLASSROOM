@@ -308,7 +308,7 @@
       },
 
       editStudentSubmit: function() {
-        console.log("update", this.editStudent);
+        // console.log("update", this.editStudent);
         if(this.editStudent.name === ''){
           this.$refs.test.focus();
           this.$message.error(this.$t('message.Pleaseenteryourname'));
