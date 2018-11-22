@@ -35,7 +35,7 @@
         style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="40"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" :show-overflow-tooltip="true" min-width="80%">
+        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center"  min-width="80%"><!--:show-overflow-tooltip="true"-->
           <!--{{materialName}}-->
           <template slot-scope="scope">
             <file-template
@@ -55,6 +55,8 @@
         <el-table-column prop="updateTime" :label="$t('message.DateTime')" min-width="90%" align="center">
           <template slot-scope="scope">{{ formatDateTime(scope.row.updateTime) }}</template>
         </el-table-column>
+
+        <!--暂时不需要-->
         <!--<el-table-column prop="fileType" :label="$t('message.Views')" min-width="70%" align="center">
         </el-table-column>-->
         <!--<el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
@@ -292,9 +294,7 @@
 
         })
         },
-      download: function () {
-        this.$emit("download");
-      },
+
       removeFile: function (file, fileList) {
         let tmpName = file.response.entity.fileTmpName;
         for (let i = 0; i < this.addMaterials.length; i++) {

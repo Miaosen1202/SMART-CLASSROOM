@@ -134,7 +134,13 @@
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
+          <ul style="padding-left: 2%">
+            <li  style="word-break:break-all;" v-for="(attachment,ind) in feedbackDetail.root.attachments" :key="ind">
 
+              <file-template :id="attachment.id" :url="attachment.fileUrl" :name="attachment.fileName"></file-template>
+
+            </li>
+          </ul>
 
         </div>
         <div class="reply">
@@ -192,6 +198,7 @@
   export default {
     data() {
       return {
+        attachments: [],
         remnant:4000,
         replyDialogVisible: false,
         action: process.env.NODE_ENV + '/file/upload',

@@ -143,6 +143,9 @@
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
+          <p  style="word-break:break-all;" v-for="(attachment,ind) in feedbackDetail.root.attachments" :key="ind">
+            <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
+          </p>
         </div>
         <div class="reply">
           <ul>
@@ -162,10 +165,7 @@
                 </el-input>
               </p>
             </li>
-            <li v-for="(attachment,ind) in attachments" :key="ind">
-              <!--{{attachment.fileName}}-->
-              <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
-            </li>
+
 
           </ul>
         </div>
@@ -177,7 +177,9 @@
           :placeholder="$t('message.pleaseEnter')"
           v-model="reply.content">
         </el-input>
-            <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
+            <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">
+              {{remnant}}{{$t('message.byte')}}
+            </span>
       </div>
         </el-scrollbar>
       </div>
@@ -200,6 +202,7 @@
         action: process.env.NODE_ENV + '/file/upload',
         removedFileName: "",
         attachments: [],
+        fileEntity: {},
         multipleSelection: [],
         page: {
           total: 0,
@@ -323,7 +326,16 @@
       handleDelete: function (index, row) {
         this.doDelete([row.id]);
       },
-
+      handleSuccess(res, file) {
+        if (res.code == 200) {
+          this.fileEntity = res.entity;
+          this.attachments.push(
+            {
+              fileLocalPath: this.fileEntity.fileTmpName,
+              fileName: this.fileEntity.fileOriginName
+            });
+        }
+      },
       doDelete: function (ids) {
         let me = this;
         this._del("/feedback", ids, (data) => {
@@ -358,6 +370,7 @@
         let reply = {
           content: this.reply.content,
           replyId: this.feedbackDetail.root.id,
+          attachments: this.attachments
         };
 
         if (reply.content === null || reply.content === '' || reply.content.trim() === "") {
@@ -368,6 +381,7 @@
         let me = this;
         this._add("/feedback", reply, data => {
           me.reply.content = '';
+          me.fileList3=[];
           if (reply.replyId) {
             me.loadFeedbackReply(reply.replyId);
           } else {
@@ -401,6 +415,7 @@
       cancelReply: function () {
         this.replyDialogVisible = false;
         this.reply.content = '';
+        this.fileList3=[];
       },
 
       replyDialogClose: function () {
