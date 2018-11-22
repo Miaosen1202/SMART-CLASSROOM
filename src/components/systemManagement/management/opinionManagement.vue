@@ -121,8 +121,8 @@
 
       <div class="projectile" style=" width: 100%;height: 400px;overflow: auto">
         <el-scrollbar style="height: 100%">
-          <div style="padding:2% 6%;">
-        <span><i>{{ this.feedbackDetail.root.replyerName }}</i> {{$t('message.reportedOn')}} </span>
+          <div style="padding:2% 2%;">
+        <span><i style="padding-right: 1%">{{ this.feedbackDetail.root.replyerName }}</i> {{$t('message.reportedOn')}} </span>
         <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
         <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">-->
           <!--{{ this.feedbackDetail.root.content }}-->
@@ -136,18 +136,15 @@
           </el-input>
           <ul style="padding-left: 2%">
             <li  style="word-break:break-all;" v-for="(attachment,ind) in feedbackDetail.root.attachments" :key="ind">
-
               <file-template :id="attachment.id" :url="attachment.fileUrl" :name="attachment.fileName"></file-template>
-
             </li>
           </ul>
-
         </div>
         <div class="reply">
           <ul>
             <li v-for="fd in feedbackDetail.replyList">
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
-              <p style="word-break:break-all;">{{$t('message.Replied')}}:
+              <p style="word-break:break-all;border-bottom: 1px solid #f4f4f4;">{{$t('message.Replied')}}:
                 <el-input
                   :readonly="true"
                   type="textarea"
@@ -172,6 +169,7 @@
             </li>-->
           </ul>
         </div>
+        <div style="border: 1px solid #ccc;padding: 4% 2% 4% 2%;border-radius: 8px;background-color: #f4f4f4">
         <el-input
           type="textarea"
           maxlength="4000"
@@ -181,6 +179,7 @@
           v-model="reply.content">
         </el-input>
             <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
+        </div>
           </div>
         </el-scrollbar>
       </div>
@@ -430,6 +429,11 @@
   }
   .textarea-modify textarea {
     border: none;
+  }
+  .reply {
+    border: 1px solid #ccc;
+    padding: 0px 2% 4% 2%;
+    border-radius: 8px;
   }
 </style>
 

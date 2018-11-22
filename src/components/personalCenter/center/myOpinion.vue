@@ -115,7 +115,7 @@
       width="50%">
       <div class="projectile" style=" width: 100%;height: 400px;overflow: auto">
         <el-scrollbar style="height: 100%">
-          <div style="padding:2% 6%;">
+          <div style="padding:2% 2%;">
             <el-upload
               class="upload-demo"
               :action="action"
@@ -133,7 +133,7 @@
               <div slot="tip" class="el-upload__tip" style="font-size: 12px;color: #999999">{{$t('message.Onlysupport')}}</div>
             </el-upload>
         <div class="root-reply" v-show="this.feedbackDetail.root.id != null">
-          <span><i>{{ this.feedbackDetail.root.replyerName }}</i>{{$t('message.reportedon')}}</span>
+          <span><i style="padding-right: 1%">{{ this.feedbackDetail.root.replyerName }}</i> {{$t('message.reportedon')}}</span>
           <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
           <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>-->
           <el-input
@@ -147,6 +147,7 @@
             <file-template :id="attachment.id" :name="attachment.fileName" :url="attachment.fileUrl"></file-template>
           </p>
         </div>
+        <div style="border: 1px solid #ccc;padding: 0px 2% 4% 2%;border-radius: 8px;">
         <div class="reply">
           <ul>
             <!--<li v-for="fd in feedbackDetail.replyList">-->
@@ -155,7 +156,7 @@
             <!--</li>-->
             <li v-for="fd in feedbackDetail.replyList">
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
-              <p style="word-break:break-all;">{{$t('message.Replied')}}:
+              <p style="word-break:break-all;border-bottom: 1px solid #f4f4f4;">{{$t('message.Replied')}}:
                 <el-input
                   :readonly="true"
                   type="textarea"
@@ -165,10 +166,10 @@
                 </el-input>
               </p>
             </li>
-
-
           </ul>
         </div>
+        </div>
+        <div style="border: 1px solid #ccc;padding: 4% 2% 4% 2%;border-radius: 8px;background-color: #f4f4f4">
         <el-input
           type="textarea"
           maxlength="4000"
@@ -180,6 +181,7 @@
             <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">
               {{remnant}}{{$t('message.byte')}}
             </span>
+        </div>
       </div>
         </el-scrollbar>
       </div>
@@ -485,6 +487,7 @@
   .el-radio {
     width: 60%;
   }
+
 </style>
 
 
