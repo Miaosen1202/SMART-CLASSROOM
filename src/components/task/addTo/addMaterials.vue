@@ -117,6 +117,14 @@
                 <div class="addto">
                   <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
                   <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
+                  <el-select v-model="search.fileType" clearable="" :placeholder="$t('message.pleaseselect')" size="small">
+                    <el-option
+                      v-for="item in options"
+                      :key="item.value"
+                      :label="item.label"
+                      :value="item.value">
+                    </el-option>
+                  </el-select>
                   <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
                   <el-button  @click="goBatchUpload" size="mini" style="float: right;margin-right: 1%;color:#0e38b1;border: 1px solid #0e38b1">
                     <img src="../../../../static/images/tianjia.png" alt="" height="18">
@@ -249,6 +257,7 @@
         addMaterials: [],
 
         search: {
+          fileType:null,
           materialName: null,
           accessScope: 2
         },
@@ -268,13 +277,28 @@
         resourceManagementList: [],
         multipleSelection: [],
         options: [{
-          value: '选项1',
-          label: '1'
-        },  {
-          value: '选项2',
-          label: '2'
+          value: 'image',
+          label: 'image'
+        }, {
+          value: 'word',
+          label: 'word'
+        }, {
+          value: 'excel',
+          label: 'excel'
+        }, {
+          value: 'pdf',
+          label: 'pdf'
+        }, {
+          value: 'ppt',
+          label: 'ppt'
+        }, {
+          value: 'video',
+          label: 'video'
+        }, {
+          value: 'audio',
+          label: 'audio'
         }],
-        value: ''
+        value: '',
       };
     },
     mounted() {

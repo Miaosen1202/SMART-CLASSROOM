@@ -53,7 +53,7 @@
         <el-table-column prop="fileType" :label="$t('message.Category')" min-width="30%" align="center"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.fileSize')" min-width="30%" align="center"></el-table-column>
         <el-table-column prop="updateTime" :formatter="dateTimeFormatter" :label="$t('message.updateTime')" min-width="50%" align="center"></el-table-column>
-        <el-table-column prop="viewCount" :label="$t('message.viewNumber')" width="130" align="center"></el-table-column>
+      <!--  <el-table-column prop="viewCount" :label="$t('message.viewNumber')" width="130" align="center"></el-table-column>-->
         <el-table-column :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
