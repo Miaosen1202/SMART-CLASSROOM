@@ -64,18 +64,19 @@
               size="mini"
               @click="modifyAccessScope(scope.$index, scope.row)">{{ scope.row.accessScope == 1 ? $t("message.sharetocommons") : $t("message.removeFromCommons") }}
             </el-button>-->
+            <!--v-show="scope.row.isShow"-->
             <el-button
-              v-show="scope.row.isShow"
               style="border: none;color: #0138b1;"
               size="mini"
-              @click="modifyAccessScope(scope.$index, scope.row)">{{$t("message.removeFromCommons") }}
+              @click="modifyAccessScope(scope.$index, scope.row)">
+                {{scope.row.shareMaterial ? $t("message.removeFromCommons") : $t("message.sharetocommons")}}
             </el-button>
-            <el-button
-              v-show="!scope.row.isShow"
-              style="border: none;color: #0138b1;"
-              size="mini"
-              @click="modifyAccessScopetwo(scope.$index, scope.row)">{{$t("message.sharetocommons")}}
-            </el-button>
+            <!--<el-button-->
+              <!--v-show="!scope.row.isShow"-->
+              <!--style="border: none;color: #0138b1;"-->
+              <!--size="mini"-->
+              <!--@click="modifyAccessScopetwo(scope.$index, scope.row)">{{$t("message.sharetocommons")}}-->
+            <!--</el-button>-->
           </template>
         </el-table-column>
       </el-table>
@@ -225,7 +226,7 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.page = res.data.entity;
-              this.page.list.forEach((e)=>{
+              this.page.list.forEach( (e) =>{
                 e.isShow=true;
               })
             } else {
@@ -236,21 +237,40 @@
         });
       },
       modifyAccessScope(index, row) {
-         //let accessScope = row.accessScope == 1 ? 2 : 1;
-        let param = {
-          id: row.id,
-        };
-        this.$http.post(`${process.env.NODE_ENV}/materialBank/cancelShare/edit`,param)
-          .then((res) => {
-            if (res.data.code != 200) {
-              this.$message.error(res.data.message);
-              return;
-            }
-             //row.accessScope = accessScope;
-            this.page.list[index].isShow=false;
-          }).catch((err) => {
-          this.$message.error(err);
-        });
+        // console.log("modify...", row)
+        if (row.shareMaterial) {
+          let param = {
+            id: row.id,
+          };
+          this.$http.post(`${process.env.NODE_ENV}/materialBank/cancelShare/edit`,param)
+            .then((res) => {
+              if (res.data.code != 200) {
+                this.$message.error(res.data.message);
+                return;
+              }
+              //row.accessScope = accessScope;
+              this.page.list[index].shareMaterial = false;
+              // console.log(this.page.list[index].isShow=false);
+            }).catch((err) => {
+            this.$message.error(err);
+          });
+        } else {
+          let param = {
+            id: row.id,
+          };
+          this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`,param)
+            .then((res) => {
+              if (res.data.code != 200) {
+                this.$message.error(res.data.message);
+                return;
+              }
+              this.page.list[index].shareMaterial = true;
+              // console.log(this.page.list[index].isShow=true);
+              // row.accessScope = accessScope;
+            }).catch((err) => {
+            this.$message.error(err);
+          });
+        }
       },
       modifyAccessScopetwo(index, row) {
        // let accessScope = row.accessScope == 1 ? 2 : 1;
@@ -264,6 +284,7 @@
               return;
             }
             this.page.list[index].isShow=true;
+            console.log(this.page.list[index].isShow=true);
             // row.accessScope = accessScope;
           }).catch((err) => {
           this.$message.error(err);
