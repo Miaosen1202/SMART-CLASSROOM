@@ -253,7 +253,6 @@
           if(e.fileName == this.removedFileName){
           }
         })*/
-
         for (let i = 0; i < this.attachments.length; i++) {
           if (this.attachments[i].fileName == this.removedFileName) {
             this.attachments.splice(i, 1);
@@ -264,7 +263,6 @@
       handleChange(file, fileList) {
         this.fileList3 = fileList;
       },
-
       handleSuccess(res, file) {
         if (res.code == 200) {
           this.fileEntity = res.entity;
@@ -275,9 +273,6 @@
             });
         }
       },
-
-
-
       loadFeedbackRecord: function (pageIndex) {
         if (this.searchTimeRange != null && this.searchTimeRange.length >= 2) {
           this.search.startTime = util.formatDateTime(this.searchTimeRange[0]);
@@ -286,7 +281,6 @@
           this.search.startTime = null;
           this.search.endTime = null;
         }
-
         let param = {
           params: this.search
         };

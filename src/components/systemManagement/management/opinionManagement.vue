@@ -134,8 +134,10 @@
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
+
+
         </div>
-        <div>
+        <div class="reply">
           <ul>
             <li v-for="fd in feedbackDetail.replyList">
               <span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>
