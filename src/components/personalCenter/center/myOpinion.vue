@@ -10,7 +10,7 @@
           :value="stat.value">
         </el-option>
       </el-select>
-      <div class="block" style="width: 30%;display: inline-block" >
+      <div class="block" style="width: 30%;display: inline-block">
         <el-date-picker
           style="width: 100%"
           size="small"
@@ -39,7 +39,6 @@
         @selection-change="handleSelectionChange">
 
         <el-table-column
-
           type="selection"
           width="50">
         </el-table-column>
@@ -138,13 +137,14 @@
           <span>{{ formatDateTime(this.feedbackDetail.root.createTime) }}</span>
           <!--<div style="padding: 2%; margin: 2%; border: 1px solid black">{{ this.feedbackDetail.root.content }}</div>-->
           <el-input
+            style="border: none"
             :readonly="true"
             type="textarea"
             autosize
             v-model="this.feedbackDetail.root.content">
           </el-input>
         </div>
-        <div>
+        <div class="reply">
           <ul>
             <!--<li v-for="fd in feedbackDetail.replyList">-->
               <!--<span><h4 style="display: inline-block">{{ fd.replyerName }}</h4> {{ formatDateTime(fd.createTime) }}</span>-->
@@ -248,7 +248,7 @@
         this.removedFileName = file.name;
       },
       removeFile(file, fileList) {
-        console.log(fileList);
+        //console.log(fileList);
         /*this.attachments.forEach((e)=>{
           if(e.fileName == this.removedFileName){
           }
@@ -463,7 +463,9 @@
     width: 100%;
     height: 200px;
   }
-
+  .el-textarea__inner{
+    border: none!important;
+  }
   .el-dialog__header {
     border-bottom: 1px solid #ccc;
     width: 90%;

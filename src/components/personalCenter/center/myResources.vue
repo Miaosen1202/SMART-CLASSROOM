@@ -2,23 +2,29 @@
   <div class="all">
     <div>
       <p style="display: inline-block">{{$t('message.Total')}}</p>：<span style="font-weight: 700;padding-right: 1%;">{{ page.total }}</span>
-      <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 20%"></el-input>
-      <el-input v-model="search.fileType" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')" style="width: 10%"></el-input>
-      <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search" style="background-color: #0138b1;color: #fff"></el-button>
+      <el-input v-model="search.materialName" size="small" :placeholder="$t('message.Pleaseinputfilenametosearch')"
+                style="width: 20%"></el-input>
+      <!--<el-input v-model="search.fileType" size="small" :placeholder="$t('message.Pleaseinputfiletypetosearch')"
+                style="width: 20%"></el-input>-->
+      <el-button type="primary" @click="resourceManagementQuery(1)" size="small" icon="el-icon-search"
+                 style="background-color: #0138b1;color: #fff"></el-button>
       <!--<el-select v-model="value" size="small" placeholder="请选择">-->
-        <!--<el-option-->
-          <!--v-for="item in options"-->
-          <!--:key="item.value"-->
-          <!--:label="item.label"-->
-          <!--:value="item.value">-->
-        <!--</el-option>-->
+      <!--<el-option-->
+      <!--v-for="item in options"-->
+      <!--:key="item.value"-->
+      <!--:label="item.label"-->
+      <!--:value="item.value">-->
+      <!--</el-option>-->
       <!--</el-select>-->
-      <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
+      <el-button @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
         <img src="../../../../static/images/Deleteinbatches.png" alt="" height="18">
-        {{$t('message.batchdelete')}}</el-button>
-      <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
+        {{$t('message.batchdelete')}}
+      </el-button>
+      <el-button type="primary" @click="goBatchUpload" size="mini"
+                 style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
         <img src="../../../../static/images/BatchUpload.png" alt="" height="18">
-        {{$t('message.Uploads')}}</el-button>
+        {{$t('message.Uploads')}}
+      </el-button>
     </div>
     <div>
       <el-table
@@ -28,7 +34,8 @@
         style="width: 100%"
         @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="40"></el-table-column>
-        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center" min-width="80%"><!-- :show-overflow-tooltip="true"-->
+        <el-table-column prop="materialName" :label="$t('message.fileName')" data-placement="auto" align="center"
+                         min-width="80%"><!-- :show-overflow-tooltip="true"-->
           <!--{{materialName}}-->
           <template slot-scope="scope">
             <file-template
@@ -40,7 +47,8 @@
           <!--<file-template :id="atth.id" :name="atth.fileName" :url="atth.fileUrl"></file-template>-->
         </el-table-column>
         <!--<el-table-column prop="createUserName" label="创建人" min-width="30%"></el-table-column>-->
-        <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="40%" align="center"></el-table-column>
+        <el-table-column prop="materialTypeDesc" :label="$t('message.Categorys')" min-width="40%"
+                         align="center"></el-table-column>
         <el-table-column prop="fileSize" :label="$t('message.Size')" min-width="60%" align="center">
           <template slot-scope="scope">{{ fileSizeConvert(scope.row.fileSize) }}</template>
         </el-table-column>
@@ -49,16 +57,20 @@
         </el-table-column>
         <el-table-column prop="fileType" :label="$t('message.fileType')" min-width="40%" align="center">
         </el-table-column>
-        <el-table-column  :label="$t('message.Operation')" width="350" fixed="right" align="center">
+        <el-table-column :label="$t('message.Operation')" width="350" fixed="right" align="center">
           <template slot-scope="scope">
             <el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
+              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}
+            </el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
-              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>
+              @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}
+            </el-button>
+            <span style="color: #0e38b1;padding-left: 1%">|</span>
             <!--<el-button
               style="border: none;color: #0138b1;"
               size="mini"
@@ -69,13 +81,13 @@
               style="border: none;color: #0138b1;"
               size="mini"
               @click="modifyAccessScope(scope.$index, scope.row)">
-                {{scope.row.shareMaterial ? $t("message.removeFromCommons") : $t("message.sharetocommons")}}
+              {{scope.row.shareMaterial ? $t("message.removeFromCommons") : $t("message.sharetocommons")}}
             </el-button>
             <!--<el-button-->
-              <!--v-show="!scope.row.isShow"-->
-              <!--style="border: none;color: #0138b1;"-->
-              <!--size="mini"-->
-              <!--@click="modifyAccessScopetwo(scope.$index, scope.row)">{{$t("message.sharetocommons")}}-->
+            <!--v-show="!scope.row.isShow"-->
+            <!--style="border: none;color: #0138b1;"-->
+            <!--size="mini"-->
+            <!--@click="modifyAccessScopetwo(scope.$index, scope.row)">{{$t("message.sharetocommons")}}-->
             <!--</el-button>-->
           </template>
         </el-table-column>
@@ -101,7 +113,7 @@
       width="30%"
       @close="batchUploadDialogClosed"
 
-      >
+    >
       <el-upload
         class="material-batch-upload"
         name="file"
@@ -115,11 +127,12 @@
         :on-success="handleFileUploadSuccess">
         <el-button size="small" style="background-color: #0e38b1;color: #fff">
           <img src="../../../../static/images/UPLOAD1.png" alt="">
-          {{$t('message.upload')}}</el-button>
+          {{$t('message.upload')}}
+        </el-button>
         <div slot="tip" class="el-upload__tip">{{$t('message.Onlysupport')}}</div>
       </el-upload>
       <span slot="footer" class="dialog-footer">
-        <el-button  @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
+        <el-button @click="batchUploadDialogVisible = false">{{$t('message.cancel')}}</el-button>
         <el-button style="background-color: #0e38b1;color: #fff" @click="batchUpload">{{$t('message.save')}}</el-button>
       </span>
     </el-dialog>
@@ -137,12 +150,13 @@
         fileUploadPath: `${process.env.NODE_ENV}/file/upload`,
         materialFileList: [],
         fileList: [],
-        isShow:true,
+        isShow: true,
         addMaterials: [],
 
         search: {
           materialName: null,
-          accessScope:  1
+          // fileType:null,
+          accessScope: 1
         },
         page: {
           total: 0,
@@ -161,7 +175,7 @@
         options: [{
           value: '选项1',
           label: '1'
-        },  {
+        }, {
           value: '选项2',
           label: '2'
         }],
@@ -180,33 +194,33 @@
         this.multipleSelection = val;
       },
       beforeAvatarUpload(file) {
-        var testmsg=file.name.substring(file.name.lastIndexOf('.')+1);
+        var testmsg = file.name.substring(file.name.lastIndexOf('.') + 1);
         const extension1 = testmsg === 'doc' || testmsg === 'docx' || testmsg === 'ppt' || testmsg === 'pptx' || testmsg === 'xls' || testmsg === 'xlsx' || testmsg === 'pdf' || testmsg === 'swf' || testmsg === 'jpg' || testmsg === 'jpeg' || testmsg === 'png' || testmsg === 'gif' || testmsg === 'bmp';
         const extension2 = testmsg === 'mp4' || testmsg === 'mp3';
         const isLimit30M = file.size / 1024 / 1024 < 30;
         const isLimit200M = file.size / 1024 / 1024 < 200;
-        if(!(extension1) && !(extension2)) {
+        if (!(extension1) && !(extension2)) {
           this.$message({
             // message: '上传文件只能是 doc、docx、mp4、ppt、pptx、xls、xlsx、pdf、mp3、swf、jpg、jpeg、png、gif、bmp格式!',
             message: this.$t('message.Uploadfilecanonly'),
             type: 'warning'
           });
         }
-        if(extension1){ //其它文件
-          if(!isLimit30M){
+        if (extension1) { //其它文件
+          if (!isLimit30M) {
             this.$message({
               // message: '音视频文件大小不超过200M，其他类型文件不得超过30M!',
-              dangerouslyUseHTMLString:true,
+              dangerouslyUseHTMLString: true,
               message: this.$t('message.Audioandvideo'),
               type: 'warning'
             });
             return false;
           }
         }
-        if(extension2){ //视频文件
-          if(!isLimit200M){
+        if (extension2) { //视频文件
+          if (!isLimit200M) {
             this.$message({
-              dangerouslyUseHTMLString:true,
+              dangerouslyUseHTMLString: true,
               message: this.$t('message.Audioandvideo'),
               type: 'warning'
             });
@@ -226,14 +240,14 @@
           .then((res) => {
             if (res.data.code == 200) {
               this.page = res.data.entity;
-              this.page.list.forEach( (e) =>{
-                e.isShow=true;
+              this.page.list.forEach((e) => {
+                e.isShow = true;
               })
             } else {
               this.$message.error(res.data.message);
             }
           }).catch((err) => {
-            this.$message.error(err);
+          this.$message.error(err);
         });
       },
       modifyAccessScope(index, row) {
@@ -242,7 +256,7 @@
           let param = {
             id: row.id,
           };
-          this.$http.post(`${process.env.NODE_ENV}/materialBank/cancelShare/edit`,param)
+          this.$http.post(`${process.env.NODE_ENV}/materialBank/cancelShare/edit`, param)
             .then((res) => {
               if (res.data.code != 200) {
                 this.$message.error(res.data.message);
@@ -251,6 +265,7 @@
               //row.accessScope = accessScope;
               this.page.list[index].shareMaterial = false;
               // console.log(this.page.list[index].isShow=false);
+              this.resourceManagementQuery();
             }).catch((err) => {
             this.$message.error(err);
           });
@@ -258,7 +273,7 @@
           let param = {
             id: row.id,
           };
-          this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`,param)
+          this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`, param)
             .then((res) => {
               if (res.data.code != 200) {
                 this.$message.error(res.data.message);
@@ -267,31 +282,32 @@
               this.page.list[index].shareMaterial = true;
               // console.log(this.page.list[index].isShow=true);
               // row.accessScope = accessScope;
+              this.resourceManagementQuery();
             }).catch((err) => {
             this.$message.error(err);
           });
         }
       },
       modifyAccessScopetwo(index, row) {
-       // let accessScope = row.accessScope == 1 ? 2 : 1;
+        // let accessScope = row.accessScope == 1 ? 2 : 1;
         let param = {
           id: row.id,
         };
-        this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`,param)
+        this.$http.post(`${process.env.NODE_ENV}/materialBank/share/edit`, param)
           .then((res) => {
             if (res.data.code != 200) {
               this.$message.error(res.data.message);
               return;
             }
-            this.page.list[index].isShow=true;
-            console.log(this.page.list[index].isShow=true);
+            this.page.list[index].isShow = true;
+            console.log(this.page.list[index].isShow = true);
             // row.accessScope = accessScope;
           }).catch((err) => {
           this.$message.error(err);
         });
       },
-      modifyPageSkip:function (row)  {
-        this.$router.push({path:"/personalCenterManagement/modify", query: {id: row.id}});
+      modifyPageSkip: function (row) {
+        this.$router.push({path: "/personalCenterManagement/modify", query: {id: row.id}});
       },
 
       handleDelete(index, row) {
@@ -300,7 +316,8 @@
 
       batchDelete: function () {
         if (this.multipleSelection.length == 0) {
-          this.$message.error(this.$t('message.Pleaseselectatleastonerowofdata'));/*"Please select at least one row of data"*/
+          this.$message.error(this.$t('message.Pleaseselectatleastonerowofdata'));
+          /*"Please select at least one row of data"*/
           return;
         }
 
@@ -333,7 +350,7 @@
       removeFile: function (file, fileList) {
         let tmpName = file.response.entity.fileTmpName;
         for (let i = 0; i < this.addMaterials.length; i++) {
-          if (tmpName  === this.addMaterials[i].localPath) {
+          if (tmpName === this.addMaterials[i].localPath) {
             this.addMaterials.splice(i, 1);
           }
         }
@@ -371,7 +388,8 @@
 
       batchUpload: function () {
         if (this.addMaterials.length <= 0) {
-          this.$message.error(this.$t('message.Pleaseuploadfilefirst'));/*"Please upload file first"*/
+          this.$message.error(this.$t('message.Pleaseuploadfilefirst'));
+          /*"Please upload file first"*/
           return;
         }
 
@@ -389,7 +407,7 @@
               this.$message.error(res.data.message);
             }
           }).catch((err) => {
-            this.$message.error(err);
+          this.$message.error(err);
         });
       }
     }
@@ -400,7 +418,7 @@
     max-width: 400px;
     line-height: 180%;
     word-break: break-all;
-    word-wrap:break-word;
+    word-wrap: break-word;
   }
 </style>
 <style scoped="">
@@ -409,6 +427,7 @@
     margin-top: 0px;
     padding-top: 2%;
   }
+
   .el-upload__tip {
     display: inline-block;
     padding-left: 2%;

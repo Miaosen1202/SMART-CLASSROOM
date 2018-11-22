@@ -13,12 +13,12 @@
       <!--:value="item.value">-->
       <!--</el-option>-->
       <!--</el-select>-->
-      <el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
+      <!--<el-button  @click="batchDelete" size="mini" style="float: right;margin-left: 1%;">
         <img src="../../../../static/images/Deleteinbatches.png" alt="" height="18">
         {{$t('message.batchdelete')}}</el-button>
       <el-button type="primary" @click="goBatchUpload" size="mini" style="float: right;margin-left: 1%;background-color: #26be96;color: #fff;">
         <img src="../../../../static/images/BatchUpload.png" alt="" height="18">
-        {{$t('message.Uploads')}}</el-button>
+        {{$t('message.Uploads')}}</el-button>-->
     </div>
     <div>
       <el-table
@@ -50,23 +50,23 @@
         </el-table-column>
         <!--<el-table-column prop="fileType" :label="$t('message.Views')" min-width="70%" align="center">
         </el-table-column>-->
-        <el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
+        <!--<el-table-column  :label="$t('message.Operation')" width="200" fixed="right" align="center">
           <template slot-scope="scope">
-            <!--<el-button
+            &lt;!&ndash;<el-button
               style="border: none;color: #0e38b1"
               size="mini"
-              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>-->
+              @click="modifyPageSkip(scope.row)">{{$t('message.Modify')}}</el-button><span style="color: #0e38b1;padding-left: 1%">|</span>&ndash;&gt;
             <el-button
               size="mini"
               style="border: none;color: #0e38b1"
               @click="handleDelete(scope.$index, scope.row)">{{$t('message.delete')}}
-              <!--<a class='file-download' v-on:click='download' target='_blank' :href="serverPath + url + '/download?id=' + id" :download='name'>
+              &lt;!&ndash;<a class='file-download' v-on:click='download' target='_blank' :href="serverPath + url + '/download?id=' + id" :download='name'>
                 <img src='../../../../static/images/UPLOAD.png' alt='Download' style='cursor: pointer;'>
-              </a>-->
+              </a>&ndash;&gt;
             </el-button>
 
           </template>
-        </el-table-column>
+        </el-table-column>-->
       </el-table>
     </div>
     <div style="position: absolute;bottom: 8%;left: 44%">

@@ -108,6 +108,7 @@ const en = {
     'batchAddTo':'Batch Add To',
     'sharetocommons':'Share To Commons',
     'removeFromCommons':'Remove From Commons',
+    'Pleaseinputfiletypetosearch':'Please input file type to search',
 
 // -------- end -----------
 
