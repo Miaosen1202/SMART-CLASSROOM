@@ -168,10 +168,13 @@
         </div>
         <el-input
           type="textarea"
+          maxlength="4000"
+          @input = "descInput"
           autosize
           :placeholder="$t('message.pleaseenter')"
           v-model="reply.content">
         </el-input>
+            <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
           </div>
         </el-scrollbar>
       </div>
@@ -189,6 +192,7 @@
   export default {
     data() {
       return {
+        remnant:4000,
         replyDialogVisible: false,
         action: process.env.NODE_ENV + '/file/upload',
         replyStatusOps: [{
@@ -236,6 +240,11 @@
     },
 
     methods: {
+      descInput(){
+        var txtVal = this.reply.content.length;
+        this.remnant = 4000-txtVal;
+      },
+
       formatDateTime: util.formatDateTime,
 
       loadFeedbackRecord: function(pageIndex) {

@@ -177,6 +177,7 @@
           :placeholder="$t('message.pleaseEnter')"
           v-model="reply.content">
         </el-input>
+            <span style="float: right;padding-right: 0%;font-size: 12px;color: #999999">{{remnant}}{{$t('message.byte')}}</span>
       </div>
         </el-scrollbar>
       </div>
